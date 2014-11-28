@@ -1,0 +1,16 @@
+H:\DEV\Projet Finale C# et BD\CentreSportifLib\CentreSportifLib\bin\Debug\CentreSportifLib.dll
+H:\DEV\Projet Finale C# et BD\CentreSportifLib\CentreSportifLib\bin\Debug\CentreSportifLib.pdb
+H:\DEV\Projet Finale C# et BD\CentreSportifLib\CentreSportifLib\bin\Debug\MySql.Data.dll
+H:\DEV\Projet Finale C# et BD\CentreSportifLib\CentreSportifLib\obj\Debug\CentreSportifLib.dll
+H:\DEV\Projet Finale C# et BD\CentreSportifLib\CentreSportifLib\obj\Debug\CentreSportifLib.pdb
+C:\Users\amzo\Documents\Visual Studio 2012\Projects\CentreSportifTester\CentreSportifLib\CentreSportifLib\bin\Debug\CentreSportifLib.dll
+C:\Users\amzo\Documents\Visual Studio 2012\Projects\CentreSportifTester\CentreSportifLib\CentreSportifLib\bin\Debug\CentreSportifLib.pdb
+C:\Users\amzo\Documents\Visual Studio 2012\Projects\CentreSportifTester\CentreSportifLib\CentreSportifLib\bin\Debug\MySql.Data.dll
+C:\Users\amzo\Documents\Visual Studio 2012\Projects\CentreSportifTester\CentreSportifLib\CentreSportifLib\obj\Debug\CentreSportifLib.csprojResolveAssemblyReference.cache
+C:\Users\amzo\Documents\Visual Studio 2012\Projects\CentreSportifTester\CentreSportifLib\CentreSportifLib\obj\Debug\CentreSportifLib.dll
+C:\Users\amzo\Documents\Visual Studio 2012\Projects\CentreSportifTester\CentreSportifLib\CentreSportifLib\obj\Debug\CentreSportifLib.pdb
+C:\Users\Admin\Documents\Visual Studio 2010\Projects\CentreSportifTester\CentreSportifLib\CentreSportifLib\bin\Debug\CentreSportifLib.dll
+C:\Users\Admin\Documents\Visual Studio 2010\Projects\CentreSportifTester\CentreSportifLib\CentreSportifLib\bin\Debug\CentreSportifLib.pdb
+C:\Users\Admin\Documents\Visual Studio 2010\Projects\CentreSportifTester\CentreSportifLib\CentreSportifLib\obj\Debug\CentreSportifLib.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\Visual Studio 2010\Projects\CentreSportifTester\CentreSportifLib\CentreSportifLib\obj\Debug\CentreSportifLib.dll
+C:\Users\Admin\Documents\Visual Studio 2010\Projects\CentreSportifTester\CentreSportifLib\CentreSportifLib\obj\Debug\CentreSportifLib.pdb
