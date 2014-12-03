@@ -14,16 +14,16 @@ namespace CentreSportifLib.dto
         private DateTime datefin;
         #endregion
         #region Propriete
-        public String IdSeance 
-        { 
-            set 
-            { 
-                this.idseance = value; 
-            } 
-            get 
-            { 
-                return this.idseance; 
-            } 
+        public String IdSeance
+        {
+            set
+            {
+                this.idseance = value;
+            }
+            get
+            {
+                return this.idseance;
+            }
         }
         public String IdGroupe
         {

@@ -16,13 +16,14 @@ namespace CentreSportifLib.dto
         private String email;
         private String motdepasse;
         private String codebarre;
-        private String role ;
+        private String role;
         AdresseDTO adresse;
         List<SeanceDTO> seances;
         List<PresenceDTO> presences;
         #endregion
         #region Proprietés
-        public String IdPersonne{
+        public String IdPersonne
+        {
             set { this.idpersonne = value; }
             get { return this.idpersonne; }
         }
@@ -83,12 +84,12 @@ namespace CentreSportifLib.dto
         }
         #endregion
         #region Methodes
-        public PersonneDTO() 
+        public PersonneDTO()
         { }
         public override string ToString()
         {
             String result = "{";
-            result += "Id:"+ IdPersonne;
+            result += "Id:" + IdPersonne;
             result += ", Prenom:" + Prenom;
             result += ", Nom:" + Nom;
             result += ", Email:" + Email;

@@ -11,7 +11,7 @@ namespace CentreSportifLib.dto
         private String idpersonne;
         private String contenu;
         private DateTime datecreation;
-        #endregion 
+        #endregion
         #region Propriete;
         public String IdPersonne
         {

@@ -10,15 +10,15 @@ namespace CentreSportifLib.service
     public class ServicePersonne
     {
         private PersonneDAO personneDAO { set; get; }
-        public ServicePersonne(PersonneDAO personneDAO) 
+        public ServicePersonne(PersonneDAO personneDAO)
         {
             this.personneDAO = personneDAO;
         }
-        public void register(PersonneDTO personneDTO) 
+        public void register(PersonneDTO personneDTO)
         {
             personneDAO.add(personneDTO);
         }
-        public List<PersonneDTO> getAll() 
+        public List<PersonneDTO> getAll()
         {
             return personneDAO.getAll();
             /*

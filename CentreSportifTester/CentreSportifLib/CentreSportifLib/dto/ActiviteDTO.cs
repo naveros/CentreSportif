@@ -14,38 +14,43 @@ namespace CentreSportifLib.dto
         private String description;
         #endregion
         #region Proprietes
-        public String IdActivite { 
+        public String IdActivite
+        {
             set
-            { 
-                this.idactivite = value; 
+            {
+                this.idactivite = value;
             }
-            get {
+            get
+            {
                 return this.idactivite;
             }
         }
-        public String Nom {
+        public String Nom
+        {
             set { this.nom = value; }
-            get { return this.nom; } 
+            get { return this.nom; }
         }
-        public String Duree { 
-            set 
+        public String Duree
+        {
+            set
             {
                 this.duree = value;
-            } 
-            get 
+            }
+            get
             {
-                return this.duree; 
-            } 
+                return this.duree;
+            }
         }
-        public String Description { 
-            set 
+        public String Description
+        {
+            set
             {
-                this.description = value; 
-            } 
-            get 
+                this.description = value;
+            }
+            get
             {
-                return description; 
-            } 
+                return description;
+            }
         }
         #endregion
     }

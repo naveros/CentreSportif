@@ -17,7 +17,7 @@ namespace CentreSportifLib
         private ServicePersonne servicePersonne;
         private ServiceActivite serviceActivite;
 
-        public CentreSportifCreateur() 
+        public CentreSportifCreateur()
         {
             try
             {
@@ -33,11 +33,12 @@ namespace CentreSportifLib
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erreur dans l'initialisation des singleton details"+e.Message);
+                Console.WriteLine("Erreur dans l'initialisation des singleton details" + e.Message);
             }
         }
 
-        public ServicePersonne ServicePersonne {
+        public ServicePersonne ServicePersonne
+        {
             get
             {
                 return this.servicePersonne;

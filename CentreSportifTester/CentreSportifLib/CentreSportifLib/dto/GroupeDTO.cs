@@ -13,34 +13,29 @@ namespace CentreSportifLib.dto
         private String numerogroupe;
         #endregion
         #region Propriete
-        public String IdGroupe { 
-            set 
-            {
-                this.idgroupe = value; 
-            } 
-            get 
-            {
-                return this.idgroupe; 
-            } 
-        }
-        public String IdActivite 
+        public String IdGroupe
         {
-            set 
+            set { this.idgroupe = value; }
+            get { return this.idgroupe; }
+        }
+        public String IdActivite
+        {
+            set
             {
                 this.idactivite = value;
             }
-            get 
-            { 
-                return this.idactivite; 
+            get
+            {
+                return this.idactivite;
             }
         }
-        public String NumeroGroupe 
-        { 
-            set 
+        public String NumeroGroupe
+        {
+            set
             {
                 this.numerogroupe = value;
             }
-            get 
+            get
             {
                 return this.numerogroupe;
             }

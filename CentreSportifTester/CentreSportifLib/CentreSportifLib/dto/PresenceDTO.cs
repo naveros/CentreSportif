@@ -15,7 +15,7 @@ namespace CentreSportifLib.dto
         #endregion
         #region Propriete
         public String IdPresence { set { this.idpresence = value; } get { return this.idpresence; } }
-        public String IdPersonne{ set { this.idpersonne = value; } get { return this.idpersonne;; } }
+        public String IdPersonne { set { this.idpersonne = value; } get { return this.idpersonne; ; } }
         public String IdSeance { set { this.idseance = value; } get { return this.idseance; } }
         public Boolean Present { set { this.present = value; } get { return this.present; } }
         #endregion
