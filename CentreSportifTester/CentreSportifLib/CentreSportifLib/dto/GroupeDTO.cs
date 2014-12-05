@@ -41,5 +41,19 @@ namespace CentreSportifLib.dto
             }
         }
         #endregion
+        #region Methodes
+        public GroupeDTO()
+        { }
+        public override string ToString()
+        {
+            String result = "{";
+            result += "IdGroupe:" + IdGroupe;
+            result += ", IdActivite:" + IdActivite;
+            result += ", numero groupe:" + NumeroGroupe;
+            result += "}";
+            return result;
+        }
+        #endregion
+
     }
 }

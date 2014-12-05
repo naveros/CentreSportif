@@ -21,6 +21,7 @@ namespace CentreSportifGUI
             sp = new CentreSportifCreateur();
             RefreshTableMembre();
             RefreshTableActivite();
+            RefreshTableGroupe();
         }
         public void RefreshTableMembre()
         {
@@ -28,7 +29,7 @@ namespace CentreSportifGUI
             sp.ServicePersonne.getAll().ForEach(delegate(PersonneDTO p)
             {
                 int i = this.dataGridView1.Rows.Add();
-                Console.WriteLine(p.ToString());
+                //Console.WriteLine(p.ToString());
                 dataGridView1.Rows[i].Cells[0].Value = p.IdPersonne;
                 dataGridView1.Rows[i].Cells[1].Value = p.Prenom;
                 dataGridView1.Rows[i].Cells[2].Value = p.Nom;
@@ -55,12 +56,48 @@ namespace CentreSportifGUI
                 dataGridView2.Rows[i].Cells[4].Tag = a;
             });
         }
+
+        public void RefreshTableGroupe()
+        {
+            this.dataGridView3.Rows.Clear();
+            sp.ServiceGroupe.getAll().ForEach(delegate(GroupeDTO g)
+            {
+                int i = this.dataGridView3.Rows.Add();
+                Console.WriteLine(g.ToString());
+                dataGridView3.Rows[i].Cells[0].Value = g.IdGroupe;
+                dataGridView3.Rows[i].Cells[1].Value = g.IdActivite;
+                dataGridView3.Rows[i].Cells[2].Value = g.NumeroGroupe;
+                dataGridView3.Rows[i].Cells[3].Value = "Modifier";
+                dataGridView3.Rows[i].Cells[3].Tag = g;
+            });
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 6)
             {
                 PersonneDTO p = (PersonneDTO)dataGridView1.Rows[e.RowIndex].Cells[6].Tag;
                 FormulaireMembre form = new FormulaireMembre(p);
+                form.ShowDialog();
+            }
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4)
+            {
+                ActiviteDTO a = (ActiviteDTO)dataGridView2.Rows[e.RowIndex].Cells[4].Tag;
+                FormulaireActivite form = new FormulaireActivite(a);
+                form.ShowDialog();
+            }
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 3)
+            {
+                GroupeDTO g = (GroupeDTO)dataGridView3.Rows[e.RowIndex].Cells[3].Tag;
+                FormulaireGroupe form = new FormulaireGroupe(g);
                 form.ShowDialog();
             }
         }
@@ -73,16 +110,33 @@ namespace CentreSportifGUI
             a.Description = richTextBox1.Text;
             sp.ServiceActivite.creer(a);
             MessageBox.Show("Activité crée avec succès.");
-            textBox2.Text = "";
-            textBox3.Text = "";
-            richTextBox1.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
             RefreshTableActivite();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
+        {
+            GroupeDTO g = new GroupeDTO();
+            g.IdGroupe = textBox4.Text;
+            g.IdActivite = textBox5.Text;
+            g.NumeroGroupe = textBox6.Text;
+            Console.WriteLine("GROUPE :`" +g.ToString());
+            sp.ServiceGroupe.creer(g);
+            Console.WriteLine(g.ToString());
+            MessageBox.Show("Groupe crée avec succès.");
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+            RefreshTableGroupe();
+        }
+
+        private void button1_Click(object sender, EventArgs e) //nouveau membre
         {
             FormulaireMembre form = new FormulaireMembre(null);
             form.ShowDialog();
         }
+
     }
 }

@@ -6,7 +6,7 @@ using CentreSportifLib.dto;
 using MySql.Data.MySqlClient;
 namespace CentreSportifLib.dao
 {
-    class GroupeDAO
+    public class GroupeDAO
     {
         //TODO : Tests unitaires,, String vs Int pour les champs?? 
 
@@ -21,12 +21,12 @@ namespace CentreSportifLib.dao
             this.con = connexion;
         }
 
-        public void add(GroupeDTO a)
+        public void add(GroupeDTO g)
         {
             MySqlCommand cmd = new MySqlCommand(queryCreate, con);
-            cmd.Parameters.AddWithValue("@idgroupe", a.IdGroupe);
-            cmd.Parameters.AddWithValue("@idactivite", a.IdActivite);
-            cmd.Parameters.AddWithValue("@numerogroupe", a.NumeroGroupe);
+            cmd.Parameters.AddWithValue("@idgroupe", g.IdGroupe);
+            cmd.Parameters.AddWithValue("@idactivite", g.IdActivite);
+            cmd.Parameters.AddWithValue("@numerogroupe", g.NumeroGroupe);
             try
             {
                 con.Open();

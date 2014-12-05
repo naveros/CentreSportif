@@ -14,8 +14,10 @@ namespace CentreSportifLib
         private MySqlConnection con;
         private PersonneDAO personneDAO;
         private ActiviteDAO activiteDAO;
+        private GroupeDAO groupeDAO;
         private ServicePersonne servicePersonne;
         private ServiceActivite serviceActivite;
+        private ServiceGroupe serviceGroupe;
 
         public CentreSportifCreateur()
         {
@@ -27,9 +29,11 @@ namespace CentreSportifLib
                 //Init les DAOs
                 this.personneDAO = new PersonneDAO(this.con);
                 this.activiteDAO = new ActiviteDAO(this.con);
+                this.groupeDAO = new GroupeDAO(this.con);
                 //Init les service
                 this.servicePersonne = new ServicePersonne(personneDAO);
                 this.serviceActivite = new ServiceActivite(activiteDAO);
+                this.serviceGroupe = new ServiceGroupe(groupeDAO);
             }
             catch (Exception e)
             {
@@ -49,6 +53,13 @@ namespace CentreSportifLib
             get
             {
                 return this.serviceActivite;
+            }
+        }
+        public ServiceGroupe ServiceGroupe
+        {
+            get
+            {
+                return this.serviceGroupe;
             }
         }
     }

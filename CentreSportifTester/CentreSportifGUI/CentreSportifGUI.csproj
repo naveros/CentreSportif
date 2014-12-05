@@ -52,6 +52,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\formulaire\FormulaireActivite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\formulaire\FormulaireActivite.Designer.cs">
+      <DependentUpon>FormulaireActivite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\formulaire\FormulaireGroupe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\formulaire\FormulaireGroupe.Designer.cs">
+      <DependentUpon>FormulaireGroupe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\formulaire\FormulaireMembre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +81,12 @@
     </Compile>
     <EmbeddedResource Include="Views\CentreSportifGUI.resx">
       <DependentUpon>CentreSportifGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\formulaire\FormulaireActivite.resx">
+      <DependentUpon>FormulaireActivite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\formulaire\FormulaireGroupe.resx">
+      <DependentUpon>FormulaireGroupe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\formulaire\FormulaireMembre.resx">
       <DependentUpon>FormulaireMembre.cs</DependentUpon>

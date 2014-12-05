@@ -7,29 +7,43 @@ using CentreSportifLib.dto;
 
 namespace CentreSportifLib.service
 {
-    class ServiceGroupe
+    public class ServiceGroupe
     {
-        GroupeDAO groupeDAO;
-        public ServiceGroupe(GroupeDAO groupeDAO)
-        {
-            this.groupeDAO = groupeDAO;
+        private GroupeDAO groupeDAO {set;get;}
+
+        public ServiceGroupe(GroupeDAO groupeDAO){
+        this.groupeDAO = groupeDAO;
         }
 
-        public void creer(GroupeDTO a)
+        public void creer(GroupeDTO groupeDTO)
         {
-            groupeDAO.add(a);
+            groupeDAO.add(groupeDTO);
         }
         public List<GroupeDTO> getAll()
         {
             return groupeDAO.getAll();
+            /*
+            String result = "{ result: [";
+            groupeDAO.getAll().ForEach(delegate( GroupeDTO p )
+            {
+                result += p.ToString() +", ";
+            });
+            result += "]}";
+            return result;*/
         }
-        public GroupeDTO findById(GroupeDTO a)
+        public GroupeDTO findById(GroupeDTO groupeDTO)
         {
-            return groupeDAO.get(a);
+            return groupeDAO.get(groupeDTO);
         }
-        public void modifier(GroupeDTO a)
+
+        public void update(GroupeDTO p)
         {
-            groupeDAO.update(a);
+            this.groupeDAO.update(p);
+        }
+
+        public void delete(GroupeDTO p)
+        {
+            this.groupeDAO.delete(p);
         }
     }
 }
