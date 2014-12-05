@@ -464,7 +464,7 @@
             this.Column14,
             this.Column15,
             this.Column16});
-            this.dataGridView3.Location = new System.Drawing.Point(-4, 172);
+            this.dataGridView3.Location = new System.Drawing.Point(0, 172);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.Size = new System.Drawing.Size(1098, 347);
             this.dataGridView3.TabIndex = 0;

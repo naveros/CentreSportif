@@ -18,8 +18,8 @@ namespace CentreSportifLib.dto
         private String codebarre;
         private String role;
         AdresseDTO adresse;
-        List<SeanceDTO> seances;
         List<PresenceDTO> presences;
+        List<AbonnementDTO> abonnements;
         #endregion
         #region Proprietés
         public String IdPersonne
@@ -72,15 +72,15 @@ namespace CentreSportifLib.dto
             set { this.adresse = value; }
             get { return this.adresse; }
         }
-        public List<SeanceDTO> Seances
-        {
-            set { this.seances = value; }
-            get { return this.seances; }
-        }
         public List<PresenceDTO> Presences
         {
             set { this.presences = value; }
             get { return this.presences; }
+        }
+        public List<AbonnementDTO> Abonnements
+        {
+            set { this.abonnements = value; }
+            get { return this.abonnements; }
         }
         #endregion
         #region Methodes

@@ -1,5 +1,4 @@
-﻿using CentreSportifLib.dto;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CentreSportifLib.dto;
 
 namespace CentreSportifGUI.Views.formulaire
 {
@@ -34,6 +34,7 @@ namespace CentreSportifGUI.Views.formulaire
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //TODO: Gestion des erreurs
             p.IdPersonne = textBox1.Text;
             p.Prenom = textBox2.Text;
             p.Nom = textBox3.Text;
@@ -58,7 +59,7 @@ namespace CentreSportifGUI.Views.formulaire
             }
             else if (this.mode.Equals("Modifier"))
             {
-                owner.sp.ServicePersonne.modifier(p);
+                owner.sp.ServicePersonne.update(p);
             }
         }
 
@@ -74,6 +75,7 @@ namespace CentreSportifGUI.Views.formulaire
             textBox3.Text = p.Nom;
             textBox4.Text = p.Email;
             dateTimePicker1.Value = p.DateNaissance;
+
             if(p.Sexe.Equals('f'))
             {
                 radioButton2.Checked = true;

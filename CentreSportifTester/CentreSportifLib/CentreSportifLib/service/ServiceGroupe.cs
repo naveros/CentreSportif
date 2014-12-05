@@ -45,5 +45,10 @@ namespace CentreSportifLib.service
         {
             this.groupeDAO.delete(p);
         }
+
+        public void getAllSeances(GroupeDTO groupeDTO)
+        {
+            this.groupeDAO.getAllSeances(groupeDTO);
+        }
     }
 }

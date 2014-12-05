@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CentreSportifGUI.Views.menu;
 
 namespace CentreSportifGUI
 {
@@ -63,7 +64,7 @@ namespace CentreSportifGUI
             sp.ServiceGroupe.getAll().ForEach(delegate(GroupeDTO g)
             {
                 int i = this.dataGridView3.Rows.Add();
-                Console.WriteLine(g.ToString());
+               // Console.WriteLine(g.ToString());
                 dataGridView3.Rows[i].Cells[0].Value = g.IdGroupe;
                 dataGridView3.Rows[i].Cells[1].Value = g.IdActivite;
                 dataGridView3.Rows[i].Cells[2].Value = g.NumeroGroupe;
@@ -77,7 +78,8 @@ namespace CentreSportifGUI
             if (e.ColumnIndex == 6)
             {
                 PersonneDTO p = (PersonneDTO)dataGridView1.Rows[e.RowIndex].Cells[6].Tag;
-                FormulaireMembre form = new FormulaireMembre(p);
+                MenuMembre form = new MenuMembre(p);
+                form.Owner = this;
                 form.ShowDialog();
             }
         }

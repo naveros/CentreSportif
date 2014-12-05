@@ -16,6 +16,7 @@ namespace CentreSportifLib.dao
         const String queryRead = "SELECT * FROM groupe WHERE idgroupe = @idgroupe";
         const String queryUpdate = "UPDATE groupe SET numerogroupe = @numerogroupe WHERE idgroupe=@idgroupe;";
         const String queryDelete = "DELETE FROM groupe WHERE idgroupe=@idgroupe;";
+        const String queryReadSchedule = "SELECT * FROM seance WHERE idpersonne = @idpersonne";
         public GroupeDAO(MySqlConnection connexion)
         {
             this.con = connexion;
@@ -138,6 +139,41 @@ namespace CentreSportifLib.dao
             {
                 con.Close();
             }
+        }
+
+        public List<SeanceDTO> getAllSeances(GroupeDTO g) 
+        {
+            MySqlCommand cmd = new MySqlCommand(queryReadSchedule, con);
+            MySqlDataReader reader = null;
+            List<SeanceDTO> result = new List<SeanceDTO>();
+            try
+            {
+                con.Open();
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    SeanceDTO s = new SeanceDTO();
+
+                    s.IdGroupe = reader.GetString("idgroupe");
+                    s.IdSeance = reader.GetString("idseance");
+                    s.DateDebut = (DateTime)reader["datedebut"];
+                    s.DateFin = (DateTime)reader["datefin"];
+                    result.Add(s);
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erreur dans la requete getAllSeances");
+                Console.Write(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return result;
+
         }
 
     }

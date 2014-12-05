@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dto\AbonnementDTO.cs" />
+    <Compile Include="dto\PaiementDTO.cs" />
     <Compile Include="service\ServiceActivite.cs" />
     <Compile Include="service\ServiceGroupe.cs" />
     <Compile Include="util\CentreSportifCreateur.cs" />

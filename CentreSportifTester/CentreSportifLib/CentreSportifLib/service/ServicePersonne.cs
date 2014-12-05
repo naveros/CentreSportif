@@ -30,18 +30,33 @@ namespace CentreSportifLib.service
             result += "]}";
             return result;*/
         }
-        public void getFullSchedule(PersonneDTO personneDTO)
-        {
-            //todo
-        }
+
         public PersonneDTO findById(PersonneDTO personneDTO)
         {
             return personneDAO.get(personneDTO);
         }
 
-        public void modifier(PersonneDTO p)
+        public void update(PersonneDTO personneDTO)
         {
-            this.personneDAO.update(p);
+            this.personneDAO.update(personneDTO);
         }
+        public void getAdress(PersonneDTO personneDTO)
+        {
+            this.personneDAO.getAdresse(personneDTO);
+        }
+        public void getAllAbonnements(PersonneDTO personneDTO) 
+        {
+            this.personneDAO.getAllAbonnements(personneDTO);
+        }
+
+        public void getAllPresences(PersonneDTO personneDTO)
+        {
+            this.personneDAO.getAllPresences(personneDTO);
+        }
+        public void getAllPaiements(PersonneDTO personneDTO) 
+        {
+            this.personneDAO.getAllPaiements(personneDTO);
+        }
+        //TODO get horaire
     }
 }
