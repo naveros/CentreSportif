@@ -70,6 +70,18 @@
     <Compile Include="Views\formulaire\FormulaireMembre.Designer.cs">
       <DependentUpon>FormulaireMembre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\menu\MenuActivite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\menu\MenuActivite.Designer.cs">
+      <DependentUpon>MenuActivite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\menu\MenuGroupe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\menu\MenuGroupe.Designer.cs">
+      <DependentUpon>MenuGroupe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\menu\MenuMembre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +108,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\formulaire\FormulaireMembre.resx">
       <DependentUpon>FormulaireMembre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\menu\MenuActivite.resx">
+      <DependentUpon>MenuActivite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\menu\MenuGroupe.resx">
+      <DependentUpon>MenuGroupe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\menu\MenuMembre.resx">
       <DependentUpon>MenuMembre.cs</DependentUpon>

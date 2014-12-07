@@ -31,5 +31,10 @@ namespace CentreSportifLib.service
         {
             activiteDAO.update(a);
         }
+
+        public void delete(ActiviteDTO a)
+        {
+            activiteDAO.delete(a);
+        }
     }
 }

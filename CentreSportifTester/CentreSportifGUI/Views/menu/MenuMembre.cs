@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using CentreSportifLib.dto;
 using CentreSportifGUI.Views.formulaire;
-using CentreSportifLib;
 
 namespace CentreSportifGUI.Views.menu
 {
@@ -20,6 +19,7 @@ namespace CentreSportifGUI.Views.menu
         {
             InitializeComponent();
             this.p = p;
+            remplir();
         }
 
         private void remplir() {
@@ -67,7 +67,7 @@ namespace CentreSportifGUI.Views.menu
                  try
                  {
                      owner.sp.ServicePersonne.delete(p);
-                     labelMenuMembreMessage.Text = "Le membre à bien été supprimé";
+                     labelMessage.Text = "Le membre à bien été supprimé";
                      owner.RefreshTableMembre();
                  }
                  catch (Exception)

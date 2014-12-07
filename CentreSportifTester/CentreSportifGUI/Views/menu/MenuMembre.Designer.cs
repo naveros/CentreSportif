@@ -42,7 +42,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.labelMenuMembreMessage = new System.Windows.Forms.Label();
+            this.labelMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -105,18 +105,18 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(36, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Prenom : ";
+            this.label1.Text = "Prenom ";
             // 
             // labelPrenom
             // 
             this.labelPrenom.AutoSize = true;
             this.labelPrenom.Location = new System.Drawing.Point(106, 20);
             this.labelPrenom.Name = "labelPrenom";
-            this.labelPrenom.Size = new System.Drawing.Size(30, 13);
+            this.labelPrenom.Size = new System.Drawing.Size(23, 13);
             this.labelPrenom.TabIndex = 7;
-            this.labelPrenom.Text = "Jean";
+            this.labelPrenom.Text = "null";
             // 
             // label3
             // 
@@ -141,18 +141,18 @@
             this.labelNom.AutoSize = true;
             this.labelNom.Location = new System.Drawing.Point(106, 46);
             this.labelNom.Name = "labelNom";
-            this.labelNom.Size = new System.Drawing.Size(52, 13);
+            this.labelNom.Size = new System.Drawing.Size(23, 13);
             this.labelNom.TabIndex = 10;
-            this.labelNom.Text = "LeCoyote";
+            this.labelNom.Text = "null";
             // 
             // labelID
             // 
             this.labelID.AutoSize = true;
             this.labelID.Location = new System.Drawing.Point(106, 71);
             this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(25, 13);
+            this.labelID.Size = new System.Drawing.Size(13, 13);
             this.labelID.TabIndex = 11;
-            this.labelID.Text = "111";
+            this.labelID.Text = "0";
             // 
             // button6
             // 
@@ -186,21 +186,21 @@
             this.button8.Text = "Changer Role";
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // labelMenuMembreMessage
+            // labelMessage
             // 
-            this.labelMenuMembreMessage.AutoSize = true;
-            this.labelMenuMembreMessage.Location = new System.Drawing.Point(36, 106);
-            this.labelMenuMembreMessage.Name = "labelMenuMembreMessage";
-            this.labelMenuMembreMessage.Size = new System.Drawing.Size(59, 13);
-            this.labelMenuMembreMessage.TabIndex = 15;
-            this.labelMenuMembreMessage.Text = "Message : ";
+            this.labelMessage.AutoSize = true;
+            this.labelMessage.Location = new System.Drawing.Point(36, 106);
+            this.labelMessage.Name = "labelMessage";
+            this.labelMessage.Size = new System.Drawing.Size(59, 13);
+            this.labelMessage.TabIndex = 15;
+            this.labelMessage.Text = "Message : ";
             // 
             // MenuMembre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(339, 380);
-            this.Controls.Add(this.labelMenuMembreMessage);
+            this.Controls.Add(this.labelMessage);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -216,7 +216,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "MenuMembre";
-            this.Text = "MenuMembre";
+            this.Text = "Menu Membre";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,6 +238,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Label labelMenuMembreMessage;
+        private System.Windows.Forms.Label labelMessage;
     }
 }

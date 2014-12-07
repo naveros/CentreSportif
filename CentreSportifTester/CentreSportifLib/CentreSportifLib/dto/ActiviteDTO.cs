@@ -27,8 +27,14 @@ namespace CentreSportifLib.dto
         }
         public String Nom
         {
-            set { this.nom = value; }
-            get { return this.nom; }
+            set 
+            { 
+                this.nom = value; 
+            }
+            get 
+            { 
+                return this.nom; 
+            }
         }
         public String Duree
         {

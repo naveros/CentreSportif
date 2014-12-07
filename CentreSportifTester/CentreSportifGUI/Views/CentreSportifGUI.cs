@@ -1,7 +1,4 @@
-﻿using CentreSportifGUI.Views.formulaire;
-using CentreSportifLib;
-using CentreSportifLib.dto;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using CentreSportifGUI.Views.menu;
+using CentreSportifGUI.Views.formulaire;
+using CentreSportifLib;
+using CentreSportifLib.dto;
 
 namespace CentreSportifGUI
 {
@@ -89,7 +89,8 @@ namespace CentreSportifGUI
             if (e.ColumnIndex == 4)
             {
                 ActiviteDTO a = (ActiviteDTO)dataGridView2.Rows[e.RowIndex].Cells[4].Tag;
-                FormulaireActivite form = new FormulaireActivite(a);
+                MenuActivite form = new MenuActivite(a);
+                form.Owner = this;
                 form.ShowDialog();
             }
         }
@@ -99,7 +100,8 @@ namespace CentreSportifGUI
             if (e.ColumnIndex == 3)
             {
                 GroupeDTO g = (GroupeDTO)dataGridView3.Rows[e.RowIndex].Cells[3].Tag;
-                FormulaireGroupe form = new FormulaireGroupe(g);
+                MenuGroupe form = new MenuGroupe(g);
+                form.Owner = this;
                 form.ShowDialog();
             }
         }
@@ -124,7 +126,7 @@ namespace CentreSportifGUI
             g.IdGroupe = textBox4.Text;
             g.IdActivite = textBox5.Text;
             g.NumeroGroupe = textBox6.Text;
-            Console.WriteLine("GROUPE :`" +g.ToString());
+            Console.WriteLine("GROUPE : " +g.ToString());
             sp.ServiceGroupe.creer(g);
             Console.WriteLine(g.ToString());
             MessageBox.Show("Groupe crée avec succès.");
