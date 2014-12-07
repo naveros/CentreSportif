@@ -106,7 +106,7 @@ namespace CentreSportifGUI
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) //new activite
         {
             ActiviteDTO a = new ActiviteDTO();
             a.Nom = textBox2.Text;
@@ -120,7 +120,7 @@ namespace CentreSportifGUI
             RefreshTableActivite();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) //new groupe
         {
             GroupeDTO g = new GroupeDTO();
             g.IdGroupe = textBox4.Text;
@@ -136,9 +136,30 @@ namespace CentreSportifGUI
             RefreshTableGroupe();
         }
 
+
+
+        private void button5_Click(object sender, EventArgs e) //Connexion d'un membre manuellement
+        {
+            FormulaireConnexion form = new FormulaireConnexion();
+         //   form.Owner = this;
+            form.ShowDialog();
+        }
+
         private void button1_Click(object sender, EventArgs e) //nouveau membre
         {
             FormulaireMembre form = new FormulaireMembre(null);
+            form.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e) //nouvelle activite
+        {
+            FormulaireActivite form = new FormulaireActivite(null);
+            form.ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e) //nouveau groupe
+        {
+            FormulaireGroupe form = new FormulaireGroupe(null);
             form.ShowDialog();
         }
 

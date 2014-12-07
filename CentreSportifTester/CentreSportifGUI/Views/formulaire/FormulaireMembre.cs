@@ -32,7 +32,7 @@ namespace CentreSportifGUI.Views.formulaire
             this.Text = mode;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //enregistrer
         {
             //TODO: Gestion des erreurs
             p.IdPersonne = textBox1.Text;
@@ -63,7 +63,7 @@ namespace CentreSportifGUI.Views.formulaire
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //annulé
         {
             this.Dispose();
         }
@@ -81,6 +81,16 @@ namespace CentreSportifGUI.Views.formulaire
                 radioButton2.Checked = true;
             }
             
+        }
+
+        private void button3_Click(object sender, EventArgs e) //Changer 
+        {
+            //TODO
+        }
+
+        private void button4_Click(object sender, EventArgs e) //Captuer 
+        {
+            //TODO
         }
     }
 }

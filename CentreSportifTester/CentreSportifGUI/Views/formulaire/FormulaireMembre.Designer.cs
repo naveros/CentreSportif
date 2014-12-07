@@ -48,14 +48,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -256,37 +256,21 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Adresse";
             // 
-            // textBox8
+            // textBox11
             // 
-            this.textBox8.Location = new System.Drawing.Point(9, 39);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(177, 20);
-            this.textBox8.TabIndex = 17;
+            this.textBox11.Location = new System.Drawing.Point(9, 156);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(177, 20);
+            this.textBox11.TabIndex = 23;
             // 
-            // label7
+            // label10
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 23);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 13);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Numero";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(9, 74);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(177, 20);
-            this.textBox9.TabIndex = 19;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 58);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 13);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Rue";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 140);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(26, 13);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Ville";
             // 
             // textBox10
             // 
@@ -304,21 +288,37 @@
             this.label9.TabIndex = 20;
             this.label9.Text = "Code postal";
             // 
-            // textBox11
+            // textBox9
             // 
-            this.textBox11.Location = new System.Drawing.Point(9, 156);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(177, 20);
-            this.textBox11.TabIndex = 23;
+            this.textBox9.Location = new System.Drawing.Point(9, 74);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(177, 20);
+            this.textBox9.TabIndex = 19;
             // 
-            // label10
+            // label8
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 140);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(26, 13);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "Ville";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 58);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(27, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Rue";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(9, 39);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(177, 20);
+            this.textBox8.TabIndex = 17;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 23);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Numero";
             // 
             // dateTimePicker1
             // 
@@ -352,6 +352,7 @@
             this.button3.TabIndex = 32;
             this.button3.Text = "Changer";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -362,6 +363,7 @@
             this.button4.TabIndex = 33;
             this.button4.Text = "Capturer";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // FormulaireMembre
             // 

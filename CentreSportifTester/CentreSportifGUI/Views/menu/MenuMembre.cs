@@ -34,7 +34,7 @@ namespace CentreSportifGUI.Views.menu
 
         private void button2_Click(object sender, EventArgs e)//presence
         {
-            //TODO form add presence a une seance
+            //TODO form add presence a une seance, AVEC choix pour voir historique des presences 
         }
 
         private void button7_Click(object sender, EventArgs e)//inscription

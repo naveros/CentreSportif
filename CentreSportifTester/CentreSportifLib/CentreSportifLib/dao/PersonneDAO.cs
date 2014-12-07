@@ -9,7 +9,7 @@ using System.Globalization;
 namespace CentreSportifLib.dao
 {
     
-    //TODO crud de abonnement . presences et adresse:
+    //TODO CRUD de abonnement . presences et adresse:
     public class PersonneDAO
     {
 
@@ -38,7 +38,7 @@ namespace CentreSportifLib.dao
             this.con = connexion;
         }
 
-        #region Crud Personne
+        #region CRUD Personne
 
         public void addPersonne(PersonneDTO p)
         {
@@ -183,8 +183,9 @@ namespace CentreSportifLib.dao
 
         #endregion 
 
+            //TODO CRUD message, seance
 
-        #region Crud Adresse
+        #region CRUD Adresse
 
         public void addAdresse() { }
         public AdresseDTO getAdresse(PersonneDTO p)
@@ -221,7 +222,7 @@ namespace CentreSportifLib.dao
 
         #endregion
 
-        #region Crud Abonnement
+        #region CRUD Abonnement
         public void addAbonnement() { }
         public void getAbonnement() { }
         public void updateAbonnement() { } 
@@ -266,7 +267,7 @@ namespace CentreSportifLib.dao
 
         #endregion
 
-        #region Crud Presence
+        #region CRUD Presence
         public void addPresence() { }
         public void getPresence() { }
         public void updatePresence() { }
@@ -310,7 +311,7 @@ namespace CentreSportifLib.dao
 
         #endregion
 
-        #region Crud Paiement
+        #region CRUD Paiement
         public void addPaiement() { }
         public void getPaiement() { }
         public void updatePaiement() { }

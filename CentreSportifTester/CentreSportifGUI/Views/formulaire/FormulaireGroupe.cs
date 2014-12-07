@@ -60,6 +60,5 @@ namespace CentreSportifGUI.Views.formulaire
             textBox2.Text = g.IdGroupe;
             textBox3.Text = g.NumeroGroupe;
         }
-
     }
 }

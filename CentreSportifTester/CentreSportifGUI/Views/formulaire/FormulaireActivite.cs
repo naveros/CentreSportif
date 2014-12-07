@@ -23,7 +23,7 @@ namespace CentreSportifGUI.Views.formulaire
 
                 this.mode = "Modifier";
                 this.a = a;
-               // remplir();
+                remplir();
             }
             else
             {
@@ -33,10 +33,16 @@ namespace CentreSportifGUI.Views.formulaire
             this.Text = mode;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e) //Valider
         {
-            this.Dispose();
+
         }
 
+        private void button1_Click(object sender, EventArgs e) //Annuler 
+        {
+
+        }
+
+        public void remplir() { }
     }
 }
