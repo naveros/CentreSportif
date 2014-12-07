@@ -14,13 +14,14 @@ namespace CentreSportifLib.service
         {
             this.personneDAO = personneDAO;
         }
+        #region personneDTO
         public void register(PersonneDTO personneDTO)
         {
-            personneDAO.add(personneDTO);
+            personneDAO.addPersonne(personneDTO);
         }
         public List<PersonneDTO> getAll()
         {
-            return personneDAO.getAll();
+            return personneDAO.getAllPersonnes();
             /*
             String result = "{ result: [";
             personneDAO.getAll().ForEach(delegate( PersonneDTO p )
@@ -30,17 +31,22 @@ namespace CentreSportifLib.service
             result += "]}";
             return result;*/
         }
-
         public PersonneDTO findById(PersonneDTO personneDTO)
         {
-            return personneDAO.get(personneDTO);
+            return personneDAO.getPersonne(personneDTO);
         }
-
         public void update(PersonneDTO personneDTO)
         {
-            this.personneDAO.update(personneDTO);
+            this.personneDAO.updatePersonne(personneDTO);
         }
-        public void getAdress(PersonneDTO personneDTO)
+        public void delete(PersonneDTO personneDTO)
+        {
+            this.personneDAO.deletePersonne(personneDTO);
+        }
+        #endregion personne
+
+
+        public void getAdresse(PersonneDTO personneDTO)
         {
             this.personneDAO.getAdresse(personneDTO);
         }

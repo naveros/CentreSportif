@@ -37,7 +37,7 @@ namespace CentreSportifLib
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erreur dans l'initialisation des singleton details" + e.Message);
+                Console.WriteLine("Erreur dans l'initialisation des singleton details : \n" + e.Message);
             }
         }
 
