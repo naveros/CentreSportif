@@ -10,7 +10,7 @@ using CentreSportifLib.dto;
 namespace CentreSportifGUI.Views.formulaire
 {
     public partial class FormulaireGroupe : Form
-    {//u stealed my commits
+    {//u stealed my commits !
         GroupeDTO g;
         string mode;
         public FormulaireGroupe(GroupeDTO g)
