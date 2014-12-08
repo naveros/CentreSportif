@@ -50,18 +50,18 @@ namespace CentreSportifLib.service
         {
             this.personneDAO.getAdresse(personneDTO);
         }
-        public void getAllAbonnements(PersonneDTO personneDTO) 
+        public List<AbonnementDTO> getAllAbonnements(PersonneDTO personneDTO) 
         {
-            this.personneDAO.getAllAbonnements(personneDTO);
+           return this.personneDAO.getAllAbonnements(personneDTO);
         }
 
         public void getAllPresences(PersonneDTO personneDTO)
         {
             this.personneDAO.getAllPresences(personneDTO);
         }
-        public void getAllPaiements(PersonneDTO personneDTO) 
+        public List<PaiementDTO> getAllPaiements(PersonneDTO personneDTO) 
         {
-            this.personneDAO.getAllPaiements(personneDTO);
+            return this.personneDAO.getAllPaiements(personneDTO);
         }
         //TODO get horaire
     }

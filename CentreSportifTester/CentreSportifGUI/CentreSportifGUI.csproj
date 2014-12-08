@@ -76,6 +76,24 @@
     <Compile Include="Views\formulaire\FormulaireMembre.Designer.cs">
       <DependentUpon>FormulaireMembre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\formulaire\formulairesMembre\FormulaireAbonnement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\formulaire\formulairesMembre\FormulaireAbonnement.Designer.cs">
+      <DependentUpon>FormulaireAbonnement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\formulaire\formulairesMembre\FormulaireFacturation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\formulaire\formulairesMembre\FormulaireFacturation.Designer.cs">
+      <DependentUpon>FormulaireFacturation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\formulaire\formulairesMembre\FormulairePaye.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\formulaire\formulairesMembre\FormulairePaye.Designer.cs">
+      <DependentUpon>FormulairePaye.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\menu\MenuActivite.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +135,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\formulaire\FormulaireMembre.resx">
       <DependentUpon>FormulaireMembre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\formulaire\formulairesMembre\FormulaireFacturation.resx">
+      <DependentUpon>FormulaireFacturation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\formulaire\formulairesMembre\FormulairePaye.resx">
+      <DependentUpon>FormulairePaye.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\menu\MenuActivite.resx">
       <DependentUpon>MenuActivite.cs</DependentUpon>

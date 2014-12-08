@@ -33,8 +33,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -91,6 +91,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connexion par ID";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(79, 27);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(172, 20);
+            this.textBox1.TabIndex = 10;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.textBox2);
@@ -101,13 +108,6 @@
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Connexion par code barre";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(79, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(172, 20);
-            this.textBox1.TabIndex = 10;
             // 
             // textBox2
             // 

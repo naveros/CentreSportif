@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using CentreSportifLib.dto;
 using CentreSportifGUI.Views.formulaire;
+using CentreSportifGUI.Views.formulaire.formulairesMembre;
 
 namespace CentreSportifGUI.Views.menu
 {
@@ -35,16 +36,23 @@ namespace CentreSportifGUI.Views.menu
         private void button2_Click(object sender, EventArgs e)//presence
         {
             //TODO form add presence a une seance, AVEC choix pour voir historique des presences 
+
         }
 
         private void button7_Click(object sender, EventArgs e)//inscription
         {
             //TODO form inscription à un abonnement 
+            FormulaireAbonnement form = new FormulaireAbonnement(p);
+            //form.Owner = this.Owner;
+            form.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)//facturation
         {
             //TODO form facturation
+            FormulaireFacturation form = new FormulaireFacturation(p);
+            form.Owner = this.Owner;
+            form.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)//modifier
