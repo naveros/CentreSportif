@@ -137,7 +137,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Etc\TODOS.txt" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CentreSportifLib\CentreSportifLib\CentreSportifLib.csproj">
       <Project>{f5f84e07-34ee-406e-8e0e-42f982d242f3}</Project>
