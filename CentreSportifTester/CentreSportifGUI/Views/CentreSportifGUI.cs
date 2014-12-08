@@ -136,12 +136,10 @@ namespace CentreSportifGUI
             RefreshTableGroupe();
         }
 
-
-
         private void button5_Click(object sender, EventArgs e) //Connexion d'un membre manuellement
         {
             FormulaireConnexion form = new FormulaireConnexion();
-         //   form.Owner = this;
+            //form.Owner = this;
             form.ShowDialog();
         }
 
@@ -163,5 +161,14 @@ namespace CentreSportifGUI
             form.ShowDialog();
         }
 
+        public void connexionAccueil(PersonneDTO personneDTO)
+        {
+            textBoxID.Text = personneDTO.IdPersonne;
+            textBoxEmail.Text = personneDTO.Email;
+            textBoxNom.Text = personneDTO.Nom;
+            textBoxPrenom.Text = personneDTO.Prenom;
+            textBoxRole.Text = personneDTO.Role;
+            textBoxCodeBarre.Text = personneDTO.CodeBarre;
+        }
     }
 }

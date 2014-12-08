@@ -7,3 +7,4 @@ Dans new group, fait un Drop down menu pour choisir l'Activité et le prof
 faire *
 il y a 22 heures
 + implémenter la photo pour une Personne
+"""""
