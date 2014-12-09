@@ -54,6 +54,9 @@ namespace CentreSportifLib.service
         {
            return this.personneDAO.getAllAbonnements(personneDTO);
         }
+        public void addAbonnement(AbonnementDTO a) {
+            this.personneDAO.addAbonnement(a);
+        }
 
         public void getAllPresences(PersonneDTO personneDTO)
         {

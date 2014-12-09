@@ -169,6 +169,8 @@ namespace CentreSportifGUI
             textBoxPrenom.Text = personneDTO.Prenom;
             textBoxRole.Text = personneDTO.Role;
             textBoxCodeBarre.Text = personneDTO.CodeBarre;
+            pictureBox1.Image = Image.FromFile("../photos/"+personneDTO.IdPersonne+".jpg");
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
     }
 }

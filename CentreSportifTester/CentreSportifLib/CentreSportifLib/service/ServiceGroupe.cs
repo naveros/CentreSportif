@@ -31,6 +31,12 @@ namespace CentreSportifLib.service
             result += "]}";
             return result;*/
         }
+
+
+        public List<GroupeDTO> getAllByActivite(int  idActivite)
+        {
+            return groupeDAO.getAllByActivite(idActivite);
+        }
         public GroupeDTO findById(GroupeDTO groupeDTO)
         {
             return groupeDAO.get(groupeDTO);
@@ -46,9 +52,9 @@ namespace CentreSportifLib.service
             this.groupeDAO.delete(p);
         }
 
-        public void getAllSeances(GroupeDTO groupeDTO)
+        public List<SeanceDTO> getAllSeances(GroupeDTO groupeDTO)
         {
-            this.groupeDAO.getAllSeances(groupeDTO);
+            return this.groupeDAO.getAllSeances(groupeDTO);
         }
     }
 }

@@ -17,10 +17,20 @@ namespace CentreSportifGUI.Views.formulaire
         {
             InitializeComponent();
             centre = (CentreSportifGUI) this.Owner;
-            List<PersonneDTO> personnes = centre.sp.ServicePersonne.getAll();
-            var bindingList = new BindingList<PersonneDTO>(personnes);
-            var source = new BindingSource(bindingList, null);
-            comboBox1.DataSource = source;
+
+
+            try
+            {
+                List<PersonneDTO> personnes = centre.sp.ServicePersonne.getAll();
+                var bindingList = new BindingList<PersonneDTO>(personnes);
+                var source = new BindingSource(bindingList, null);
+                comboBox1.DataSource = source;
+            }
+            catch (Exception ee)
+            {
+                Console.WriteLine("Erreur dans la requete get all personnes");
+                Console.Write(ee.Message);
+            }
         }
 
         private void button5_Click(object sender, EventArgs e) //Connexion manuel par ID ou par Code barre

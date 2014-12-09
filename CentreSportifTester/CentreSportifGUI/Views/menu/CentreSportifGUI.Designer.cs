@@ -96,6 +96,7 @@
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button8 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
@@ -154,6 +155,7 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.button8);
             this.splitContainer3.Panel1.Controls.Add(this.button5);
             this.splitContainer3.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer3.Panel1.Controls.Add(this.groupBox3);
@@ -767,6 +769,16 @@
             this.Column16.HeaderText = "Modifier";
             this.Column16.Name = "Column16";
             // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(8, 258);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(125, 52);
+            this.button8.TabIndex = 38;
+            this.button8.Text = "Ajouter message";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
             // CentreSportifGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -878,6 +890,7 @@
         private System.Windows.Forms.TextBox textBoxPrenom;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
     }
 }
 

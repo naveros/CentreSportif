@@ -49,11 +49,12 @@ namespace CentreSportifGUI.Views.menu
                     labelMessage.Text = "L'activité à bien été supprimé";
                     owner.RefreshTableActivite();
                 }
-                catch (Exception)
+                catch (Exception ee)
                 {
-
-                    throw;
+                    Console.WriteLine("Erreur dans la requete delete activite");
+                    Console.Write(ee.Message);
                 }
+
 
             }
             else

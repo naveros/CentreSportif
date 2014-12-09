@@ -15,7 +15,6 @@ namespace CentreSportifLib.dto
         private DateTime dateinscription;
         private DateTime datefin;
         private decimal prix;
-        private bool apaye;
         #endregion
         #region Propriete
         public String IdAbonnement

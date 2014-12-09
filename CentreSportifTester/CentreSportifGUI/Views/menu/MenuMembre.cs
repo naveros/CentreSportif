@@ -33,11 +33,6 @@ namespace CentreSportifGUI.Views.menu
             //TODO form view horaire des seances d'apres les groupes, d'apres les abonnements ! understood?
         }
 
-        private void button2_Click(object sender, EventArgs e)//presence
-        {
-            //TODO form add presence a une seance, AVEC choix pour voir historique des presences 
-
-        }
 
         private void button7_Click(object sender, EventArgs e)//inscription
         {
@@ -49,7 +44,6 @@ namespace CentreSportifGUI.Views.menu
 
         private void button3_Click(object sender, EventArgs e)//facturation
         {
-            //TODO form facturation
             FormulaireFacturation form = new FormulaireFacturation(p);
             form.Owner = this.Owner;
             form.ShowDialog();

@@ -44,10 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Views\CentreSportifGUI.cs">
+    <Compile Include="Views\menu\CentreSportifGUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CentreSportifGUI.Designer.cs">
+    <Compile Include="Views\menu\CentreSportifGUI.Designer.cs">
       <DependentUpon>CentreSportifGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -121,7 +121,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\CentreSportifGUI.resx">
+    <EmbeddedResource Include="Views\menu\CentreSportifGUI.resx">
       <DependentUpon>CentreSportifGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\formulaire\FormulaireActivite.resx">
@@ -135,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\formulaire\FormulaireMembre.resx">
       <DependentUpon>FormulaireMembre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\formulaire\formulairesMembre\FormulaireAbonnement.resx">
+      <DependentUpon>FormulaireAbonnement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\formulaire\formulairesMembre\FormulaireFacturation.resx">
       <DependentUpon>FormulaireFacturation.cs</DependentUpon>

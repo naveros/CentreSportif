@@ -14,6 +14,7 @@ namespace CentreSportifLib.dao
         const String queryCreate = "INSERT INTO groupe (idgroupe, idactivite, numerogroupe) VALUES (@idgroupe, @idactivite, @numerogroupe)";
         const String queryReadAll = "SELECT * FROM groupe";
         const String queryRead = "SELECT * FROM groupe WHERE idgroupe = @idgroupe";
+        const String queryReadByActivite = "SELECT * FROM groupe WHERE idactivite = @idactivite";
         const String queryUpdate = "UPDATE groupe SET numerogroupe = @numerogroupe WHERE idgroupe=@idgroupe;";
         const String queryDelete = "DELETE FROM groupe WHERE idgroupe=@idgroupe;";
         const String queryReadSchedule = "SELECT * FROM seance WHERE idpersonne = @idpersonne";
@@ -67,6 +68,11 @@ namespace CentreSportifLib.dao
                 con.Close();
             }
             return result;
+        }
+
+        public List<GroupeDTO> getAllByActivite(int idActivite) {
+
+            return null;
         }
 
         public List<GroupeDTO> getAll()
