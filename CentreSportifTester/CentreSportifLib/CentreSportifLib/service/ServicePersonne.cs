@@ -63,6 +63,9 @@ namespace CentreSportifLib.service
         {
             return this.personneDAO.getAllPaiements(personneDTO);
         }
+        public void addPaiement(PaiementDTO paiementDTO) {
+            this.personneDAO.addPaiement(paiementDTO);
+        }
         //TODO get horaire
     }
 }

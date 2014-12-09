@@ -30,6 +30,7 @@ namespace CentreSportifLib.dao
         const String queryReadAllPresences = "SELECT * FROM presence WHERE idpersonne = @idpersonne";
         
         const String queryReadAllPaiements = "SELECT * FROM paiement WHERE idpersonne = @idpersonne";
+        const String queryCreatePaiement = "INSERT INTO paiement(idpersonne,date,montant,mode)VALUES(@idpersonne, @date, @montant, @mode)";
 
         #endregion
         
@@ -312,7 +313,29 @@ namespace CentreSportifLib.dao
         #endregion
 
         #region CRUD Paiement
-        public void addPaiement() { }
+        public void addPaiement(PaiementDTO paiementDTO) {
+
+            MySqlCommand cmd = new MySqlCommand(queryCreatePaiement, con);
+            cmd.Parameters.AddWithValue("@idpersonne", paiementDTO.IdPersonne);
+            cmd.Parameters.AddWithValue("@date", paiementDTO.Date);
+            cmd.Parameters.AddWithValue("@montant", paiementDTO.Montant);
+            cmd.Parameters.AddWithValue("@mode", paiementDTO.Mode);
+
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        
+        }
         public void getPaiement() { }
         public void updatePaiement() { }
         public void deletePaiement() { }

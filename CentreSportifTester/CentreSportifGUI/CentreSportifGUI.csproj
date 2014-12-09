@@ -88,11 +88,11 @@
     <Compile Include="Views\formulaire\formulairesMembre\FormulaireFacturation.Designer.cs">
       <DependentUpon>FormulaireFacturation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\formulaire\formulairesMembre\FormulairePaye.cs">
+    <Compile Include="Views\formulaire\formulairesMembre\FormulairePayer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\formulaire\formulairesMembre\FormulairePaye.Designer.cs">
-      <DependentUpon>FormulairePaye.cs</DependentUpon>
+    <Compile Include="Views\formulaire\formulairesMembre\FormulairePayer.Designer.cs">
+      <DependentUpon>FormulairePayer.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\menu\MenuActivite.cs">
       <SubType>Form</SubType>
@@ -139,8 +139,8 @@
     <EmbeddedResource Include="Views\formulaire\formulairesMembre\FormulaireFacturation.resx">
       <DependentUpon>FormulaireFacturation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\formulaire\formulairesMembre\FormulairePaye.resx">
-      <DependentUpon>FormulairePaye.cs</DependentUpon>
+    <EmbeddedResource Include="Views\formulaire\formulairesMembre\FormulairePayer.resx">
+      <DependentUpon>FormulairePayer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\menu\MenuActivite.resx">
       <DependentUpon>MenuActivite.cs</DependentUpon>

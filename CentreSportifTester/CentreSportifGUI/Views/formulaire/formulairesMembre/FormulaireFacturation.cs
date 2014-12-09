@@ -21,31 +21,26 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             this.p = p;
             owner = (CentreSportifGUI)this.Owner;
             montant = CalculerSolde();
-            
+
 
         }
 
         private void button6_Click(object sender, EventArgs e)//Payer comptant
         {
-            FormulairePaye form = new FormulairePaye(montant, "comptant");
+            FormulairePayer form = new FormulairePayer(montant, "comptant", p);
             form.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)//Payer debit
         {
-            FormulairePaye form = new FormulairePaye(montant, "debit");
+            FormulairePayer form = new FormulairePayer(montant, "debit", p);
             form.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)//Payer Credit
         {
-            FormulairePaye form = new FormulairePaye(montant, "Credit");
+            FormulairePayer form = new FormulairePayer(montant, "Credit", p);
             form.ShowDialog();
-        }
-
-        private void button2_Click(object sender, EventArgs e) //Confirmer
-        {
-
         }
 
         private void button3_Click(object sender, EventArgs e) //Annuler
@@ -54,26 +49,41 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
         }
         public decimal CalculerSolde()
         {
-            decimal solde=0;
-
-            List<AbonnementDTO> listAbo = owner.sp.ServicePersonne.getAllAbonnements(p);
-            listAbo.ForEach(delegate(AbonnementDTO abo) 
+            decimal solde = 0;
+            try
             {
-                solde += abo.Prix;
-            
-            });
+                List<AbonnementDTO> listAbo = owner.sp.ServicePersonne.getAllAbonnements(p);
+                if (listAbo.Count > 0)
+                {
+                    listAbo.ForEach(delegate(AbonnementDTO abo)
+                    {
+                        solde += abo.Prix;
 
-            List<PaiementDTO> listPaiements = owner.sp.ServicePersonne.getAllPaiements(p);
-            listPaiements.ForEach(delegate(PaiementDTO paiement)
+                    });
+                }
+                List<PaiementDTO> listPaiements = owner.sp.ServicePersonne.getAllPaiements(p);
+                if (listPaiements.Count > 0)
+                {
+                    listPaiements.ForEach(delegate(PaiementDTO paiement)
+                    {
+                        solde -= paiement.Montant;
+
+                    });
+                }
+            }
+            catch (Exception e)
             {
-                solde -= paiement.Montant;
+                Console.WriteLine("Erreur dans la requete calculer solde");
+                Console.Write(e.Message);
+            }
 
-            });
-            
-            
-            
-            
+
             return solde;
+        }
+
+        private void FormulaireFacturation_Enter(object sender, EventArgs e) //TO TEST
+        {
+            textBox1.Text = "" + CalculerSolde();
         }
     }
 }
