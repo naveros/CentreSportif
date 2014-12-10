@@ -82,6 +82,7 @@ namespace CentreSportifLib.dao
                 {
                     ActiviteDTO a = new ActiviteDTO();
                     a.IdActivite = reader.GetString("idactivite");
+                    a.Nom = reader.GetString("nom");
                     a.Duree = reader.GetString("duree");
                     a.Description = reader.GetString("description");
                     result.Add(a);
@@ -90,7 +91,7 @@ namespace CentreSportifLib.dao
             }
             catch (Exception e)
             {
-               // Console.WriteLine("Erreur dans la requete getAll"+e);
+                Console.WriteLine("Erreur dans la requete getAllActivite : \n"+e);
                 Console.Write(e.Message);
             }
             finally

@@ -14,12 +14,12 @@ namespace CentreSportifGUI.Views.menu
     public partial class MenuActivite : Form
     {
         ActiviteDTO a;
-        CentreSportifGUI owner;
+        public CentreSportifGUI CentreView;
         public MenuActivite(ActiviteDTO a)
         {
             InitializeComponent();
             this.a = a;
-            remplir();
+            
         }
 
         private void remplir()
@@ -31,7 +31,10 @@ namespace CentreSportifGUI.Views.menu
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            //TODO Formulaire add/modifier
+            FormulaireActivite formActivite = new FormulaireActivite(a);
+            formActivite.Owner = this.Owner;
+            formActivite.ShowDialog();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -42,12 +45,12 @@ namespace CentreSportifGUI.Views.menu
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                owner = (CentreSportifGUI)this.Owner;
+                CentreView = (CentreSportifGUI)this.Owner;
                 try
                 {
-                    owner.DbCreateur.ServiceActivite.delete(a);
+                    CentreView.DbCreateur.ServiceActivite.delete(a);
                     labelMessage.Text = "L'activité à bien été supprimé";
-                    owner.RefreshTableActivite();
+                    CentreView.RefreshTableActivite();
                 }
                 catch (Exception ee)
                 {
@@ -68,6 +71,12 @@ namespace CentreSportifGUI.Views.menu
         private void button3_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void MenuActivite_Load(object sender, EventArgs e)
+        {
+            CentreView = (CentreSportifGUI)this.Owner;
+            remplir();
         }
     }
 }

@@ -103,7 +103,6 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(289, 153);
             this.richTextBox1.TabIndex = 7;
-            this.richTextBox1.Text = "";
             // 
             // button5
             // 
@@ -144,6 +143,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "FormulaireActivite";
             this.Text = "Formulaire Activite";
+            this.Load += new System.EventHandler(this.FormulaireActivite_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

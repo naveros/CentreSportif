@@ -15,23 +15,21 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
         PersonneDTO p;
         ActiviteDTO activite;
         GroupeDTO groupe;
-        CentreSportifGUI centre;
         List<SeanceDTO> seances;
-
+        public CentreSportifGUI CentreView;
 
         public FormulaireAbonnement(PersonneDTO p)
         {
             InitializeComponent();
             this.p = p;
-            centre = (CentreSportifGUI)this.Owner;
 
-            init();
+ 
         }
         private void init() {
             try
-            {   //TODO FIX, + les noms des activites affiche pas dans l'onglet activite. 
+            {   
                 List<ActiviteDTO> activites = new List<ActiviteDTO>();
-                activites = centre.DbCreateur.ServiceActivite.getAll();
+                activites = CentreView.DbCreateur.ServiceActivite.getAll();
                 var bindingList = new BindingList<ActiviteDTO>(activites);
                 var source = new BindingSource(bindingList, null);
                 comboBox1.DataSource = source;
@@ -40,15 +38,6 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             {
                 MessageBox.Show("Erreur dans la requete get all activitees");
                 MessageBox.Show(ee.Message);
-
-                //TO-DELETE , ITS FOR TESTS
-                ActiviteDTO a = new ActiviteDTO();
-              /*  a.Nom = "tst nom ";
-                a.IdActivite = "1";
-                comboBox1.Items.Add(a);
-                comboBox1.Items.Add(a);
-                comboBox1.Items.Add(a);*/
-
             }
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -58,13 +47,13 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
             int idActivite = int.Parse(activite.IdActivite);
             
-            MessageBox.Show("Selected id : " +  activite.IdActivite + "\n" +
-                            "nom " + activite.Nom);
+           MessageBox.Show("Selected id : " +  activite.IdActivite + "\n" +
+                           "nom " + activite.Nom);
 
             comboBox2.Enabled = true;
             try
             {
-                List<GroupeDTO> groupes = centre.DbCreateur.ServiceGroupe.getAllByActivite(idActivite);
+                List<GroupeDTO> groupes = CentreView.DbCreateur.ServiceGroupe.getAllByActivite(idActivite);
                 var bindingList = new BindingList<GroupeDTO>(groupes);
                 var source = new BindingSource(bindingList, null);
                 comboBox2.DataSource = source;
@@ -84,7 +73,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                  groupe = (GroupeDTO)comboBox2.SelectedItem;
 
 
-                seances= centre.DbCreateur.ServiceGroupe.getAllSeances(groupe);
+                 seances = CentreView.DbCreateur.ServiceGroupe.getAllSeances(groupe);
                 var bindingList = new BindingList<SeanceDTO>(seances);
                 var source = new BindingSource(bindingList, null);
                 dataGridView1.DataSource = source;
@@ -108,7 +97,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                 a.Prix = (int.Parse(activite.Duree) * seances.Count);
                 a.DateFin = new DateTime(); //TODO . a changer pour la date de fin
 
-                centre.DbCreateur.ServicePersonne.addAbonnement(a);
+                CentreView.DbCreateur.ServicePersonne.addAbonnement(a);
             }
             catch (Exception ee)
             {
@@ -120,6 +109,12 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
         private void button2_Click(object sender, EventArgs e)//annuler
         {
             this.Dispose();
+        }
+
+        private void FormulaireAbonnement_Load(object sender, EventArgs e)
+        {
+            CentreView = (CentreSportifGUI)this.Owner;
+            init();
         }
 
     }

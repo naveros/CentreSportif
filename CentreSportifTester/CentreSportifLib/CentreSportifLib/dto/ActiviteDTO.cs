@@ -58,6 +58,12 @@ namespace CentreSportifLib.dto
                 return description;
             }
         }
+
+
+        public override String ToString() 
+        { 
+            return this.nom;
+        }
         #endregion
     }
 }

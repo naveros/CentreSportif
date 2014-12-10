@@ -175,6 +175,7 @@
             this.Controls.Add(this.button1);
             this.Name = "MenuActivite";
             this.Text = "Menu Activite";
+            this.Load += new System.EventHandler(this.MenuActivite_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
