@@ -14,15 +14,11 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
     {
         PersonneDTO p;
         decimal montant = 0;
-        CentreSportifGUI owner;
+        public CentreSportifGUI CentreView;
         public FormulaireFacturation(PersonneDTO p)
         {
             InitializeComponent();
             this.p = p;
-            owner = (CentreSportifGUI)this.Owner;
-            montant = CalculerSolde();
-
-
         }
 
         private void button6_Click(object sender, EventArgs e)//Payer comptant
@@ -52,7 +48,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             decimal solde = 0;
             try
             {
-                List<AbonnementDTO> listAbo = owner.DbCreateur.ServicePersonne.getAllAbonnements(p);
+                List<AbonnementDTO> listAbo = CentreView.DbCreateur.ServicePersonne.getAllAbonnements(p);
                 if (listAbo.Count > 0)
                 {
                     listAbo.ForEach(delegate(AbonnementDTO abo)
@@ -61,7 +57,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
                     });
                 }
-                List<PaiementDTO> listPaiements = owner.DbCreateur.ServicePersonne.getAllPaiements(p);
+                List<PaiementDTO> listPaiements = CentreView.DbCreateur.ServicePersonne.getAllPaiements(p);
                 if (listPaiements.Count > 0)
                 {
                     listPaiements.ForEach(delegate(PaiementDTO paiement)
@@ -84,6 +80,13 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
         private void FormulaireFacturation_Enter(object sender, EventArgs e) //TO TEST
         {
             textBox1.Text = "" + CalculerSolde();
+        }
+
+        private void FormulaireFacturation_Load(object sender, EventArgs e)
+        {
+            CentreView = (CentreSportifGUI)this.Owner;
+            montant = CalculerSolde();
+            this.textBox1.Text = ""+montant;
         }
     }
 }

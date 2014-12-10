@@ -94,6 +94,13 @@ namespace CentreSportifGUI.Views.menu
             this.Dispose();
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FormulaireRole formRole = new FormulaireRole(p);
+            formRole.Owner = this.Owner;
+            formRole.ShowDialog();
+        }
+
 
     }
 }
