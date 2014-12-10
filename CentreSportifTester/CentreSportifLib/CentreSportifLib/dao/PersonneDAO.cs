@@ -19,6 +19,7 @@ namespace CentreSportifLib.dao
 
         const String queryCreatePersonne = "INSERT INTO personne (prenom, nom, sexe, datenaissance, email, motdepasse, codebarre, role) VALUES (@prenom, @nom, @sexe, @datenaissance, @email, @motdepasse, @codebarre, @role)";
         const String queryReadAllPersonne = "SELECT * FROM personne";
+        const String queryReadByRole = "SELECT * FROM personne WHERE role = @role";
         const String queryReadPersonne = "SELECT * FROM personne WHERE idpersonne = @idpersonne";
         const String queryUpdatePersonne = "UPDATE personne SET prenom = @prenom, nom = @nom, email = @email, motdepasse = @motdepasse, codebarre = @codebarre,role = @role WHERE conditions;";
         const String queryDeletePersonne = "DELETE FROM personne WHERE idpersonne = @idpersonne";
@@ -153,6 +154,46 @@ namespace CentreSportifLib.dao
             try
             {
                 con.Open();
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    PersonneDTO p = new PersonneDTO();
+                    p.IdPersonne = reader.GetString("idpersonne");
+                    p.Prenom = reader.GetString("prenom");
+                    p.Nom = reader.GetString("nom");
+                    p.Sexe = reader.GetChar("sexe");
+                    p.DateNaissance = reader.GetDateTime("datenaissance");
+                    p.Email = reader.GetString("email");
+                    p.MotDePasse = reader.GetString("motdepasse");
+                    p.CodeBarre = reader.GetString("codebarre");
+                    p.Role = reader.GetString("role");
+                    result.Add(p);
+                    //String r2 = reader[0].ToString();
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erreur dans la requete getAllPersonnes");
+                Console.Write(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return result;
+        }
+
+        public List<PersonneDTO> getAllByRole(String role)
+        {
+            MySqlCommand cmd = new MySqlCommand(queryReadAllPersonne, con);
+            MySqlDataReader reader = null;
+            List<PersonneDTO> result = new List<PersonneDTO>();
+            try
+            {
+                con.Open();
+                cmd.Parameters.AddWithValue("@role", role);
                 reader = cmd.ExecuteReader();
 
                 while (reader.Read())

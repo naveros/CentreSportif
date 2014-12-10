@@ -31,6 +31,10 @@ namespace CentreSportifLib.service
             result += "]}";
             return result;*/
         }
+        public List<PersonneDTO> getAllTeachers()
+        {
+            return personneDAO.getAllByRole("prof");            
+        }
         public PersonneDTO findById(PersonneDTO personneDTO)
         {
             return personneDAO.getPersonne(personneDTO);
