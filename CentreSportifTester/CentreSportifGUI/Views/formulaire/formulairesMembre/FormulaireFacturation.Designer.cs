@@ -110,6 +110,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormulaireFacturation";
             this.Text = "FormulaireFacturation";
+            this.Load += new System.EventHandler(this.FormulaireFacturation_Load);
             this.Enter += new System.EventHandler(this.FormulaireFacturation_Enter);
             this.ResumeLayout(false);
             this.PerformLayout();

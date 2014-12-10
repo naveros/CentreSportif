@@ -12,7 +12,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 {
     public partial class FormulairePayer : Form
     {
-        CentreSportifGUI owner;
+        public CentreSportifGUI CentreView;
         PersonneDTO p;
         decimal montant;
         String mode;
@@ -22,7 +22,6 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             this.p = p;
             this.montant = montant;
             this.mode = mode;
-            owner = (CentreSportifGUI)this.Owner;
             this.textBox1.Text = ""+montant;
             this.textBox2.Text = mode;
         }
@@ -40,7 +39,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                     paiementDTO.IdPersonne = p.IdPersonne;
                     paiementDTO.Mode = mode;
                     paiementDTO.Montant = paiement;
-                    owner.DbCreateur.ServicePersonne.addPaiement(paiementDTO);
+                    CentreView.DbCreateur.ServicePersonne.addPaiement(paiementDTO);
                     this.label4.Text = "Paiement effectué ! Merci";
                 }
                 else {
@@ -62,6 +61,11 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
         private void button2_Click(object sender, EventArgs e)//annuler
         {
             this.Dispose();
+        }
+
+        private void FormulairePayer_Load(object sender, EventArgs e)
+        {
+            CentreView = (CentreSportifGUI)this.Owner;
         }
     }
 }
