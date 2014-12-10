@@ -1,6 +1,6 @@
 ﻿Voir les //TODO dans le code
 en gros, i manque
-<<<<<<< HEAD
+
 
 -Des formulaires pour membre. 
  
@@ -8,13 +8,7 @@ en gros, i manque
 
 +Finir d'implémenté le professeur et l'adresse du membre, et
   -implémenter la photo pour une Personne
-=======
- des formulaires pour activite ,groupe et membre. 
-faut finir d'implémenté le professeur et l'adresse du membre,,, 
-Pour un nouveau groupe et nouvelle activité, faudrait le mettre dans une fenetre ak un formulaire,
-Dans new group, fait un Drop down menu pour choisir l'Activité et le prof
-faire *
-il y a 22 heures
-+ implémenter la photo pour une Personne
-"""""
->>>>>>> 4ee5949dfdd492f6e7748ee3c51f1a5d892b327b
+
+Menu : 
+	Membre : voir horaire
+	

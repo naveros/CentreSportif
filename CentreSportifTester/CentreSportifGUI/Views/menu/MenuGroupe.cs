@@ -33,6 +33,10 @@ namespace CentreSportifGUI.Views.menu
         private void button2_Click(object sender, EventArgs e) //Modifier
         {
             //TODO Formulaire inscription/modifier
+            FormulaireGroupe form = new FormulaireGroupe(g);
+            form.Owner = this.Owner;
+            form.ShowDialog();
+
         }
         private void button1_Click(object sender, EventArgs e) //Supprimer
         {
@@ -49,16 +53,13 @@ namespace CentreSportifGUI.Views.menu
                     labelMessage.Text = "Le groupe à bien été supprimé";
                     owner.RefreshTableGroupe();
                 }
-                catch (Exception)
+                catch (Exception ee)
                 {
-
-                    throw;
+                    Console.WriteLine("Erreur dans la requete delete groupe");
+                    Console.Write(ee.Message);
                 }
 
-            }
-            else
-            {
-                // Does nothing
+
             }
 
 

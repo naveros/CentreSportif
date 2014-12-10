@@ -72,11 +72,12 @@ namespace CentreSportifGUI.Views.menu
                      labelMessage.Text = "Le membre à bien été supprimé";
                      owner.RefreshTableMembre();
                  }
-                 catch (Exception)
+                 catch (Exception ee)
                  {
-
-                     throw;
+                     Console.WriteLine("Erreur dans la requete delete personne");
+                     Console.Write(ee.Message);
                  }
+
 
              }
              else
