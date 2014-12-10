@@ -90,7 +90,7 @@ namespace CentreSportifLib.dao
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erreur dans la requete getAll");
+               // Console.WriteLine("Erreur dans la requete getAll"+e);
                 Console.Write(e.Message);
             }
             finally

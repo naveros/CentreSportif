@@ -45,7 +45,7 @@ namespace CentreSportifGUI.Views.menu
                 owner = (CentreSportifGUI)this.Owner;
                 try
                 {
-                    owner.sp.ServiceActivite.delete(a);
+                    owner.DbCreateur.ServiceActivite.delete(a);
                     labelMessage.Text = "L'activité à bien été supprimé";
                     owner.RefreshTableActivite();
                 }

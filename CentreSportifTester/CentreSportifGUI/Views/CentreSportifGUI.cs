@@ -15,19 +15,21 @@ namespace CentreSportifGUI
 {
     public partial class CentreSportifGUI : Form
     {
-        public CentreSportifCreateur sp { set; get; }
+        public CentreSportifCreateur DbCreateur;
         public CentreSportifGUI()
         {
             InitializeComponent();
-            sp = new CentreSportifCreateur();
+            DbCreateur = new CentreSportifCreateur();
             RefreshTableMembre();
             RefreshTableActivite();
             RefreshTableGroupe();
         }
+
+
         public void RefreshTableMembre()
         {
             this.dataGridView1.Rows.Clear();
-            sp.ServicePersonne.getAll().ForEach(delegate(PersonneDTO p)
+            DbCreateur.ServicePersonne.getAll().ForEach(delegate(PersonneDTO p)
             {
                 int i = this.dataGridView1.Rows.Add();
                 //Console.WriteLine(p.ToString());
@@ -45,7 +47,7 @@ namespace CentreSportifGUI
         public void RefreshTableActivite()
         {
             this.dataGridView2.Rows.Clear();
-            sp.ServiceActivite.getAll().ForEach(delegate(ActiviteDTO a)
+            DbCreateur.ServiceActivite.getAll().ForEach(delegate(ActiviteDTO a)
             {
                 int i = this.dataGridView2.Rows.Add();
                 //Console.WriteLine(p.ToString());
@@ -61,7 +63,7 @@ namespace CentreSportifGUI
         public void RefreshTableGroupe()
         {
             this.dataGridView3.Rows.Clear();
-            sp.ServiceGroupe.getAll().ForEach(delegate(GroupeDTO g)
+            DbCreateur.ServiceGroupe.getAll().ForEach(delegate(GroupeDTO g)
             {
                 int i = this.dataGridView3.Rows.Add();
                // Console.WriteLine(g.ToString());
@@ -112,7 +114,7 @@ namespace CentreSportifGUI
             a.Nom = textBox2.Text;
             a.Duree = textBox3.Text;
             a.Description = richTextBox1.Text;
-            sp.ServiceActivite.creer(a);
+            DbCreateur.ServiceActivite.creer(a);
             MessageBox.Show("Activité crée avec succès.");
             textBox4.Text = "";
             textBox5.Text = "";
@@ -127,7 +129,7 @@ namespace CentreSportifGUI
             g.IdActivite = textBox5.Text;
             g.NumeroGroupe = textBox6.Text;
             Console.WriteLine("GROUPE : " +g.ToString());
-            sp.ServiceGroupe.creer(g);
+            DbCreateur.ServiceGroupe.creer(g);
             Console.WriteLine(g.ToString());
             MessageBox.Show("Groupe crée avec succès.");
             textBox4.Text = "";
@@ -138,26 +140,29 @@ namespace CentreSportifGUI
 
         private void button5_Click(object sender, EventArgs e) //Connexion d'un membre manuellement
         {
-            FormulaireConnexion form = new FormulaireConnexion();
-            //form.Owner = this;
-            form.ShowDialog();
+            FormulaireConnexion formConnexion = new FormulaireConnexion();
+            formConnexion.Owner = this;
+            formConnexion.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e) //nouveau membre
         {
             FormulaireMembre form = new FormulaireMembre(null);
+            form.Owner = this;
             form.ShowDialog();
         }
 
         private void button6_Click(object sender, EventArgs e) //nouvelle activite
         {
             FormulaireActivite form = new FormulaireActivite(null);
+            form.Owner = this;
             form.ShowDialog();
         }
 
         private void button7_Click(object sender, EventArgs e) //nouveau groupe
         {
             FormulaireGroupe form = new FormulaireGroupe(null);
+            form.Owner = this;
             form.ShowDialog();
         }
 
@@ -169,8 +174,14 @@ namespace CentreSportifGUI
             textBoxPrenom.Text = personneDTO.Prenom;
             textBoxRole.Text = personneDTO.Role;
             textBoxCodeBarre.Text = personneDTO.CodeBarre;
-            pictureBox1.Image = Image.FromFile("../photos/"+personneDTO.IdPersonne+".jpg");
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            try
+            {
+                pictureBox1.Image = Image.FromFile("../photos/" + personneDTO.IdPersonne + ".jpg");
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            catch { 
+            //Does nothing
+            }
         }
     }
 }

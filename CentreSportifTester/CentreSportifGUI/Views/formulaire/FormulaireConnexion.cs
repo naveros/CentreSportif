@@ -12,35 +12,49 @@ namespace CentreSportifGUI.Views.formulaire
 {
     public partial class FormulaireConnexion : Form
     {
-        CentreSportifGUI centre;
+       public CentreSportifGUI CentreView ;//= new CentreSportifGUI();
         public FormulaireConnexion()
         {
             InitializeComponent();
-            centre = (CentreSportifGUI) this.Owner;
+           // CentreView = (CentreSportifGUI) this.Owner;
 
 
-            try
-            {
-                List<PersonneDTO> personnes = centre.sp.ServicePersonne.getAll();
-                var bindingList = new BindingList<PersonneDTO>(personnes);
-                var source = new BindingSource(bindingList, null);
-                comboBox1.DataSource = source;
-            }
-            catch (Exception ee)
-            {
-                Console.WriteLine("Erreur dans la requete get all personnes");
-                Console.Write(ee.Message);
-            }
+
         }
+
 
         private void button5_Click(object sender, EventArgs e) //Connexion manuel par ID ou par Code barre
         {
-            if(textBox1.Text.Length > 0)//Connexion par idpersonne
+            if (textBox1.TextLength == 0 && textBox2.TextLength == 0) //Connexion par listeDéroulante
             {
-                PersonneDTO tmp = new PersonneDTO();
-                tmp.IdPersonne = textBox1.Text;
-                centre.connexionAccueil(centre.sp.ServicePersonne.findById(tmp));
-                centre.connexionAccueil((PersonneDTO)comboBox1.SelectedItem);
+                CentreView.connexionAccueil((PersonneDTO)comboBox1.SelectedItem);
+            }
+            else if(textBox1.Text.Length > 0)//Connexion par idpersonne
+            {
+                
+                CentreView = (CentreSportifGUI) this.Owner;
+            
+                //CentreView.connexionAccueil(CentreView.DbCreateur.ServicePersonne.findById(tmp));
+               if (textBox1.TextLength == 0 && textBox2.TextLength == 0)
+               {
+                   CentreView.connexionAccueil((PersonneDTO)comboBox1.SelectedItem);
+               }
+               else
+               {
+                   try
+                   {
+                       PersonneDTO tmp = new PersonneDTO();
+                       String idMembre = textBox1.Text;
+                       tmp.IdPersonne = textBox1.Text;
+                       tmp = CentreView.DbCreateur.ServicePersonne.findById(tmp);
+                       CentreView.connexionAccueil(tmp);
+                   }
+                   catch (Exception ee)
+                   {
+                       Console.WriteLine("Erreur dans la requete get all personnes");
+                       Console.Write(ee.Message);
+                   }
+               }
             }
             else if (textBox2.Text.Length > 0)//Connexion par code barre
             {
@@ -51,6 +65,24 @@ namespace CentreSportifGUI.Views.formulaire
         private void button1_Click(object sender, EventArgs e) //Retour
         {
             this.Dispose();
+        }
+
+        private void FormulaireConnexion_Load(object sender, EventArgs e)
+        {
+            CentreView = (CentreSportifGUI)this.Owner;
+
+            try
+            {
+                List<PersonneDTO> personnes = CentreView.DbCreateur.ServicePersonne.getAll();
+                var bindingList = new BindingList<PersonneDTO>(personnes);
+                var source = new BindingSource(bindingList, null);
+                comboBox1.DataSource = source;
+            }
+            catch (Exception ee)
+            {
+                Console.WriteLine("Erreur dans la requete get all personnes");
+                Console.Write(ee.Message);
+            }
         }
     }
 }

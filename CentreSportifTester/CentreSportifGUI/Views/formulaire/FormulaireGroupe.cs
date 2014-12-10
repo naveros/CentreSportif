@@ -10,9 +10,10 @@ using CentreSportifLib.dto;
 namespace CentreSportifGUI.Views.formulaire
 {
     public partial class FormulaireGroupe : Form
-    {//u stealed my commits !
+    {
         GroupeDTO g;
         string mode;
+        public CentreSportifGUI CentreView;
         public FormulaireGroupe(GroupeDTO g)
         {
             InitializeComponent();
@@ -34,24 +35,37 @@ namespace CentreSportifGUI.Views.formulaire
 
         private void button1_Click(object sender, EventArgs e)
         {
-            g.IdGroupe = textBox1.Text;
-            g.IdActivite = textBox2.Text;
-            g.NumeroGroupe = textBox3.Text;
+            label4.Text = "Message : ";
+            try
+            {
+                g.IdGroupe = textBox1.Text;
+                g.IdActivite = textBox2.Text;
+                g.NumeroGroupe = textBox3.Text;
 
-            CentreSportifGUI owner = (CentreSportifGUI)this.Owner;
-            if (this.mode.Equals("Créer"))
-            {
-                owner.sp.ServiceGroupe.creer(g);
+
+                if (this.mode.Equals("Créer"))
+                {
+                    CentreView.DbCreateur.ServiceGroupe.creer(g);
+                    label4.Text += "Le groupe " + g.NumeroGroupe + " a bien été créer";
+                    CentreView.RefreshTableGroupe();
+                }
+                else if (this.mode.Equals("Modifier"))
+                {
+                    CentreView.DbCreateur.ServiceGroupe.update(g);
+                    label4.Text += "Le groupe " + g.NumeroGroupe + " a bien été modifier";
+                    CentreView.RefreshTableGroupe();
+                }
             }
-            else if (this.mode.Equals("Modifier"))
+            catch (Exception)
             {
-                owner.sp.ServiceGroupe.update(g);
+                label4.Text = "Information incorrect";
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Dispose();
+            
         }
 
         private void remplir()
@@ -59,6 +73,11 @@ namespace CentreSportifGUI.Views.formulaire
             textBox1.Text = g.IdActivite;
             textBox2.Text = g.IdGroupe;
             textBox3.Text = g.NumeroGroupe;
+        }
+
+        private void FormulaireGroupe_Load(object sender, EventArgs e)
+        {
+            CentreView = (CentreSportifGUI)this.Owner;
         }
     }
 }

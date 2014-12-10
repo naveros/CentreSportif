@@ -11,7 +11,7 @@ namespace CentreSportifLib.dao
         //TODO : Tests unitaires,, String vs Int pour les champs?? 
 
         MySqlConnection con;
-        const String queryCreate = "INSERT INTO groupe (idgroupe, idactivite, numerogroupe) VALUES (@idgroupe, @idactivite, @numerogroupe)";
+        const String queryCreate = "INSERT INTO groupe (idactivite, numerogroupe) VALUES (@idactivite, @numerogroupe)";
         const String queryReadAll = "SELECT * FROM groupe";
         const String queryRead = "SELECT * FROM groupe WHERE idgroupe = @idgroupe";
         const String queryReadByActivite = "SELECT * FROM groupe WHERE idactivite = @idactivite";
@@ -26,7 +26,7 @@ namespace CentreSportifLib.dao
         public void add(GroupeDTO g)
         {
             MySqlCommand cmd = new MySqlCommand(queryCreate, con);
-            cmd.Parameters.AddWithValue("@idgroupe", g.IdGroupe);
+        //    cmd.Parameters.AddWithValue("@idgroupe", g.IdGroupe);
             cmd.Parameters.AddWithValue("@idactivite", g.IdActivite);
             cmd.Parameters.AddWithValue("@numerogroupe", g.NumeroGroupe);
             try

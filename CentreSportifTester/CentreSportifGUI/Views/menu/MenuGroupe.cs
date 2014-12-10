@@ -49,7 +49,7 @@ namespace CentreSportifGUI.Views.menu
                 owner = (CentreSportifGUI)this.Owner;
                 try
                 {
-                    owner.sp.ServiceGroupe.delete(g);
+                    owner.DbCreateur.ServiceGroupe.delete(g);
                     labelMessage.Text = "Le groupe à bien été supprimé";
                     owner.RefreshTableGroupe();
                 }

@@ -55,11 +55,11 @@ namespace CentreSportifGUI.Views.formulaire
             CentreSportifGUI owner = (CentreSportifGUI)this.Owner;
             if (this.mode.Equals("Créer"))
             {
-                owner.sp.ServicePersonne.register(p);
+                owner.DbCreateur.ServicePersonne.register(p);
             }
             else if (this.mode.Equals("Modifier"))
             {
-                owner.sp.ServicePersonne.update(p);
+                owner.DbCreateur.ServicePersonne.update(p);
             }
         }
 

@@ -40,7 +40,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                     paiementDTO.IdPersonne = p.IdPersonne;
                     paiementDTO.Mode = mode;
                     paiementDTO.Montant = paiement;
-                    owner.sp.ServicePersonne.addPaiement(paiementDTO);
+                    owner.DbCreateur.ServicePersonne.addPaiement(paiementDTO);
                     this.label4.Text = "Paiement effectué ! Merci";
                 }
                 else {

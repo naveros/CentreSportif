@@ -52,7 +52,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             decimal solde = 0;
             try
             {
-                List<AbonnementDTO> listAbo = owner.sp.ServicePersonne.getAllAbonnements(p);
+                List<AbonnementDTO> listAbo = owner.DbCreateur.ServicePersonne.getAllAbonnements(p);
                 if (listAbo.Count > 0)
                 {
                     listAbo.ForEach(delegate(AbonnementDTO abo)
@@ -61,7 +61,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
                     });
                 }
-                List<PaiementDTO> listPaiements = owner.sp.ServicePersonne.getAllPaiements(p);
+                List<PaiementDTO> listPaiements = owner.DbCreateur.ServicePersonne.getAllPaiements(p);
                 if (listPaiements.Count > 0)
                 {
                     listPaiements.ForEach(delegate(PaiementDTO paiement)

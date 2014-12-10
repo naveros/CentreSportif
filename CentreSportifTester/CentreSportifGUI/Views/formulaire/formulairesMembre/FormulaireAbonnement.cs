@@ -31,23 +31,23 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             try
             {   //TODO FIX, + les noms des activites affiche pas dans l'onglet activite. 
                 List<ActiviteDTO> activites = new List<ActiviteDTO>();
-                activites = centre.sp.ServiceActivite.getAll();
+                activites = centre.DbCreateur.ServiceActivite.getAll();
                 var bindingList = new BindingList<ActiviteDTO>(activites);
                 var source = new BindingSource(bindingList, null);
                 comboBox1.DataSource = source;
             }
-            catch (Exception ee)
+           catch (Exception ee)
             {
-                Console.WriteLine("Erreur dans la requete get all activitees");
-                Console.Write(ee.Message);
+                MessageBox.Show("Erreur dans la requete get all activitees");
+                MessageBox.Show(ee.Message);
 
                 //TO-DELETE , ITS FOR TESTS
                 ActiviteDTO a = new ActiviteDTO();
-                a.Nom = "tst nom ";
+              /*  a.Nom = "tst nom ";
                 a.IdActivite = "1";
                 comboBox1.Items.Add(a);
                 comboBox1.Items.Add(a);
-                comboBox1.Items.Add(a);
+                comboBox1.Items.Add(a);*/
 
             }
         }
@@ -64,7 +64,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             comboBox2.Enabled = true;
             try
             {
-                List<GroupeDTO> groupes = centre.sp.ServiceGroupe.getAllByActivite(idActivite);
+                List<GroupeDTO> groupes = centre.DbCreateur.ServiceGroupe.getAllByActivite(idActivite);
                 var bindingList = new BindingList<GroupeDTO>(groupes);
                 var source = new BindingSource(bindingList, null);
                 comboBox2.DataSource = source;
@@ -84,7 +84,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                  groupe = (GroupeDTO)comboBox2.SelectedItem;
 
 
-                seances= centre.sp.ServiceGroupe.getAllSeances(groupe);
+                seances= centre.DbCreateur.ServiceGroupe.getAllSeances(groupe);
                 var bindingList = new BindingList<SeanceDTO>(seances);
                 var source = new BindingSource(bindingList, null);
                 dataGridView1.DataSource = source;
@@ -108,7 +108,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                 a.Prix = (int.Parse(activite.Duree) * seances.Count);
                 a.DateFin = new DateTime(); //TODO . a changer pour la date de fin
 
-                centre.sp.ServicePersonne.addAbonnement(a);
+                centre.DbCreateur.ServicePersonne.addAbonnement(a);
             }
             catch (Exception ee)
             {
