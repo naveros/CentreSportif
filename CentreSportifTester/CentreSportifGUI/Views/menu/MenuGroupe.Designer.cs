@@ -39,6 +39,7 @@
             this.labelNumeroGroupe = new System.Windows.Forms.Label();
             this.labelMessage = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -93,7 +94,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(112, 217);
+            this.button3.Location = new System.Drawing.Point(105, 244);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(125, 37);
             this.button3.TabIndex = 6;
@@ -145,11 +146,23 @@
             this.label5.Size = new System.Drawing.Size(0, 13);
             this.label5.TabIndex = 11;
             // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(38, 198);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(125, 37);
+            this.button4.TabIndex = 12;
+            this.button4.Text = "Séances";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // MenuGroupe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(339, 306);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.labelMessage);
             this.Controls.Add(this.labelNumeroGroupe);
@@ -181,5 +194,6 @@
         private System.Windows.Forms.Label labelNumeroGroupe;
         private System.Windows.Forms.Label labelMessage;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button4;
     }
 }

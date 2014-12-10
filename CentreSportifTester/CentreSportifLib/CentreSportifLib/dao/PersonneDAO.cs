@@ -21,7 +21,7 @@ namespace CentreSportifLib.dao
         const String queryReadAllPersonne = "SELECT * FROM personne";
         const String queryReadByRole = "SELECT * FROM personne WHERE role = @role";
         const String queryReadPersonne = "SELECT * FROM personne WHERE idpersonne = @idpersonne";
-        const String queryUpdatePersonne = "UPDATE personne SET prenom = @prenom, nom = @nom, email = @email, motdepasse = @motdepasse, codebarre = @codebarre,role = @role WHERE conditions;";
+        const String queryUpdatePersonne = "UPDATE personne SET prenom = @prenom, nom = @nom, email = @email, motdepasse = @motdepasse, codebarre = @codebarre,role = @role WHERE idpersonne=@idpersonne;";
         const String queryDeletePersonne = "DELETE FROM personne WHERE idpersonne = @idpersonne";
        
         const String queryReadAdresse = "SELECT * FROM adresse WHERE idpersonne = @idpersonne";
@@ -106,6 +106,7 @@ namespace CentreSportifLib.dao
        public void updatePersonne(PersonneDTO p)
         {
             MySqlCommand cmd = new MySqlCommand(queryUpdatePersonne, con);
+            cmd.Parameters.AddWithValue("@idpersonne", p.Prenom);
             cmd.Parameters.AddWithValue("@prenom", p.Prenom);
             cmd.Parameters.AddWithValue("@nom", p.Nom);
             cmd.Parameters.AddWithValue("@email", p.Email);
@@ -187,7 +188,7 @@ namespace CentreSportifLib.dao
 
         public List<PersonneDTO> getAllByRole(String role)
         {
-            MySqlCommand cmd = new MySqlCommand(queryReadAllPersonne, con);
+            MySqlCommand cmd = new MySqlCommand(queryReadByRole, con);
             MySqlDataReader reader = null;
             List<PersonneDTO> result = new List<PersonneDTO>();
             try

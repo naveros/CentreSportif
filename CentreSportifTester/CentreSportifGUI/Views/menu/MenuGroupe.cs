@@ -69,6 +69,11 @@ namespace CentreSportifGUI.Views.menu
             this.Dispose();
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

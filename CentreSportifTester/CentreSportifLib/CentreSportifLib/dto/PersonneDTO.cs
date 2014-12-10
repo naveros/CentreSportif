@@ -87,14 +87,8 @@ namespace CentreSportifLib.dto
         public PersonneDTO()
         { }
         public override string ToString()
-        {
-            String result = "{";
-            result += "Id:" + IdPersonne;
-            result += ", Prenom:" + Prenom;
-            result += ", Nom:" + Nom;
-            result += ", Email:" + Email;
-            result += "}";
-            return result;
+        {         
+            return Prenom + " " + Nom; ;
         }
         #endregion
     }

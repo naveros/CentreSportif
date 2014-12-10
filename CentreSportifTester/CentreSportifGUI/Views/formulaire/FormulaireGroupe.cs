@@ -48,14 +48,17 @@ namespace CentreSportifGUI.Views.formulaire
             label4.Text = "Message : ";
             try
             {
+                ActiviteDTO activite = (ActiviteDTO)comboBox1.SelectedItem;
+                PersonneDTO prof = (PersonneDTO)comboBox2.SelectedItem;
                 g.IdGroupe = textBox1.Text;
-                g.IdActivite = textBox2.Text;
+                g.IdActivite = activite.IdActivite;
                 g.NumeroGroupe = textBox3.Text;
-
-
+                EnseigneDTO enseigne = new EnseigneDTO();
+               // add prof               
                 if (this.mode.Equals("Créer"))
                 {
                     CentreView.DbCreateur.ServiceGroupe.creer(g);
+
                     label4.Text += "Le groupe " + g.NumeroGroupe + " a bien été crée";
                     CentreView.RefreshTableGroupe();
                 }
@@ -87,7 +90,7 @@ namespace CentreSportifGUI.Views.formulaire
         private void FormulaireGroupe_Load(object sender, EventArgs e)
         {
             CentreView = (CentreSportifGUI)this.Owner;
-            if (this.mode.Equals("Modifier")) 
+            if (this.mode.Equals("Créer")) 
             {
                 //Remplir le comboBox des activité
                 List<ActiviteDTO> activites = CentreView.DbCreateur.ServiceActivite.getAll();
@@ -100,8 +103,7 @@ namespace CentreSportifGUI.Views.formulaire
                 var source2 = new BindingSource(bindingList2, null);
                 comboBox2.DataSource = source2;
                 //Remplir le comboBox des jours
-                comboBox3.DataSource = Enum.GetNames(typeof(Jour));
-
+               
             }
         }
     }
