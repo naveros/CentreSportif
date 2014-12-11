@@ -32,12 +32,13 @@ namespace CentreSportifLib.dao
         const String queryCreateAbonnement = "INSERT INTO abonnement(idpersonne,idgroupe, dateinscription, datefin , prix)VALUES(@idpersonne, @idgroupe, @dateinscription, @datefin , @prix)";
 
         const String queryCreateEnseigne = "INSERT INTO enseigne(idpersonne, idgroupe)VALUES(@idpersonne, @idgroupe)";
+        const String queryReadEnseigneByGroupId = "SELECT * FROM enseigne WHERE idgroup=@idgroup";
 
-        const String queryReadAllGroupeSeance = "SELECT * FROM seance WHERE idgroup=@idgroup";
+        const String queryReadAllSeanceByGroupId = "SELECT * FROM seance WHERE idgroup=@idgroup";
 
         const String queryReadAllPresences = "SELECT * FROM presence WHERE idpersonne = @idpersonne";
 
-        const String queryReadAllPaiements = "SELECT * FROM paiement WHERE idpersonne = @idpersonne";
+        const String queryReadAllPaiements = "SELECT * FROM paiement WHERE idpersonzne = @idpersonne";
         const String queryCreatePaiement = "INSERT INTO paiement(idpersonne,date,montant,mode)VALUES(@idpersonne, @date, @montant, @mode)";
 
         #endregion
@@ -375,6 +376,7 @@ namespace CentreSportifLib.dao
         }
 
         #endregion
+
         #region CRUD Enseigne
         public void addEnseigne(PersonneDTO personneDTO, GroupeDTO groupeDTO)
         {
@@ -394,6 +396,32 @@ namespace CentreSportifLib.dao
             {
                 con.Close();
             }
+        }
+        public PersonneDTO getEnseigneByGroupId(String idGroupe) {
+
+            MySqlCommand cmd = new MySqlCommand(queryReadEnseigneByGroupId, con);
+            MySqlDataReader reader = null;
+            EnseigneDTO result = new EnseigneDTO();
+            try
+            {
+                con.Open();
+                cmd.Parameters.AddWithValue("@idgroupe", idGroupe);
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                result.IdEnseigne = reader.GetString("idenseigne");
+                result.IdPersonne = reader.GetString("idpersonne");
+                result.IdGroupe = idGroupe;
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return result;
         }
         #endregion
 

@@ -68,15 +68,33 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            //nom prof, jour,heur, heure-fin , nombre de seances. prix
             try
             {
                  groupe = (GroupeDTO)comboBox2.SelectedItem;
 
+                 seances = CentreView.DbCreateur.ServiceGroupe.getAllSeances(groupe); //bygroupID?
+                
+                 PersonneDTO professeur = CentreView.DbCreateur.ServicePersonne.getEnseigneByGroupId(groupe.IdGroupe);
+                 //AbonnementDTO abonnement = CentreView.DbCreateur.ServicePersonne.getAbonnementByGroup
+                AbonnementDTO abonnement = new AbonnementDTO();
 
-                 seances = CentreView.DbCreateur.ServiceGroupe.getAllSeances(groupe);
-                var bindingList = new BindingList<SeanceDTO>(seances);
+                 this.dataGridView1.Rows.Clear();
+                 CentreView.DbCreateur.ServiceGroupe.getAllSeances(groupe).ForEach(delegate(SeanceDTO seance)
+                 {
+                     int i = this.dataGridView1.Rows.Add();
+                     // Console.WriteLine(g.ToString());
+                     dataGridView1.Rows[i].Cells[0].Value = seance.DateDebut.Hour;
+                     dataGridView1.Rows[i].Cells[1].Value = seance.DateFin.Hour;
+                     dataGridView1.Rows[i].Cells[2].Value = professeur.Prenom + " " + professeur.Nom;
+                     dataGridView1.Rows[i].Cells[3].Value = abonnement.DateFin;
+                     dataGridView1.Rows[i].Cells[4].Value = abonnement.Prix;
+                 });
+
+                     //todo manuel
+            /*    var bindingList = new BindingList<SeanceDTO>(seances);
                 var source = new BindingSource(bindingList, null);
-                dataGridView1.DataSource = source;
+                dataGridView1.DataSource = source;*/
             }
             catch (Exception ee)
             {

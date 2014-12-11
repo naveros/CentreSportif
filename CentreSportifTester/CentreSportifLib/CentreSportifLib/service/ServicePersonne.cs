@@ -35,6 +35,10 @@ namespace CentreSportifLib.service
         {
             return personneDAO.getAllByRole("prof");
         }
+        public PersonneDTO getEnseigneByGroupId(String id) 
+        {
+            return personneDAO.getEnseigneByGroupId(id);
+        }
         
         public PersonneDTO findById(int idPersonne)
         {
