@@ -63,7 +63,7 @@ namespace CentreSportifGUI.Views.formulaire
                 if (this.mode.Equals("Créer"))
                 {
                     String idgroup = CentreView.DbCreateur.ServiceGroupe.creer(g);
-                    CentreView.DbCreateur.ServicePersonne.
+                    //CentreView.DbCreateur.ServicePersonne.
                     label4.Text += "Le groupe " + g.NumeroGroupe + " a bien été crée";
                     CentreView.RefreshTableGroupe();
                 }
