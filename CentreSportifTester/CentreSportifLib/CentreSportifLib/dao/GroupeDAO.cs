@@ -23,8 +23,9 @@ namespace CentreSportifLib.dao
             this.con = connexion;
         }
 
-        public void add(GroupeDTO g)
+        public String add(GroupeDTO g)
         {
+            String id = "null";
             MySqlCommand cmd = new MySqlCommand(queryCreate, con);
         //    cmd.Parameters.AddWithValue("@idgroupe", g.IdGroupe);
             cmd.Parameters.AddWithValue("@idactivite", g.IdActivite);
@@ -33,6 +34,7 @@ namespace CentreSportifLib.dao
             {
                 con.Open();
                 cmd.ExecuteNonQuery();
+                id = cmd.LastInsertedId.ToString();
             }
             catch (Exception e)
             {
@@ -42,6 +44,7 @@ namespace CentreSportifLib.dao
             {
                 con.Close();
             }
+            return id;
         }
 
         public GroupeDTO get(GroupeDTO a)

@@ -15,9 +15,9 @@ namespace CentreSportifLib.service
         this.groupeDAO = groupeDAO;
         }
 
-        public void creer(GroupeDTO groupeDTO)
+        public String creer(GroupeDTO groupeDTO)
         {
-            groupeDAO.add(groupeDTO);
+            return groupeDAO.add(groupeDTO);
         }
         public List<GroupeDTO> getAll()
         {

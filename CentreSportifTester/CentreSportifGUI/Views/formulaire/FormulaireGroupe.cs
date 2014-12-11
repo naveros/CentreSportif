@@ -54,10 +54,15 @@ namespace CentreSportifGUI.Views.formulaire
                 g.IdActivite = activite.IdActivite;
                 g.NumeroGroupe = textBox3.Text;
                 EnseigneDTO enseigne = new EnseigneDTO();
-               // add prof               
+               // add prof
+                //Créee les seances
+                DateTime tomorrow = DateTime.Today.AddDays(1);
+                // The (... + 7) % 7 ensures we end up with a value in the range [0, 6]
+                int daysUntilTuesday = ((int)DayOfWeek.Tuesday - (int)tomorrow.DayOfWeek + 7) % 7;
+                DateTime nextTuesday = tomorrow.AddDays(daysUntilTuesday);
                 if (this.mode.Equals("Créer"))
                 {
-                    CentreView.DbCreateur.ServiceGroupe.creer(g);
+                    String idgroup = CentreView.DbCreateur.ServiceGroupe.creer(g);
 
                     label4.Text += "Le groupe " + g.NumeroGroupe + " a bien été crée";
                     CentreView.RefreshTableGroupe();
@@ -87,6 +92,8 @@ namespace CentreSportifGUI.Views.formulaire
             textBox3.Text = g.NumeroGroupe;
         }
 
+        private void Creer() { }
+
         private void FormulaireGroupe_Load(object sender, EventArgs e)
         {
             CentreView = (CentreSportifGUI)this.Owner;
@@ -103,7 +110,11 @@ namespace CentreSportifGUI.Views.formulaire
                 var source2 = new BindingSource(bindingList2, null);
                 comboBox2.DataSource = source2;
                 //Remplir le comboBox des jours
-               
+                CentreView = (CentreSportifGUI)this.Owner;
+                comboBox3.DataSource = Enum.GetNames(typeof(DayOfWeek));
+                dateTimePicker1.ShowUpDown = true;
+                dateTimePicker1.CustomFormat = "hh";
+                dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             }
         }
     }

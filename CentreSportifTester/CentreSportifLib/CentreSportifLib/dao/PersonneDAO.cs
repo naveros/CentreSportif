@@ -28,7 +28,9 @@ namespace CentreSportifLib.dao
 
         const String queryReadAllAbonnements = "SELECT * FROM abonnement WHERE idpersonne = @idpersonne";
         const String queryCreateAbonnement = "INSERT INTO abonnement(idpersonne,idgroupe, dateinscription, datefin , prix)VALUES(@idpersonne, @idgroupe, @dateinscription, @datefin , @prix)";
+        const String queryCreateEnseigne = "INSERT INTO enseigne(idpersonne, idgroupe)VALUES(@idpersonne, @idgroupe)";
 
+        const String queryReadAllGroupeSeance = "SELECT * FROM seance WHERE idgroup=@idgroup";
 
         const String queryReadAllPresences = "SELECT * FROM presence WHERE idpersonne = @idpersonne";
         
@@ -334,6 +336,27 @@ namespace CentreSportifLib.dao
             return result;
         }
 
+        #endregion
+        #region CRUD Enseigne
+        public void addEnseigne(PersonneDTO personneDTO, GroupeDTO groupeDTO) 
+        {
+            MySqlCommand cmd = new MySqlCommand(queryCreateEnseigne, con);
+            cmd.Parameters.AddWithValue("@idpersonne", personneDTO.IdPersonne);
+            cmd.Parameters.AddWithValue("@idgroupe", groupeDTO.IdGroupe);           
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         #endregion
 
         #region CRUD Presence
