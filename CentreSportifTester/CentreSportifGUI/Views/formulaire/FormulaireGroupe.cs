@@ -63,7 +63,7 @@ namespace CentreSportifGUI.Views.formulaire
                 if (this.mode.Equals("Créer"))
                 {
                     String idgroup = CentreView.DbCreateur.ServiceGroupe.creer(g);
-
+                    CentreView.DbCreateur.ServicePersonne.
                     label4.Text += "Le groupe " + g.NumeroGroupe + " a bien été crée";
                     CentreView.RefreshTableGroupe();
                 }
@@ -91,8 +91,6 @@ namespace CentreSportifGUI.Views.formulaire
             textBox1.Text = g.IdActivite;
             textBox3.Text = g.NumeroGroupe;
         }
-
-        private void Creer() { }
 
         private void FormulaireGroupe_Load(object sender, EventArgs e)
         {
