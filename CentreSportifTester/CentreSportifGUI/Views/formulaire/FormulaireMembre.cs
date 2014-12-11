@@ -40,6 +40,17 @@ namespace CentreSportifGUI.Views.formulaire
             p.Nom = textBox3.Text;
             p.Email = textBox4.Text;
             p.CodeBarre = textBox5.Text;
+
+
+            AdresseDTO adresse = new AdresseDTO();
+            adresse.Numero = textBox8.Text;
+            adresse.Rue = textBox9.Text;
+            adresse.CodePostal = textBox10.Text;
+            adresse.Ville = textBox11.Text;
+            adresse.IdPersonne = textBox1.Text;
+
+            p.Adresse = adresse;
+
             if(radioButton2.Checked)
             {
                 p.Sexe = 'F';

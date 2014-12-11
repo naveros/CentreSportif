@@ -63,6 +63,10 @@ namespace CentreSportifLib.service
         {
             this.personneDAO.getAdresse(personneDTO);
         }
+        public void addAdresse(AdresseDTO adresseDTO)
+        {
+            this.personneDAO.addAdresse(adresseDTO);
+        }
         #endregion
         #region Service Abonnement
         public List<AbonnementDTO> getAllAbonnements(PersonneDTO personneDTO)

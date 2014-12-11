@@ -41,6 +41,8 @@ namespace CentreSportifLib.dao
         const String queryReadAllPaiements = "SELECT * FROM paiement WHERE idpersonzne = @idpersonne";
         const String queryCreatePaiement = "INSERT INTO paiement(idpersonne,date,montant,mode)VALUES(@idpersonne, @date, @montant, @mode)";
 
+        const String queryCreateAdresse = "INSERT INTO adresse(numero,rue,codepostal,ville,pays,idpersonne)VALUES(@numero,@rue,@codepostal,@ville,@pays,@idpersonne)";
+
         #endregion
 
         public PersonneDAO(MySqlConnection connexion)
@@ -275,7 +277,28 @@ namespace CentreSportifLib.dao
 
         #region CRUD Adresse
 
-        public void addAdresse() { }
+        public void addAdresse(AdresseDTO adresseDTO) {
+            MySqlCommand cmd = new MySqlCommand(queryCreateAdresse, con);
+            cmd.Parameters.AddWithValue("@numero", adresseDTO.Numero);
+            cmd.Parameters.AddWithValue("@rue", adresseDTO.Rue);
+            cmd.Parameters.AddWithValue("@codepostal", adresseDTO.CodePostal);
+            cmd.Parameters.AddWithValue("@ville", adresseDTO.Ville);
+            cmd.Parameters.AddWithValue("@pays", adresseDTO.Pays);
+            cmd.Parameters.AddWithValue("@idpersonne", adresseDTO.IdPersonne);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         public AdresseDTO getAdresse(PersonneDTO p)
         {
             MySqlCommand cmd = new MySqlCommand(queryReadAdresse, con);
