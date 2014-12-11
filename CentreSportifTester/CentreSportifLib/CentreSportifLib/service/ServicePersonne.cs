@@ -15,9 +15,9 @@ namespace CentreSportifLib.service
             this.personneDAO = personneDAO;
         }
         #region personneDTO
-        public void register(PersonneDTO personneDTO)
+        public String register(PersonneDTO personneDTO)
         {
-            personneDAO.addPersonne(personneDTO);
+           return personneDAO.addPersonne(personneDTO);
         }
         public List<PersonneDTO> getAll()
         {
@@ -35,7 +35,7 @@ namespace CentreSportifLib.service
         {
             return personneDAO.getAllByRole("prof");
         }
-        public PersonneDTO getEnseigneByGroupId(String id) 
+        public EnseigneDTO getEnseigneByGroupId(String id) 
         {
             return personneDAO.getEnseigneByGroupId(id);
         }

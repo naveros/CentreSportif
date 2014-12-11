@@ -50,8 +50,9 @@ namespace CentreSportifLib.dao
 
         #region CRUD Personne
 
-        public void addPersonne(PersonneDTO p)
+        public String addPersonne(PersonneDTO p)
         {
+            String result = "null";
             MySqlCommand cmd = new MySqlCommand(queryCreatePersonne, con);
             cmd.Parameters.AddWithValue("@prenom", p.Prenom);
             cmd.Parameters.AddWithValue("@nom", p.Nom);
@@ -60,11 +61,12 @@ namespace CentreSportifLib.dao
             cmd.Parameters.AddWithValue("@email", p.Email);
             cmd.Parameters.AddWithValue("@motdepasse", p.MotDePasse);
             cmd.Parameters.AddWithValue("@codebarre", p.CodeBarre);
-            cmd.Parameters.AddWithValue("@role", p.Role);
+            cmd.Parameters.AddWithValue("@role", p.Role);  
             try
             {
                 con.Open();
                 cmd.ExecuteNonQuery();
+                result = cmd.LastInsertedId.ToString();
             }
             catch (Exception e)
             {
@@ -74,6 +76,7 @@ namespace CentreSportifLib.dao
             {
                 con.Close();
             }
+            return result;
         }
 
         public PersonneDTO getPersonneByCodeBarre(String codeBarre)
@@ -397,7 +400,8 @@ namespace CentreSportifLib.dao
                 con.Close();
             }
         }
-        public PersonneDTO getEnseigneByGroupId(String idGroupe) {
+        public EnseigneDTO getEnseigneByGroupId(String idGroupe)
+        {
 
             MySqlCommand cmd = new MySqlCommand(queryReadEnseigneByGroupId, con);
             MySqlDataReader reader = null;

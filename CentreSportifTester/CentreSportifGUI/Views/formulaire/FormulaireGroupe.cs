@@ -53,7 +53,7 @@ namespace CentreSportifGUI.Views.formulaire
                 g.IdGroupe = textBox1.Text;
                 g.IdActivite = activite.IdActivite;
                 g.NumeroGroupe = textBox3.Text;
-                EnseigneDTO enseigne = new EnseigneDTO();
+                
                // add prof
                 //Créee les seances
                 DateTime tomorrow = DateTime.Today.AddDays(1);
@@ -62,7 +62,10 @@ namespace CentreSportifGUI.Views.formulaire
                 DateTime nextTuesday = tomorrow.AddDays(daysUntilTuesday);
                 if (this.mode.Equals("Créer"))
                 {
+
                     String idgroup = CentreView.DbCreateur.ServiceGroupe.creer(g);
+                    EnseigneDTO enseigne = new EnseigneDTO();
+                    enseigne.IdGroupe = idgroup;
                     //CentreView.DbCreateur.ServicePersonne.
                     label4.Text += "Le groupe " + g.NumeroGroupe + " a bien été crée";
                     CentreView.RefreshTableGroupe();
