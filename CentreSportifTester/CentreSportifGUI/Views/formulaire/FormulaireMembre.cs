@@ -32,7 +32,7 @@ namespace CentreSportifGUI.Views.formulaire
             this.Text = mode;
         }
 
-        private void button1_Click(object sender, EventArgs e) //enregistrer
+        private void button1_Click(object sender, EventArgs e) //enregistrer/modifier
         {
             //TODO: Gestion des erreurs
             p.IdPersonne = textBox1.Text;
@@ -67,10 +67,12 @@ namespace CentreSportifGUI.Views.formulaire
             if (this.mode.Equals("Créer"))
             {
                 owner.DbCreateur.ServicePersonne.register(p);
+                owner.DbCreateur.ServicePersonne.addAdresse(adresse);
             }
             else if (this.mode.Equals("Modifier"))
             {
                 owner.DbCreateur.ServicePersonne.update(p);
+                owner.DbCreateur.ServicePersonne.updateAdresse(adresse);
             }
         }
 

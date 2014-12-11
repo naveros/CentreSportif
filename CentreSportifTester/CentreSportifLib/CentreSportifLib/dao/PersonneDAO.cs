@@ -43,6 +43,8 @@ namespace CentreSportifLib.dao
 
         const String queryCreateAdresse = "INSERT INTO adresse(numero,rue,codepostal,ville,pays,idpersonne)VALUES(@numero,@rue,@codepostal,@ville,@pays,@idpersonne)";
 
+        const String queryUpdateAdresse = "UPDATE adresse SET numero = @numero, rue = @rue, codepostal = @codepostal, ville = @ville, pays = @pays WHERE idpersonne=@idpersonne;";
+
         #endregion
 
         public PersonneDAO(MySqlConnection connexion)
@@ -328,7 +330,28 @@ namespace CentreSportifLib.dao
             }
             return result;
         }
-        public void updateAdresse() { }
+        public void updateAdresse(AdresseDTO adresseDTO) {
+            MySqlCommand cmd = new MySqlCommand(queryUpdateAdresse, con);
+            cmd.Parameters.AddWithValue("@numero", adresseDTO.Numero);
+            cmd.Parameters.AddWithValue("@rue", adresseDTO.Rue);
+            cmd.Parameters.AddWithValue("@codepostal", adresseDTO.CodePostal);
+            cmd.Parameters.AddWithValue("@ville", adresseDTO.Ville);
+            cmd.Parameters.AddWithValue("@pays", adresseDTO.Pays);
+            cmd.Parameters.AddWithValue("@idpersonne", adresseDTO.IdPersonne);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         public void deleteAdresse() { }
 
         #endregion
@@ -336,7 +359,6 @@ namespace CentreSportifLib.dao
         #region CRUD Abonnement
         public void addAbonnement(AbonnementDTO a)
         {
-
             MySqlCommand cmd = new MySqlCommand(queryCreateAbonnement, con);
             cmd.Parameters.AddWithValue("@idpersonne", a.IdPersonne);
             cmd.Parameters.AddWithValue("@idgroupe", a.IdGroupe);
@@ -357,11 +379,11 @@ namespace CentreSportifLib.dao
             {
                 con.Close();
             }
-
-
         }
         public void getAbonnement() { }
-        public void updateAbonnement() { }
+        public void updateAbonnement() { 
+        
+        }
         public void deleteAbonnement() { }
         public List<AbonnementDTO> getAllAbonnements(PersonneDTO p)
         {
