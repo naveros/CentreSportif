@@ -33,11 +33,16 @@ namespace CentreSportifLib.service
         }
         public List<PersonneDTO> getAllTeachers()
         {
-            return personneDAO.getAllByRole("prof");            
+            return personneDAO.getAllByRole("prof");
         }
-        public PersonneDTO findById(PersonneDTO personneDTO)
+        
+        public PersonneDTO findById(int idPersonne)
         {
-            return personneDAO.getPersonne(personneDTO);
+            return personneDAO.getPersonne(idPersonne);
+        }
+        public PersonneDTO findByCodeBarre(String codeBarre)
+        {
+            return personneDAO.getPersonneByCodeBarre(codeBarre);
         }
         public void update(PersonneDTO personneDTO)
         {
@@ -49,30 +54,38 @@ namespace CentreSportifLib.service
         }
         #endregion personne
 
-
+        #region Service Adresse
         public void getAdresse(PersonneDTO personneDTO)
         {
             this.personneDAO.getAdresse(personneDTO);
         }
-        public List<AbonnementDTO> getAllAbonnements(PersonneDTO personneDTO) 
+        #endregion
+        #region Service Abonnement
+        public List<AbonnementDTO> getAllAbonnements(PersonneDTO personneDTO)
         {
-           return this.personneDAO.getAllAbonnements(personneDTO);
+            return this.personneDAO.getAllAbonnements(personneDTO);
         }
-        public void addAbonnement(AbonnementDTO a) {
+        public void addAbonnement(AbonnementDTO a)
+        {
             this.personneDAO.addAbonnement(a);
         }
-
+        #endregion
+        #region Service Presences
         public void getAllPresences(PersonneDTO personneDTO)
         {
             this.personneDAO.getAllPresences(personneDTO);
         }
-        public List<PaiementDTO> getAllPaiements(PersonneDTO personneDTO) 
+        #endregion
+        #region Service Paiements
+        public List<PaiementDTO> getAllPaiements(PersonneDTO personneDTO)
         {
             return this.personneDAO.getAllPaiements(personneDTO);
         }
-        public void addPaiement(PaiementDTO paiementDTO) {
+        public void addPaiement(PaiementDTO paiementDTO)
+        {
             this.personneDAO.addPaiement(paiementDTO);
         }
+        #endregion
         //TODO get horaire
     }
 }

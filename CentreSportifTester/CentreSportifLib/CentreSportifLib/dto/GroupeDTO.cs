@@ -46,12 +46,7 @@ namespace CentreSportifLib.dto
         { }
         public override string ToString()
         {
-            String result = "{";
-            result += "IdGroupe:" + IdGroupe;
-            result += ", IdActivite:" + IdActivite;
-            result += ", numero groupe:" + NumeroGroupe;
-            result += "}";
-            return result;
+            return "" + this.numerogroupe;
         }
         #endregion
 

@@ -45,10 +45,10 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
              activite =  (ActiviteDTO)comboBox1.SelectedItem;
 
-            int idActivite = int.Parse(activite.IdActivite);
+            String idActivite = activite.IdActivite;
             
-           MessageBox.Show("Selected id : " +  activite.IdActivite + "\n" +
-                           "nom " + activite.Nom);
+       //    MessageBox.Show("Selected id : " +  activite.IdActivite + "\n" +
+         //                  "nom " + activite.Nom);
 
             comboBox2.Enabled = true;
             try
@@ -80,7 +80,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             }
             catch (Exception ee)
             {
-                Console.WriteLine("Erreur dans la requete get all groupe by activitee ID");
+                Console.WriteLine("Erreur dans la requete get all seances ");
                 Console.Write(ee.Message);
             }
 
@@ -95,7 +95,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                 a.IdGroupe = groupe.IdGroupe;
                 a.DateInscription = new DateTime();
                 a.Prix = (int.Parse(activite.Duree) * seances.Count);
-                a.DateFin = new DateTime(); //TODO . a changer pour la date de fin
+                a.DateFin = new DateTime().AddDays(100); //TODO . a changer pour la date de fin
 
                 CentreView.DbCreateur.ServicePersonne.addAbonnement(a);
             }

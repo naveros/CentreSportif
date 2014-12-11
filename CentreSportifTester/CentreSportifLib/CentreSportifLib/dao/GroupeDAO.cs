@@ -17,12 +17,13 @@ namespace CentreSportifLib.dao
         const String queryReadByActivite = "SELECT * FROM groupe WHERE idactivite = @idactivite";
         const String queryUpdate = "UPDATE groupe SET numerogroupe = @numerogroupe WHERE idgroupe=@idgroupe;";
         const String queryDelete = "DELETE FROM groupe WHERE idgroupe=@idgroupe;";
-        const String queryReadSchedule = "SELECT * FROM seance WHERE idpersonne = @idpersonne";
+        const String queryReadAllseances = "SELECT * FROM seance WHERE idgroupe=@idgroupe;";
         public GroupeDAO(MySqlConnection connexion)
         {
             this.con = connexion;
         }
 
+        #region CRUD Groupe
         public String add(GroupeDTO g)
         {
             String id = "null";
@@ -73,9 +74,37 @@ namespace CentreSportifLib.dao
             return result;
         }
 
-        public List<GroupeDTO> getAllByActivite(int idActivite) {
+        public List<GroupeDTO> getAllByActivite(String idActivite) {
 
-            return null;
+            MySqlCommand cmd = new MySqlCommand(queryReadByActivite, con);
+            MySqlDataReader reader = null;
+            List<GroupeDTO> result = new List<GroupeDTO>();
+            try
+            {
+                con.Open();
+                cmd.Parameters.AddWithValue("@idactivite", idActivite);
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    GroupeDTO a = new GroupeDTO();
+                    a.IdGroupe = reader.GetString("idgroupe");
+                    a.IdActivite = idActivite;
+                    a.NumeroGroupe = reader.GetString("numerogroupe");
+                    result.Add(a);
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erreur dans la requete getAll");
+                Console.Write(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return result;
         }
 
         public List<GroupeDTO> getAll()
@@ -149,15 +178,17 @@ namespace CentreSportifLib.dao
                 con.Close();
             }
         }
+#endregion
 
         public List<SeanceDTO> getAllSeances(GroupeDTO g) 
         {
-            MySqlCommand cmd = new MySqlCommand(queryReadSchedule, con);
+            MySqlCommand cmd = new MySqlCommand(queryReadAllseances, con);
             MySqlDataReader reader = null;
             List<SeanceDTO> result = new List<SeanceDTO>();
             try
             {
                 con.Open();
+                cmd.Parameters.AddWithValue("@idgroupe", g.IdGroupe);
                 reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -166,8 +197,9 @@ namespace CentreSportifLib.dao
 
                     s.IdGroupe = reader.GetString("idgroupe");
                     s.IdSeance = reader.GetString("idseance");
-                    s.DateDebut = (DateTime)reader["datedebut"];
-                    s.DateFin = (DateTime)reader["datefin"];
+                    s.DateDebut = reader.GetDateTime("datedebut");
+                    s.DateFin = reader.GetDateTime("datefin");
+
                     result.Add(s);
                 }
 
