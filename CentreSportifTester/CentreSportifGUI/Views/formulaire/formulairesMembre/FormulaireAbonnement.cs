@@ -72,33 +72,26 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             try
             {
                  groupe = (GroupeDTO)comboBox2.SelectedItem;
-
-                 seances = CentreView.DbCreateur.ServiceGroupe.getAllSeances(groupe); //bygroupID?
                 
-                 PersonneDTO professeur = CentreView.DbCreateur.ServicePersonne.getEnseigneByGroupId(groupe.IdGroupe);
-                 //AbonnementDTO abonnement = CentreView.DbCreateur.ServicePersonne.getAbonnementByGroup
-                AbonnementDTO abonnement = new AbonnementDTO();
+                 EnseigneDTO enseigneDTO = CentreView.DbCreateur.ServicePersonne.getEnseigneByGroupId(groupe.IdGroupe);
+                 PersonneDTO professeur = CentreView.DbCreateur.ServicePersonne.findById(int.Parse(enseigneDTO.IdPersonne));
+                 AbonnementDTO abonnement = CentreView.DbCreateur.ServicePersonne.getAbonnementByGroupId(groupe.IdGroupe);
 
                  this.dataGridView1.Rows.Clear();
-                 CentreView.DbCreateur.ServiceGroupe.getAllSeances(groupe).ForEach(delegate(SeanceDTO seance)
+                 CentreView.DbCreateur.ServiceGroupe.getAllSeances(groupe).ForEach(delegate(SeanceDTO seance) //getAllSeancesByGroupId???
                  {
                      int i = this.dataGridView1.Rows.Add();
-                     // Console.WriteLine(g.ToString());
                      dataGridView1.Rows[i].Cells[0].Value = seance.DateDebut.Hour;
                      dataGridView1.Rows[i].Cells[1].Value = seance.DateFin.Hour;
                      dataGridView1.Rows[i].Cells[2].Value = professeur.Prenom + " " + professeur.Nom;
-                     dataGridView1.Rows[i].Cells[3].Value = abonnement.DateFin;
+                     dataGridView1.Rows[i].Cells[3].Value = "Le "+ abonnement.DateFin.Day + " du " + abonnement.DateFin.Month;
                      dataGridView1.Rows[i].Cells[4].Value = abonnement.Prix;
                  });
 
-                     //todo manuel
-            /*    var bindingList = new BindingList<SeanceDTO>(seances);
-                var source = new BindingSource(bindingList, null);
-                dataGridView1.DataSource = source;*/
             }
             catch (Exception ee)
             {
-                Console.WriteLine("Erreur dans la requete get all seances ");
+                Console.WriteLine("Erreur dans la requete get all seances");
                 Console.Write(ee.Message);
             }
 
