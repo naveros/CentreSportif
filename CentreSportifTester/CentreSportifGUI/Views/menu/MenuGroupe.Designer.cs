@@ -40,6 +40,8 @@
             this.labelMessage = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
+            this.labelPrix = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -72,7 +74,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(38, 155);
+            this.button2.Location = new System.Drawing.Point(38, 189);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(125, 37);
             this.button2.TabIndex = 4;
@@ -83,7 +85,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(184, 155);
+            this.button1.Location = new System.Drawing.Point(188, 189);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(125, 37);
             this.button1.TabIndex = 5;
@@ -94,7 +96,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(105, 244);
+            this.button3.Location = new System.Drawing.Point(101, 275);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(125, 37);
             this.button3.TabIndex = 6;
@@ -132,7 +134,7 @@
             // labelMessage
             // 
             this.labelMessage.AutoSize = true;
-            this.labelMessage.Location = new System.Drawing.Point(35, 124);
+            this.labelMessage.Location = new System.Drawing.Point(35, 156);
             this.labelMessage.Name = "labelMessage";
             this.labelMessage.Size = new System.Drawing.Size(56, 13);
             this.labelMessage.TabIndex = 10;
@@ -141,7 +143,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(112, 124);
+            this.label5.Location = new System.Drawing.Point(112, 115);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(0, 13);
             this.label5.TabIndex = 11;
@@ -149,7 +151,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(38, 198);
+            this.button4.Location = new System.Drawing.Point(38, 232);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(125, 37);
             this.button4.TabIndex = 12;
@@ -157,11 +159,31 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // labelPrix
+            // 
+            this.labelPrix.AutoSize = true;
+            this.labelPrix.Location = new System.Drawing.Point(126, 115);
+            this.labelPrix.Name = "labelPrix";
+            this.labelPrix.Size = new System.Drawing.Size(13, 13);
+            this.labelPrix.TabIndex = 14;
+            this.labelPrix.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(35, 115);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Prix";
+            // 
             // MenuGroupe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(339, 306);
+            this.ClientSize = new System.Drawing.Size(346, 355);
+            this.Controls.Add(this.labelPrix);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.labelMessage);
@@ -195,5 +217,7 @@
         private System.Windows.Forms.Label labelMessage;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label labelPrix;
+        private System.Windows.Forms.Label label6;
     }
 }

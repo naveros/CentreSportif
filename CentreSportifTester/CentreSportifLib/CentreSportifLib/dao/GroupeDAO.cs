@@ -11,7 +11,7 @@ namespace CentreSportifLib.dao
         //TODO : Tests unitaires,, String vs Int pour les champs?? 
 
         MySqlConnection con;
-        const String queryCreate = "INSERT INTO groupe (idactivite, numerogroupe) VALUES (@idactivite, @numerogroupe)";
+        const String queryCreate = "INSERT INTO groupe (idactivite, numerogroupe, prix) VALUES (@idactivite, @numerogroupe, @prix)";
         const String queryReadAll = "SELECT * FROM groupe";
         const String queryRead = "SELECT * FROM groupe WHERE idgroupe = @idgroupe";
         const String queryReadByActivite = "SELECT * FROM groupe WHERE idactivite = @idactivite";
@@ -31,6 +31,7 @@ namespace CentreSportifLib.dao
         //    cmd.Parameters.AddWithValue("@idgroupe", g.IdGroupe);
             cmd.Parameters.AddWithValue("@idactivite", g.IdActivite);
             cmd.Parameters.AddWithValue("@numerogroupe", g.NumeroGroupe);
+            cmd.Parameters.AddWithValue("@prix", g.Prix);
             try
             {
                 con.Open();
@@ -62,6 +63,7 @@ namespace CentreSportifLib.dao
                 result.IdGroupe = reader.GetString("idgroupe");
                 result.IdActivite = reader.GetString("idactivite");
                 result.NumeroGroupe = reader.GetString("numerogroupe");
+                result.Prix = reader.GetDecimal("prix");
             }
             catch (Exception e)
             {
@@ -91,6 +93,7 @@ namespace CentreSportifLib.dao
                     a.IdGroupe = reader.GetString("idgroupe");
                     a.IdActivite = idActivite;
                     a.NumeroGroupe = reader.GetString("numerogroupe");
+                    a.Prix = reader.GetDecimal("prix");
                     result.Add(a);
                 }
 

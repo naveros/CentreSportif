@@ -11,6 +11,7 @@ namespace CentreSportifLib.dto
         private String idgroupe;
         private String idactivite;
         private String numerogroupe;
+        private decimal prix;
         #endregion
         #region Propriete
         public String IdGroupe
@@ -38,6 +39,17 @@ namespace CentreSportifLib.dto
             get
             {
                 return this.numerogroupe;
+            }
+        }
+        public Decimal Prix 
+        {
+            set 
+            { 
+                this.prix = value;
+            }
+            get
+            { 
+                return this.prix; 
             }
         }
         #endregion

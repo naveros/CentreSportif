@@ -28,6 +28,7 @@ namespace CentreSportifGUI.Views.menu
             labelIDActivite.Text = g.IdActivite;
             labelIDGroupe.Text = g.IdGroupe;
             labelNumeroGroupe.Text = g.NumeroGroupe;
+            labelPrix.Text = g.Prix.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e) //Modifier
@@ -70,6 +71,16 @@ namespace CentreSportifGUI.Views.menu
         }
 
         private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
