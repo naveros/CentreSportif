@@ -179,8 +179,9 @@ namespace CentreSportifGUI
                 pictureBox1.Image = Image.FromFile("../photos/" + personneDTO.IdPersonne + ".jpg");
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             }
-            catch { 
-            //Does nothing
+            catch {
+                pictureBox1.Image = Image.FromFile("../photos/0.jpg");
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
     }

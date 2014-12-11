@@ -33,7 +33,7 @@ namespace CentreSportifLib.service
         }
 
 
-        public List<GroupeDTO> getAllByActivite(int  idActivite)
+        public List<GroupeDTO> getAllByActivite(String  idActivite)
         {
             return groupeDAO.getAllByActivite(idActivite);
         }

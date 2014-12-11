@@ -8,37 +8,40 @@ using System.Globalization;
 
 namespace CentreSportifLib.dao
 {
-    
+
     //TODO CRUD de abonnement . presences et adresse:
     public class PersonneDAO
     {
 
         MySqlConnection con;
 
-        #region SQL Queries 
+        #region SQL Queries
 
+        #region Queries Personnes
         const String queryCreatePersonne = "INSERT INTO personne (prenom, nom, sexe, datenaissance, email, motdepasse, codebarre, role) VALUES (@prenom, @nom, @sexe, @datenaissance, @email, @motdepasse, @codebarre, @role)";
         const String queryReadAllPersonne = "SELECT * FROM personne";
         const String queryReadByRole = "SELECT * FROM personne WHERE role = @role";
         const String queryReadPersonne = "SELECT * FROM personne WHERE idpersonne = @idpersonne";
         const String queryUpdatePersonne = "UPDATE personne SET prenom = @prenom, nom = @nom, email = @email, motdepasse = @motdepasse, codebarre = @codebarre,role = @role WHERE idpersonne=@idpersonne;";
         const String queryDeletePersonne = "DELETE FROM personne WHERE idpersonne = @idpersonne";
-       
+        const String queryReadPersonneByCodeBarre = "SELECT * FROM personne WHERE codebarre = @codebarre";
+        #endregion
         const String queryReadAdresse = "SELECT * FROM adresse WHERE idpersonne = @idpersonne";
 
         const String queryReadAllAbonnements = "SELECT * FROM abonnement WHERE idpersonne = @idpersonne";
         const String queryCreateAbonnement = "INSERT INTO abonnement(idpersonne,idgroupe, dateinscription, datefin , prix)VALUES(@idpersonne, @idgroupe, @dateinscription, @datefin , @prix)";
+
         const String queryCreateEnseigne = "INSERT INTO enseigne(idpersonne, idgroupe)VALUES(@idpersonne, @idgroupe)";
 
         const String queryReadAllGroupeSeance = "SELECT * FROM seance WHERE idgroup=@idgroup";
 
         const String queryReadAllPresences = "SELECT * FROM presence WHERE idpersonne = @idpersonne";
-        
+
         const String queryReadAllPaiements = "SELECT * FROM paiement WHERE idpersonne = @idpersonne";
         const String queryCreatePaiement = "INSERT INTO paiement(idpersonne,date,montant,mode)VALUES(@idpersonne, @date, @montant, @mode)";
 
         #endregion
-        
+
         public PersonneDAO(MySqlConnection connexion)
         {
             this.con = connexion;
@@ -72,7 +75,40 @@ namespace CentreSportifLib.dao
             }
         }
 
-        public PersonneDTO getPersonne(PersonneDTO p)
+        public PersonneDTO getPersonneByCodeBarre(String codeBarre)
+        {
+            MySqlCommand cmd = new MySqlCommand(queryReadPersonneByCodeBarre, con);
+            MySqlDataReader reader = null;
+            PersonneDTO result = new PersonneDTO();
+            try
+            {
+                con.Open();
+                cmd.Parameters.AddWithValue("@codebarre", codeBarre);
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                result.IdPersonne = reader.GetString("idpersonne");
+                result.Prenom = reader.GetString("prenom");
+                result.Nom = reader.GetString("nom");
+                result.Sexe = reader.GetChar("sexe");
+                result.DateNaissance = reader.GetDateTime("datenaissance");
+                result.Email = reader.GetString("email");
+                result.MotDePasse = reader.GetString("motdepasse");
+                result.CodeBarre = reader.GetString("codebarre");
+                result.Role = reader.GetString("role");
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return result;
+        }
+
+        public PersonneDTO getPersonne(int idPersonne)
         {
             MySqlCommand cmd = new MySqlCommand(queryReadPersonne, con);
             MySqlDataReader reader = null;
@@ -80,18 +116,19 @@ namespace CentreSportifLib.dao
             try
             {
                 con.Open();
-                cmd.Parameters.AddWithValue("@idpersonne", p.IdPersonne);
+                cmd.Parameters.AddWithValue("@idpersonne", idPersonne);
+
                 reader = cmd.ExecuteReader();
                 reader.Read();
-                result.IdPersonne = (String)reader["idpersonne"];
-                result.Prenom = (String)reader["prenom"];
-                result.Nom = (String)reader["nom"];
-                result.Sexe = (char)reader["sexe"];
-                result.DateNaissance = (DateTime)reader["datenaissance"];
-                result.Email = (String)reader["email"];
-                result.MotDePasse = (String)reader["motdepasse"];
-                result.CodeBarre = (String)reader["codebarre"];
-                result.Role = (String)reader["role"];
+                result.IdPersonne = reader.GetString("idpersonne");
+                result.Prenom = reader.GetString("prenom");
+                result.Nom = reader.GetString("nom");
+                result.Sexe = reader.GetChar("sexe");
+                result.DateNaissance = reader.GetDateTime("datenaissance");
+                result.Email = reader.GetString("email");
+                result.MotDePasse = reader.GetString("motdepasse");
+                result.CodeBarre = reader.GetString("codebarre");
+                result.Role = reader.GetString("role");
                 //String r2 = reader[0].ToString();
             }
             catch (Exception e)
@@ -105,7 +142,7 @@ namespace CentreSportifLib.dao
             return result;
         }
 
-       public void updatePersonne(PersonneDTO p)
+        public void updatePersonne(PersonneDTO p)
         {
             MySqlCommand cmd = new MySqlCommand(queryUpdatePersonne, con);
             cmd.Parameters.AddWithValue("@idpersonne", p.Prenom);
@@ -148,7 +185,7 @@ namespace CentreSportifLib.dao
                 con.Close();
             }
         }
-        
+
         public List<PersonneDTO> getAllPersonnes()
         {
             MySqlCommand cmd = new MySqlCommand(queryReadAllPersonne, con);
@@ -228,9 +265,9 @@ namespace CentreSportifLib.dao
             return result;
         }
 
-        #endregion 
+        #endregion
 
-            //TODO CRUD message, seance
+        //TODO CRUD message, seance
 
         #region CRUD Adresse
 
@@ -264,13 +301,14 @@ namespace CentreSportifLib.dao
             }
             return result;
         }
-        public void updateAdresse() { } 
+        public void updateAdresse() { }
         public void deleteAdresse() { }
 
         #endregion
 
         #region CRUD Abonnement
-        public void addAbonnement(AbonnementDTO a) {
+        public void addAbonnement(AbonnementDTO a)
+        {
 
             MySqlCommand cmd = new MySqlCommand(queryCreateAbonnement, con);
             cmd.Parameters.AddWithValue("@idpersonne", a.IdPersonne);
@@ -278,7 +316,7 @@ namespace CentreSportifLib.dao
             cmd.Parameters.AddWithValue("@dateinscription", a.DateInscription);
             cmd.Parameters.AddWithValue("@datefin", a.DateFin);
             cmd.Parameters.AddWithValue("@prix", a.Prix);
-           
+
             try
             {
                 con.Open();
@@ -296,7 +334,7 @@ namespace CentreSportifLib.dao
 
         }
         public void getAbonnement() { }
-        public void updateAbonnement() { } 
+        public void updateAbonnement() { }
         public void deleteAbonnement() { }
         public List<AbonnementDTO> getAllAbonnements(PersonneDTO p)
         {
@@ -338,11 +376,11 @@ namespace CentreSportifLib.dao
 
         #endregion
         #region CRUD Enseigne
-        public void addEnseigne(PersonneDTO personneDTO, GroupeDTO groupeDTO) 
+        public void addEnseigne(PersonneDTO personneDTO, GroupeDTO groupeDTO)
         {
             MySqlCommand cmd = new MySqlCommand(queryCreateEnseigne, con);
             cmd.Parameters.AddWithValue("@idpersonne", personneDTO.IdPersonne);
-            cmd.Parameters.AddWithValue("@idgroupe", groupeDTO.IdGroupe);           
+            cmd.Parameters.AddWithValue("@idgroupe", groupeDTO.IdGroupe);
             try
             {
                 con.Open();
@@ -404,7 +442,8 @@ namespace CentreSportifLib.dao
         #endregion
 
         #region CRUD Paiement
-        public void addPaiement(PaiementDTO paiementDTO) {
+        public void addPaiement(PaiementDTO paiementDTO)
+        {
 
             MySqlCommand cmd = new MySqlCommand(queryCreatePaiement, con);
             cmd.Parameters.AddWithValue("@idpersonne", paiementDTO.IdPersonne);
@@ -425,7 +464,7 @@ namespace CentreSportifLib.dao
             {
                 con.Close();
             }
-        
+
         }
         public void getPaiement() { }
         public void updatePaiement() { }

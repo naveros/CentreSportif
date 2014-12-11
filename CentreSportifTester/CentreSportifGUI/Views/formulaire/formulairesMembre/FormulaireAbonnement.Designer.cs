@@ -118,7 +118,7 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Name = "FormulaireAbonnement";
-            this.Text = "FormulaireAbonnement";
+            this.Text = "Formulaire Abonnement";
             this.Load += new System.EventHandler(this.FormulaireAbonnement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

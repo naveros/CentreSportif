@@ -12,16 +12,11 @@ namespace CentreSportifGUI.Views.formulaire
 {
     public partial class FormulaireConnexion : Form
     {
-       public CentreSportifGUI CentreView ;//= new CentreSportifGUI();
+        public CentreSportifGUI CentreView;
         public FormulaireConnexion()
         {
             InitializeComponent();
-           // CentreView = (CentreSportifGUI) this.Owner;
-
-
-
         }
-
 
         private void button5_Click(object sender, EventArgs e) //Connexion manuel par ID ou par Code barre
         {
@@ -29,36 +24,36 @@ namespace CentreSportifGUI.Views.formulaire
             {
                 CentreView.connexionAccueil((PersonneDTO)comboBox1.SelectedItem);
             }
-            else if(textBox1.Text.Length > 0)//Connexion par idpersonne
+            else if (textBox1.Text.Length > 0)//Connexion par idpersonne
             {
-                
-                CentreView = (CentreSportifGUI) this.Owner;
-            
-                //CentreView.connexionAccueil(CentreView.DbCreateur.ServicePersonne.findById(tmp));
-               if (textBox1.TextLength == 0 && textBox2.TextLength == 0)
-               {
-                   CentreView.connexionAccueil((PersonneDTO)comboBox1.SelectedItem);
-               }
-               else
-               {
-                   try
-                   {
-                       PersonneDTO tmp = new PersonneDTO();
-                       String idMembre = textBox1.Text;
-                       tmp.IdPersonne = textBox1.Text;
-                       tmp = CentreView.DbCreateur.ServicePersonne.findById(tmp);
-                       CentreView.connexionAccueil(tmp);
-                   }
-                   catch (Exception ee)
-                   {
-                       Console.WriteLine("Erreur dans la requete get all personnes");
-                       Console.Write(ee.Message);
-                   }
-               }
+                try
+                {
+                    PersonneDTO tmp = new PersonneDTO();
+                    int idMembre = int.Parse(textBox1.Text);
+                    tmp = CentreView.DbCreateur.ServicePersonne.findById(idMembre);
+                    CentreView.connexionAccueil(tmp);
+                }
+                catch (Exception ee)
+                {
+                    Console.WriteLine("Erreur dans la connexion par ID");
+                    Console.Write(ee.Message);
+                }
             }
+
             else if (textBox2.Text.Length > 0)//Connexion par code barre
             {
-                //TODO
+                try
+                {
+                    PersonneDTO tmp = new PersonneDTO();
+                    String codebarre = textBox2.Text;
+                    tmp = CentreView.DbCreateur.ServicePersonne.findByCodeBarre(codebarre);
+                    CentreView.connexionAccueil(tmp);
+                }
+                catch (Exception ee)
+                {
+                    Console.WriteLine("Erreur dans la connexion par ID");
+                    Console.Write(ee.Message);
+                }
             }
         }
 
