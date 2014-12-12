@@ -23,9 +23,9 @@ namespace CentreSportifLib.service
         {
             return activiteDAO.getAll();
         }
-        public ActiviteDTO findById(ActiviteDTO a)
+        public ActiviteDTO findById(String idActivite)
         {
-            return activiteDAO.get(a);
+            return activiteDAO.get(idActivite);
         }
         public void modifier(ActiviteDTO a)
         {

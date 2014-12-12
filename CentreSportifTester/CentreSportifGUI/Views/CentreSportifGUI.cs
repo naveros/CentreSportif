@@ -23,6 +23,9 @@ namespace CentreSportifGUI
             RefreshTableMembre();
             RefreshTableActivite();
             RefreshTableGroupe();
+            labelMessageMembre.Text = "";
+            labelMessageActivite.Text = "";
+            labelMessageGroupe.Text = "";
         }
 
 
@@ -108,35 +111,6 @@ namespace CentreSportifGUI
             }
         }
 
-        private void button3_Click(object sender, EventArgs e) //new activite
-        {
-            ActiviteDTO a = new ActiviteDTO();
-            a.Nom = textBox2.Text;
-            a.Duree = textBox3.Text;
-            a.Description = richTextBox1.Text;
-            DbCreateur.ServiceActivite.creer(a);
-            MessageBox.Show("Activité crée avec succès.");
-            textBox4.Text = "";
-            textBox5.Text = "";
-            textBox6.Text = "";
-            RefreshTableActivite();
-        }
-
-        private void button4_Click(object sender, EventArgs e) //new groupe
-        {
-            GroupeDTO g = new GroupeDTO();
-            g.IdGroupe = textBox4.Text;
-            g.IdActivite = textBox5.Text;
-            g.NumeroGroupe = textBox6.Text;
-            Console.WriteLine("GROUPE : " +g.ToString());
-            DbCreateur.ServiceGroupe.creer(g);
-            Console.WriteLine(g.ToString());
-            MessageBox.Show("Groupe crée avec succès.");
-            textBox4.Text = "";
-            textBox5.Text = "";
-            textBox6.Text = "";
-            RefreshTableGroupe();
-        }
 
         private void button5_Click(object sender, EventArgs e) //Connexion d'un membre manuellement
         {
@@ -182,6 +156,62 @@ namespace CentreSportifGUI
             catch {
                 pictureBox1.Image = Image.FromFile("../photos/0.jpg");
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            labelMessageMembre.Text = "";
+            String idPersonne = textBox1.Text;
+            try
+            {
+
+
+                PersonneDTO personne = DbCreateur.ServicePersonne.findById(int.Parse(idPersonne));
+                MenuMembre form = new MenuMembre(personne);
+                form.Owner = this;
+                form.ShowDialog();
+            }
+            catch
+            {
+                labelMessageMembre.Text = "ID introuvable";
+            }
+
+        }
+
+
+        private void button3_Click(object sender, EventArgs e) //Chercher Activite par id
+        {
+            labelMessageActivite.Text = "";
+            String idActivite = textBox2.Text;
+            try
+            {
+                ActiviteDTO activite = DbCreateur.ServiceActivite.findById(idActivite);
+                MenuActivite form = new MenuActivite(activite);
+                form.Owner = this;
+                form.ShowDialog();
+            }
+            catch
+            {
+                labelMessageActivite.Text = "ID introuvable";
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)//Chercher Groupe par id
+        {
+            labelMessageGroupe.Text = "";
+            String idGroupe = textBox4.Text;
+            try
+            {
+                
+                GroupeDTO groupe = DbCreateur.ServiceGroupe.findById(idGroupe);
+                MenuGroupe form = new MenuGroupe(groupe);
+                form.Owner = this;
+                form.ShowDialog();
+            }
+            catch
+            {
+                labelMessageGroupe.Text = "ID introuvable";
             }
         }
     }

@@ -49,7 +49,7 @@ namespace CentreSportifLib.dao
             return id;
         }
 
-        public GroupeDTO get(GroupeDTO a)
+        public GroupeDTO get(String idGroupe)
         {
             MySqlCommand cmd = new MySqlCommand(queryRead, con);
             MySqlDataReader reader = null;
@@ -57,7 +57,7 @@ namespace CentreSportifLib.dao
             try
             {
                 con.Open();
-                cmd.Parameters.AddWithValue("@idgroupe", a.IdGroupe);
+                cmd.Parameters.AddWithValue("@idgroupe", idGroupe);
                 reader = cmd.ExecuteReader();
                 reader.Read();
                 result.IdGroupe = reader.GetString("idgroupe");
@@ -183,7 +183,7 @@ namespace CentreSportifLib.dao
         }
 #endregion
 
-        public List<SeanceDTO> getAllSeances(GroupeDTO g) 
+        public List<SeanceDTO> getAllSeancesByGroupId(String idGroupe) 
         {
             MySqlCommand cmd = new MySqlCommand(queryReadAllseances, con);
             MySqlDataReader reader = null;
@@ -191,7 +191,7 @@ namespace CentreSportifLib.dao
             try
             {
                 con.Open();
-                cmd.Parameters.AddWithValue("@idgroupe", g.IdGroupe);
+                cmd.Parameters.AddWithValue("@idgroupe", idGroupe);
                 reader = cmd.ExecuteReader();
 
                 while (reader.Read())

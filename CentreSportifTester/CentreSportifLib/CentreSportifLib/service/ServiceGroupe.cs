@@ -37,9 +37,9 @@ namespace CentreSportifLib.service
         {
             return groupeDAO.getAllByActivite(idActivite);
         }
-        public GroupeDTO findById(GroupeDTO groupeDTO)
+        public GroupeDTO findById(String idGroupe)
         {
-            return groupeDAO.get(groupeDTO);
+            return groupeDAO.get(idGroupe);
         }
 
         public void update(GroupeDTO p)
@@ -52,9 +52,9 @@ namespace CentreSportifLib.service
             this.groupeDAO.delete(p);
         }
 
-        public List<SeanceDTO> getAllSeances(GroupeDTO groupeDTO)
+        public List<SeanceDTO> getAllSeancesByGroupId(String idGroupe)
         {
-            return this.groupeDAO.getAllSeances(groupeDTO);
+            return this.groupeDAO.getAllSeancesByGroupId(idGroupe);
         }
     }
 }

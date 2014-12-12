@@ -23,18 +23,19 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             InitializeComponent();
             this.p = p;
 
- 
+
         }
-        private void init() {
+        private void init()
+        {
             try
-            {   
+            {
                 List<ActiviteDTO> activites = new List<ActiviteDTO>();
                 activites = CentreView.DbCreateur.ServiceActivite.getAll();
                 var bindingList = new BindingList<ActiviteDTO>(activites);
                 var source = new BindingSource(bindingList, null);
                 comboBox1.DataSource = source;
             }
-           catch (Exception ee)
+            catch (Exception ee)
             {
                 MessageBox.Show("Erreur dans la requete get all activitees");
                 MessageBox.Show(ee.Message);
@@ -43,12 +44,12 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-             activite =  (ActiviteDTO)comboBox1.SelectedItem;
+            activite = (ActiviteDTO)comboBox1.SelectedItem;
 
             String idActivite = activite.IdActivite;
-            
-       //    MessageBox.Show("Selected id : " +  activite.IdActivite + "\n" +
-         //                  "nom " + activite.Nom);
+
+            //    MessageBox.Show("Selected id : " +  activite.IdActivite + "\n" +
+            //                  "nom " + activite.Nom);
 
             comboBox2.Enabled = true;
             try
@@ -67,27 +68,36 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            //nom prof, jour,heur, heure-fin , nombre de seances. prix
             try
             {
-                 groupe = (GroupeDTO)comboBox2.SelectedItem;
+                this.dataGridView1.Rows.Clear();
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                groupe = (GroupeDTO)comboBox2.SelectedItem;
+
+                EnseigneDTO enseigneDTO = CentreView.DbCreateur.ServicePersonne.getEnseigneByGroupId(groupe.IdGroupe);
+                PersonneDTO professeur = CentreView.DbCreateur.ServicePersonne.findById(int.Parse(enseigneDTO.IdPersonne));
+
+
+                this.dataGridView1.Rows.Clear();
+                List<SeanceDTO> seances = CentreView.DbCreateur.ServiceGroupe.getAllSeancesByGroupId(groupe.IdGroupe);
+                SeanceDTO lastSeance = seances.Last();
+
+                textBox1.Text = "" + seances.Count;
+                textBox2.Text = lastSeance.DateDebut.Day + " / " + lastSeance.DateDebut.Month + " / " + lastSeance.DateDebut.Year ;
+                textBox3.Text = "" + groupe.Prix;
+
                 
-                 EnseigneDTO enseigneDTO = CentreView.DbCreateur.ServicePersonne.getEnseigneByGroupId(groupe.IdGroupe);
-                 PersonneDTO professeur = CentreView.DbCreateur.ServicePersonne.findById(int.Parse(enseigneDTO.IdPersonne));
-                 AbonnementDTO abonnement = CentreView.DbCreateur.ServicePersonne.getAbonnementByGroupId(groupe.IdGroupe);
+                seances.ForEach(delegate(SeanceDTO seance)
+                {
+                    int i = this.dataGridView1.Rows.Add();
+                    dataGridView1.Rows[i].Cells[0].Value = seance.DateDebut.DayOfWeek;
+                    dataGridView1.Rows[i].Cells[1].Value = seance.DateDebut.Hour + "h";
+                    dataGridView1.Rows[i].Cells[2].Value = seance.DateFin.Hour + "h";
+                    dataGridView1.Rows[i].Cells[3].Value = professeur.Prenom + " " + professeur.Nom;
 
-                 this.dataGridView1.Rows.Clear();
-                 CentreView.DbCreateur.ServiceGroupe.getAllSeances(groupe).ForEach(delegate(SeanceDTO seance) //getAllSeancesByGroupId???
-                 {
-                     int i = this.dataGridView1.Rows.Add();
-                     dataGridView1.Rows[i].Cells[0].Value = seance.DateDebut.Hour;
-                     dataGridView1.Rows[i].Cells[1].Value = seance.DateFin.Hour;
-                     dataGridView1.Rows[i].Cells[2].Value = professeur.Prenom + " " + professeur.Nom;
-                     dataGridView1.Rows[i].Cells[3].Value = "Le "+ abonnement.DateFin.Day + " du " + abonnement.DateFin.Month;
-                     dataGridView1.Rows[i].Cells[4].Value = abonnement.Prix;
-                 });
-
+                });
             }
             catch (Exception ee)
             {

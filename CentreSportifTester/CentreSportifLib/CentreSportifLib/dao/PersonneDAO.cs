@@ -32,13 +32,11 @@ namespace CentreSportifLib.dao
         const String queryCreateAbonnement = "INSERT INTO abonnement(idpersonne,idgroupe, dateinscription, datefin , prix)VALUES(@idpersonne, @idgroupe, @dateinscription, @datefin , @prix)";
 
         const String queryCreateEnseigne = "INSERT INTO enseigne(idpersonne, idgroupe)VALUES(@idpersonne, @idgroupe)";
-        const String queryReadEnseigneByGroupId = "SELECT * FROM enseigne WHERE idgroup=@idgroup";
-
-        const String queryReadAllSeanceByGroupId = "SELECT * FROM seance WHERE idgroup=@idgroup";
+        const String queryReadEnseigneByGroupId = "SELECT * FROM enseigne WHERE idgroupe=@idgroupe";
 
         const String queryReadAllPresences = "SELECT * FROM presence WHERE idpersonne = @idpersonne";
 
-        const String queryReadAllPaiements = "SELECT * FROM paiement WHERE idpersonzne = @idpersonne";
+        const String queryReadAllPaiements = "SELECT * FROM paiement WHERE idpersonne = @idpersonne";
         const String queryCreatePaiement = "INSERT INTO paiement(idpersonne,date,montant,mode)VALUES(@idpersonne, @date, @montant, @mode)";
 
         const String queryCreateAdresse = "INSERT INTO adresse(numero,rue,codepostal,ville,pays,idpersonne)VALUES(@numero,@rue,@codepostal,@ville,@pays,@idpersonne)";

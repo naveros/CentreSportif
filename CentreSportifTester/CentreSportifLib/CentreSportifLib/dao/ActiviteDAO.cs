@@ -41,7 +41,7 @@ namespace CentreSportifLib.dao
             }
         }
 
-        public ActiviteDTO get(ActiviteDTO a)
+        public ActiviteDTO get(String idActivite)
         {
             MySqlCommand cmd = new MySqlCommand(queryRead, con);
             MySqlDataReader reader = null;
@@ -49,10 +49,10 @@ namespace CentreSportifLib.dao
             try
             {
                 con.Open();
-                cmd.Parameters.AddWithValue("@idactivite", a.IdActivite);
+                cmd.Parameters.AddWithValue("@idactivite", idActivite);
                 reader = cmd.ExecuteReader();
                 reader.Read();
-                result.IdActivite = reader.GetString("idactivite");
+                result.IdActivite = idActivite;
                 result.Nom = reader.GetString("nom");
                 result.Duree = reader.GetString("duree");
                 result.Description = reader.GetString("description");
