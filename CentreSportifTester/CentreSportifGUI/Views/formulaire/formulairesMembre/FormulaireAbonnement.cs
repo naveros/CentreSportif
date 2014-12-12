@@ -16,6 +16,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
         ActiviteDTO activite;
         GroupeDTO groupe;
         List<SeanceDTO> seances;
+        SeanceDTO lastSeance;
         public CentreSportifGUI CentreView;
 
         public FormulaireAbonnement(PersonneDTO p)
@@ -74,6 +75,10 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                 textBox1.Text = "";
                 textBox2.Text = "";
                 textBox3.Text = "";
+                label6.Text = "Message : ";
+                seances = null;
+                lastSeance = null;
+                groupe = null;
                 groupe = (GroupeDTO)comboBox2.SelectedItem;
 
                 EnseigneDTO enseigneDTO = CentreView.DbCreateur.ServicePersonne.getEnseigneByGroupId(groupe.IdGroupe);
@@ -81,11 +86,11 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
 
                 this.dataGridView1.Rows.Clear();
-                List<SeanceDTO> seances = CentreView.DbCreateur.ServiceGroupe.getAllSeancesByGroupId(groupe.IdGroupe);
-                SeanceDTO lastSeance = seances.Last();
+                seances = CentreView.DbCreateur.ServiceGroupe.getAllSeancesByGroupId(groupe.IdGroupe);
+                lastSeance = seances.Last();
 
                 textBox1.Text = "" + seances.Count;
-                textBox2.Text = lastSeance.DateDebut.Day + " / " + lastSeance.DateDebut.Month + " / " + lastSeance.DateDebut.Year ;
+                textBox2.Text = lastSeance.DateFin.Day + " / " + lastSeance.DateFin.Month + " / " + lastSeance.DateFin.Year;
                 textBox3.Text = "" + groupe.Prix;
 
                 
@@ -101,6 +106,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             }
             catch (Exception ee)
             {
+                label6.Text += "Erreur dans le chargement des séances du groupe " + groupe.NumeroGroupe;
                 Console.WriteLine("Erreur dans la requete get all seances");
                 Console.Write(ee.Message);
             }
@@ -109,19 +115,22 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
         private void button1_Click(object sender, EventArgs e)//inscrire
         {
-            AbonnementDTO a = new AbonnementDTO();
+            label6.Text = "Message : ";
+            AbonnementDTO abonnement = new AbonnementDTO();
             try
             {
-                a.IdPersonne = p.IdPersonne;
-                a.IdGroupe = groupe.IdGroupe;
-                a.DateInscription = new DateTime();
-                a.Prix = (int.Parse(activite.Duree) * seances.Count);
-                a.DateFin = new DateTime().AddDays(100); //TODO . a changer pour la date de fin
+                abonnement.IdPersonne = p.IdPersonne;
+                abonnement.IdGroupe = groupe.IdGroupe;
+                abonnement.DateInscription = new DateTime();
+                abonnement.Prix = groupe.Prix;
+                abonnement.DateFin = lastSeance.DateFin; //TODO . a changer pour la date de fin
 
-                CentreView.DbCreateur.ServicePersonne.addAbonnement(a);
+                CentreView.DbCreateur.ServicePersonne.addAbonnement(abonnement);
+                label6.Text += "Ajout de l'abonnement réussit ! ";
             }
             catch (Exception ee)
             {
+                label6.Text += "Erreur dans l'ajout de l'abonnement. Le membre est-il déjà inscrit? ";
                 Console.WriteLine("Erreur dans la requete get create new abonnement");
                 Console.Write(ee.Message);
             }

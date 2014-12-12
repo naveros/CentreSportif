@@ -53,6 +53,9 @@ namespace CentreSportifGUI.Views.menu
                     owner.DbCreateur.ServiceGroupe.delete(g);
                     labelMessage.Text = "Le groupe à bien été supprimé";
                     owner.RefreshTableGroupe();
+                    button1.Enabled = false;
+                    button2.Enabled = false;
+                    button4.Enabled = false;
                 }
                 catch (Exception ee)
                 {

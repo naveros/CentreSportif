@@ -1,15 +1,22 @@
-﻿Voir les //TODO dans le code
-en gros, i manque
+﻿//TODO dans le code 
+
+-Formulaire Horaire pour membre
+
+-Fix formulaire payer, (centreView est null)
+-Fix formulaire groupe
+-Fix formulaire ajouté membre, (Adresse fail)
+
+-Finir d'implémenter professeur?
 
 
--Des formulaires pour membre. 
- 
--Dans new group, fait un Drop down menu pour choisir l'Activité et le prof
-
-+Finir d'implémenté le professeur et l'adresse du membre, et
-  -implémenter la photo pour une Personne
-
-Menu : 
-	Membre : voir horaire
-
+___________________________
+Optionnel
+___________________________
+-Historique visite membre
+-Historique visite centre
+-Message pour personne
++Historique membre ?
+	-visite
+	-paiements?
+	-Abonnements + détails?
 	

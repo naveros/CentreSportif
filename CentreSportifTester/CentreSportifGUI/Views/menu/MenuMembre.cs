@@ -14,8 +14,8 @@ namespace CentreSportifGUI.Views.menu
 {
     public partial class MenuMembre : Form
     {
-          PersonneDTO p;
-          CentreSportifGUI centreView;
+        PersonneDTO p;
+        CentreSportifGUI centreView;
         public MenuMembre(PersonneDTO p)
         {
             InitializeComponent();
@@ -23,7 +23,8 @@ namespace CentreSportifGUI.Views.menu
             remplir();
         }
 
-        private void remplir() {
+        private void remplir()
+        {
             labelNom.Text = p.Nom;
             labelPrenom.Text = p.Prenom;
             labelID.Text = p.IdPersonne;
@@ -58,32 +59,38 @@ namespace CentreSportifGUI.Views.menu
 
         private void button5_Click(object sender, EventArgs e)//supprimer
         {
-            
-
-             var confirmResult = MessageBox.Show("Êtes-vous certain de vouloir supprimer ce membre ? ",
-                                        "Confirmer la suppression d'un membre",
-                                      MessageBoxButtons.YesNo);
-             if (confirmResult == DialogResult.Yes)
-             {
-                 centreView = (CentreSportifGUI)this.Owner;
-                 try
-                 {
-                     centreView.DbCreateur.ServicePersonne.delete(p);
-                     labelMessage.Text = "Le membre à bien été supprimé";
-                     centreView.RefreshTableMembre();
-                 }
-                 catch (Exception ee)
-                 {
-                     Console.WriteLine("Erreur dans la requete delete personne");
-                     Console.Write(ee.Message);
-                 }
 
 
-             }
-             else
-             {
-                 // Does nothing
-             }
+            var confirmResult = MessageBox.Show("Êtes-vous certain de vouloir supprimer ce membre ? ",
+                                       "Confirmer la suppression d'un membre",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                centreView = (CentreSportifGUI)this.Owner;
+                try
+                {
+                    centreView.DbCreateur.ServicePersonne.delete(p);
+                    labelMessage.Text = "Le membre à bien été supprimé";
+                    centreView.RefreshTableMembre();
+                    button1.Enabled = false;
+                    button3.Enabled = false;
+                    button4.Enabled = false;
+                    button5.Enabled = false;
+                    button7.Enabled = false;
+                    button8.Enabled = false;
+                }
+                catch (Exception ee)
+                {
+                    Console.WriteLine("Erreur dans la requete delete personne");
+                    Console.Write(ee.Message);
+                }
+
+
+            }
+            else
+            {
+                // Does nothing
+            }
 
 
 

@@ -51,6 +51,8 @@ namespace CentreSportifGUI.Views.menu
                     CentreView.DbCreateur.ServiceActivite.delete(a);
                     labelMessage.Text = "L'activité à bien été supprimé";
                     CentreView.RefreshTableActivite();
+                    button1.Enabled = false;
+                    button2.Enabled = false;
                 }
                 catch (Exception ee)
                 {

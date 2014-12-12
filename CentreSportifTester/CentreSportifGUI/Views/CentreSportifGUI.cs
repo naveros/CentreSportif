@@ -39,7 +39,7 @@ namespace CentreSportifGUI
                 dataGridView1.Rows[i].Cells[0].Value = p.IdPersonne;
                 dataGridView1.Rows[i].Cells[1].Value = p.Prenom;
                 dataGridView1.Rows[i].Cells[2].Value = p.Nom;
-                dataGridView1.Rows[i].Cells[3].Value = p.Email;               
+                dataGridView1.Rows[i].Cells[3].Value = p.Email;
                 dataGridView1.Rows[i].Cells[4].Value = p.Sexe;
                 dataGridView1.Rows[i].Cells[5].Value = p.CodeBarre;
                 dataGridView1.Rows[i].Cells[6].Value = "Modifier";
@@ -69,7 +69,7 @@ namespace CentreSportifGUI
             DbCreateur.ServiceGroupe.getAll().ForEach(delegate(GroupeDTO g)
             {
                 int i = this.dataGridView3.Rows.Add();
-               // Console.WriteLine(g.ToString());
+                // Console.WriteLine(g.ToString());
                 dataGridView3.Rows[i].Cells[0].Value = g.IdGroupe;
                 dataGridView3.Rows[i].Cells[1].Value = g.IdActivite;
                 dataGridView3.Rows[i].Cells[2].Value = g.NumeroGroupe;
@@ -83,9 +83,12 @@ namespace CentreSportifGUI
             if (e.ColumnIndex == 6)
             {
                 PersonneDTO p = (PersonneDTO)dataGridView1.Rows[e.RowIndex].Cells[6].Tag;
-                MenuMembre form = new MenuMembre(p);
-                form.Owner = this;
-                form.ShowDialog();
+                if (p != null)
+                {
+                    MenuMembre form = new MenuMembre(p);
+                    form.Owner = this;
+                    form.ShowDialog();
+                }
             }
         }
 
@@ -94,9 +97,12 @@ namespace CentreSportifGUI
             if (e.ColumnIndex == 4)
             {
                 ActiviteDTO a = (ActiviteDTO)dataGridView2.Rows[e.RowIndex].Cells[4].Tag;
-                MenuActivite form = new MenuActivite(a);
-                form.Owner = this;
-                form.ShowDialog();
+                if (a != null)
+                {
+                    MenuActivite form = new MenuActivite(a);
+                    form.Owner = this;
+                    form.ShowDialog();
+                }
             }
         }
 
@@ -105,9 +111,12 @@ namespace CentreSportifGUI
             if (e.ColumnIndex == 3)
             {
                 GroupeDTO g = (GroupeDTO)dataGridView3.Rows[e.RowIndex].Cells[3].Tag;
-                MenuGroupe form = new MenuGroupe(g);
-                form.Owner = this;
-                form.ShowDialog();
+                if (g != null)
+                {
+                    MenuGroupe form = new MenuGroupe(g);
+                    form.Owner = this;
+                    form.ShowDialog();
+                }
             }
         }
 
@@ -153,7 +162,8 @@ namespace CentreSportifGUI
                 pictureBox1.Image = Image.FromFile("../photos/" + personneDTO.IdPersonne + ".jpg");
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             }
-            catch {
+            catch
+            {
                 pictureBox1.Image = Image.FromFile("../photos/0.jpg");
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             }
@@ -162,12 +172,11 @@ namespace CentreSportifGUI
         private void button2_Click(object sender, EventArgs e)
         {
             labelMessageMembre.Text = "";
-            String idPersonne = textBox1.Text;
+           
             try
             {
-
-
-                PersonneDTO personne = DbCreateur.ServicePersonne.findById(int.Parse(idPersonne));
+                int idPersonne = int.Parse(textBox1.Text);
+                PersonneDTO personne = DbCreateur.ServicePersonne.findById(idPersonne);
                 MenuMembre form = new MenuMembre(personne);
                 form.Owner = this;
                 form.ShowDialog();
@@ -203,7 +212,6 @@ namespace CentreSportifGUI
             String idGroupe = textBox4.Text;
             try
             {
-                
                 GroupeDTO groupe = DbCreateur.ServiceGroupe.findById(idGroupe);
                 MenuGroupe form = new MenuGroupe(groupe);
                 form.Owner = this;

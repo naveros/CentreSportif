@@ -12,10 +12,11 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 {
     public partial class FormulairePayer : Form
     {
-        public CentreSportifGUI CentreView;
+        
         PersonneDTO p;
         decimal montant;
         String mode;
+        public CentreSportifGUI CentreView;
         public FormulairePayer(decimal montant, String mode, PersonneDTO p)
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
         private void button1_Click(object sender, EventArgs e)//Payer
         {
+            this.label4.Text = "Message : ";
             try
             {
                 decimal paiement = decimal.Parse(this.textBox3.Text);
@@ -39,6 +41,8 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                     paiementDTO.IdPersonne = p.IdPersonne;
                     paiementDTO.Mode = mode;
                     paiementDTO.Montant = paiement;
+                            //    CentreView = (CentreSportifGUI)this.Owner;
+                    //List<ActiviteDTO> activites = CentreView.DbCreateur.ServiceActivite.getAll();
                     CentreView.DbCreateur.ServicePersonne.addPaiement(paiementDTO);
                     this.label4.Text = "Paiement effectué ! Merci";
                 }
@@ -51,6 +55,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             }
             catch (Exception ee)
             {
+                this.label4.Text = "Erreur lors du paiement";
                 Console.WriteLine("Erreur dans la requete add paiement");
                 Console.Write(ee.Message);
             }
@@ -65,7 +70,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
         private void FormulairePayer_Load(object sender, EventArgs e)
         {
-            CentreView = (CentreSportifGUI)this.Owner;
+            this.CentreView = (CentreSportifGUI)this.Owner;
         }
     }
 }

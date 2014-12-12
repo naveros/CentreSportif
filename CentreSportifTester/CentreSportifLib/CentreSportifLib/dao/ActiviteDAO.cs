@@ -57,10 +57,10 @@ namespace CentreSportifLib.dao
                 result.Duree = reader.GetString("duree");
                 result.Description = reader.GetString("description");
             }
-            catch (Exception e)
+          /*  catch (Exception e)
             {
                 Console.Write(e.Message);
-            }
+            }*/
             finally
             {
                 con.Close();

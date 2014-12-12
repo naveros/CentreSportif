@@ -55,6 +55,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.labelMessageMembre = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -69,6 +70,7 @@
             this.Column12 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.labelMessageActivite = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -80,6 +82,7 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.labelMessageGroupe = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -89,9 +92,6 @@
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.labelMessageMembre = new System.Windows.Forms.Label();
-            this.labelMessageActivite = new System.Windows.Forms.Label();
-            this.labelMessageGroupe = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
@@ -406,6 +406,15 @@
             this.splitContainer1.SplitterDistance = 121;
             this.splitContainer1.TabIndex = 0;
             // 
+            // labelMessageMembre
+            // 
+            this.labelMessageMembre.AutoSize = true;
+            this.labelMessageMembre.Location = new System.Drawing.Point(35, 72);
+            this.labelMessageMembre.Name = "labelMessageMembre";
+            this.labelMessageMembre.Size = new System.Drawing.Size(9, 13);
+            this.labelMessageMembre.TabIndex = 3;
+            this.labelMessageMembre.Text = "l";
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(685, 34);
@@ -536,9 +545,18 @@
             this.splitContainer2.SplitterDistance = 127;
             this.splitContainer2.TabIndex = 0;
             // 
+            // labelMessageActivite
+            // 
+            this.labelMessageActivite.AutoSize = true;
+            this.labelMessageActivite.Location = new System.Drawing.Point(36, 72);
+            this.labelMessageActivite.Name = "labelMessageActivite";
+            this.labelMessageActivite.Size = new System.Drawing.Size(9, 13);
+            this.labelMessageActivite.TabIndex = 8;
+            this.labelMessageActivite.Text = "l";
+            // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(710, 52);
+            this.button6.Location = new System.Drawing.Point(690, 37);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(214, 37);
             this.button6.TabIndex = 7;
@@ -548,7 +566,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(293, 31);
+            this.button3.Location = new System.Drawing.Point(303, 31);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(150, 23);
             this.button3.TabIndex = 4;
@@ -558,7 +576,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(106, 34);
+            this.textBox2.Location = new System.Drawing.Point(116, 34);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(181, 20);
             this.textBox2.TabIndex = 1;
@@ -566,11 +584,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 37);
+            this.label2.Location = new System.Drawing.Point(36, 37);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Nom";
+            this.label2.Text = "ID de l\'activité";
             // 
             // dataGridView2
             // 
@@ -635,6 +653,15 @@
             this.tabPage4.Text = "Groupe";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // labelMessageGroupe
+            // 
+            this.labelMessageGroupe.AutoSize = true;
+            this.labelMessageGroupe.Location = new System.Drawing.Point(43, 75);
+            this.labelMessageGroupe.Name = "labelMessageGroupe";
+            this.labelMessageGroupe.Size = new System.Drawing.Size(9, 13);
+            this.labelMessageGroupe.TabIndex = 9;
+            this.labelMessageGroupe.Text = "l";
+            // 
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(688, 42);
@@ -651,7 +678,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(128, 23);
             this.button4.TabIndex = 7;
-            this.button4.Text = "Ajouter";
+            this.button4.Text = "Chercher";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -665,11 +692,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(50, 42);
+            this.label5.Location = new System.Drawing.Point(43, 38);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 13);
+            this.label5.Size = new System.Drawing.Size(69, 13);
             this.label5.TabIndex = 1;
-            this.label5.Text = "IDGroupe";
+            this.label5.Text = "ID du groupe";
             // 
             // dataGridView3
             // 
@@ -679,9 +706,9 @@
             this.Column14,
             this.Column15,
             this.Column16});
-            this.dataGridView3.Location = new System.Drawing.Point(0, 130);
+            this.dataGridView3.Location = new System.Drawing.Point(0, 140);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(1098, 389);
+            this.dataGridView3.Size = new System.Drawing.Size(1098, 379);
             this.dataGridView3.TabIndex = 0;
             this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
@@ -706,33 +733,6 @@
             this.Column16.Name = "Column16";
             this.Column16.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // labelMessageMembre
-            // 
-            this.labelMessageMembre.AutoSize = true;
-            this.labelMessageMembre.Location = new System.Drawing.Point(35, 72);
-            this.labelMessageMembre.Name = "labelMessageMembre";
-            this.labelMessageMembre.Size = new System.Drawing.Size(9, 13);
-            this.labelMessageMembre.TabIndex = 3;
-            this.labelMessageMembre.Text = "l";
-            // 
-            // labelMessageActivite
-            // 
-            this.labelMessageActivite.AutoSize = true;
-            this.labelMessageActivite.Location = new System.Drawing.Point(53, 75);
-            this.labelMessageActivite.Name = "labelMessageActivite";
-            this.labelMessageActivite.Size = new System.Drawing.Size(9, 13);
-            this.labelMessageActivite.TabIndex = 8;
-            this.labelMessageActivite.Text = "l";
-            // 
-            // labelMessageGroupe
-            // 
-            this.labelMessageGroupe.AutoSize = true;
-            this.labelMessageGroupe.Location = new System.Drawing.Point(53, 77);
-            this.labelMessageGroupe.Name = "labelMessageGroupe";
-            this.labelMessageGroupe.Size = new System.Drawing.Size(9, 13);
-            this.labelMessageGroupe.TabIndex = 9;
-            this.labelMessageGroupe.Text = "l";
             // 
             // CentreSportifGUI
             // 

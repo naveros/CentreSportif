@@ -65,10 +65,10 @@ namespace CentreSportifLib.dao
                 result.NumeroGroupe = reader.GetString("numerogroupe");
                 result.Prix = reader.GetDecimal("prix");
             }
-            catch (Exception e)
+          /*  catch (Exception e)
             {
                 Console.Write(e.Message);
-            }
+            }*/
             finally
             {
                 con.Close();

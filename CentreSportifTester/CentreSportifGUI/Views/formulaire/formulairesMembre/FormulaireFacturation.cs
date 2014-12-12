@@ -12,30 +12,30 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 {
     public partial class FormulaireFacturation : Form
     {
-        PersonneDTO p;
+        PersonneDTO personne;
         decimal montant = 0;
         public CentreSportifGUI CentreView;
-        public FormulaireFacturation(PersonneDTO p)
+        public FormulaireFacturation(PersonneDTO personne)
         {
             InitializeComponent();
-            this.p = p;
+            this.personne = personne;
         }
 
         private void button6_Click(object sender, EventArgs e)//Payer comptant
         {
-            FormulairePayer form = new FormulairePayer(montant, "comptant", p);
+            FormulairePayer form = new FormulairePayer(montant, "comptant", personne);
             form.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)//Payer debit
         {
-            FormulairePayer form = new FormulairePayer(montant, "debit", p);
+            FormulairePayer form = new FormulairePayer(montant, "debit", personne);
             form.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)//Payer Credit
         {
-            FormulairePayer form = new FormulairePayer(montant, "Credit", p);
+            FormulairePayer form = new FormulairePayer(montant, "Credit", personne);
             form.ShowDialog();
         }
 
@@ -48,16 +48,16 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             decimal solde = 0;
             try
             {
-                List<AbonnementDTO> listAbo = CentreView.DbCreateur.ServicePersonne.getAllAbonnements(p);
+                List<AbonnementDTO> listAbo = CentreView.DbCreateur.ServicePersonne.getAllAbonnements(personne);
                 if (listAbo.Count > 0)
                 {
-                    listAbo.ForEach(delegate(AbonnementDTO abo)
+                    listAbo.ForEach(delegate(AbonnementDTO abonnement)
                     {
-                        solde += abo.Prix;
+                        solde += abonnement.Prix;
 
                     });
                 }
-                List<PaiementDTO> listPaiements = CentreView.DbCreateur.ServicePersonne.getAllPaiements(p);
+                List<PaiementDTO> listPaiements = CentreView.DbCreateur.ServicePersonne.getAllPaiements(personne);
                 if (listPaiements.Count > 0)
                 {
                     listPaiements.ForEach(delegate(PaiementDTO paiement)
@@ -83,7 +83,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
         }
 
         private void FormulaireFacturation_Load(object sender, EventArgs e)
-        {
+        { 
             CentreView = (CentreSportifGUI)this.Owner;
             montant = CalculerSolde();
             this.textBox1.Text = ""+montant;

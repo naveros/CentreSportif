@@ -137,10 +137,10 @@ namespace CentreSportifLib.dao
                 result.Role = reader.GetString("role");
                 //String r2 = reader[0].ToString();
             }
-            catch (Exception e)
+        /*    catch (Exception e)
             {
                 Console.Write(e.Message);
-            }
+            }*/
             finally
             {
                 con.Close();
@@ -369,10 +369,10 @@ namespace CentreSportifLib.dao
                 con.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception e)
+          /*  catch (Exception e)
             {
                 Console.Write(e.Message);
-            }
+            }*/
             finally
             {
                 con.Close();
