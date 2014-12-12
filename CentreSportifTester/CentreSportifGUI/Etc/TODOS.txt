@@ -2,7 +2,6 @@
 
 -Formulaire Horaire pour membre
 
--Fix formulaire payer, (centreView est null)
 -Fix formulaire groupe
 -Fix formulaire ajouté membre, (Adresse fail)
 

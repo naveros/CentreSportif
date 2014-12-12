@@ -205,6 +205,7 @@
             this.Controls.Add(this.button1);
             this.Name = "MenuMembre";
             this.Text = "Menu Membre";
+            this.Load += new System.EventHandler(this.MenuMembre_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

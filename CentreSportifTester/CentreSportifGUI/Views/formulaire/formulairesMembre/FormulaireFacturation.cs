@@ -13,7 +13,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
     public partial class FormulaireFacturation : Form
     {
         PersonneDTO personne;
-        decimal montant = 0;
+        decimal montantDue = 0;
         public CentreSportifGUI CentreView;
         public FormulaireFacturation(PersonneDTO personne)
         {
@@ -23,20 +23,29 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
         private void button6_Click(object sender, EventArgs e)//Payer comptant
         {
-            FormulairePayer form = new FormulairePayer(montant, "comptant", personne);
+            FormulairePayer form = new FormulairePayer(montantDue, "comptant", personne);
+            form.Owner = this.Owner;
+            this.Dispose();
             form.ShowDialog();
+           
         }
 
         private void button4_Click(object sender, EventArgs e)//Payer debit
         {
-            FormulairePayer form = new FormulairePayer(montant, "debit", personne);
+            FormulairePayer form = new FormulairePayer(montantDue, "debit", personne);
+            form.Owner = this.Owner;
+            this.Dispose();
             form.ShowDialog();
+           
         }
 
         private void button1_Click(object sender, EventArgs e)//Payer Credit
         {
-            FormulairePayer form = new FormulairePayer(montant, "Credit", personne);
+            FormulairePayer form = new FormulairePayer(montantDue, "Credit", personne);
+            form.Owner = this.Owner;
+            this.Dispose();
             form.ShowDialog();
+            
         }
 
         private void button3_Click(object sender, EventArgs e) //Annuler
@@ -85,8 +94,8 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
         private void FormulaireFacturation_Load(object sender, EventArgs e)
         { 
             CentreView = (CentreSportifGUI)this.Owner;
-            montant = CalculerSolde();
-            this.textBox1.Text = ""+montant;
+            montantDue = CalculerSolde();
+            this.textBox1.Text = ""+montantDue;
         }
     }
 }

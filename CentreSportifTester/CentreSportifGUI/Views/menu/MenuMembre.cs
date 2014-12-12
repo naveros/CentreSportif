@@ -15,7 +15,7 @@ namespace CentreSportifGUI.Views.menu
     public partial class MenuMembre : Form
     {
         PersonneDTO p;
-        CentreSportifGUI centreView;
+        public CentreSportifGUI CentreView;
         public MenuMembre(PersonneDTO p)
         {
             InitializeComponent();
@@ -45,9 +45,9 @@ namespace CentreSportifGUI.Views.menu
 
         private void button3_Click(object sender, EventArgs e)//facturation
         {
-            FormulaireFacturation form = new FormulaireFacturation(p);
-            form.Owner = this.Owner;
-            form.ShowDialog();
+            FormulaireFacturation formFacturation = new FormulaireFacturation(p);
+            formFacturation.Owner = this.Owner;
+            formFacturation.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)//modifier
@@ -66,12 +66,11 @@ namespace CentreSportifGUI.Views.menu
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                centreView = (CentreSportifGUI)this.Owner;
                 try
                 {
-                    centreView.DbCreateur.ServicePersonne.delete(p);
+                    CentreView.DbCreateur.ServicePersonne.delete(p);
                     labelMessage.Text = "Le membre à bien été supprimé";
-                    centreView.RefreshTableMembre();
+                    CentreView.RefreshTableMembre();
                     button1.Enabled = false;
                     button3.Enabled = false;
                     button4.Enabled = false;
@@ -106,6 +105,11 @@ namespace CentreSportifGUI.Views.menu
             FormulaireRole formRole = new FormulaireRole(p);
             formRole.Owner = this.Owner;
             formRole.ShowDialog();
+        }
+
+        private void MenuMembre_Load(object sender, EventArgs e)
+        {
+            CentreView = (CentreSportifGUI)this.Owner;
         }
 
 

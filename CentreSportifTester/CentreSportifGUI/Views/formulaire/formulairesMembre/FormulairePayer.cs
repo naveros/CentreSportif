@@ -14,16 +14,16 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
     {
         
         PersonneDTO p;
-        decimal montant;
+        decimal montantDue;
         String mode;
         public CentreSportifGUI CentreView;
-        public FormulairePayer(decimal montant, String mode, PersonneDTO p)
+        public FormulairePayer(decimal montantDue, String mode, PersonneDTO p)
         {
             InitializeComponent();
             this.p = p;
-            this.montant = montant;
+            this.montantDue = montantDue;
             this.mode = mode;
-            this.textBox1.Text = ""+montant;
+            this.textBox1.Text = ""+montantDue;
             this.textBox2.Text = mode;
         }
         
@@ -34,17 +34,16 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             try
             {
                 decimal paiement = decimal.Parse(this.textBox3.Text);
-                if (paiement < montant)
+                if (paiement < montantDue)
                 {
                     PaiementDTO paiementDTO = new PaiementDTO();
-                    paiementDTO.Date = new DateTime();
                     paiementDTO.IdPersonne = p.IdPersonne;
                     paiementDTO.Mode = mode;
                     paiementDTO.Montant = paiement;
-                            //    CentreView = (CentreSportifGUI)this.Owner;
-                    //List<ActiviteDTO> activites = CentreView.DbCreateur.ServiceActivite.getAll();
                     CentreView.DbCreateur.ServicePersonne.addPaiement(paiementDTO);
-                    this.label4.Text = "Paiement effectué ! Merci";
+                    this.textBox1.Text = ""+ (montantDue - paiementDTO.Montant);
+                    this.label4.Text = "Paiement de "+paiementDTO.Montant+"$  effectué ! Merci";
+
                 }
                 else {
                     this.label4.Text = "Veiller entrer une plus petit montant que celui dût. ";
@@ -70,7 +69,8 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
         private void FormulairePayer_Load(object sender, EventArgs e)
         {
-            this.CentreView = (CentreSportifGUI)this.Owner;
+            //////////////////////////
+            CentreView = (CentreSportifGUI)this.Owner;
         }
     }
 }

@@ -8,8 +8,6 @@ namespace CentreSportifLib.dao
 {
     public class GroupeDAO
     {
-        //TODO : Tests unitaires,, String vs Int pour les champs?? 
-
         MySqlConnection con;
         const String queryCreate = "INSERT INTO groupe (idactivite, numerogroupe, prix) VALUES (@idactivite, @numerogroupe, @prix)";
         const String queryReadAll = "SELECT * FROM groupe";
@@ -28,7 +26,6 @@ namespace CentreSportifLib.dao
         {
             String id = "null";
             MySqlCommand cmd = new MySqlCommand(queryCreate, con);
-        //    cmd.Parameters.AddWithValue("@idgroupe", g.IdGroupe);
             cmd.Parameters.AddWithValue("@idactivite", g.IdActivite);
             cmd.Parameters.AddWithValue("@numerogroupe", g.NumeroGroupe);
             cmd.Parameters.AddWithValue("@prix", g.Prix);

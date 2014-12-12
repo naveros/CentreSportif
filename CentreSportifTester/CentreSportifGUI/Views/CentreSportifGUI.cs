@@ -149,7 +149,7 @@ namespace CentreSportifGUI
             form.ShowDialog();
         }
 
-        public void connexionAccueil(PersonneDTO personneDTO)
+        public void connexionAccueil(PersonneDTO personneDTO) //Connexion Accueil
         {
             textBoxID.Text = personneDTO.IdPersonne;
             textBoxEmail.Text = personneDTO.Email;
@@ -169,7 +169,7 @@ namespace CentreSportifGUI
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //Chercher Membre par id
         {
             labelMessageMembre.Text = "";
            

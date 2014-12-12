@@ -32,12 +32,12 @@ namespace CentreSportifLib.dao
         const String queryCreateAbonnement = "INSERT INTO abonnement(idpersonne,idgroupe, dateinscription, datefin , prix)VALUES(@idpersonne, @idgroupe, @dateinscription, @datefin , @prix)";
 
         const String queryCreateEnseigne = "INSERT INTO enseigne(idpersonne, idgroupe)VALUES(@idpersonne, @idgroupe)";
-        const String queryReadEnseigneByGroupId = "SELECT * FROM enseigne WHERE idgroupe=@idgroupe";
+        const String queryReadEnseigneByGroupId = "SELECT * FROM enseigne WHERE idgroupe = @idgroupe";
 
         const String queryReadAllPresences = "SELECT * FROM presence WHERE idpersonne = @idpersonne";
 
         const String queryReadAllPaiements = "SELECT * FROM paiement WHERE idpersonne = @idpersonne";
-        const String queryCreatePaiement = "INSERT INTO paiement(idpersonne,date,montant,mode)VALUES(@idpersonne, @date, @montant, @mode)";
+        const String queryCreatePaiement = "INSERT INTO paiement(idpersonne,date,montant,mode)VALUES(@idpersonne, NOW(), @montant, @mode)";
 
         const String queryCreateAdresse = "INSERT INTO adresse(numero,rue,codepostal,ville,pays,idpersonne)VALUES(@numero,@rue,@codepostal,@ville,@pays,@idpersonne)";
 
@@ -447,15 +447,14 @@ namespace CentreSportifLib.dao
         {
 
             MySqlCommand cmd = new MySqlCommand(queryReadEnseigneByGroupId, con);
+            cmd.Parameters.AddWithValue("@idgroupe", idGroupe);
             MySqlDataReader reader = null;
             EnseigneDTO result = new EnseigneDTO();
             try
             {
                 con.Open();
-                cmd.Parameters.AddWithValue("@idgroupe", idGroupe);
-
                 reader = cmd.ExecuteReader();
-                reader.Read();
+                reader.Read(); //While? 
                 result.IdEnseigne = reader.GetString("idenseigne");
                 result.IdPersonne = reader.GetString("idpersonne");
                 result.IdGroupe = idGroupe;
@@ -522,7 +521,6 @@ namespace CentreSportifLib.dao
 
             MySqlCommand cmd = new MySqlCommand(queryCreatePaiement, con);
             cmd.Parameters.AddWithValue("@idpersonne", paiementDTO.IdPersonne);
-            cmd.Parameters.AddWithValue("@date", paiementDTO.Date);
             cmd.Parameters.AddWithValue("@montant", paiementDTO.Montant);
             cmd.Parameters.AddWithValue("@mode", paiementDTO.Mode);
 
