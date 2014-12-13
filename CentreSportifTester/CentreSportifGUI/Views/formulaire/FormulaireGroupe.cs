@@ -80,6 +80,7 @@ namespace CentreSportifGUI.Views.formulaire
                         newSeance.IdGroupe = idgroup;
                         newSeance.DateDebut = nextSeanceDebut;
                         newSeance.DateFin = nextSeanceFin;
+                        CentreView.DbCreateur.ServiceGroupe.addSeance(newSeance);
                         nextSeanceDebut.AddDays(7);
                         nextSeanceFin.AddDays(7);
                     }
@@ -133,6 +134,16 @@ namespace CentreSportifGUI.Views.formulaire
                 dateTimePicker1.CustomFormat = "hh";
                 dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             }
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

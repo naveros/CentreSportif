@@ -52,6 +52,11 @@ namespace CentreSportifLib.service
             this.groupeDAO.delete(p);
         }
 
+        public void addSeance(SeanceDTO seanceDTO)
+        {
+            groupeDAO.addSeance(seanceDTO);
+        }
+
         public List<SeanceDTO> getAllSeancesByGroupId(String idGroupe)
         {
             return this.groupeDAO.getAllSeancesByGroupId(idGroupe);
