@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using CentreSportifLib.dto;
 namespace CentreSportifGUI.Views.formulaire
 {
-    public enum Jour 
+    public enum Jour
     {
         Dimanche = 0,
         Lundi = 1,
@@ -17,7 +17,7 @@ namespace CentreSportifGUI.Views.formulaire
         Mercredi = 3,
         Jeudi = 4,
         Vendredi = 5,
-        Samedi = 6        
+        Samedi = 6
     }
     public partial class FormulaireGroupe : Form
     {
@@ -53,20 +53,36 @@ namespace CentreSportifGUI.Views.formulaire
                 g.IdGroupe = textBox1.Text;
                 g.IdActivite = activite.IdActivite;
                 g.NumeroGroupe = textBox3.Text;
-                
-               // add prof
+                g.Prix = decimal.Parse(textBox4.Text);
+
+                // add prof
                 //Créee les seances
                 DateTime tomorrow = DateTime.Today.AddDays(1);
                 // The (... + 7) % 7 ensures we end up with a value in the range [0, 6]
-                int daysUntilTuesday = ((int)DayOfWeek.Tuesday - (int)tomorrow.DayOfWeek + 7) % 7;
-                DateTime nextTuesday = tomorrow.AddDays(daysUntilTuesday);
+
                 if (this.mode.Equals("Créer"))
                 {
-
                     String idgroup = CentreView.DbCreateur.ServiceGroupe.creer(g);
+                    // add prof
                     EnseigneDTO enseigne = new EnseigneDTO();
                     enseigne.IdGroupe = idgroup;
-                    //CentreView.DbCreateur.ServicePersonne.
+                    enseigne.IdPersonne = prof.IdPersonne;
+                    CentreView.DbCreateur.ServicePersonne.addEnseigne(enseigne);
+                    //Crée les seance
+                    int daysUntilNextSeance = ((int)dateTimePicker1.Value.DayOfWeek - (int)tomorrow.DayOfWeek + 7) % 7;
+                    DateTime nextDay = tomorrow.AddDays(daysUntilNextSeance);
+                    DateTime nextSeanceDebut = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, dateTimePicker1.Value.Hour, 0, 0);
+                    DateTime nextSeanceFin = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, dateTimePicker1.Value.Hour + int.Parse(activite.Duree), 0, 0);
+                    int nb = int.Parse(textBox2.Text);
+                    for (int i = 0; i < nb; i++)
+                    {
+                        SeanceDTO newSeance = new SeanceDTO();
+                        newSeance.IdGroupe = idgroup;
+                        newSeance.DateDebut = nextSeanceDebut;
+                        newSeance.DateFin = nextSeanceFin;
+                        nextSeanceDebut.AddDays(7);
+                        nextSeanceFin.AddDays(7);
+                    }
                     label4.Text += "Le groupe " + g.NumeroGroupe + " a bien été crée";
                     CentreView.RefreshTableGroupe();
                 }
@@ -86,7 +102,7 @@ namespace CentreSportifGUI.Views.formulaire
         private void button2_Click(object sender, EventArgs e)
         {
             this.Dispose();
-            
+
         }
 
         private void remplir()
@@ -98,7 +114,7 @@ namespace CentreSportifGUI.Views.formulaire
         private void FormulaireGroupe_Load(object sender, EventArgs e)
         {
             CentreView = (CentreSportifGUI)this.Owner;
-            if (this.mode.Equals("Créer")) 
+            if (this.mode.Equals("Créer"))
             {
                 //Remplir le comboBox des activité
                 List<ActiviteDTO> activites = CentreView.DbCreateur.ServiceActivite.getAll();

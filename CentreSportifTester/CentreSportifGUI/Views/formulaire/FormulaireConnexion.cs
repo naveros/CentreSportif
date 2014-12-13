@@ -28,26 +28,31 @@ namespace CentreSportifGUI.Views.formulaire
             {
                 try
                 {
-                    PersonneDTO tmp = new PersonneDTO();
+                    PersonneDTO personneDTO = new PersonneDTO();
                     int idMembre = int.Parse(textBox1.Text);
-                    tmp = CentreView.DbCreateur.ServicePersonne.findById(idMembre);
-                    CentreView.connexionAccueil(tmp);
+                    personneDTO = CentreView.DbCreateur.ServicePersonne.findById(idMembre);
+                    this.Dispose();
+                    CentreView.connexionAccueil(personneDTO);
+
+
                 }
                 catch (Exception ee)
                 {
                     Console.WriteLine("Erreur dans la connexion par ID");
                     Console.Write(ee.Message);
                 }
+
             }
 
             else if (textBox2.Text.Length > 0)//Connexion par code barre
             {
                 try
                 {
-                    PersonneDTO tmp = new PersonneDTO();
+                    PersonneDTO personneDTO = new PersonneDTO();
                     String codebarre = textBox2.Text;
-                    tmp = CentreView.DbCreateur.ServicePersonne.findByCodeBarre(codebarre);
-                    CentreView.connexionAccueil(tmp);
+                    personneDTO = CentreView.DbCreateur.ServicePersonne.findByCodeBarre(codebarre);
+                    this.Dispose();
+                    CentreView.connexionAccueil(personneDTO);
                 }
                 catch (Exception ee)
                 {

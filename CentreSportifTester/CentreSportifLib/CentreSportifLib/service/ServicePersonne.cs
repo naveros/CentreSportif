@@ -17,7 +17,7 @@ namespace CentreSportifLib.service
         #region personneDTO
         public String register(PersonneDTO personneDTO)
         {
-           return personneDAO.addPersonne(personneDTO);
+            return personneDAO.addPersonne(personneDTO);
         }
         public List<PersonneDTO> getAll()
         {
@@ -35,11 +35,11 @@ namespace CentreSportifLib.service
         {
             return personneDAO.getAllByRole("prof");
         }
-        public EnseigneDTO getEnseigneByGroupId(String id) 
+        public EnseigneDTO getEnseigneByGroupId(String id)
         {
             return personneDAO.getEnseigneByGroupId(id);
         }
-        
+
         public PersonneDTO findById(int idPersonne)
         {
             return personneDAO.getPersonne(idPersonne);
@@ -67,7 +67,8 @@ namespace CentreSportifLib.service
         {
             this.personneDAO.addAdresse(adresseDTO);
         }
-        public void updateAdresse(AdresseDTO adresseDTO) {
+        public void updateAdresse(AdresseDTO adresseDTO)
+        {
             this.personneDAO.updateAdresse(adresseDTO);
         }
         #endregion
@@ -95,6 +96,12 @@ namespace CentreSportifLib.service
         public void addPaiement(PaiementDTO paiementDTO)
         {
             this.personneDAO.addPaiement(paiementDTO);
+        }
+        #endregion
+        #region Service Enseigne
+        public void addEnseigne(EnseigneDTO enseigne)
+        {
+            personneDAO.addEnseigne(enseigne);
         }
         #endregion
         //TODO get horaire

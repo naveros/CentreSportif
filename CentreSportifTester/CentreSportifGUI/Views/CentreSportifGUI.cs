@@ -16,6 +16,7 @@ namespace CentreSportifGUI
     public partial class CentreSportifGUI : Form
     {
         public CentreSportifCreateur DbCreateur;
+        PersonneDTO connectedPersonneDTO;
         public CentreSportifGUI()
         {
             InitializeComponent();
@@ -149,30 +150,12 @@ namespace CentreSportifGUI
             form.ShowDialog();
         }
 
-        public void connexionAccueil(PersonneDTO personneDTO) //Connexion Accueil
-        {
-            textBoxID.Text = personneDTO.IdPersonne;
-            textBoxEmail.Text = personneDTO.Email;
-            textBoxNom.Text = personneDTO.Nom;
-            textBoxPrenom.Text = personneDTO.Prenom;
-            textBoxRole.Text = personneDTO.Role;
-            textBoxCodeBarre.Text = personneDTO.CodeBarre;
-            try
-            {
-                pictureBox1.Image = Image.FromFile("../photos/" + personneDTO.IdPersonne + ".jpg");
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            }
-            catch
-            {
-                pictureBox1.Image = Image.FromFile("../photos/0.jpg");
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            }
-        }
+
 
         private void button2_Click(object sender, EventArgs e) //Chercher Membre par id
         {
             labelMessageMembre.Text = "";
-           
+
             try
             {
                 int idPersonne = int.Parse(textBox1.Text);
@@ -222,5 +205,46 @@ namespace CentreSportifGUI
                 labelMessageGroupe.Text = "ID introuvable";
             }
         }
+
+        private void button9_Click(object sender, EventArgs e)//Menu membre
+        {
+            MenuMembre form = new MenuMembre(connectedPersonneDTO);
+            form.Owner = this;
+            form.ShowDialog();
+        }
+
+        private void button8_Click(object sender, EventArgs e)//Ajouter message
+        {
+
+        }
+
+        public void connexionAccueil(PersonneDTO personneDTO) //Connexion Accueil
+        {
+            textBoxID.Text = personneDTO.IdPersonne;
+            textBoxEmail.Text = personneDTO.Email;
+            textBoxNom.Text = personneDTO.Nom;
+            textBoxPrenom.Text = personneDTO.Prenom;
+            textBoxRole.Text = personneDTO.Role;
+            textBoxCodeBarre.Text = personneDTO.CodeBarre;
+            try
+            {
+                pictureBox1.Image = Image.FromFile("../photos/" + personneDTO.IdPersonne + ".jpg");
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            catch
+            {
+                pictureBox1.Image = Image.FromFile("../photos/0.jpg");
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+
+            connectedPersonneDTO = personneDTO;
+            button8.Visible = true;
+            button9.Visible = true;
+            listBox3.Items.Add(DateTime.Now.ToShortTimeString() + " || ID: " + personneDTO.IdPersonne + " | Prenom: " + personneDTO.Prenom + " | Nom:"
+                + personneDTO.Nom + " | Role : " + personneDTO.Role);
+
+
+        }
+
     }
 }

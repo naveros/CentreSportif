@@ -43,6 +43,9 @@ namespace CentreSportifLib.dao
 
         const String queryUpdateAdresse = "UPDATE adresse SET numero = @numero, rue = @rue, codepostal = @codepostal, ville = @ville, pays = @pays WHERE idpersonne=@idpersonne;";
 
+        const String queryCreateMessage = "INSERT INTO paiement(idpersonne,contenu,datecreation)VALUES(@idpersonne,@contenu, NOW())";
+        const String queryReadAllMessages = "SELECT * FROM message WHERE idpersonne = @idpersonne";
+        const String queryDeleteMessage = "DELETE FROM message WHERE idpersonne = @idpersonne";
         #endregion
 
         public PersonneDAO(MySqlConnection connexion)
@@ -63,7 +66,7 @@ namespace CentreSportifLib.dao
             cmd.Parameters.AddWithValue("@email", p.Email);
             cmd.Parameters.AddWithValue("@motdepasse", p.MotDePasse);
             cmd.Parameters.AddWithValue("@codebarre", p.CodeBarre);
-            cmd.Parameters.AddWithValue("@role", p.Role);  
+            cmd.Parameters.AddWithValue("@role", p.Role);
             try
             {
                 con.Open();
@@ -137,10 +140,10 @@ namespace CentreSportifLib.dao
                 result.Role = reader.GetString("role");
                 //String r2 = reader[0].ToString();
             }
-        /*    catch (Exception e)
-            {
-                Console.Write(e.Message);
-            }*/
+            /*    catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }*/
             finally
             {
                 con.Close();
@@ -277,7 +280,8 @@ namespace CentreSportifLib.dao
 
         #region CRUD Adresse
 
-        public void addAdresse(AdresseDTO adresseDTO) {
+        public void addAdresse(AdresseDTO adresseDTO)
+        {
             MySqlCommand cmd = new MySqlCommand(queryCreateAdresse, con);
             cmd.Parameters.AddWithValue("@numero", adresseDTO.Numero);
             cmd.Parameters.AddWithValue("@rue", adresseDTO.Rue);
@@ -328,7 +332,8 @@ namespace CentreSportifLib.dao
             }
             return result;
         }
-        public void updateAdresse(AdresseDTO adresseDTO) {
+        public void updateAdresse(AdresseDTO adresseDTO)
+        {
             MySqlCommand cmd = new MySqlCommand(queryUpdateAdresse, con);
             cmd.Parameters.AddWithValue("@numero", adresseDTO.Numero);
             cmd.Parameters.AddWithValue("@rue", adresseDTO.Rue);
@@ -369,18 +374,19 @@ namespace CentreSportifLib.dao
                 con.Open();
                 cmd.ExecuteNonQuery();
             }
-          /*  catch (Exception e)
-            {
-                Console.Write(e.Message);
-            }*/
+            /*  catch (Exception e)
+              {
+                  Console.Write(e.Message);
+              }*/
             finally
             {
                 con.Close();
             }
         }
         public void getAbonnement() { }
-        public void updateAbonnement() { 
-        
+        public void updateAbonnement()
+        {
+
         }
         public void deleteAbonnement() { }
         public List<AbonnementDTO> getAllAbonnements(PersonneDTO p)
@@ -424,11 +430,11 @@ namespace CentreSportifLib.dao
         #endregion
 
         #region CRUD Enseigne
-        public void addEnseigne(PersonneDTO personneDTO, GroupeDTO groupeDTO)
+        public void addEnseigne(EnseigneDTO enseigne)
         {
             MySqlCommand cmd = new MySqlCommand(queryCreateEnseigne, con);
-            cmd.Parameters.AddWithValue("@idpersonne", personneDTO.IdPersonne);
-            cmd.Parameters.AddWithValue("@idgroupe", groupeDTO.IdGroupe);
+            cmd.Parameters.AddWithValue("@idpersonne", enseigne.IdPersonne);
+            cmd.Parameters.AddWithValue("@idgroupe", enseigne.IdGroupe);
             try
             {
                 con.Open();
@@ -581,6 +587,89 @@ namespace CentreSportifLib.dao
         }
 
         #endregion
+
+        #region Message
+
+        public void addMessage(MessageDTO messageDTO)
+        {
+            MySqlCommand cmd = new MySqlCommand(queryCreateMessage, con);
+            cmd.Parameters.AddWithValue("@idpersonne", messageDTO.IdPersonne);
+            cmd.Parameters.AddWithValue("@contenu", messageDTO.Contenu);
+            cmd.Parameters.AddWithValue("@datecreation", messageDTO.DateCreation);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void getMessage() { }
+        public void updateMessage() { }
+        public void deleteMessage(PersonneDTO p)
+        {
+            MySqlCommand cmd = new MySqlCommand(queryDeleteMessage, con);
+            cmd.Parameters.AddWithValue("@idpersonne", p.IdPersonne); ;
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public List<MessageDTO> getAllMessages(PersonneDTO personneDTO)
+        {
+
+
+            MySqlCommand cmd = new MySqlCommand(queryReadAllMessages, con);
+            cmd.Parameters.AddWithValue("@idpersonne", personneDTO.IdPersonne);
+            MySqlDataReader reader = null;
+            List<MessageDTO> result = new List<MessageDTO>();
+
+            try
+            {
+                con.Open();
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    MessageDTO MessageDTO = new MessageDTO();
+
+
+                    MessageDTO.IdPersonne = reader.GetString("idpersonne");
+                    MessageDTO.Contenu = reader.GetString("contenu");
+                    MessageDTO.DateCreation = reader.GetDateTime("datecreation");
+                    result.Add(MessageDTO);
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erreur dans la requete getAllPaiements");
+                Console.Write(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return result;
+        }
+
+        #endregion
+
 
     }
 }
