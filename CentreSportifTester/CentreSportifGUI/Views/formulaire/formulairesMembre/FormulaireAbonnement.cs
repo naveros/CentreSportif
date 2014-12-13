@@ -76,9 +76,10 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                 textBox2.Text = "";
                 textBox3.Text = "";
                 label6.Text = "Message : ";
+                groupe = null;
                 seances = null;
                 lastSeance = null;
-                groupe = null;
+                
                 groupe = (GroupeDTO)comboBox2.SelectedItem;
 
                 EnseigneDTO enseigneDTO = CentreView.DbCreateur.ServicePersonne.getEnseigneByGroupId(groupe.IdGroupe);

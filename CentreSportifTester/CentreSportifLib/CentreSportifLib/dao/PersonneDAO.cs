@@ -43,7 +43,7 @@ namespace CentreSportifLib.dao
 
         const String queryUpdateAdresse = "UPDATE adresse SET numero = @numero, rue = @rue, codepostal = @codepostal, ville = @ville, pays = @pays WHERE idpersonne=@idpersonne;";
 
-        const String queryCreateMessage = "INSERT INTO paiement(idpersonne,contenu,datecreation)VALUES(@idpersonne,@contenu, NOW())";
+        const String queryCreateMessage = "INSERT INTO message (idpersonne,contenu,datecreation)VALUES(@idpersonne,@contenu, NOW())";
         const String queryReadAllMessages = "SELECT * FROM message WHERE idpersonne = @idpersonne";
         const String queryDeleteMessage = "DELETE FROM message WHERE idpersonne = @idpersonne";
         #endregion
@@ -588,14 +588,13 @@ namespace CentreSportifLib.dao
 
         #endregion
 
-        #region Message
+        #region CRUD Message
 
         public void addMessage(MessageDTO messageDTO)
         {
             MySqlCommand cmd = new MySqlCommand(queryCreateMessage, con);
             cmd.Parameters.AddWithValue("@idpersonne", messageDTO.IdPersonne);
             cmd.Parameters.AddWithValue("@contenu", messageDTO.Contenu);
-            cmd.Parameters.AddWithValue("@datecreation", messageDTO.DateCreation);
             try
             {
                 con.Open();

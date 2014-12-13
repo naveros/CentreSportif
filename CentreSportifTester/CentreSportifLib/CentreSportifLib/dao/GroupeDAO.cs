@@ -15,7 +15,7 @@ namespace CentreSportifLib.dao
         const String queryReadByActivite = "SELECT * FROM groupe WHERE idactivite = @idactivite";
         const String queryUpdate = "UPDATE groupe SET numerogroupe = @numerogroupe WHERE idgroupe=@idgroupe;";
         const String queryDelete = "DELETE FROM groupe WHERE idgroupe=@idgroupe;";
-        const String queryCreateSeance = "INSERT INTO seance (idgroupe, datedebut, datefin) VALUES (@idagroupe, @datedebut, @datefin)"; 
+        const String queryCreateSeance = "INSERT INTO seance (idgroupe, datedebut, datefin) VALUES (@idgroupe, @datedebut, @datefin)"; 
         const String queryReadAllseances = "SELECT * FROM seance WHERE idgroupe=@idgroupe;";
         public GroupeDAO(MySqlConnection connexion)
         {

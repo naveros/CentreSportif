@@ -10,6 +10,7 @@ using CentreSportifGUI.Views.menu;
 using CentreSportifGUI.Views.formulaire;
 using CentreSportifLib;
 using CentreSportifLib.dto;
+using CentreSportifGUI.Views.formulaire.formulairesMembre;
 
 namespace CentreSportifGUI
 {
@@ -215,7 +216,9 @@ namespace CentreSportifGUI
 
         private void button8_Click(object sender, EventArgs e)//Ajouter message
         {
-
+            FormulaireMessage form = new FormulaireMessage(connectedPersonneDTO);
+            form.Owner = this;
+            form.ShowDialog();
         }
 
         public void connexionAccueil(PersonneDTO personneDTO) //Connexion Accueil
@@ -240,11 +243,41 @@ namespace CentreSportifGUI
             connectedPersonneDTO = personneDTO;
             button8.Visible = true;
             button9.Visible = true;
+            button10.Visible = true;
+
+            DbCreateur.ServicePersonne.getAllMessages(connectedPersonneDTO).ForEach(delegate(MessageDTO messageDTO)
+               {
+
+                   listBox2.Items.Add(messageDTO.DateCreation.ToShortDateString() +" ||  " +  messageDTO.Contenu);
+               });
+
             listBox3.Items.Add(DateTime.Now.ToShortTimeString() + " || ID: " + personneDTO.IdPersonne + " | Prenom: " + personneDTO.Prenom + " | Nom:"
                 + personneDTO.Nom + " | Role : " + personneDTO.Role);
-
-
         }
 
+        public void AfficherMessage(MessageDTO messageDTO)
+        {
+            listBox2.Items.Add(DateTime.Today.ToString("d") + " ||  " + messageDTO.Contenu);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Êtes-vous certain de vouloir supprimer ce groupe ? ",
+                                       "Confirmer la suppression d'un groupe",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                try
+                {
+                    listBox2.Items.RemoveAt(listBox2.SelectedIndex);
+                    DbCreateur.ServicePersonne.deleteMessage(connectedPersonneDTO);
+                }
+                catch (Exception ee)
+                {
+                    Console.WriteLine("Erreur dans la requete delete message");
+                    Console.Write(ee.Message);
+                }
+            }
+        }
     }
 }

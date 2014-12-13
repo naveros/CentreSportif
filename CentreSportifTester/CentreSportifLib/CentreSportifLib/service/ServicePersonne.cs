@@ -104,6 +104,21 @@ namespace CentreSportifLib.service
             personneDAO.addEnseigne(enseigne);
         }
         #endregion
+
+        #region Service Message
+        public void addMessage(MessageDTO message)
+        {
+            personneDAO.addMessage(message);
+        }
+        public void deleteMessage(PersonneDTO personne)
+        {
+            personneDAO.deleteMessage(personne);
+        }
+        public List<MessageDTO> getAllMessages(PersonneDTO personne)
+        {
+            return personneDAO.getAllMessages(personne);
+        }
+        #endregion
         //TODO get horaire
     }
 }

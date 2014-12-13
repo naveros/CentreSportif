@@ -95,6 +95,7 @@
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.button10 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
@@ -154,6 +155,7 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.button10);
             this.splitContainer3.Panel1.Controls.Add(this.button9);
             this.splitContainer3.Panel1.Controls.Add(this.button8);
             this.splitContainer3.Panel1.Controls.Add(this.button5);
@@ -173,7 +175,7 @@
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(8, 316);
+            this.button9.Location = new System.Drawing.Point(11, 205);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(125, 52);
             this.button9.TabIndex = 39;
@@ -185,7 +187,7 @@
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(8, 258);
+            this.button8.Location = new System.Drawing.Point(11, 263);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(125, 52);
             this.button8.TabIndex = 38;
@@ -197,7 +199,7 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(8, 52);
+            this.button5.Location = new System.Drawing.Point(11, 48);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(125, 37);
             this.button5.TabIndex = 6;
@@ -771,6 +773,18 @@
             this.Column16.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // button10
+            // 
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Location = new System.Drawing.Point(11, 321);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(125, 52);
+            this.button10.TabIndex = 40;
+            this.button10.Text = "Supprimer message";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Visible = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // CentreSportifGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -882,6 +896,7 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.Button button10;
     }
 }
 

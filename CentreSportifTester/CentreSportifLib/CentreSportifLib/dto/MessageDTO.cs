@@ -8,11 +8,19 @@ namespace CentreSportifLib.dto
     public class MessageDTO
     {
         #region Champs
+        private String idmessage;
         private String idpersonne;
         private String contenu;
         private DateTime datecreation;
         #endregion
         #region Propriete;
+
+        public String IdMessage
+        {
+            set { this.idmessage = value; }
+            get { return this.idmessage; }
+        }
+
         public String IdPersonne
         {
             set { this.idpersonne = value; }
