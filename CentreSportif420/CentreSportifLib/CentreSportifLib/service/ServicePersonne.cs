@@ -110,9 +110,9 @@ namespace CentreSportifLib.service
         {
             personneDAO.addMessage(message);
         }
-        public void deleteMessage(PersonneDTO personne)
+        public void deleteMessage(String idMessage)
         {
-            personneDAO.deleteMessage(personne);
+            personneDAO.deleteMessage(idMessage);
         }
         public List<MessageDTO> getAllMessages(PersonneDTO personne)
         {

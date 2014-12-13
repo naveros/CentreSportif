@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentreSportifTester", "CentreSportifTester\CentreSportifTester.csproj", "{BCB20988-3BBA-4F69-B8BD-5C4E082EE192}"
-EndProject
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentreSportifGUI", "CentreSportifGUI\CentreSportifGUI.csproj", "{F9307E61-5B19-4DF8-B6DB-4B66BF62CA92}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentreSportifLib", "CentreSportifLib\CentreSportifLib\CentreSportifLib.csproj", "{F5F84E07-34EE-406E-8E0E-42F982D242F3}"
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BCB20988-3BBA-4F69-B8BD-5C4E082EE192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BCB20988-3BBA-4F69-B8BD-5C4E082EE192}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BCB20988-3BBA-4F69-B8BD-5C4E082EE192}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BCB20988-3BBA-4F69-B8BD-5C4E082EE192}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F9307E61-5B19-4DF8-B6DB-4B66BF62CA92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F9307E61-5B19-4DF8-B6DB-4B66BF62CA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9307E61-5B19-4DF8-B6DB-4B66BF62CA92}.Release|Any CPU.ActiveCfg = Release|Any CPU

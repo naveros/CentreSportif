@@ -23,6 +23,7 @@ namespace CentreSportifGUI.Views.formulaire
             if (textBox1.TextLength == 0 && textBox2.TextLength == 0) //Connexion par listeDéroulante
             {
                 CentreView.connexionAccueil((PersonneDTO)comboBox1.SelectedItem);
+                this.Dispose();
             }
             else if (textBox1.Text.Length > 0)//Connexion par idpersonne
             {
@@ -31,17 +32,14 @@ namespace CentreSportifGUI.Views.formulaire
                     PersonneDTO personneDTO = new PersonneDTO();
                     int idMembre = int.Parse(textBox1.Text);
                     personneDTO = CentreView.DbCreateur.ServicePersonne.findById(idMembre);
-                    this.Dispose();
                     CentreView.connexionAccueil(personneDTO);
-
-
+                    this.Dispose();
                 }
                 catch (Exception ee)
                 {
                     Console.WriteLine("Erreur dans la connexion par ID");
                     Console.Write(ee.Message);
                 }
-
             }
 
             else if (textBox2.Text.Length > 0)//Connexion par code barre
@@ -51,8 +49,8 @@ namespace CentreSportifGUI.Views.formulaire
                     PersonneDTO personneDTO = new PersonneDTO();
                     String codebarre = textBox2.Text;
                     personneDTO = CentreView.DbCreateur.ServicePersonne.findByCodeBarre(codebarre);
-                    this.Dispose();
                     CentreView.connexionAccueil(personneDTO);
+                    this.Dispose();
                 }
                 catch (Exception ee)
                 {
@@ -70,7 +68,6 @@ namespace CentreSportifGUI.Views.formulaire
         private void FormulaireConnexion_Load(object sender, EventArgs e)
         {
             CentreView = (CentreSportifGUI)this.Owner;
-
             try
             {
                 List<PersonneDTO> personnes = CentreView.DbCreateur.ServicePersonne.getAll();

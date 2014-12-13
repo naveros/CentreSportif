@@ -14,20 +14,20 @@ namespace CentreSportifGUI.Views.menu
 {
     public partial class MenuMembre : Form
     {
-        PersonneDTO p;
+        PersonneDTO personneDTO;
         public CentreSportifGUI CentreView;
         public MenuMembre(PersonneDTO p)
         {
             InitializeComponent();
-            this.p = p;
+            this.personneDTO = p;
             remplir();
         }
 
         private void remplir()
         {
-            labelNom.Text = p.Nom;
-            labelPrenom.Text = p.Prenom;
-            labelID.Text = p.IdPersonne;
+            labelNom.Text = personneDTO.Nom;
+            labelPrenom.Text = personneDTO.Prenom;
+            labelID.Text = personneDTO.IdPersonne;
         }
         private void button1_Click(object sender, EventArgs e)//horaire
         {
@@ -38,21 +38,21 @@ namespace CentreSportifGUI.Views.menu
         private void button7_Click(object sender, EventArgs e)//inscription
         {
             //TODO form inscription à un abonnement 
-            FormulaireAbonnement form = new FormulaireAbonnement(p);
+            FormulaireAbonnement form = new FormulaireAbonnement(personneDTO);
             form.Owner = this.Owner;
             form.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)//facturation
         {
-            FormulaireFacturation formFacturation = new FormulaireFacturation(p);
+            FormulaireFacturation formFacturation = new FormulaireFacturation(personneDTO);
             formFacturation.Owner = this.Owner;
             formFacturation.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)//modifier
         {
-            FormulaireMembre form = new FormulaireMembre(p);
+            FormulaireMembre form = new FormulaireMembre(personneDTO);
             form.Owner = this.Owner;
             form.ShowDialog();
         }
@@ -68,7 +68,7 @@ namespace CentreSportifGUI.Views.menu
             {
                 try
                 {
-                    CentreView.DbCreateur.ServicePersonne.delete(p);
+                    CentreView.DbCreateur.ServicePersonne.delete(personneDTO);
                     labelMessage.Text = "Le membre à bien été supprimé";
                     CentreView.RefreshTableMembre();
                     button1.Enabled = false;
@@ -102,17 +102,32 @@ namespace CentreSportifGUI.Views.menu
 
         private void button8_Click(object sender, EventArgs e)
         {
-            FormulaireRole formRole = new FormulaireRole(p);
+            FormulaireRole formRole = new FormulaireRole(personneDTO);
             formRole.Owner = this.Owner;
             formRole.ShowDialog();
         }
 
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FormulaireMessage formRole = new FormulaireMessage(personneDTO);
+            formRole.Owner = this.Owner;
+            formRole.ShowDialog();
+        }
+
+
+
+        private void button2_Click_1(object sender, EventArgs e) //Ajouter message
+        {
+            FormulaireMessage formMessage = new FormulaireMessage(personneDTO);
+            formMessage.Owner = this.Owner;
+            formMessage.ShowDialog();
+        }
         private void MenuMembre_Load(object sender, EventArgs e)
         {
             CentreView = (CentreSportifGUI)this.Owner;
         }
-
-
     }
 }
 

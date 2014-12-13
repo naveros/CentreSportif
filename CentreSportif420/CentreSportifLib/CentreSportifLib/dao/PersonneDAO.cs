@@ -45,7 +45,7 @@ namespace CentreSportifLib.dao
 
         const String queryCreateMessage = "INSERT INTO message (idpersonne,contenu,datecreation)VALUES(@idpersonne,@contenu, NOW())";
         const String queryReadAllMessages = "SELECT * FROM message WHERE idpersonne = @idpersonne";
-        const String queryDeleteMessage = "DELETE FROM message WHERE idpersonne = @idpersonne";
+        const String queryDeleteMessage = "DELETE FROM message WHERE idmessage = @idmessage";
         #endregion
 
         public PersonneDAO(MySqlConnection connexion)
@@ -611,10 +611,12 @@ namespace CentreSportifLib.dao
         }
         public void getMessage() { }
         public void updateMessage() { }
-        public void deleteMessage(PersonneDTO p)
+        public void deleteMessage(String idMessage)
         {
+            
             MySqlCommand cmd = new MySqlCommand(queryDeleteMessage, con);
-            cmd.Parameters.AddWithValue("@idpersonne", p.IdPersonne); ;
+            cmd.Parameters.AddWithValue("@idmessage",idMessage); ;
+
             try
             {
                 con.Open();
@@ -647,7 +649,7 @@ namespace CentreSportifLib.dao
                 {
                     MessageDTO MessageDTO = new MessageDTO();
 
-
+                    MessageDTO.IdMessage = reader.GetString("idmessage");
                     MessageDTO.IdPersonne = reader.GetString("idpersonne");
                     MessageDTO.Contenu = reader.GetString("contenu");
                     MessageDTO.DateCreation = reader.GetDateTime("datecreation");

@@ -223,6 +223,7 @@ namespace CentreSportifGUI
 
         public void connexionAccueil(PersonneDTO personneDTO) //Connexion Accueil
         {
+
             textBoxID.Text = personneDTO.IdPersonne;
             textBoxEmail.Text = personneDTO.Email;
             textBoxNom.Text = personneDTO.Nom;
@@ -245,32 +246,25 @@ namespace CentreSportifGUI
             button9.Visible = true;
             button10.Visible = true;
 
-            DbCreateur.ServicePersonne.getAllMessages(connectedPersonneDTO).ForEach(delegate(MessageDTO messageDTO)
-               {
-
-                   listBox2.Items.Add(messageDTO.DateCreation.ToShortDateString() +" ||  " +  messageDTO.Contenu);
-               });
+            afficherAllMessages();
 
             listBox3.Items.Add(DateTime.Now.ToShortTimeString() + " || ID: " + personneDTO.IdPersonne + " | Prenom: " + personneDTO.Prenom + " | Nom:"
                 + personneDTO.Nom + " | Role : " + personneDTO.Role);
         }
 
-        public void AfficherMessage(MessageDTO messageDTO)
+        private void button10_Click(object sender, EventArgs e) //Supprimer message
         {
-            listBox2.Items.Add(DateTime.Today.ToString("d") + " ||  " + messageDTO.Contenu);
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            var confirmResult = MessageBox.Show("Êtes-vous certain de vouloir supprimer ce groupe ? ",
-                                       "Confirmer la suppression d'un groupe",
+            var confirmResult = MessageBox.Show("Êtes-vous certain de vouloir supprimer ce message ? ",
+                                       "Confirmer la suppression d'un message",
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
                 try
                 {
+                    
+                    MessageDTO message = (MessageDTO )listBox2.SelectedItem;
+                    DbCreateur.ServicePersonne.deleteMessage(message.IdMessage);
                     listBox2.Items.RemoveAt(listBox2.SelectedIndex);
-                    DbCreateur.ServicePersonne.deleteMessage(connectedPersonneDTO);
                 }
                 catch (Exception ee)
                 {
@@ -278,6 +272,18 @@ namespace CentreSportifGUI
                     Console.Write(ee.Message);
                 }
             }
+        }
+        public void afficherAllMessages() {
+
+            while (listBox2.Items.Count > 0)
+            {
+                listBox2.Items.RemoveAt(0);
+            }
+            DbCreateur.ServicePersonne.getAllMessages(connectedPersonneDTO).ForEach(delegate(MessageDTO messageDTO)
+            {
+
+                listBox2.Items.Add(messageDTO);
+            });
         }
     }
 }

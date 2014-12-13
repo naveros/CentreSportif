@@ -1,8 +1,10 @@
 ﻿//TODO dans le code 
 
 -Formulaire Horaire pour membre
+-Formulaire view seances dans menu groupe. 
 
 -Fix formulaire groupe
+-Fix formulaire abonnement
 -Fix formulaire ajouté membre, (Adresse fail)
 
 -Finir d'implémenter professeur?
@@ -11,11 +13,8 @@
 ___________________________
 Optionnel
 ___________________________
--Historique visite membre
--Historique visite centre
--Message pour personne
 +Historique membre ?
-	-visite
+	-visites
 	-paiements?
 	-Abonnements + détails?
 	

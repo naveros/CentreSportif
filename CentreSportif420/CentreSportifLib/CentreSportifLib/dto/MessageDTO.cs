@@ -36,6 +36,10 @@ namespace CentreSportifLib.dto
             set { this.datecreation = value; }
             get { return this.datecreation; }
         }
+        public override String ToString(){
+
+            return this.datecreation.ToShortDateString() + "  " + this.contenu;
+        }
         #endregion
     }
 }

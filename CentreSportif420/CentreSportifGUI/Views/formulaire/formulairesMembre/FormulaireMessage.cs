@@ -28,7 +28,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                 messageDTO.Contenu = contenu;
                 messageDTO.IdPersonne = personne.IdPersonne;
                 CentreView.DbCreateur.ServicePersonne.addMessage(messageDTO);
-                CentreView.AfficherMessage(messageDTO);
+                CentreView.afficherAllMessages();
                 this.Dispose();
             }
             catch (Exception ee)
@@ -48,7 +48,5 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
             CentreView = (CentreSportifGUI)this.Owner;
         }
-
-
     }
 }
