@@ -50,7 +50,7 @@ namespace CentreSportifGUI.Views.formulaire
             {
                 ActiviteDTO activite = (ActiviteDTO)comboBox1.SelectedItem;
                 PersonneDTO prof = (PersonneDTO)comboBox2.SelectedItem;
-                g.IdGroupe = textBox1.Text;
+                //g.IdGroupe = textBox1.Text;
                 g.IdActivite = activite.IdActivite;
                 g.NumeroGroupe = textBox3.Text;
                 g.Prix = decimal.Parse(textBox4.Text);
@@ -72,7 +72,8 @@ namespace CentreSportifGUI.Views.formulaire
                     int daysUntilNextSeance = ((int)dateTimePicker1.Value.DayOfWeek - (int)tomorrow.DayOfWeek + 7) % 7;
                     DateTime nextDay = tomorrow.AddDays(daysUntilNextSeance);
                     DateTime nextSeanceDebut = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, dateTimePicker1.Value.Hour, 0, 0);
-                    DateTime nextSeanceFin = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, dateTimePicker1.Value.Hour + int.Parse(activite.Duree), 0, 0);
+                    DateTime nextSeanceFin = nextSeanceDebut.AddHours(int.Parse(activite.Duree));
+                        //new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, dateTimePicker1.Value.Hour + int.Parse(activite.Duree), 0, 0);
                     int nb = int.Parse(textBox2.Text);
                     for (int i = 0; i < nb; i++)
                     {
@@ -94,9 +95,11 @@ namespace CentreSportifGUI.Views.formulaire
                     CentreView.RefreshTableGroupe();
                 }
             }
-            catch (Exception)
+            catch (Exception ee)
             {
                 label4.Text = "Informations incorrectes";
+                Console.WriteLine("Erreur dans la connexion par ID");
+                Console.Write(ee.Message);
             }
         }
 

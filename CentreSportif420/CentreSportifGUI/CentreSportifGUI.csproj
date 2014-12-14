@@ -34,6 +34,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.Calendar">
+      <HintPath>Controls\System.Windows.Forms.Calendar.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -118,6 +121,12 @@
     <Compile Include="Views\formulaire\formulairesMembre\FormulaireRole.Designer.cs">
       <DependentUpon>FormulaireRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\formulaire\formulairesMembre\ViewHoraire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\formulaire\formulairesMembre\ViewHoraire.Designer.cs">
+      <DependentUpon>ViewHoraire.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\menu\MenuActivite.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\formulaire\formulairesMembre\FormulaireRole.resx">
       <DependentUpon>FormulaireRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\formulaire\formulairesMembre\ViewHoraire.resx">
+      <DependentUpon>ViewHoraire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\menu\MenuActivite.resx">
       <DependentUpon>MenuActivite.cs</DependentUpon>

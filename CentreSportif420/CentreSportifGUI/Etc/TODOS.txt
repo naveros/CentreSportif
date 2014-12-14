@@ -2,12 +2,9 @@
 
 -Formulaire Horaire pour membre
 
--Fix formulaire groupe
--Fix formulaire abonnement
-	-on peut s'inscrire 2x au meme groupe. fix it.
--Fix formulaire ajouté membre, (Adresse fail)
 
--Finir d'implémenter professeur?
+-Fix formulaire ajouté membre, (Adresse fail)
+	-Finir d'implémenter professeur?
 
 
 ___________________________
@@ -18,3 +15,9 @@ ___________________________
 	-paiements?
 	-Abonnements + détails?
 	
+-Formulaire désinscrire 
+
+-Fix formulaire groupe
+	-on peut créer 2x un groupe avec le meme numero de groupe ? . fix it.
+-Fix formulaire abonnement
+	-on peut s'inscrire 2x au meme groupe. fix it.

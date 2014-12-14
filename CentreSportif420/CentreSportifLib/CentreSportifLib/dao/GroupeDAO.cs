@@ -120,11 +120,12 @@ namespace CentreSportifLib.dao
 
                 while (reader.Read())
                 {
-                    GroupeDTO a = new GroupeDTO();
-                    a.IdGroupe = reader.GetString("idgroupe");
-                    a.IdActivite = reader.GetString("idactivite");
-                    a.NumeroGroupe = reader.GetString("numerogroupe");
-                    result.Add(a);
+                    GroupeDTO groupeDTO = new GroupeDTO();
+                    groupeDTO.IdGroupe = reader.GetString("idgroupe");
+                    groupeDTO.IdActivite = reader.GetString("idactivite");
+                    groupeDTO.NumeroGroupe = reader.GetString("numerogroupe");
+                    groupeDTO.Prix = reader.GetDecimal("prix");
+                    result.Add(groupeDTO);
                 }
 
             }
@@ -140,12 +141,12 @@ namespace CentreSportifLib.dao
             return result;
         }
 
-        public void update(GroupeDTO a)
+        public void update(GroupeDTO groupeDTO)
         {
             MySqlCommand cmd = new MySqlCommand(queryUpdate, con);
-            cmd.Parameters.AddWithValue("@idgroupe", a.IdGroupe);
-            cmd.Parameters.AddWithValue("@idactivite", a.IdActivite);
-            cmd.Parameters.AddWithValue("@numerogroupe", a.NumeroGroupe);
+            cmd.Parameters.AddWithValue("@idgroupe", groupeDTO.IdGroupe);
+            cmd.Parameters.AddWithValue("@idactivite", groupeDTO.IdActivite);
+            cmd.Parameters.AddWithValue("@numerogroupe", groupeDTO.NumeroGroupe);
             try
             {
                 con.Open();
@@ -161,10 +162,10 @@ namespace CentreSportifLib.dao
             }
         }
 
-        public void delete(GroupeDTO a)
+        public void delete(GroupeDTO groupeDTO)
         {
             MySqlCommand cmd = new MySqlCommand(queryDelete, con);
-            cmd.Parameters.AddWithValue("@idgroupe", a.IdGroupe); ;
+            cmd.Parameters.AddWithValue("@idgroupe", groupeDTO.IdGroupe); ;
             try
             {
                 con.Open();
@@ -216,14 +217,14 @@ namespace CentreSportifLib.dao
 
                 while (reader.Read())
                 {
-                    SeanceDTO s = new SeanceDTO();
+                    SeanceDTO seanceDTO = new SeanceDTO();
 
-                    s.IdGroupe = reader.GetString("idgroupe");
-                    s.IdSeance = reader.GetString("idseance");
-                    s.DateDebut = reader.GetDateTime("datedebut");
-                    s.DateFin = reader.GetDateTime("datefin");
+                    seanceDTO.IdGroupe = reader.GetString("idgroupe");
+                    seanceDTO.IdSeance = reader.GetString("idseance");
+                    seanceDTO.DateDebut = reader.GetDateTime("datedebut");
+                    seanceDTO.DateFin = reader.GetDateTime("datefin");
 
-                    result.Add(s);
+                    result.Add(seanceDTO);
                 }
 
             }
