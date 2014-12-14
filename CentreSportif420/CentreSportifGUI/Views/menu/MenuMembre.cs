@@ -32,7 +32,7 @@ namespace CentreSportifGUI.Views.menu
         private void button1_Click(object sender, EventArgs e)//horaire
         {
             //TODO form view horaire des seances d'apres les groupes, d'apres les abonnements ! understood?
-            ViewHoraire form = new ViewHoraire();
+            ViewHoraire form = new ViewHoraire(personneDTO);
             form.Owner = this.Owner;
             form.ShowDialog();
         }
