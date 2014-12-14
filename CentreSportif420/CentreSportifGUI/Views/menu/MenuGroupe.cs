@@ -8,33 +8,33 @@ using System.Text;
 using System.Windows.Forms;
 using CentreSportifLib.dto;
 using CentreSportifGUI.Views.formulaire;
+using CentreSportifGUI.Views.formulaire.formulaireGroupe;
 
 
 namespace CentreSportifGUI.Views.menu
 {
     public partial class MenuGroupe : Form
     {
-        GroupeDTO g;
+        GroupeDTO groupeDTO;
         CentreSportifGUI owner;
-        public MenuGroupe(GroupeDTO g)
+        public MenuGroupe(GroupeDTO groupeDTO)
         {
             InitializeComponent();
-            this.g = g;
+            this.groupeDTO = groupeDTO;
             remplir();
         }
 
         private void remplir()
         {
-            labelIDActivite.Text = g.IdActivite;
-            labelIDGroupe.Text = g.IdGroupe;
-            labelNumeroGroupe.Text = g.NumeroGroupe;
-            labelPrix.Text = g.Prix.ToString();
+            labelIDActivite.Text = groupeDTO.IdActivite;
+            labelIDGroupe.Text = groupeDTO.IdGroupe;
+            labelNumeroGroupe.Text = groupeDTO.NumeroGroupe;
+            labelPrix.Text = groupeDTO.Prix.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e) //Modifier
         {
-            //TODO Formulaire inscription/modifier
-            FormulaireGroupe form = new FormulaireGroupe(g);
+            FormulaireGroupe form = new FormulaireGroupe(groupeDTO);
             form.Owner = this.Owner;
             form.ShowDialog();
 
@@ -50,7 +50,7 @@ namespace CentreSportifGUI.Views.menu
                 owner = (CentreSportifGUI)this.Owner;
                 try
                 {
-                    owner.DbCreateur.ServiceGroupe.delete(g);
+                    owner.DbCreateur.ServiceGroupe.delete(groupeDTO);
                     labelMessage.Text = "Le groupe à bien été supprimé";
                     owner.RefreshTableGroupe();
                     button1.Enabled = false;
@@ -65,29 +65,20 @@ namespace CentreSportifGUI.Views.menu
 
 
             }
+        }
 
+            
+        private void button4_Click(object sender, EventArgs e)
+        {
 
+            ViewGroupe form = new ViewGroupe(groupeDTO);
+            form.Owner = this.Owner;
+            form.ShowDialog();
         }
         private void button3_Click(object sender, EventArgs e) //Quitter
         {
             this.Dispose();
         }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
     }
 }

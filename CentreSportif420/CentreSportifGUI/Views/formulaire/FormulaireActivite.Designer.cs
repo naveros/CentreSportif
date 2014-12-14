@@ -42,6 +42,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(92, 31);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(166, 20);
@@ -103,6 +104,7 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(289, 153);
             this.richTextBox1.TabIndex = 7;
+            this.richTextBox1.Text = "";
             // 
             // button5
             // 
@@ -142,7 +144,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Name = "FormulaireActivite";
-            this.Text = "Formulaire Activite";
+            this.Text = "Modifier";
             this.Load += new System.EventHandler(this.FormulaireActivite_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

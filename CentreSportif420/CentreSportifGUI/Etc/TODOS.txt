@@ -1,10 +1,10 @@
 ﻿//TODO dans le code 
 
 -Formulaire Horaire pour membre
--Formulaire view seances dans menu groupe. 
 
 -Fix formulaire groupe
 -Fix formulaire abonnement
+	-on peut s'inscrire 2x au meme groupe. fix it.
 -Fix formulaire ajouté membre, (Adresse fail)
 
 -Finir d'implémenter professeur?
