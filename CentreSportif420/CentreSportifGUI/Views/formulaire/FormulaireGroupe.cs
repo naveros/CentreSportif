@@ -72,9 +72,9 @@ namespace CentreSportifGUI.Views.formulaire
                     int daysUntilNextSeance = ((int)dateTimePicker1.Value.DayOfWeek - (int)tomorrow.DayOfWeek + 7) % 7;
                     DateTime nextDay = tomorrow.AddDays(daysUntilNextSeance);
                     DateTime nextSeanceDebut = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, dateTimePicker1.Value.Hour, 0, 0);
-                    DateTime nextSeanceFin = new DateTime();
-                    nextSeanceFin = nextSeanceDebut.AddHours(int.Parse(activite.Duree));
-                        //new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, dateTimePicker1.Value.Hour + int.Parse(activite.Duree), 0, 0);
+                    DateTime nextSeanceFin = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, dateTimePicker1.Value.Hour, 0, 0);
+                    nextSeanceFin = nextSeanceFin.AddHours(int.Parse(activite.Duree));
+                    //nextSeanceDebut.AddHours(int.Parse(activite.Duree));
                     int nb = int.Parse(textBox2.Text);
                     for (int i = 0; i < nb; i++)
                     {
@@ -83,8 +83,8 @@ namespace CentreSportifGUI.Views.formulaire
                         newSeance.DateDebut = nextSeanceDebut;
                         newSeance.DateFin = nextSeanceFin;
                         CentreView.DbCreateur.ServiceGroupe.addSeance(newSeance);
-                        nextSeanceDebut.AddDays(7);
-                        nextSeanceFin.AddDays(7);
+                        nextSeanceDebut = nextSeanceDebut.AddDays(7);
+                        nextSeanceFin = nextSeanceFin.AddDays(7);
                     }
                     label4.Text += "Le groupe " + g.NumeroGroupe + " a bien été crée";
                     CentreView.RefreshTableGroupe();
