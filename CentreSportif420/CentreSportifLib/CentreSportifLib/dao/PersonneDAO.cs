@@ -26,7 +26,7 @@ namespace CentreSportifLib.dao
         const String queryDeletePersonne = "DELETE FROM personne WHERE idpersonne = @idpersonne";
         const String queryReadPersonneByCodeBarre = "SELECT * FROM personne WHERE codebarre = @codebarre";
         #endregion
-        const String queryReadAdresse = "SELECT * FROM adresse WHERE idpersonne = @idpersonne";
+
 
         const String queryReadAllAbonnements = "SELECT * FROM abonnement WHERE idpersonne = @idpersonne";
         const String queryCreateAbonnement = "INSERT INTO abonnement(idpersonne,idgroupe, dateinscription, datefin , prix)VALUES(@idpersonne, @idgroupe, @dateinscription, @datefin , @prix)";
@@ -39,9 +39,9 @@ namespace CentreSportifLib.dao
         const String queryReadAllPaiements = "SELECT * FROM paiement WHERE idpersonne = @idpersonne";
         const String queryCreatePaiement = "INSERT INTO paiement(idpersonne,date,montant,mode)VALUES(@idpersonne, NOW(), @montant, @mode)";
 
-        const String queryCreateAdresse = "INSERT INTO adresse(numero,rue,codepostal,ville,pays,idpersonne)VALUES(@numero,@rue,@codepostal,@ville,@pays,@idpersonne)";
-
-        const String queryUpdateAdresse = "UPDATE adresse SET numero = @numero, rue = @rue, codepostal = @codepostal, ville = @ville, pays = @pays WHERE idpersonne=@idpersonne;";
+        const String queryReadAdresse = "SELECT * FROM addresse WHERE idpersonne = @idpersonne";
+        const String queryCreateAdresse = "INSERT INTO addresse(numero,rue,codepostal,ville,pays,idpersonne)VALUES(@numero,@rue,@codepostal,@ville,@pays,@idpersonne)";
+        const String queryUpdateAdresse = "UPDATE addresse SET numero = @numero, rue = @rue, codepostal = @codepostal, ville = @ville, pays = @pays WHERE idpersonne=@idpersonne;";
 
         const String queryCreateMessage = "INSERT INTO message (idpersonne,contenu,datecreation)VALUES(@idpersonne,@contenu, NOW())";
         const String queryReadAllMessages = "SELECT * FROM message WHERE idpersonne = @idpersonne";
@@ -72,10 +72,6 @@ namespace CentreSportifLib.dao
                 con.Open();
                 cmd.ExecuteNonQuery();
                 result = cmd.LastInsertedId.ToString();
-            }
-            catch (Exception e)
-            {
-                Console.Write(e.Message);
             }
             finally
             {
@@ -165,10 +161,6 @@ namespace CentreSportifLib.dao
             {
                 con.Open();
                 cmd.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                Console.Write(e.Message);
             }
             finally
             {
@@ -294,10 +286,6 @@ namespace CentreSportifLib.dao
                 con.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception e)
-            {
-                Console.Write(e.Message);
-            }
             finally
             {
                 con.Close();
@@ -314,13 +302,13 @@ namespace CentreSportifLib.dao
                 cmd.Parameters.AddWithValue("@idpersonne", p.IdPersonne);
                 reader = cmd.ExecuteReader();
                 reader.Read();
-                result.IdAdresse = (String)reader["idadresse"];
-                result.IdPersonne = (String)reader["idpersonne"];
-                result.Numero = (String)reader["numero"];
-                result.Rue = (String)reader["idpersonne"];
-                result.CodePostal = (String)reader["codepostal"];
-                result.Ville = (String)reader["ville"];
-                result.Pays = (String)reader["pays"];
+               // result.IdAdresse = reader.GetString("idaddresse");
+                result.IdPersonne = reader.GetString("idpersonne");
+                result.Numero = reader.GetString("numero");
+                result.Rue = reader.GetString("idpersonne");
+                result.CodePostal = reader.GetString("codepostal");
+                result.Ville = reader.GetString("ville");
+                result.Pays = reader.GetString("pays");
             }
             catch (Exception e)
             {
@@ -345,10 +333,6 @@ namespace CentreSportifLib.dao
             {
                 con.Open();
                 cmd.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                Console.Write(e.Message);
             }
             finally
             {

@@ -42,10 +42,11 @@ namespace CentreSportifGUI
                 dataGridView1.Rows[i].Cells[1].Value = p.Prenom;
                 dataGridView1.Rows[i].Cells[2].Value = p.Nom;
                 dataGridView1.Rows[i].Cells[3].Value = p.Email;
-                dataGridView1.Rows[i].Cells[4].Value = p.Sexe;
-                dataGridView1.Rows[i].Cells[5].Value = p.CodeBarre;
-                dataGridView1.Rows[i].Cells[6].Value = "Modifier";
-                dataGridView1.Rows[i].Cells[6].Tag = p;
+                dataGridView1.Rows[i].Cells[4].Value = formatRole(p.Role);
+                dataGridView1.Rows[i].Cells[5].Value = p.Sexe;
+                dataGridView1.Rows[i].Cells[6].Value = p.CodeBarre;
+                dataGridView1.Rows[i].Cells[7].Value = "Modifier";
+                dataGridView1.Rows[i].Cells[7].Tag = p;
             });
         }
 
@@ -74,17 +75,18 @@ namespace CentreSportifGUI
                 // Console.WriteLine(g.ToString());
                 dataGridView3.Rows[i].Cells[0].Value = g.IdGroupe;
                 dataGridView3.Rows[i].Cells[1].Value = g.IdActivite;
-                dataGridView3.Rows[i].Cells[2].Value = g.NumeroGroupe;
-                dataGridView3.Rows[i].Cells[3].Value = "Modifier";
-                dataGridView3.Rows[i].Cells[3].Tag = g;
+                dataGridView3.Rows[i].Cells[2].Value = DbCreateur.ServiceActivite.findById(g.IdActivite).Nom;
+                dataGridView3.Rows[i].Cells[3].Value = g.NumeroGroupe;
+                dataGridView3.Rows[i].Cells[4].Value = "Modifier";
+                dataGridView3.Rows[i].Cells[4].Tag = g;
             });
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex == 7)
             {
-                PersonneDTO p = (PersonneDTO)dataGridView1.Rows[e.RowIndex].Cells[6].Tag;
+                PersonneDTO p = (PersonneDTO)dataGridView1.Rows[e.RowIndex].Cells[7].Tag;
                 if (p != null)
                 {
                     MenuMembre form = new MenuMembre(p);
@@ -110,9 +112,9 @@ namespace CentreSportifGUI
 
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 3)
+            if (e.ColumnIndex == 4)
             {
-                GroupeDTO g = (GroupeDTO)dataGridView3.Rows[e.RowIndex].Cells[3].Tag;
+                GroupeDTO g = (GroupeDTO)dataGridView3.Rows[e.RowIndex].Cells[4].Tag;
                 if (g != null)
                 {
                     MenuGroupe form = new MenuGroupe(g);
@@ -228,7 +230,7 @@ namespace CentreSportifGUI
             textBoxEmail.Text = personneDTO.Email;
             textBoxNom.Text = personneDTO.Nom;
             textBoxPrenom.Text = personneDTO.Prenom;
-            textBoxRole.Text = personneDTO.Role;
+            textBoxRole.Text = formatRole(personneDTO.Role);
             textBoxCodeBarre.Text = personneDTO.CodeBarre;
             try
             {
@@ -284,6 +286,23 @@ namespace CentreSportifGUI
 
                 listBox2.Items.Add(messageDTO);
             });
+        }
+        public String formatRole(String role) {
+            String result;
+            if (role == "membre")
+            {
+                result = "Membre";
+            }
+            else if (role == "prof")
+            {
+                result = "Professeur";
+            }
+            else
+            {
+                result = "Administrateur";
+            }
+            return result;
+        
         }
     }
 }

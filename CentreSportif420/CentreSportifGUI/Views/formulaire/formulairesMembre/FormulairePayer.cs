@@ -42,6 +42,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                     paiementDTO.Montant = paiement;
                     CentreView.DbCreateur.ServicePersonne.addPaiement(paiementDTO);
                     this.textBox1.Text = ""+ (montantDue - paiementDTO.Montant);
+                    this.textBox2.Text = "";
                     this.label4.Text = "Paiement de "+paiementDTO.Montant+"$  effectué ! Merci";
 
                 }

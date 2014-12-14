@@ -3,9 +3,9 @@
 -Formulaire Horaire pour membre
 
 
--Fix formulaire ajouté membre, (Adresse fail)
-	-Finir d'implémenter professeur?
+-Fix formulaire ajouté membre, (Adresse fail) + other errors
 
+-Upload photo dans formulaire membre
 
 ___________________________
 Optionnel

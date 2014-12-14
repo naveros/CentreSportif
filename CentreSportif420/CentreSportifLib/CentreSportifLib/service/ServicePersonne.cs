@@ -59,9 +59,9 @@ namespace CentreSportifLib.service
         #endregion personne
 
         #region Service Adresse
-        public void getAdresse(PersonneDTO personneDTO)
+        public AdresseDTO getAdresse(PersonneDTO personneDTO)
         {
-            this.personneDAO.getAdresse(personneDTO);
+            return this.personneDAO.getAdresse(personneDTO);
         }
         public void addAdresse(AdresseDTO adresseDTO)
         {

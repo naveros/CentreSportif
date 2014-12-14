@@ -61,6 +61,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -72,7 +75,7 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.textBox7);
             this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Location = new System.Drawing.Point(24, 350);
+            this.groupBox2.Location = new System.Drawing.Point(24, 353);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(177, 86);
             this.groupBox2.TabIndex = 25;
@@ -204,7 +207,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 458);
+            this.button1.Location = new System.Drawing.Point(12, 514);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(201, 39);
             this.button1.TabIndex = 26;
@@ -214,7 +217,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(238, 458);
+            this.button2.Location = new System.Drawing.Point(238, 514);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(201, 39);
             this.button2.TabIndex = 27;
@@ -241,6 +244,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.textBox12);
+            this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.textBox11);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.textBox10);
@@ -251,7 +256,7 @@
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Location = new System.Drawing.Point(238, 243);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 193);
+            this.groupBox3.Size = new System.Drawing.Size(200, 238);
             this.groupBox3.TabIndex = 28;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Adresse";
@@ -365,11 +370,37 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(9, 183);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(30, 13);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "Pays";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(12, 199);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(174, 20);
+            this.textBox12.TabIndex = 25;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(21, 484);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(59, 13);
+            this.label13.TabIndex = 34;
+            this.label13.Text = "Message : ";
+            // 
             // FormulaireMembre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 513);
+            this.ClientSize = new System.Drawing.Size(451, 565);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.pictureBox1);
@@ -392,6 +423,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormulaireMembre";
             this.Text = "Formulaire";
+            this.Load += new System.EventHandler(this.FormulaireMembre_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -439,5 +471,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }

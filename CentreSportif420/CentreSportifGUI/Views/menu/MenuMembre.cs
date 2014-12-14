@@ -55,6 +55,16 @@ namespace CentreSportifGUI.Views.menu
 
         private void button4_Click(object sender, EventArgs e)//modifier
         {
+            AdresseDTO adresseDTO;
+            try
+            {
+                 adresseDTO = CentreView.DbCreateur.ServicePersonne.getAdresse(personneDTO);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
             FormulaireMembre form = new FormulaireMembre(personneDTO);
             form.Owner = this.Owner;
             form.ShowDialog();
@@ -75,6 +85,7 @@ namespace CentreSportifGUI.Views.menu
                     labelMessage.Text = "Le membre à bien été supprimé";
                     CentreView.RefreshTableMembre();
                     button1.Enabled = false;
+                    button2.Enabled = false;
                     button3.Enabled = false;
                     button4.Enabled = false;
                     button5.Enabled = false;
@@ -103,7 +114,7 @@ namespace CentreSportifGUI.Views.menu
             this.Dispose();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void button8_Click(object sender, EventArgs e) //Changer role
         {
             FormulaireRole formRole = new FormulaireRole(personneDTO);
             formRole.Owner = this.Owner;
@@ -112,20 +123,11 @@ namespace CentreSportifGUI.Views.menu
 
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)  //Ajouter message
         {
             FormulaireMessage formRole = new FormulaireMessage(personneDTO);
             formRole.Owner = this.Owner;
             formRole.ShowDialog();
-        }
-
-
-
-        private void button2_Click_1(object sender, EventArgs e) //Ajouter message
-        {
-            FormulaireMessage formMessage = new FormulaireMessage(personneDTO);
-            formMessage.Owner = this.Owner;
-            formMessage.ShowDialog();
         }
         private void MenuMembre_Load(object sender, EventArgs e)
         {
