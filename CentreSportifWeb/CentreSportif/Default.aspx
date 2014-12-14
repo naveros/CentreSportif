@@ -5,12 +5,12 @@
     <section class="featured">
         <div class="content-wrapper">
              <p>
-                <h1>Bienvenue au Centre Sportif!</h1>
+                <h1 class="auto-style1">Bienvenue au Centre Sportif!</h1>
             </p>
-            <p>
-                Le complexe sportif Claude-Robillard propose aux petits et grands de pratiquer le sport de leur choix.<br />
-                En équipe ou individuellement, tous peuvent maintenir leur bonne forme, se divertir ou poursuivre leur entraînement ou la compétition dans des installations répondant aux plus hauts standards de qualité.<br />
-                Le Complexe est constitué de deux bâtiments, l’aréna Michel-Normandin et le centre lui-même, en plus des terrains sportifs extérieurs.<br />
+            <p class="auto-style1">
+                Le complexe sportif Claude-Robillard propose aux petits et grands de pratiquer le sport de leur choix.<br class="auto-style1" />
+                En équipe ou individuellement, tous peuvent maintenir leur bonne forme, se divertir ou poursuivre leur entraînement ou la compétition dans des installations répondant aux plus hauts standards de qualité.<br class="auto-style1" />
+                Le Complexe est constitué de deux bâtiments, l’aréna Michel-Normandin et le centre lui-même, en plus des terrains sportifs extérieurs.<br class="auto-style1" />
                 Une piscine aux dimensions olympiques avec un bassin de plongeon, ainsi qu’une salle omnisports forment le cœur du CSCR.</p>
         </div>
     </section>
@@ -65,3 +65,11 @@
         </asp:GridView>
     </p>
 </asp:Content>
+<asp:Content ID="Content1" runat="server" contentplaceholderid="HeadContent">
+    <style type="text/css">
+        .auto-style1 {
+            margin-left: 40px;
+        }
+    </style>
+</asp:Content>
+
