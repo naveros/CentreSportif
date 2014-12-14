@@ -38,8 +38,8 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             }
             catch (Exception ee)
             {
-                MessageBox.Show("Erreur dans la requete get all activitees");
-                MessageBox.Show(ee.Message);
+                Console.WriteLine("Erreur dans la requete get all activites");
+                Console.Write(ee.Message);
             }
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

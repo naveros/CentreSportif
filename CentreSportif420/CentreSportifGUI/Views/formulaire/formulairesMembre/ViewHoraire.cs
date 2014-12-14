@@ -15,6 +15,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
         List<CalendarItem> items = new List<CalendarItem>();
         PersonneDTO personneDTO;
         public CentreSportifGUI CentreView;
+        int nbMoreWeek=0;
         public ViewHoraire(PersonneDTO personneDTO)
         {
             InitializeComponent();
@@ -24,46 +25,16 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
         private void ViewHoraire_Load(object sender, EventArgs e)
         {
-
-
             CentreView = (CentreSportifGUI)this.Owner;
-
-
-
-        }
-
-        private void calendar1_LoadItems(object sender, CalendarLoadEventArgs e)
-        {
-            try
-            {
-
-               
-
-                
-                
-                /*  EnseigneDTO enseigneDTO = CentreView.DbCreateur.ServicePersonne.getEnseigneByGroupId(groupeDTO.IdGroupe);
-                  PersonneDTO professeurDTO = CentreView.DbCreateur.ServicePersonne.findById(int.Parse(enseigneDTO.IdPersonne));
-                  ActiviteDTO activiteDTO = CentreView.DbCreateur.ServiceActivite.findById(groupeDTO.IdActivite);
-                  List<SeanceDTO> seances = CentreView.DbCreateur.ServiceGroupe.getAllSeancesByGroupId(groupeDTO.IdGroupe);*/
-
-            }
-            catch (Exception ee)
-            {
-                Console.WriteLine("Erreur dans la requete get horaire");
-                Console.Write(ee.Message);
-            }
-
         }
 
         private void calendar1_Layout(object sender, LayoutEventArgs e)
-        {           
-            calendar1.ViewStart = DateTime.Today;
-            calendar1.ViewEnd = DateTime.Today.AddDays(7);
-            calendar1.AllowItemEdit = false;
-            calendar1.AllowItemResize = false;
-            //calendar1.AllowNew = false;
-          ////  CalendarItem item = new CalendarItem(calendar1, DateTime.Now, DateTime.Now.AddHours(2), "Test ");
-         //   calendar1.Items.Add(item);
+        {
+            DateTime viewStart = DateTime.Today; ;
+            DateTime viewEnd = DateTime.Today.AddDays(7);
+            calendar1.ViewStart = viewStart;
+            calendar1.ViewEnd = viewEnd;
+            label1.Text = viewStart.ToShortDateString();
 
             List<AbonnementDTO> abonnements = CentreView.DbCreateur.ServicePersonne.getAllAbonnements(personneDTO);
             foreach (AbonnementDTO abonnement in abonnements)
@@ -79,6 +50,55 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
             }
             calendar1.Items.AddRange(items);
+        }
+        private void calendar1_LoadItems(object sender, CalendarLoadEventArgs e)
+        {
+        }
+        private void button2_Click(object sender, EventArgs e)//Retour
+        {
+            this.Dispose();
+        }
+
+
+
+        private void button1_Click(object sender, EventArgs e) //Prochaine semaine
+        {
+            try
+            {
+                nbMoreWeek++;
+
+                DateTime viewStart = DateTime.Today.AddDays(7 * nbMoreWeek - 7);
+                DateTime viewEnd = DateTime.Today.AddDays(7 * nbMoreWeek);
+                calendar1.ViewStart = viewStart;
+                calendar1.ViewEnd = viewEnd;
+                label1.Text = viewStart.ToShortDateString();
+                calendar1.Items.AddRange(items);;
+            }
+            catch (Exception ee)
+            {
+                Console.WriteLine("Erreur dans changer semaine");
+                Console.Write(ee.Message);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)//Derniere semaine
+        {
+            try
+            {
+                nbMoreWeek--;
+
+                DateTime viewStart = DateTime.Today.AddDays(7 * nbMoreWeek);
+                DateTime viewEnd = DateTime.Today.AddDays(7 * nbMoreWeek +7);
+                calendar1.ViewStart = viewStart;
+                calendar1.ViewEnd = viewEnd;
+                label1.Text = viewStart.ToShortDateString();
+                calendar1.Items.AddRange(items);
+            }
+            catch (Exception ee)
+            {
+                Console.WriteLine("Erreur dans changer semaine");
+                Console.Write(ee.Message);
+            }
         }
     }
 }
