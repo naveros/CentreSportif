@@ -22,7 +22,7 @@ namespace CentreSportifLib.dao
         const String queryReadAllPersonne = "SELECT * FROM personne";
         const String queryReadByRole = "SELECT * FROM personne WHERE role = @role";
         const String queryReadPersonne = "SELECT * FROM personne WHERE idpersonne = @idpersonne";
-        const String queryUpdatePersonne = "UPDATE personne SET prenom = @prenom, nom = @nom, email = @email, motdepasse = @motdepasse, codebarre = @codebarre,role = @role WHERE idpersonne=@idpersonne;";
+        const String queryUpdatePersonne = "UPDATE personne SET prenom = @prenom, nom = @nom, email = @email, motdepasse = @motdepasse, codebarre = @codebarre, role = @role, datenaissance = @datenaissance, sexe = @sexe WHERE idpersonne=@idpersonne;";
         const String queryDeletePersonne = "DELETE FROM personne WHERE idpersonne = @idpersonne";
         const String queryReadPersonneByCodeBarre = "SELECT * FROM personne WHERE codebarre = @codebarre";
         #endregion
@@ -150,13 +150,15 @@ namespace CentreSportifLib.dao
         public void updatePersonne(PersonneDTO p)
         {
             MySqlCommand cmd = new MySqlCommand(queryUpdatePersonne, con);
-            cmd.Parameters.AddWithValue("@idpersonne", p.Prenom);
+            cmd.Parameters.AddWithValue("@idpersonne", p.IdPersonne);
             cmd.Parameters.AddWithValue("@prenom", p.Prenom);
             cmd.Parameters.AddWithValue("@nom", p.Nom);
             cmd.Parameters.AddWithValue("@email", p.Email);
             cmd.Parameters.AddWithValue("@motdepasse", p.MotDePasse);
             cmd.Parameters.AddWithValue("@codebarre", p.CodeBarre);
             cmd.Parameters.AddWithValue("@role", p.Role);
+            cmd.Parameters.AddWithValue("@sexe", p.Sexe);
+            cmd.Parameters.AddWithValue("@datenaissance", p.DateNaissance);
             try
             {
                 con.Open();

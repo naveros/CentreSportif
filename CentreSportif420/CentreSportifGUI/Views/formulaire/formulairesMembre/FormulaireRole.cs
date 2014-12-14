@@ -32,7 +32,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             {
                 role = p.Role;
             }
-            label1.Text = p.Prenom + " " + p.Nom + " est présentement " + role;            
+            label1.Text = p.Prenom + " " + p.Nom + " est présentement " + CentreView.formatRole(role);            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -56,6 +56,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                 p.Role = newRole;
                 CentreView.DbCreateur.ServicePersonne.update(p);
                 label3.Text += "Le role de " + p.Prenom + " " + p.Nom + " a bien été modifié.";
+                label1.Text = p.Prenom + " " + p.Nom + " est présentement " + CentreView.formatRole(p.Role);     
             }
             catch (Exception ee)
             {
