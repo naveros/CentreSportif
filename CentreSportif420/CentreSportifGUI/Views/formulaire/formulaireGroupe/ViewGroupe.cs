@@ -38,10 +38,11 @@ namespace CentreSportifGUI.Views.formulaire.formulaireGroupe
                 seances.ForEach(delegate(SeanceDTO seance)
                 {
                     int i = this.dataGridView1.Rows.Add();
-                    dataGridView1.Rows[i].Cells[0].Value = seance.DateDebut.DayOfWeek;
-                    dataGridView1.Rows[i].Cells[1].Value = seance.DateDebut.Hour + "h";
-                    dataGridView1.Rows[i].Cells[2].Value = seance.DateFin.Hour + "h";
-                    dataGridView1.Rows[i].Cells[3].Value = professeurDTO.Prenom + " " + professeurDTO.Nom;
+                    dataGridView1.Rows[i].Cells[0].Value = seance.DateDebut.ToString(); 
+                    dataGridView1.Rows[i].Cells[1].Value = seance.DateDebut.DayOfWeek;
+                    dataGridView1.Rows[i].Cells[2].Value = seance.DateDebut.Hour + "h";
+                    dataGridView1.Rows[i].Cells[3].Value = seance.DateFin.Hour + "h";
+                    dataGridView1.Rows[i].Cells[4].Value = professeurDTO.Prenom + " " + professeurDTO.Nom;
                 });
             }
             catch (Exception ee)
