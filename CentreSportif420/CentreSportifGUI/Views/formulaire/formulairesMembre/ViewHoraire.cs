@@ -18,9 +18,8 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
         private void ViewHoraire_Load(object sender, EventArgs e)
         {
-            Calendar s = new Calendar();
-            
-            
+            calendar1.ViewStart = DateTime.Today;
+            calendar1.ViewEnd = DateTime.Today.AddDays(7) ;
         }
     }
 }

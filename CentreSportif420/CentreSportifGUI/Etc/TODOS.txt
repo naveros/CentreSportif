@@ -2,8 +2,9 @@
 
 -Formulaire Horaire pour membre
 
-
--Fix formulaire ajouté membre, (Adresse fail) + other errors
++Fix formulaire ajouté membre, (Adresse fail) + other errors
+	- modifier personne ?
+- modifier groupe
 
 -Upload photo dans formulaire membre
 
