@@ -9,26 +9,27 @@ namespace CentreSportifLib.dao
 {
     public class ActiviteDAO
     {
-        MySqlConnection con;
+        MySqlConnection connexion;
         const String queryCreate = "INSERT INTO activite (nom, duree, description) VALUES (@nom, @duree, @description)";
         const String queryReadAll = "SELECT * FROM activite";
         const String queryRead = "SELECT * FROM activite WHERE idactivite = @idactivite";
         const String queryUpdate = "UPDATE activite SET nom = @nom, duree=@duree, description=@description WHERE idactivite=@idactivite;";
         const String queryDelete = "DELETE FROM activite WHERE idactivite=@idactivite;";
+        
         public ActiviteDAO(MySqlConnection connexion)
         {
-            this.con = connexion;
+            this.connexion = connexion;
         }
 
-        public void add(ActiviteDTO a)
+        public void add(ActiviteDTO activiteDTO)
         {
-            MySqlCommand cmd = new MySqlCommand(queryCreate, con);
-            cmd.Parameters.AddWithValue("@nom", a.Nom);
-            cmd.Parameters.AddWithValue("@duree", a.Duree);
-            cmd.Parameters.AddWithValue("@description", a.Description);
+            MySqlCommand cmd = new MySqlCommand(queryCreate, connexion);
+            cmd.Parameters.AddWithValue("@nom", activiteDTO.Nom);
+            cmd.Parameters.AddWithValue("@duree", activiteDTO.Duree);
+            cmd.Parameters.AddWithValue("@description", activiteDTO.Description);
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -37,18 +38,18 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
         }
 
         public ActiviteDTO get(String idActivite)
         {
-            MySqlCommand cmd = new MySqlCommand(queryRead, con);
+            MySqlCommand cmd = new MySqlCommand(queryRead, connexion);
             MySqlDataReader reader = null;
             ActiviteDTO result = new ActiviteDTO();
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.Parameters.AddWithValue("@idactivite", idActivite);
                 reader = cmd.ExecuteReader();
                 reader.Read();
@@ -57,37 +58,32 @@ namespace CentreSportifLib.dao
                 result.Duree = reader.GetString("duree");
                 result.Description = reader.GetString("description");
             }
-          /*  catch (Exception e)
-            {
-                Console.Write(e.Message);
-            }*/
             finally
             {
-                con.Close();
+                connexion.Close();
             }
             return result;
         }
 
         public List<ActiviteDTO> getAll()
         {
-            MySqlCommand cmd = new MySqlCommand(queryReadAll, con);
+            MySqlCommand cmd = new MySqlCommand(queryReadAll, connexion);
             MySqlDataReader reader = null;
             List<ActiviteDTO> result = new List<ActiviteDTO>();
             try
             {
-                con.Open();
+                connexion.Open();
                 reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    ActiviteDTO a = new ActiviteDTO();
-                    a.IdActivite = reader.GetString("idactivite");
-                    a.Nom = reader.GetString("nom");
-                    a.Duree = reader.GetString("duree");
-                    a.Description = reader.GetString("description");
-                    result.Add(a);
+                    ActiviteDTO activiteDTO = new ActiviteDTO();
+                    activiteDTO.IdActivite = reader.GetString("idactivite");
+                    activiteDTO.Nom = reader.GetString("nom");
+                    activiteDTO.Duree = reader.GetString("duree");
+                    activiteDTO.Description = reader.GetString("description");
+                    result.Add(activiteDTO);
                 }
-
             }
             catch (Exception e)
             {
@@ -96,21 +92,21 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
             return result;
         }
 
-        public void update(ActiviteDTO a)
+        public void update(ActiviteDTO activiteDTO)
         {
-            MySqlCommand cmd = new MySqlCommand(queryUpdate, con);
-            cmd.Parameters.AddWithValue("@idactivite", a.IdActivite);
-            cmd.Parameters.AddWithValue("@nom", a.Nom);
-            cmd.Parameters.AddWithValue("@duree", int.Parse(a.Duree));
-            cmd.Parameters.AddWithValue("@description", a.Description);
+            MySqlCommand cmd = new MySqlCommand(queryUpdate, connexion);
+            cmd.Parameters.AddWithValue("@idactivite", activiteDTO.IdActivite);
+            cmd.Parameters.AddWithValue("@nom", activiteDTO.Nom);
+            cmd.Parameters.AddWithValue("@duree", int.Parse(activiteDTO.Duree));
+            cmd.Parameters.AddWithValue("@description", activiteDTO.Description);
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -119,17 +115,17 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
         }
 
-        public void delete(ActiviteDTO a)
+        public void delete(ActiviteDTO activiteDTO)
         {
-            MySqlCommand cmd = new MySqlCommand(queryDelete, con);
-            cmd.Parameters.AddWithValue("@idactivite", a.IdActivite); ;
+            MySqlCommand cmd = new MySqlCommand(queryDelete, connexion);
+            cmd.Parameters.AddWithValue("@idactivite", activiteDTO.IdActivite); ;
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -138,7 +134,7 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
         }
 

@@ -12,21 +12,20 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 {
     public partial class FormulairePayer : Form
     {
-        
-        PersonneDTO p;
+        PersonneDTO personneDTO;
         decimal montantDue;
         String mode;
         public CentreSportifGUI CentreView;
-        public FormulairePayer(decimal montantDue, String mode, PersonneDTO p)
+        public FormulairePayer(decimal montantDue, String mode, PersonneDTO personneDTO)
         {
             InitializeComponent();
-            this.p = p;
+            this.personneDTO = personneDTO;
             this.montantDue = montantDue;
             this.mode = mode;
-            this.textBox1.Text = ""+montantDue;
+            this.textBox1.Text = "" + montantDue;
             this.textBox2.Text = mode;
         }
-        
+
 
         private void button1_Click(object sender, EventArgs e)//Payer
         {
@@ -37,21 +36,18 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                 if (paiement < montantDue)
                 {
                     PaiementDTO paiementDTO = new PaiementDTO();
-                    paiementDTO.IdPersonne = p.IdPersonne;
+                    paiementDTO.IdPersonne = personneDTO.IdPersonne;
                     paiementDTO.Mode = mode;
                     paiementDTO.Montant = paiement;
                     CentreView.DbCreateur.ServicePersonne.addPaiement(paiementDTO);
-                    this.textBox1.Text = ""+ (montantDue - paiementDTO.Montant);
+                    this.textBox1.Text = "" + (montantDue - paiementDTO.Montant);
                     this.textBox2.Text = "";
-                    this.label4.Text = "Paiement de "+paiementDTO.Montant+"$  effectué ! Merci";
-
+                    this.label4.Text = "Paiement de " + paiementDTO.Montant + "$  effectué ! Merci";
                 }
-                else {
+                else
+                {
                     this.label4.Text = "Veiller entrer une plus petit montant que celui dût. ";
                 }
-
-                
-               
             }
             catch (Exception ee)
             {
@@ -59,8 +55,6 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                 Console.WriteLine("Erreur dans la requete add paiement");
                 Console.Write(ee.Message);
             }
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)//annuler
@@ -70,7 +64,6 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
         private void FormulairePayer_Load(object sender, EventArgs e)
         {
-            //////////////////////////
             CentreView = (CentreSportifGUI)this.Owner;
         }
     }

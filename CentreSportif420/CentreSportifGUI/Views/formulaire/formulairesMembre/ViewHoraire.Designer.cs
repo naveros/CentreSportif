@@ -45,6 +45,8 @@
             this.calendar1.AllowItemEdit = false;
             this.calendar1.AllowItemResize = false;
             this.calendar1.AllowNew = false;
+            this.calendar1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.calendar1.Enabled = false;
             this.calendar1.FirstDayOfWeek = System.DayOfWeek.Monday;
             this.calendar1.Font = new System.Drawing.Font("Segoe UI", 9F);
             calendarHighlightRange1.DayOfWeek = System.DayOfWeek.Monday;
@@ -68,9 +70,10 @@
         calendarHighlightRange3,
         calendarHighlightRange4,
         calendarHighlightRange5};
-            this.calendar1.Location = new System.Drawing.Point(51, 39);
+            this.calendar1.Location = new System.Drawing.Point(68, 48);
+            this.calendar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.calendar1.Name = "calendar1";
-            this.calendar1.Size = new System.Drawing.Size(1041, 515);
+            this.calendar1.Size = new System.Drawing.Size(1388, 634);
             this.calendar1.TabIndex = 0;
             this.calendar1.Text = "calendar1";
             this.calendar1.TimeScale = System.Windows.Forms.Calendar.CalendarTimeScale.SixtyMinutes;
@@ -79,9 +82,10 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(503, 582);
+            this.button2.Location = new System.Drawing.Point(670, 716);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 37);
+            this.button2.Size = new System.Drawing.Size(167, 46);
             this.button2.TabIndex = 5;
             this.button2.Text = "Retour";
             this.button2.UseVisualStyleBackColor = true;
@@ -89,9 +93,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1098, 39);
+            this.button1.Location = new System.Drawing.Point(1464, 48);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(33, 515);
+            this.button1.Size = new System.Drawing.Size(44, 634);
             this.button1.TabIndex = 6;
             this.button1.Text = ">";
             this.button1.UseVisualStyleBackColor = true;
@@ -99,9 +104,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 39);
+            this.button3.Location = new System.Drawing.Point(16, 48);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(33, 515);
+            this.button3.Size = new System.Drawing.Size(44, 634);
             this.button3.TabIndex = 7;
             this.button3.Text = "<";
             this.button3.UseVisualStyleBackColor = true;
@@ -111,7 +117,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(51, 13);
+            this.label1.Location = new System.Drawing.Point(68, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 8;
@@ -119,14 +126,16 @@
             // 
             // ViewHoraire
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1152, 639);
+            this.ClientSize = new System.Drawing.Size(1536, 786);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.calendar1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ViewHoraire";
             this.Text = "Horaire";
             this.Load += new System.EventHandler(this.ViewHoraire_Load);

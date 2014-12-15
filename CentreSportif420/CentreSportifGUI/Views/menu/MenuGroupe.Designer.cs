@@ -47,36 +47,40 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 24);
+            this.label1.Location = new System.Drawing.Point(52, 37);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.Size = new System.Drawing.Size(84, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID Groupe";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 54);
+            this.label2.Location = new System.Drawing.Point(52, 83);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.Size = new System.Drawing.Size(81, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "ID Activité";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 85);
+            this.label3.Location = new System.Drawing.Point(52, 131);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 13);
+            this.label3.Size = new System.Drawing.Size(119, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Numero groupe";
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(38, 189);
+            this.button2.Location = new System.Drawing.Point(57, 291);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 37);
+            this.button2.Size = new System.Drawing.Size(188, 57);
             this.button2.TabIndex = 4;
             this.button2.Text = "Modifier";
             this.button2.UseVisualStyleBackColor = true;
@@ -85,9 +89,10 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(188, 189);
+            this.button1.Location = new System.Drawing.Point(282, 291);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 37);
+            this.button1.Size = new System.Drawing.Size(188, 57);
             this.button1.TabIndex = 5;
             this.button1.Text = "Supprimer";
             this.button1.UseVisualStyleBackColor = true;
@@ -96,9 +101,10 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(101, 275);
+            this.button3.Location = new System.Drawing.Point(152, 423);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(125, 37);
+            this.button3.Size = new System.Drawing.Size(188, 57);
             this.button3.TabIndex = 6;
             this.button3.Text = "Quitter";
             this.button3.UseVisualStyleBackColor = true;
@@ -107,53 +113,59 @@
             // labelIDGroupe
             // 
             this.labelIDGroupe.AutoSize = true;
-            this.labelIDGroupe.Location = new System.Drawing.Point(126, 24);
+            this.labelIDGroupe.Location = new System.Drawing.Point(189, 37);
+            this.labelIDGroupe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelIDGroupe.Name = "labelIDGroupe";
-            this.labelIDGroupe.Size = new System.Drawing.Size(13, 13);
+            this.labelIDGroupe.Size = new System.Drawing.Size(18, 20);
             this.labelIDGroupe.TabIndex = 7;
             this.labelIDGroupe.Text = "0";
             // 
             // labelIDActivite
             // 
             this.labelIDActivite.AutoSize = true;
-            this.labelIDActivite.Location = new System.Drawing.Point(126, 54);
+            this.labelIDActivite.Location = new System.Drawing.Point(189, 83);
+            this.labelIDActivite.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelIDActivite.Name = "labelIDActivite";
-            this.labelIDActivite.Size = new System.Drawing.Size(13, 13);
+            this.labelIDActivite.Size = new System.Drawing.Size(18, 20);
             this.labelIDActivite.TabIndex = 8;
             this.labelIDActivite.Text = "0";
             // 
             // labelNumeroGroupe
             // 
             this.labelNumeroGroupe.AutoSize = true;
-            this.labelNumeroGroupe.Location = new System.Drawing.Point(126, 85);
+            this.labelNumeroGroupe.Location = new System.Drawing.Point(189, 131);
+            this.labelNumeroGroupe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNumeroGroupe.Name = "labelNumeroGroupe";
-            this.labelNumeroGroupe.Size = new System.Drawing.Size(13, 13);
+            this.labelNumeroGroupe.Size = new System.Drawing.Size(18, 20);
             this.labelNumeroGroupe.TabIndex = 9;
             this.labelNumeroGroupe.Text = "0";
             // 
             // labelMessage
             // 
             this.labelMessage.AutoSize = true;
-            this.labelMessage.Location = new System.Drawing.Point(35, 156);
+            this.labelMessage.Location = new System.Drawing.Point(52, 240);
+            this.labelMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMessage.Name = "labelMessage";
-            this.labelMessage.Size = new System.Drawing.Size(56, 13);
+            this.labelMessage.Size = new System.Drawing.Size(82, 20);
             this.labelMessage.TabIndex = 10;
             this.labelMessage.Text = "Message :";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(112, 115);
+            this.label5.Location = new System.Drawing.Point(168, 177);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 13);
+            this.label5.Size = new System.Drawing.Size(0, 20);
             this.label5.TabIndex = 11;
             // 
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(38, 232);
+            this.button4.Location = new System.Drawing.Point(57, 357);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(125, 37);
+            this.button4.Size = new System.Drawing.Size(188, 57);
             this.button4.TabIndex = 12;
             this.button4.Text = "Séances";
             this.button4.UseVisualStyleBackColor = true;
@@ -162,26 +174,28 @@
             // labelPrix
             // 
             this.labelPrix.AutoSize = true;
-            this.labelPrix.Location = new System.Drawing.Point(126, 115);
+            this.labelPrix.Location = new System.Drawing.Point(189, 177);
+            this.labelPrix.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPrix.Name = "labelPrix";
-            this.labelPrix.Size = new System.Drawing.Size(13, 13);
+            this.labelPrix.Size = new System.Drawing.Size(18, 20);
             this.labelPrix.TabIndex = 14;
             this.labelPrix.Text = "0";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(35, 115);
+            this.label6.Location = new System.Drawing.Point(52, 177);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.Size = new System.Drawing.Size(34, 20);
             this.label6.TabIndex = 13;
             this.label6.Text = "Prix";
             // 
             // MenuGroupe
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(346, 355);
+            this.ClientSize = new System.Drawing.Size(519, 546);
             this.Controls.Add(this.labelPrix);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button4);
@@ -196,6 +210,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MenuGroupe";
             this.Text = "Menu Groupe";
             this.ResumeLayout(false);

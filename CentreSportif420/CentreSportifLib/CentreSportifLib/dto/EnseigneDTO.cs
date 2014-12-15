@@ -7,14 +7,18 @@ namespace CentreSportifLib.dto
 {
     public class EnseigneDTO
     {
-
+        #region Champs
         private String idenseigne;
         private String idgroupe;
         private String idpersonne;
+        #endregion
+
+        #region Propriete
         public EnseigneDTO() { }
-        public String IdEnseigne 
+
+        public String IdEnseigne
         {
-            set 
+            set
             {
                 this.idenseigne = value;
             }
@@ -23,9 +27,9 @@ namespace CentreSportifLib.dto
                 return this.idenseigne;
             }
         }
-         public String IdGroupe
+        public String IdGroupe
         {
-            set 
+            set
             {
                 this.idgroupe = value;
             }
@@ -34,9 +38,9 @@ namespace CentreSportifLib.dto
                 return this.idgroupe;
             }
         }
-         public String IdPersonne
+        public String IdPersonne
         {
-            set 
+            set
             {
                 this.idpersonne = value;
             }
@@ -45,5 +49,6 @@ namespace CentreSportifLib.dto
                 return this.idpersonne;
             }
         }
+        #endregion
     }
 }

@@ -12,24 +12,22 @@ namespace CentreSportifGUI.Views.formulaire
 {
     public partial class FormulaireActivite : Form
     {
-        ActiviteDTO a;
+        ActiviteDTO activiteDTO;
         string mode;
         public CentreSportifGUI CentreView;
-        public FormulaireActivite(ActiviteDTO a)
+        public FormulaireActivite(ActiviteDTO activiteDTO)
         {
             InitializeComponent();
-
-            if (a != null)
+            if (activiteDTO != null)
             {
-
                 this.mode = "Modifier";
-                this.a = a;
+                this.activiteDTO = activiteDTO;
                 remplir();
             }
             else
             {
                 this.mode = "Créer";
-                this.a = new ActiviteDTO();
+                this.activiteDTO = new ActiviteDTO();
             }
             this.Text = mode;
         }
@@ -39,21 +37,21 @@ namespace CentreSportifGUI.Views.formulaire
             label4.Text = "Message : ";
             try
             {
-                a.IdActivite = textBox1.Text;
-                a.Nom = textBox2.Text;
-                a.Duree= textBox3.Text;
-                a.Description = richTextBox1.Text;
+                activiteDTO.IdActivite = textBox1.Text;
+                activiteDTO.Nom = textBox2.Text;
+                activiteDTO.Duree = textBox3.Text;
+                activiteDTO.Description = richTextBox1.Text;
 
                 if (this.mode.Equals("Créer"))
                 {
-                    CentreView.DbCreateur.ServiceActivite.creer(a);
-                    label4.Text += "L'activité " + a.Nom+ " a bien été créée";
+                    CentreView.DbCreateur.ServiceActivite.creer(activiteDTO);
+                    label4.Text += "L'activité " + activiteDTO.Nom + " a bien été créée";
                     CentreView.RefreshTableActivite();
                 }
                 else if (this.mode.Equals("Modifier"))
                 {
-                    CentreView.DbCreateur.ServiceActivite.modifier(a);
-                    label4.Text += "L'activité " + a.Nom + " a bien été modifiée";
+                    CentreView.DbCreateur.ServiceActivite.modifier(activiteDTO);
+                    label4.Text += "L'activité " + activiteDTO.Nom + " a bien été modifiée";
                     CentreView.RefreshTableActivite();
                 }
             }
@@ -68,12 +66,13 @@ namespace CentreSportifGUI.Views.formulaire
             this.Dispose();
         }
 
-        public void remplir() {
+        public void remplir()
+        {
 
-            textBox1.Text = a.IdActivite;
-            textBox2.Text = a.Nom;
-            textBox3.Text = a.Duree;
-            richTextBox1.Text = a.Description;
+            textBox1.Text = activiteDTO.IdActivite;
+            textBox2.Text = activiteDTO.Nom;
+            textBox3.Text = activiteDTO.Duree;
+            richTextBox1.Text = activiteDTO.Description;
         }
 
         private void FormulaireActivite_Load(object sender, EventArgs e)

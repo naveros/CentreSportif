@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
 using MySql.Data.MySqlClient;
 using CentreSportifLib.dto;
-using System.Globalization;
 
 namespace CentreSportifLib.dao
 {
-
-    //TODO CRUD de abonnement . presences et adresse:
     public class PersonneDAO
     {
 
-        MySqlConnection con;
+        MySqlConnection connexion;
 
         #region SQL Queries
 
@@ -26,7 +24,6 @@ namespace CentreSportifLib.dao
         const String queryDeletePersonne = "DELETE FROM personne WHERE idpersonne = @idpersonne";
         const String queryReadPersonneByCodeBarre = "SELECT * FROM personne WHERE codebarre = @codebarre";
         #endregion
-
 
         const String queryReadAllAbonnements = "SELECT * FROM abonnement WHERE idpersonne = @idpersonne";
         const String queryCreateAbonnement = "INSERT INTO abonnement(idpersonne,idgroupe, dateinscription, datefin , prix)VALUES(@idpersonne, @idgroupe, @dateinscription, @datefin , @prix)";
@@ -50,44 +47,44 @@ namespace CentreSportifLib.dao
 
         public PersonneDAO(MySqlConnection connexion)
         {
-            this.con = connexion;
+            this.connexion = connexion;
         }
 
         #region CRUD Personne
 
-        public String addPersonne(PersonneDTO p)
+        public String addPersonne(PersonneDTO personneDTO)
         {
             String result = "null";
-            MySqlCommand cmd = new MySqlCommand(queryCreatePersonne, con);
-            cmd.Parameters.AddWithValue("@prenom", p.Prenom);
-            cmd.Parameters.AddWithValue("@nom", p.Nom);
-            cmd.Parameters.AddWithValue("@sexe", p.Sexe);
-            cmd.Parameters.AddWithValue("@datenaissance", p.DateNaissance);
-            cmd.Parameters.AddWithValue("@email", p.Email);
-            cmd.Parameters.AddWithValue("@motdepasse", p.MotDePasse);
-            cmd.Parameters.AddWithValue("@codebarre", p.CodeBarre);
-            cmd.Parameters.AddWithValue("@role", p.Role);
+            MySqlCommand cmd = new MySqlCommand(queryCreatePersonne, connexion);
+            cmd.Parameters.AddWithValue("@prenom", personneDTO.Prenom);
+            cmd.Parameters.AddWithValue("@nom", personneDTO.Nom);
+            cmd.Parameters.AddWithValue("@sexe", personneDTO.Sexe);
+            cmd.Parameters.AddWithValue("@datenaissance", personneDTO.DateNaissance);
+            cmd.Parameters.AddWithValue("@email", personneDTO.Email);
+            cmd.Parameters.AddWithValue("@motdepasse", personneDTO.MotDePasse);
+            cmd.Parameters.AddWithValue("@codebarre", personneDTO.CodeBarre);
+            cmd.Parameters.AddWithValue("@role", personneDTO.Role);
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.ExecuteNonQuery();
                 result = cmd.LastInsertedId.ToString();
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
             return result;
         }
 
         public PersonneDTO getPersonneByCodeBarre(String codeBarre)
         {
-            MySqlCommand cmd = new MySqlCommand(queryReadPersonneByCodeBarre, con);
+            MySqlCommand cmd = new MySqlCommand(queryReadPersonneByCodeBarre, connexion);
             MySqlDataReader reader = null;
             PersonneDTO result = new PersonneDTO();
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.Parameters.AddWithValue("@codebarre", codeBarre);
 
                 reader = cmd.ExecuteReader();
@@ -108,19 +105,19 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
             return result;
         }
 
         public PersonneDTO getPersonne(int idPersonne)
         {
-            MySqlCommand cmd = new MySqlCommand(queryReadPersonne, con);
+            MySqlCommand cmd = new MySqlCommand(queryReadPersonne, connexion);
             MySqlDataReader reader = null;
             PersonneDTO result = new PersonneDTO();
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.Parameters.AddWithValue("@idpersonne", idPersonne);
 
                 reader = cmd.ExecuteReader();
@@ -134,49 +131,44 @@ namespace CentreSportifLib.dao
                 result.MotDePasse = reader.GetString("motdepasse");
                 result.CodeBarre = reader.GetString("codebarre");
                 result.Role = reader.GetString("role");
-                //String r2 = reader[0].ToString();
             }
-            /*    catch (Exception e)
-                {
-                    Console.Write(e.Message);
-                }*/
             finally
             {
-                con.Close();
+                connexion.Close();
             }
             return result;
         }
 
-        public void updatePersonne(PersonneDTO p)
+        public void updatePersonne(PersonneDTO personneDTO)
         {
-            MySqlCommand cmd = new MySqlCommand(queryUpdatePersonne, con);
-            cmd.Parameters.AddWithValue("@idpersonne", p.IdPersonne);
-            cmd.Parameters.AddWithValue("@prenom", p.Prenom);
-            cmd.Parameters.AddWithValue("@nom", p.Nom);
-            cmd.Parameters.AddWithValue("@email", p.Email);
-            cmd.Parameters.AddWithValue("@motdepasse", p.MotDePasse);
-            cmd.Parameters.AddWithValue("@codebarre", p.CodeBarre);
-            cmd.Parameters.AddWithValue("@role", p.Role);
-            cmd.Parameters.AddWithValue("@sexe", p.Sexe);
-            cmd.Parameters.AddWithValue("@datenaissance", p.DateNaissance);
+            MySqlCommand cmd = new MySqlCommand(queryUpdatePersonne, connexion);
+            cmd.Parameters.AddWithValue("@idpersonne", personneDTO.IdPersonne);
+            cmd.Parameters.AddWithValue("@prenom", personneDTO.Prenom);
+            cmd.Parameters.AddWithValue("@nom", personneDTO.Nom);
+            cmd.Parameters.AddWithValue("@email", personneDTO.Email);
+            cmd.Parameters.AddWithValue("@motdepasse", personneDTO.MotDePasse);
+            cmd.Parameters.AddWithValue("@codebarre", personneDTO.CodeBarre);
+            cmd.Parameters.AddWithValue("@role", personneDTO.Role);
+            cmd.Parameters.AddWithValue("@sexe", personneDTO.Sexe);
+            cmd.Parameters.AddWithValue("@datenaissance", personneDTO.DateNaissance);
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.ExecuteNonQuery();
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
         }
 
-        public void deletePersonne(PersonneDTO p)
+        public void deletePersonne(PersonneDTO personneDTO)
         {
-            MySqlCommand cmd = new MySqlCommand(queryDeletePersonne, con);
-            cmd.Parameters.AddWithValue("@idpersonne", p.IdPersonne); ;
+            MySqlCommand cmd = new MySqlCommand(queryDeletePersonne, connexion);
+            cmd.Parameters.AddWithValue("@idpersonne", personneDTO.IdPersonne); ;
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -185,18 +177,18 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
         }
 
         public List<PersonneDTO> getAllPersonnes()
         {
-            MySqlCommand cmd = new MySqlCommand(queryReadAllPersonne, con);
+            MySqlCommand cmd = new MySqlCommand(queryReadAllPersonne, connexion);
             MySqlDataReader reader = null;
             List<PersonneDTO> result = new List<PersonneDTO>();
             try
             {
-                con.Open();
+                connexion.Open();
                 reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -212,9 +204,7 @@ namespace CentreSportifLib.dao
                     p.CodeBarre = reader.GetString("codebarre");
                     p.Role = reader.GetString("role");
                     result.Add(p);
-                    //String r2 = reader[0].ToString();
                 }
-
             }
             catch (Exception e)
             {
@@ -223,19 +213,19 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
             return result;
         }
 
         public List<PersonneDTO> getAllByRole(String role)
         {
-            MySqlCommand cmd = new MySqlCommand(queryReadByRole, con);
+            MySqlCommand cmd = new MySqlCommand(queryReadByRole, connexion);
             MySqlDataReader reader = null;
             List<PersonneDTO> result = new List<PersonneDTO>();
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.Parameters.AddWithValue("@role", role);
                 reader = cmd.ExecuteReader();
 
@@ -252,9 +242,7 @@ namespace CentreSportifLib.dao
                     p.CodeBarre = reader.GetString("codebarre");
                     p.Role = reader.GetString("role");
                     result.Add(p);
-                    //String r2 = reader[0].ToString();
                 }
-
             }
             catch (Exception e)
             {
@@ -263,20 +251,18 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
             return result;
         }
 
         #endregion
 
-        //TODO CRUD message, seance
-
         #region CRUD Adresse
 
         public void addAdresse(AdresseDTO adresseDTO)
         {
-            MySqlCommand cmd = new MySqlCommand(queryCreateAdresse, con);
+            MySqlCommand cmd = new MySqlCommand(queryCreateAdresse, connexion);
             cmd.Parameters.AddWithValue("@numero", adresseDTO.Numero);
             cmd.Parameters.AddWithValue("@rue", adresseDTO.Rue);
             cmd.Parameters.AddWithValue("@codepostal", adresseDTO.CodePostal);
@@ -285,23 +271,23 @@ namespace CentreSportifLib.dao
             cmd.Parameters.AddWithValue("@idpersonne", adresseDTO.IdPersonne);
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.ExecuteNonQuery();
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
         }
-        public AdresseDTO getAdresse(PersonneDTO p)
+        public AdresseDTO getAdresse(String idPersonne)
         {
-            MySqlCommand cmd = new MySqlCommand(queryReadAdresse, con);
+            MySqlCommand cmd = new MySqlCommand(queryReadAdresse, connexion);
             MySqlDataReader reader = null;
             AdresseDTO result = new AdresseDTO();
             try
             {
-                con.Open();
-                cmd.Parameters.AddWithValue("@idpersonne", p.IdPersonne);
+                connexion.Open();
+                cmd.Parameters.AddWithValue("@idpersonne", idPersonne);
                 reader = cmd.ExecuteReader();
                 reader.Read();
                 result.IdAdresse = reader.GetString("idaddresse");
@@ -318,14 +304,14 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
             Console.WriteLine(result.ToString());
             return result;
         }
         public void updateAdresse(AdresseDTO adresseDTO)
         {
-            MySqlCommand cmd = new MySqlCommand(queryUpdateAdresse, con);
+            MySqlCommand cmd = new MySqlCommand(queryUpdateAdresse, connexion);
             cmd.Parameters.AddWithValue("@numero", adresseDTO.Numero);
             cmd.Parameters.AddWithValue("@rue", adresseDTO.Rue);
             cmd.Parameters.AddWithValue("@codepostal", adresseDTO.CodePostal);
@@ -334,12 +320,12 @@ namespace CentreSportifLib.dao
             cmd.Parameters.AddWithValue("@idpersonne", adresseDTO.IdPersonne);
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.ExecuteNonQuery();
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
         }
         public void deleteAdresse() { }
@@ -347,60 +333,45 @@ namespace CentreSportifLib.dao
         #endregion
 
         #region CRUD Abonnement
-        public void addAbonnement(AbonnementDTO a)
+        public void addAbonnement(AbonnementDTO abonnementDTO)
         {
-            MySqlCommand cmd = new MySqlCommand(queryCreateAbonnement, con);
-            cmd.Parameters.AddWithValue("@idpersonne", a.IdPersonne);
-            cmd.Parameters.AddWithValue("@idgroupe", a.IdGroupe);
-            cmd.Parameters.AddWithValue("@dateinscription", a.DateInscription);
-            cmd.Parameters.AddWithValue("@datefin", a.DateFin);
-            cmd.Parameters.AddWithValue("@prix", a.Prix);
-
+            MySqlCommand cmd = new MySqlCommand(queryCreateAbonnement, connexion);
+            cmd.Parameters.AddWithValue("@idpersonne", abonnementDTO.IdPersonne);
+            cmd.Parameters.AddWithValue("@idgroupe", abonnementDTO.IdGroupe);
+            cmd.Parameters.AddWithValue("@dateinscription", abonnementDTO.DateInscription);
+            cmd.Parameters.AddWithValue("@datefin", abonnementDTO.DateFin);
+            cmd.Parameters.AddWithValue("@prix", abonnementDTO.Prix);
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.ExecuteNonQuery();
             }
-            /*  catch (Exception e)
-              {
-                  Console.Write(e.Message);
-              }*/
             finally
             {
-                con.Close();
+                connexion.Close();
             }
         }
-        public void getAbonnement() { }
-        public void updateAbonnement()
+        public List<AbonnementDTO> getAllAbonnements(PersonneDTO personneDTO)
         {
-
-        }
-        public void deleteAbonnement() { }
-        public List<AbonnementDTO> getAllAbonnements(PersonneDTO p)
-        {
-            MySqlCommand cmd = new MySqlCommand(queryReadAllAbonnements, con);
-            cmd.Parameters.AddWithValue("@idpersonne", p.IdPersonne);
+            MySqlCommand cmd = new MySqlCommand(queryReadAllAbonnements, connexion);
+            cmd.Parameters.AddWithValue("@idpersonne", personneDTO.IdPersonne);
             MySqlDataReader reader = null;
             List<AbonnementDTO> result = new List<AbonnementDTO>();
             try
             {
-                con.Open();
+                connexion.Open();
                 reader = cmd.ExecuteReader();
-
                 while (reader.Read())
                 {
-                    AbonnementDTO a = new AbonnementDTO();
-
-                    a.IdAbonnement = reader.GetString("idabonnement");
-                    a.IdPersonne = reader.GetString("idpersonne");
-                    a.IdGroupe = reader.GetString("idgroupe");
-                    a.DateInscription = (DateTime)reader["dateinscription"];
-                    a.DateFin = (DateTime)reader["datefin"];
-                    a.Prix = reader.GetDecimal("prix");
-                    result.Add(a);
-                    //String r2 = reader[0].ToString();
+                    AbonnementDTO abonnementDTO = new AbonnementDTO();
+                    abonnementDTO.IdAbonnement = reader.GetString("idabonnement");
+                    abonnementDTO.IdPersonne = reader.GetString("idpersonne");
+                    abonnementDTO.IdGroupe = reader.GetString("idgroupe");
+                    abonnementDTO.DateInscription = (DateTime)reader["dateinscription"];
+                    abonnementDTO.DateFin = (DateTime)reader["datefin"];
+                    abonnementDTO.Prix = reader.GetDecimal("prix");
+                    result.Add(abonnementDTO);
                 }
-
             }
             catch (Exception e)
             {
@@ -409,7 +380,7 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
             return result;
         }
@@ -417,14 +388,14 @@ namespace CentreSportifLib.dao
         #endregion
 
         #region CRUD Enseigne
-        public void addEnseigne(EnseigneDTO enseigne)
+        public void addEnseigne(EnseigneDTO enseigneDTO)
         {
-            MySqlCommand cmd = new MySqlCommand(queryCreateEnseigne, con);
-            cmd.Parameters.AddWithValue("@idpersonne", enseigne.IdPersonne);
-            cmd.Parameters.AddWithValue("@idgroupe", enseigne.IdGroupe);
+            MySqlCommand cmd = new MySqlCommand(queryCreateEnseigne, connexion);
+            cmd.Parameters.AddWithValue("@idpersonne", enseigneDTO.IdPersonne);
+            cmd.Parameters.AddWithValue("@idgroupe", enseigneDTO.IdGroupe);
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -433,21 +404,20 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
         }
         public EnseigneDTO getEnseigneByGroupId(String idGroupe)
         {
-
-            MySqlCommand cmd = new MySqlCommand(queryReadEnseigneByGroupId, con);
+            MySqlCommand cmd = new MySqlCommand(queryReadEnseigneByGroupId, connexion);
             cmd.Parameters.AddWithValue("@idgroupe", idGroupe);
             MySqlDataReader reader = null;
             EnseigneDTO result = new EnseigneDTO();
             try
             {
-                con.Open();
+                connexion.Open();
                 reader = cmd.ExecuteReader();
-                reader.Read(); //While? 
+                reader.Read();
                 result.IdEnseigne = reader.GetString("idenseigne");
                 result.IdPersonne = reader.GetString("idpersonne");
                 result.IdGroupe = idGroupe;
@@ -458,7 +428,7 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
             return result;
         }
@@ -469,29 +439,27 @@ namespace CentreSportifLib.dao
         public void getPresence() { }
         public void updatePresence() { }
         public void deletePresence() { }
-        public List<PresenceDTO> getAllPresences(PersonneDTO p)
+
+        public List<PresenceDTO> getAllPresences(PersonneDTO personneDTO)
         {
-            MySqlCommand cmd = new MySqlCommand(queryReadAllPresences, con);
-            cmd.Parameters.AddWithValue("@idpersonne", p.IdPersonne);
+            MySqlCommand cmd = new MySqlCommand(queryReadAllPresences, connexion);
+            cmd.Parameters.AddWithValue("@idpersonne", personneDTO.IdPersonne);
             MySqlDataReader reader = null;
             List<PresenceDTO> result = new List<PresenceDTO>();
             try
             {
-                con.Open();
+                connexion.Open();
                 reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
                     PresenceDTO presenceDTO = new PresenceDTO();
-
                     presenceDTO.IdPresence = reader.GetString("idpresence");
                     presenceDTO.IdPersonne = reader.GetString("idpersonne");
                     presenceDTO.IdSeance = reader.GetString("idseance");
                     presenceDTO.Present = reader.GetBoolean("present");
                     result.Add(presenceDTO);
-                    //String r2 = reader[0].ToString();
                 }
-
             }
             catch (Exception e)
             {
@@ -500,7 +468,7 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
             return result;
         }
@@ -511,15 +479,14 @@ namespace CentreSportifLib.dao
         #region CRUD Paiement
         public void addPaiement(PaiementDTO paiementDTO)
         {
-
-            MySqlCommand cmd = new MySqlCommand(queryCreatePaiement, con);
+            MySqlCommand cmd = new MySqlCommand(queryCreatePaiement, connexion);
             cmd.Parameters.AddWithValue("@idpersonne", paiementDTO.IdPersonne);
             cmd.Parameters.AddWithValue("@montant", paiementDTO.Montant);
             cmd.Parameters.AddWithValue("@mode", paiementDTO.Mode);
 
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -528,38 +495,30 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
-
         }
-        public void getPaiement() { }
-        public void updatePaiement() { }
-        public void deletePaiement() { }
-        public List<PaiementDTO> getAllPaiements(PersonneDTO p)
+        public List<PaiementDTO> getAllPaiements(String idPersonne)
         {
-            MySqlCommand cmd = new MySqlCommand(queryReadAllPaiements, con);
-            cmd.Parameters.AddWithValue("@idpersonne", p.IdPersonne);
+            MySqlCommand cmd = new MySqlCommand(queryReadAllPaiements, connexion);
+            cmd.Parameters.AddWithValue("@idpersonne", idPersonne);
             MySqlDataReader reader = null;
             List<PaiementDTO> result = new List<PaiementDTO>();
 
             try
             {
-                con.Open();
+                connexion.Open();
                 reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
                     PaiementDTO paiementDTO = new PaiementDTO();
-
-
                     paiementDTO.IdPersonne = reader.GetString("idpersonne");
                     paiementDTO.Date = reader.GetDateTime("date");
                     paiementDTO.Montant = reader.GetDecimal("montant");
                     paiementDTO.Mode = reader.GetString("mode");
                     result.Add(paiementDTO);
-                    //String r2 = reader[0].ToString();
                 }
-
             }
             catch (Exception e)
             {
@@ -568,7 +527,7 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
             return result;
         }
@@ -579,12 +538,12 @@ namespace CentreSportifLib.dao
 
         public void addMessage(MessageDTO messageDTO)
         {
-            MySqlCommand cmd = new MySqlCommand(queryCreateMessage, con);
+            MySqlCommand cmd = new MySqlCommand(queryCreateMessage, connexion);
             cmd.Parameters.AddWithValue("@idpersonne", messageDTO.IdPersonne);
             cmd.Parameters.AddWithValue("@contenu", messageDTO.Contenu);
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -593,20 +552,17 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
         }
-        public void getMessage() { }
-        public void updateMessage() { }
         public void deleteMessage(String idMessage)
         {
-            
-            MySqlCommand cmd = new MySqlCommand(queryDeleteMessage, con);
-            cmd.Parameters.AddWithValue("@idmessage",idMessage); ;
+            MySqlCommand cmd = new MySqlCommand(queryDeleteMessage, connexion);
+            cmd.Parameters.AddWithValue("@idmessage", idMessage); ;
 
             try
             {
-                con.Open();
+                connexion.Open();
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -615,34 +571,32 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
         }
-        public List<MessageDTO> getAllMessages(PersonneDTO personneDTO)
+        public List<MessageDTO> getAllMessages(String idPersonne)
         {
 
 
-            MySqlCommand cmd = new MySqlCommand(queryReadAllMessages, con);
-            cmd.Parameters.AddWithValue("@idpersonne", personneDTO.IdPersonne);
+            MySqlCommand cmd = new MySqlCommand(queryReadAllMessages, connexion);
+            cmd.Parameters.AddWithValue("@idpersonne", idPersonne);
             MySqlDataReader reader = null;
             List<MessageDTO> result = new List<MessageDTO>();
 
             try
             {
-                con.Open();
+                connexion.Open();
                 reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
                     MessageDTO MessageDTO = new MessageDTO();
-
                     MessageDTO.IdMessage = reader.GetString("idmessage");
                     MessageDTO.IdPersonne = reader.GetString("idpersonne");
                     MessageDTO.Contenu = reader.GetString("contenu");
                     MessageDTO.DateCreation = reader.GetDateTime("datecreation");
                     result.Add(MessageDTO);
                 }
-
             }
             catch (Exception e)
             {
@@ -651,13 +605,10 @@ namespace CentreSportifLib.dao
             }
             finally
             {
-                con.Close();
+                connexion.Close();
             }
             return result;
         }
-
         #endregion
-
-
     }
 }

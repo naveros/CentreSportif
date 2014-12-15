@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using CentreSportifLib.dto;
+
 namespace CentreSportifGUI.Views.formulaire
 {
     public enum Jour
@@ -21,24 +22,24 @@ namespace CentreSportifGUI.Views.formulaire
     }
     public partial class FormulaireGroupe : Form
     {
-        GroupeDTO g;
+        GroupeDTO groupeDTO;
         string mode;
         public CentreSportifGUI CentreView;
-        public FormulaireGroupe(GroupeDTO g)
+        public FormulaireGroupe(GroupeDTO groupeDTO)
         {
             InitializeComponent();
 
-            if (g != null)
+            if (groupeDTO != null)
             {
 
                 this.mode = "Modifier";
-                this.g = g;
+                this.groupeDTO = groupeDTO;
                 remplir();
             }
             else
             {
                 this.mode = "Créer";
-                this.g = new GroupeDTO();
+                this.groupeDTO = new GroupeDTO();
             }
             this.Text = mode;
         }
@@ -48,12 +49,12 @@ namespace CentreSportifGUI.Views.formulaire
             label4.Text = "Message : ";
             try
             {
-                ActiviteDTO activite = (ActiviteDTO)comboBox1.SelectedItem;
-                PersonneDTO prof = (PersonneDTO)comboBox2.SelectedItem;
+                ActiviteDTO activiteDTO = (ActiviteDTO)comboBox1.SelectedItem;
+                PersonneDTO professeur = (PersonneDTO)comboBox2.SelectedItem;
                 //g.IdGroupe = textBox1.Text;
-                g.IdActivite = activite.IdActivite;
-                g.NumeroGroupe = textBox3.Text;
-                g.Prix = decimal.Parse(textBox4.Text);
+                groupeDTO.IdActivite = activiteDTO.IdActivite;
+                groupeDTO.NumeroGroupe = textBox3.Text;
+                groupeDTO.Prix = decimal.Parse(textBox4.Text);
 
                 // add prof
                 //Créee les seances
@@ -62,37 +63,37 @@ namespace CentreSportifGUI.Views.formulaire
 
                 if (this.mode.Equals("Créer"))
                 {
-                    String idgroup = CentreView.DbCreateur.ServiceGroupe.creer(g);
+                    String idgroupe = CentreView.DbCreateur.ServiceGroupe.creer(groupeDTO);
                     // add prof
-                    EnseigneDTO enseigne = new EnseigneDTO();
-                    enseigne.IdGroupe = idgroup;
-                    enseigne.IdPersonne = prof.IdPersonne;
-                    CentreView.DbCreateur.ServicePersonne.addEnseigne(enseigne);
+                    EnseigneDTO enseigneDTO = new EnseigneDTO();
+                    enseigneDTO.IdGroupe = idgroupe;
+                    enseigneDTO.IdPersonne = professeur.IdPersonne;
+                    CentreView.DbCreateur.ServicePersonne.addEnseigne(enseigneDTO);
                     //Crée les seance
                     int daysUntilNextSeance = ((int)dateTimePicker1.Value.DayOfWeek - (int)tomorrow.DayOfWeek + 7) % 7;
                     DateTime nextDay = tomorrow.AddDays(daysUntilNextSeance);
                     DateTime nextSeanceDebut = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, dateTimePicker1.Value.Hour, 0, 0);
                     DateTime nextSeanceFin = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, dateTimePicker1.Value.Hour, 0, 0);
-                    nextSeanceFin = nextSeanceFin.AddHours(int.Parse(activite.Duree));
+                    nextSeanceFin = nextSeanceFin.AddHours(int.Parse(activiteDTO.Duree));
                     //nextSeanceDebut.AddHours(int.Parse(activite.Duree));
                     int nb = int.Parse(textBox2.Text);
                     for (int i = 0; i < nb; i++)
                     {
-                        SeanceDTO newSeance = new SeanceDTO();
-                        newSeance.IdGroupe = idgroup;
-                        newSeance.DateDebut = nextSeanceDebut;
-                        newSeance.DateFin = nextSeanceFin;
-                        CentreView.DbCreateur.ServiceGroupe.addSeance(newSeance);
+                        SeanceDTO seanceDTO = new SeanceDTO();
+                        seanceDTO.IdGroupe = idgroupe;
+                        seanceDTO.DateDebut = nextSeanceDebut;
+                        seanceDTO.DateFin = nextSeanceFin;
+                        CentreView.DbCreateur.ServiceGroupe.addSeance(seanceDTO);
                         nextSeanceDebut = nextSeanceDebut.AddDays(7);
                         nextSeanceFin = nextSeanceFin.AddDays(7);
                     }
-                    label4.Text += "Le groupe " + g.NumeroGroupe + " a bien été crée";
+                    label4.Text += "Le groupe " + groupeDTO.NumeroGroupe + " a bien été crée";
                     CentreView.RefreshTableGroupe();
                 }
                 else if (this.mode.Equals("Modifier"))
                 {
-                    CentreView.DbCreateur.ServiceGroupe.update(g);
-                    label4.Text += "Le groupe " + g.NumeroGroupe + " a bien été modifié";
+                    CentreView.DbCreateur.ServiceGroupe.update(groupeDTO);
+                    label4.Text += "Le groupe " + groupeDTO.NumeroGroupe + " a bien été modifié";
                     CentreView.RefreshTableGroupe();
                 }
             }
@@ -107,13 +108,12 @@ namespace CentreSportifGUI.Views.formulaire
         private void button2_Click(object sender, EventArgs e)
         {
             this.Dispose();
-
         }
 
         private void remplir()
         {
-            textBox1.Text = g.IdActivite;
-            textBox3.Text = g.NumeroGroupe;
+            textBox1.Text = groupeDTO.IdActivite;
+            textBox3.Text = groupeDTO.NumeroGroupe;
         }
 
         private void FormulaireGroupe_Load(object sender, EventArgs e)
@@ -122,13 +122,13 @@ namespace CentreSportifGUI.Views.formulaire
             if (this.mode.Equals("Créer"))
             {
                 //Remplir le comboBox des activité
-                List<ActiviteDTO> activites = CentreView.DbCreateur.ServiceActivite.getAll();
-                var bindingList1 = new BindingList<ActiviteDTO>(activites);
+                List<ActiviteDTO> listActiviteDTO = CentreView.DbCreateur.ServiceActivite.getAll();
+                var bindingList1 = new BindingList<ActiviteDTO>(listActiviteDTO);
                 var source1 = new BindingSource(bindingList1, null);
                 comboBox1.DataSource = source1;
                 //Remplir le comboBox des profs
-                List<PersonneDTO> professeurs = CentreView.DbCreateur.ServicePersonne.getAllTeachers();
-                var bindingList2 = new BindingList<PersonneDTO>(professeurs);
+                List<PersonneDTO> listProfesseurDTO = CentreView.DbCreateur.ServicePersonne.getAllTeachers();
+                var bindingList2 = new BindingList<PersonneDTO>(listProfesseurDTO);
                 var source2 = new BindingSource(bindingList2, null);
                 comboBox2.DataSource = source2;
                 //Remplir le comboBox des jours
@@ -138,16 +138,6 @@ namespace CentreSportifGUI.Views.formulaire
                 dateTimePicker1.CustomFormat = "hh";
                 dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             }
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

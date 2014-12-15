@@ -12,19 +12,17 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 {
     public partial class FormulaireAbonnement : Form
     {
-        PersonneDTO p;
-        ActiviteDTO activite;
-        GroupeDTO groupe;
-        List<SeanceDTO> seances;
-        SeanceDTO lastSeance;
+        PersonneDTO personneDTO;
+        ActiviteDTO activiteDTO;
+        GroupeDTO groupeDTO;
+        List<SeanceDTO> listSeanceDTO;
+        SeanceDTO lastSeanceDTO;
         public CentreSportifGUI CentreView;
 
-        public FormulaireAbonnement(PersonneDTO p)
+        public FormulaireAbonnement(PersonneDTO personneDTO)
         {
             InitializeComponent();
-            this.p = p;
-
-
+            this.personneDTO = personneDTO;
         }
         private void init()
         {
@@ -44,14 +42,8 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            activite = (ActiviteDTO)comboBox1.SelectedItem;
-
-            String idActivite = activite.IdActivite;
-
-            //    MessageBox.Show("Selected id : " +  activite.IdActivite + "\n" +
-            //                  "nom " + activite.Nom);
-
+            activiteDTO = (ActiviteDTO)comboBox1.SelectedItem;
+            String idActivite = activiteDTO.IdActivite;
             comboBox2.Enabled = true;
             try
             {
@@ -76,26 +68,23 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                 textBox2.Text = "";
                 textBox3.Text = "";
                 label6.Text = "Message : ";
-                groupe = null;
-                seances = null;
-                lastSeance = null;
-                
-                groupe = (GroupeDTO)comboBox2.SelectedItem;
+                groupeDTO = null;
+                listSeanceDTO = null;
+                lastSeanceDTO = null;
 
-                EnseigneDTO enseigneDTO = CentreView.DbCreateur.ServicePersonne.getEnseigneByGroupId(groupe.IdGroupe);
+                groupeDTO = (GroupeDTO)comboBox2.SelectedItem;
+                EnseigneDTO enseigneDTO = CentreView.DbCreateur.ServicePersonne.getEnseigneByGroupId(groupeDTO.IdGroupe);
                 PersonneDTO professeur = CentreView.DbCreateur.ServicePersonne.findById(int.Parse(enseigneDTO.IdPersonne));
 
-
                 this.dataGridView1.Rows.Clear();
-                seances = CentreView.DbCreateur.ServiceGroupe.getAllSeancesByGroupId(groupe.IdGroupe);
-                lastSeance = seances.Last();
+                listSeanceDTO = CentreView.DbCreateur.ServiceGroupe.getAllSeancesByGroupId(groupeDTO.IdGroupe);
+                lastSeanceDTO = listSeanceDTO.Last();
 
-                textBox1.Text = "" + seances.Count;
-                textBox2.Text = lastSeance.DateFin.Day + " / " + lastSeance.DateFin.Month + " / " + lastSeance.DateFin.Year;
-                textBox3.Text = "" + groupe.Prix;
+                textBox1.Text = "" + listSeanceDTO.Count;
+                textBox2.Text = lastSeanceDTO.DateFin.Day + " / " + lastSeanceDTO.DateFin.Month + " / " + lastSeanceDTO.DateFin.Year;
+                textBox3.Text = "" + groupeDTO.Prix;
 
-                
-                seances.ForEach(delegate(SeanceDTO seance)
+                listSeanceDTO.ForEach(delegate(SeanceDTO seance)
                 {
                     int i = this.dataGridView1.Rows.Add();
                     dataGridView1.Rows[i].Cells[0].Value = seance.DateDebut.DayOfWeek;
@@ -107,11 +96,10 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             }
             catch (Exception ee)
             {
-                label6.Text += "Erreur dans le chargement des séances du groupe " + groupe.NumeroGroupe;
+                label6.Text += "Erreur dans le chargement des séances du groupe " + groupeDTO.NumeroGroupe;
                 Console.WriteLine("Erreur dans la requete get all seances");
                 Console.Write(ee.Message);
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)//inscrire
@@ -120,12 +108,11 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             AbonnementDTO abonnement = new AbonnementDTO();
             try
             {
-                abonnement.IdPersonne = p.IdPersonne;
-                abonnement.IdGroupe = groupe.IdGroupe;
+                abonnement.IdPersonne = personneDTO.IdPersonne;
+                abonnement.IdGroupe = groupeDTO.IdGroupe;
                 abonnement.DateInscription = new DateTime();
-                abonnement.Prix = groupe.Prix;
-                abonnement.DateFin = lastSeance.DateFin; //TODO . a changer pour la date de fin
-
+                abonnement.Prix = groupeDTO.Prix;
+                abonnement.DateFin = lastSeanceDTO.DateFin;
                 CentreView.DbCreateur.ServicePersonne.addAbonnement(abonnement);
                 label6.Text += "Ajout de l'abonnement réussit ! ";
             }

@@ -10,14 +10,15 @@ namespace CentreSportifLib.service
     public class ServiceActivite
     {
         ActiviteDAO activiteDAO;
+
         public ServiceActivite(ActiviteDAO activiteDAO)
         {
             this.activiteDAO = activiteDAO;
         }
 
-        public void creer(ActiviteDTO a)
+        public void creer(ActiviteDTO activiteDTO)
         {
-            activiteDAO.add(a);
+            activiteDAO.add(activiteDTO);
         }
         public List<ActiviteDTO> getAll()
         {
@@ -27,14 +28,14 @@ namespace CentreSportifLib.service
         {
             return activiteDAO.get(idActivite);
         }
-        public void modifier(ActiviteDTO a)
+        public void modifier(ActiviteDTO activiteDTO)
         {
-            activiteDAO.update(a);
+            activiteDAO.update(activiteDTO);
         }
 
-        public void delete(ActiviteDTO a)
+        public void delete(ActiviteDTO activiteDTO)
         {
-            activiteDAO.delete(a);
+            activiteDAO.delete(activiteDTO);
         }
     }
 }

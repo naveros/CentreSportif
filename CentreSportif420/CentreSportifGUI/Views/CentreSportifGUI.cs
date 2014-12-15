@@ -31,55 +31,51 @@ namespace CentreSportifGUI
             labelMessageGroupe.Text = "";
         }
 
-
         public void RefreshTableMembre()
         {
             this.dataGridView1.Rows.Clear();
-            DbCreateur.ServicePersonne.getAll().ForEach(delegate(PersonneDTO p)
+            DbCreateur.ServicePersonne.getAll().ForEach(delegate(PersonneDTO personneDTO)
             {
                 int i = this.dataGridView1.Rows.Add();
-                //Console.WriteLine(p.ToString());
-                dataGridView1.Rows[i].Cells[0].Value = p.IdPersonne;
-                dataGridView1.Rows[i].Cells[1].Value = p.Prenom;
-                dataGridView1.Rows[i].Cells[2].Value = p.Nom;
-                dataGridView1.Rows[i].Cells[3].Value = p.Email;
-                dataGridView1.Rows[i].Cells[4].Value = formatRole(p.Role);
-                dataGridView1.Rows[i].Cells[5].Value = p.Sexe;
-                dataGridView1.Rows[i].Cells[6].Value = p.CodeBarre;
+                dataGridView1.Rows[i].Cells[0].Value = personneDTO.IdPersonne;
+                dataGridView1.Rows[i].Cells[1].Value = personneDTO.Prenom;
+                dataGridView1.Rows[i].Cells[2].Value = personneDTO.Nom;
+                dataGridView1.Rows[i].Cells[3].Value = personneDTO.Email;
+                dataGridView1.Rows[i].Cells[4].Value = formatRole(personneDTO.Role);
+                dataGridView1.Rows[i].Cells[5].Value = personneDTO.Sexe;
+                dataGridView1.Rows[i].Cells[6].Value = personneDTO.CodeBarre;
                 dataGridView1.Rows[i].Cells[7].Value = "Modifier";
-                dataGridView1.Rows[i].Cells[7].Tag = p;
+                dataGridView1.Rows[i].Cells[7].Tag = personneDTO;
             });
         }
 
         public void RefreshTableActivite()
         {
             this.dataGridView2.Rows.Clear();
-            DbCreateur.ServiceActivite.getAll().ForEach(delegate(ActiviteDTO a)
+            DbCreateur.ServiceActivite.getAll().ForEach(delegate(ActiviteDTO activiteDTO)
             {
                 int i = this.dataGridView2.Rows.Add();
-                //Console.WriteLine(p.ToString());
-                dataGridView2.Rows[i].Cells[0].Value = a.IdActivite;
-                dataGridView2.Rows[i].Cells[1].Value = a.Nom;
-                dataGridView2.Rows[i].Cells[2].Value = a.Duree;
-                dataGridView2.Rows[i].Cells[3].Value = a.Description;
+                dataGridView2.Rows[i].Cells[0].Value = activiteDTO.IdActivite;
+                dataGridView2.Rows[i].Cells[1].Value = activiteDTO.Nom;
+                dataGridView2.Rows[i].Cells[2].Value = activiteDTO.Duree;
+                dataGridView2.Rows[i].Cells[3].Value = activiteDTO.Description;
                 dataGridView2.Rows[i].Cells[4].Value = "Modifier";
-                dataGridView2.Rows[i].Cells[4].Tag = a;
+                dataGridView2.Rows[i].Cells[4].Tag = activiteDTO;
             });
         }
 
         public void RefreshTableGroupe()
         {
             this.dataGridView3.Rows.Clear();
-            DbCreateur.ServiceGroupe.getAll().ForEach(delegate(GroupeDTO g)
+            DbCreateur.ServiceGroupe.getAll().ForEach(delegate(GroupeDTO groupeDTO)
             {
                 int i = this.dataGridView3.Rows.Add();
-                // Console.WriteLine(g.ToString());
-                dataGridView3.Rows[i].Cells[0].Value = g.IdGroupe;
-                dataGridView3.Rows[i].Cells[1].Value = g.IdActivite;
-                dataGridView3.Rows[i].Cells[2].Value = DbCreateur.ServiceActivite.findById(g.IdActivite).Nom;
-                dataGridView3.Rows[i].Cells[3].Value = g.NumeroGroupe;
+                dataGridView3.Rows[i].Cells[0].Value = groupeDTO.IdGroupe;
+                dataGridView3.Rows[i].Cells[1].Value = groupeDTO.IdActivite;
+                dataGridView3.Rows[i].Cells[2].Value = DbCreateur.ServiceActivite.findById(groupeDTO.IdActivite).Nom;
+                dataGridView3.Rows[i].Cells[3].Value = groupeDTO.NumeroGroupe;
                 dataGridView3.Rows[i].Cells[4].Value = "Modifier";
-                dataGridView3.Rows[i].Cells[4].Tag = g;
+                dataGridView3.Rows[i].Cells[4].Tag = groupeDTO;
             });
         }
 
@@ -87,10 +83,10 @@ namespace CentreSportifGUI
         {
             if (e.ColumnIndex == 7)
             {
-                PersonneDTO p = (PersonneDTO)dataGridView1.Rows[e.RowIndex].Cells[7].Tag;
-                if (p != null)
+                PersonneDTO personneDTO = (PersonneDTO)dataGridView1.Rows[e.RowIndex].Cells[7].Tag;
+                if (personneDTO != null)
                 {
-                    MenuMembre form = new MenuMembre(p);
+                    MenuMembre form = new MenuMembre(personneDTO);
                     form.Owner = this;
                     form.ShowDialog();
                 }
@@ -101,10 +97,10 @@ namespace CentreSportifGUI
         {
             if (e.ColumnIndex == 4)
             {
-                ActiviteDTO a = (ActiviteDTO)dataGridView2.Rows[e.RowIndex].Cells[4].Tag;
-                if (a != null)
+                ActiviteDTO activiteDTO = (ActiviteDTO)dataGridView2.Rows[e.RowIndex].Cells[4].Tag;
+                if (activiteDTO != null)
                 {
-                    MenuActivite form = new MenuActivite(a);
+                    MenuActivite form = new MenuActivite(activiteDTO);
                     form.Owner = this;
                     form.ShowDialog();
                 }
@@ -115,16 +111,15 @@ namespace CentreSportifGUI
         {
             if (e.ColumnIndex == 4)
             {
-                GroupeDTO g = (GroupeDTO)dataGridView3.Rows[e.RowIndex].Cells[4].Tag;
-                if (g != null)
+                GroupeDTO groupeDTO = (GroupeDTO)dataGridView3.Rows[e.RowIndex].Cells[4].Tag;
+                if (groupeDTO != null)
                 {
-                    MenuGroupe form = new MenuGroupe(g);
+                    MenuGroupe form = new MenuGroupe(groupeDTO);
                     form.Owner = this;
                     form.ShowDialog();
                 }
             }
         }
-
 
         private void button5_Click(object sender, EventArgs e) //Connexion d'un membre manuellement
         {
@@ -135,46 +130,41 @@ namespace CentreSportifGUI
 
         private void button1_Click(object sender, EventArgs e) //nouveau membre
         {
-            FormulaireMembre form = new FormulaireMembre(null);
-            form.Owner = this;
-            form.ShowDialog();
+            FormulaireMembre formMembre = new FormulaireMembre(null);
+            formMembre.Owner = this;
+            formMembre.ShowDialog();
         }
 
         private void button6_Click(object sender, EventArgs e) //nouvelle activite
         {
-            FormulaireActivite form = new FormulaireActivite(null);
-            form.Owner = this;
-            form.ShowDialog();
+            FormulaireActivite formActivite = new FormulaireActivite(null);
+            formActivite.Owner = this;
+            formActivite.ShowDialog();
         }
 
         private void button7_Click(object sender, EventArgs e) //nouveau groupe
         {
-            FormulaireGroupe form = new FormulaireGroupe(null);
-            form.Owner = this;
-            form.ShowDialog();
+            FormulaireGroupe formGroupe = new FormulaireGroupe(null);
+            formGroupe.Owner = this;
+            formGroupe.ShowDialog();
         }
-
-
 
         private void button2_Click(object sender, EventArgs e) //Chercher Membre par id
         {
             labelMessageMembre.Text = "";
-
             try
             {
                 int idPersonne = int.Parse(textBox1.Text);
-                PersonneDTO personne = DbCreateur.ServicePersonne.findById(idPersonne);
-                MenuMembre form = new MenuMembre(personne);
-                form.Owner = this;
-                form.ShowDialog();
+                PersonneDTO personneDTO = DbCreateur.ServicePersonne.findById(idPersonne);
+                MenuMembre formMenuMembre = new MenuMembre(personneDTO);
+                formMenuMembre.Owner = this;
+                formMenuMembre.ShowDialog();
             }
             catch
             {
                 labelMessageMembre.Text = "ID introuvable";
             }
-
         }
-
 
         private void button3_Click(object sender, EventArgs e) //Chercher Activite par id
         {
@@ -182,8 +172,8 @@ namespace CentreSportifGUI
             String idActivite = textBox2.Text;
             try
             {
-                ActiviteDTO activite = DbCreateur.ServiceActivite.findById(idActivite);
-                MenuActivite form = new MenuActivite(activite);
+                ActiviteDTO activiteDTO = DbCreateur.ServiceActivite.findById(idActivite);
+                MenuActivite form = new MenuActivite(activiteDTO);
                 form.Owner = this;
                 form.ShowDialog();
             }
@@ -199,8 +189,8 @@ namespace CentreSportifGUI
             String idGroupe = textBox4.Text;
             try
             {
-                GroupeDTO groupe = DbCreateur.ServiceGroupe.findById(idGroupe);
-                MenuGroupe form = new MenuGroupe(groupe);
+                GroupeDTO groupeDTO = DbCreateur.ServiceGroupe.findById(idGroupe);
+                MenuGroupe form = new MenuGroupe(groupeDTO);
                 form.Owner = this;
                 form.ShowDialog();
             }
@@ -212,21 +202,20 @@ namespace CentreSportifGUI
 
         private void button9_Click(object sender, EventArgs e)//Menu membre
         {
-            MenuMembre form = new MenuMembre(connectedPersonneDTO);
-            form.Owner = this;
-            form.ShowDialog();
+            MenuMembre formMenuMembre = new MenuMembre(connectedPersonneDTO);
+            formMenuMembre.Owner = this;
+            formMenuMembre.ShowDialog();
         }
 
         private void button8_Click(object sender, EventArgs e)//Ajouter message
         {
-            FormulaireMessage form = new FormulaireMessage(connectedPersonneDTO);
-            form.Owner = this;
-            form.ShowDialog();
+            FormulaireMessage formMessage = new FormulaireMessage(connectedPersonneDTO);
+            formMessage.Owner = this;
+            formMessage.ShowDialog();
         }
 
         public void connexionAccueil(PersonneDTO personneDTO) //Connexion Accueil
         {
-
             textBoxID.Text = personneDTO.IdPersonne;
             textBoxEmail.Text = personneDTO.Email;
             textBoxNom.Text = personneDTO.Nom;
@@ -237,7 +226,7 @@ namespace CentreSportifGUI
             {
                 if (File.Exists("../photos/" + personneDTO.IdPersonne + ".jpg"))
                 {
-                    pictureBox1.Image = Image.FromFile("../photos/" + p.IdPersonne + ".jpg");
+                    pictureBox1.Image = Image.FromFile("../photos/" + personneDTO.IdPersonne + ".jpg");
                     pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
                 else
@@ -271,9 +260,8 @@ namespace CentreSportifGUI
             {
                 try
                 {
-                    
-                    MessageDTO message = (MessageDTO )listBox2.SelectedItem;
-                    DbCreateur.ServicePersonne.deleteMessage(message.IdMessage);
+                    MessageDTO messageDTO = (MessageDTO)listBox2.SelectedItem;
+                    DbCreateur.ServicePersonne.deleteMessage(messageDTO.IdMessage);
                     listBox2.Items.RemoveAt(listBox2.SelectedIndex);
                 }
                 catch (Exception ee)
@@ -283,19 +271,21 @@ namespace CentreSportifGUI
                 }
             }
         }
-        public void afficherAllMessages() {
 
+        public void afficherAllMessages()
+        {
             while (listBox2.Items.Count > 0)
             {
                 listBox2.Items.RemoveAt(0);
             }
-            DbCreateur.ServicePersonne.getAllMessages(connectedPersonneDTO).ForEach(delegate(MessageDTO messageDTO)
+            DbCreateur.ServicePersonne.getAllMessages(connectedPersonneDTO.IdPersonne).ForEach(delegate(MessageDTO messageDTO)
             {
-
                 listBox2.Items.Add(messageDTO);
             });
         }
-        public String formatRole(String role) {
+
+        public String formatRole(String role)
+        {
             String result;
             if (role == "membre")
             {
@@ -310,7 +300,6 @@ namespace CentreSportifGUI
                 result = "Administrateur";
             }
             return result;
-        
         }
     }
 }

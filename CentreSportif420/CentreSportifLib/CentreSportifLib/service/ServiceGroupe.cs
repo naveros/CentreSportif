@@ -9,10 +9,11 @@ namespace CentreSportifLib.service
 {
     public class ServiceGroupe
     {
-        private GroupeDAO groupeDAO {set;get;}
+        private GroupeDAO groupeDAO { set; get; }
 
-        public ServiceGroupe(GroupeDAO groupeDAO){
-        this.groupeDAO = groupeDAO;
+        public ServiceGroupe(GroupeDAO groupeDAO)
+        {
+            this.groupeDAO = groupeDAO;
         }
 
         public String creer(GroupeDTO groupeDTO)
@@ -22,18 +23,9 @@ namespace CentreSportifLib.service
         public List<GroupeDTO> getAll()
         {
             return groupeDAO.getAll();
-            /*
-            String result = "{ result: [";
-            groupeDAO.getAll().ForEach(delegate( GroupeDTO p )
-            {
-                result += p.ToString() +", ";
-            });
-            result += "]}";
-            return result;*/
         }
 
-
-        public List<GroupeDTO> getAllByActivite(String  idActivite)
+        public List<GroupeDTO> getAllByActivite(String idActivite)
         {
             return groupeDAO.getAllByActivite(idActivite);
         }
@@ -42,14 +34,14 @@ namespace CentreSportifLib.service
             return groupeDAO.get(idGroupe);
         }
 
-        public void update(GroupeDTO p)
+        public void update(GroupeDTO groupeDTO)
         {
-            this.groupeDAO.update(p);
+            this.groupeDAO.update(groupeDTO);
         }
 
-        public void delete(GroupeDTO p)
+        public void delete(GroupeDTO groupeDTO)
         {
-            this.groupeDAO.delete(p);
+            this.groupeDAO.delete(groupeDTO);
         }
 
         public void addSeance(SeanceDTO seanceDTO)

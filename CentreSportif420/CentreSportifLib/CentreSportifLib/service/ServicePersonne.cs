@@ -10,11 +10,13 @@ namespace CentreSportifLib.service
     public class ServicePersonne
     {
         private PersonneDAO personneDAO { set; get; }
+
         public ServicePersonne(PersonneDAO personneDAO)
         {
             this.personneDAO = personneDAO;
         }
-        #region personneDTO
+
+        #region Service Personne
         public String register(PersonneDTO personneDTO)
         {
             return personneDAO.addPersonne(personneDTO);
@@ -22,14 +24,6 @@ namespace CentreSportifLib.service
         public List<PersonneDTO> getAll()
         {
             return personneDAO.getAllPersonnes();
-            /*
-            String result = "{ result: [";
-            personneDAO.getAll().ForEach(delegate( PersonneDTO p )
-            {
-                result += p.ToString() +", ";
-            });
-            result += "]}";
-            return result;*/
         }
         public List<PersonneDTO> getAllTeachers()
         {
@@ -59,9 +53,9 @@ namespace CentreSportifLib.service
         #endregion personne
 
         #region Service Adresse
-        public AdresseDTO getAdresse(PersonneDTO personneDTO)
+        public AdresseDTO getAdresse(String idPersonne)
         {
-            return this.personneDAO.getAdresse(personneDTO);
+            return this.personneDAO.getAdresse(idPersonne);
         }
         public void addAdresse(AdresseDTO adresseDTO)
         {
@@ -72,36 +66,40 @@ namespace CentreSportifLib.service
             this.personneDAO.updateAdresse(adresseDTO);
         }
         #endregion
+
         #region Service Abonnement
         public List<AbonnementDTO> getAllAbonnements(PersonneDTO personneDTO)
         {
             return this.personneDAO.getAllAbonnements(personneDTO);
         }
-        public void addAbonnement(AbonnementDTO a)
+        public void addAbonnement(AbonnementDTO abonnementDTO)
         {
-            this.personneDAO.addAbonnement(a);
+            this.personneDAO.addAbonnement(abonnementDTO);
         }
         #endregion
+
         #region Service Presences
         public void getAllPresences(PersonneDTO personneDTO)
         {
             this.personneDAO.getAllPresences(personneDTO);
         }
         #endregion
+
         #region Service Paiements
-        public List<PaiementDTO> getAllPaiements(PersonneDTO personneDTO)
+        public List<PaiementDTO> getAllPaiements(String idPersonne)
         {
-            return this.personneDAO.getAllPaiements(personneDTO);
+            return this.personneDAO.getAllPaiements(idPersonne);
         }
         public void addPaiement(PaiementDTO paiementDTO)
         {
             this.personneDAO.addPaiement(paiementDTO);
         }
         #endregion
+
         #region Service Enseigne
-        public void addEnseigne(EnseigneDTO enseigne)
+        public void addEnseigne(EnseigneDTO enseigneDTO)
         {
-            personneDAO.addEnseigne(enseigne);
+            personneDAO.addEnseigne(enseigneDTO);
         }
         #endregion
 
@@ -114,11 +112,10 @@ namespace CentreSportifLib.service
         {
             personneDAO.deleteMessage(idMessage);
         }
-        public List<MessageDTO> getAllMessages(PersonneDTO personne)
+        public List<MessageDTO> getAllMessages(String idPersonne)
         {
-            return personneDAO.getAllMessages(personne);
+            return personneDAO.getAllMessages(idPersonne);
         }
         #endregion
-        //TODO get horaire
     }
 }

@@ -27,13 +27,13 @@ namespace CentreSportifLib.dto
         }
         public String Nom
         {
-            set 
-            { 
-                this.nom = value; 
+            set
+            {
+                this.nom = value;
             }
-            get 
-            { 
-                return this.nom; 
+            get
+            {
+                return this.nom;
             }
         }
         public String Duree
@@ -60,8 +60,8 @@ namespace CentreSportifLib.dto
         }
 
 
-        public override String ToString() 
-        { 
+        public override String ToString()
+        {
             return this.nom;
         }
         #endregion

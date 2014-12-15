@@ -15,7 +15,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
         List<CalendarItem> items = new List<CalendarItem>();
         PersonneDTO personneDTO;
         public CentreSportifGUI CentreView;
-        int nbMoreWeek=0;
+        int nbMoreWeek = 0;
         public ViewHoraire(PersonneDTO personneDTO)
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 
         private void calendar1_Layout(object sender, LayoutEventArgs e)
         {
-            DateTime viewStart = DateTime.Today; ;
+            DateTime viewStart = DateTime.Today;
             DateTime viewEnd = DateTime.Today.AddDays(7);
             calendar1.ViewStart = viewStart;
             calendar1.ViewEnd = viewEnd;
@@ -47,7 +47,6 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                     CalendarItem item = new CalendarItem(calendar1, seance.DateDebut, seance.DateFin, activite.Nom);
                     items.Add(item);
                 }
-
             }
             calendar1.Items.AddRange(items);
         }
@@ -58,8 +57,6 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
         {
             this.Dispose();
         }
-
-
 
         private void button1_Click(object sender, EventArgs e) //Prochaine semaine
         {
@@ -72,7 +69,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                 calendar1.ViewStart = viewStart;
                 calendar1.ViewEnd = viewEnd;
                 label1.Text = viewStart.ToShortDateString();
-                calendar1.Items.AddRange(items);;
+                calendar1.Items.AddRange(items); ;
             }
             catch (Exception ee)
             {
@@ -86,9 +83,8 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             try
             {
                 nbMoreWeek--;
-
                 DateTime viewStart = DateTime.Today.AddDays(7 * nbMoreWeek);
-                DateTime viewEnd = DateTime.Today.AddDays(7 * nbMoreWeek +7);
+                DateTime viewEnd = DateTime.Today.AddDays(7 * nbMoreWeek + 7);
                 calendar1.ViewStart = viewStart;
                 calendar1.ViewEnd = viewEnd;
                 label1.Text = viewStart.ToShortDateString();

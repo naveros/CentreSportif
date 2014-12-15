@@ -27,7 +27,7 @@ namespace CentreSportifLib.dto
         #endregion
         public override string ToString()
         {
-            return idadresse +" : "+ idpersonne;
+            return idadresse + " : " + idpersonne;
         }
     }
 }

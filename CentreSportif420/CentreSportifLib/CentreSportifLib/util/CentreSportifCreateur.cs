@@ -10,7 +10,8 @@ namespace CentreSportifLib
 {
     public class CentreSportifCreateur
     {
-        private String connectionString = "host=db4free.net; database=centresportif420; user=centresportif420; password=stephane420;";
+        //  private String connectionString = "host=db4free.net; database=centresportif420; user=centresportif420; password=stephane420;";
+        private String connectionString = "host=rainrunner.net; database=centresportif420; user=centresportif420; password=Gx9vS8UFY8xUE7p4;";
         private MySqlConnection con;
         private PersonneDAO personneDAO;
         private ActiviteDAO activiteDAO;
@@ -23,7 +24,6 @@ namespace CentreSportifLib
         {
             try
             {
-
                 //Init la connexion
                 this.con = new MySqlConnection(connectionString);
                 //Init les DAOs

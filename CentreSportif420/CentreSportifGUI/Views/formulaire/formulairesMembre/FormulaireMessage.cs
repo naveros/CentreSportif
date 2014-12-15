@@ -12,11 +12,11 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
     public partial class FormulaireMessage : Form
     {
         public CentreSportifGUI CentreView;
-        PersonneDTO personne;
-        public FormulaireMessage(PersonneDTO personne)
+        PersonneDTO personneDTO;
+        public FormulaireMessage(PersonneDTO personneDTO)
         {
             InitializeComponent();
-            this.personne = personne;
+            this.personneDTO = personneDTO;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -26,7 +26,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                 String contenu = this.textBox1.Text;
                 MessageDTO messageDTO = new MessageDTO();
                 messageDTO.Contenu = contenu;
-                messageDTO.IdPersonne = personne.IdPersonne;
+                messageDTO.IdPersonne = personneDTO.IdPersonne;
                 CentreView.DbCreateur.ServicePersonne.addMessage(messageDTO);
                 CentreView.afficherAllMessages();
                 this.Dispose();
@@ -37,12 +37,10 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                 Console.Write(ee.Message);
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
-
         private void FormulaireMessage_Load(object sender, EventArgs e)
         {
 

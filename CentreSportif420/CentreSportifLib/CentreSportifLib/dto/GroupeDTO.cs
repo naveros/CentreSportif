@@ -41,15 +41,15 @@ namespace CentreSportifLib.dto
                 return this.numerogroupe;
             }
         }
-        public Decimal Prix 
+        public Decimal Prix
         {
-            set 
-            { 
+            set
+            {
                 this.prix = value;
             }
             get
-            { 
-                return this.prix; 
+            {
+                return this.prix;
             }
         }
         #endregion
@@ -61,6 +61,5 @@ namespace CentreSportifLib.dto
             return "" + this.numerogroupe;
         }
         #endregion
-
     }
 }

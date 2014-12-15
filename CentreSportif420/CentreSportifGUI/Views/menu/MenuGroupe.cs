@@ -41,7 +41,6 @@ namespace CentreSportifGUI.Views.menu
         }
         private void button1_Click(object sender, EventArgs e) //Supprimer
         {
-
             var confirmResult = MessageBox.Show("Êtes-vous certain de vouloir supprimer ce groupe ? ",
                                        "Confirmer la suppression d'un groupe",
                                      MessageBoxButtons.YesNo);
@@ -62,15 +61,11 @@ namespace CentreSportifGUI.Views.menu
                     Console.WriteLine("Erreur dans la requete delete groupe");
                     Console.Write(ee.Message);
                 }
-
-
             }
         }
 
-            
         private void button4_Click(object sender, EventArgs e)
         {
-
             ViewGroupe form = new ViewGroupe(groupeDTO);
             form.Owner = this.Owner;
             form.ShowDialog();
@@ -79,6 +74,5 @@ namespace CentreSportifGUI.Views.menu
         {
             this.Dispose();
         }
-
     }
 }

@@ -5,7 +5,6 @@ using System.Text;
 
 namespace CentreSportifLib.dto
 {
-
     public class AbonnementDTO
     {
         #region Champs

@@ -12,40 +12,40 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
 {
     public partial class FormulaireFacturation : Form
     {
-        PersonneDTO personne;
+        PersonneDTO personneDTO;
         decimal montantDue = 0;
         public CentreSportifGUI CentreView;
-        public FormulaireFacturation(PersonneDTO personne)
+        public FormulaireFacturation(PersonneDTO personneDTO)
         {
             InitializeComponent();
-            this.personne = personne;
+            this.personneDTO = personneDTO;
         }
 
         private void button6_Click(object sender, EventArgs e)//Payer comptant
         {
-            FormulairePayer form = new FormulairePayer(montantDue, "comptant", personne);
-            form.Owner = this.Owner;
+            FormulairePayer formPayer = new FormulairePayer(montantDue, "comptant", personneDTO);
+            formPayer.Owner = this.Owner;
             this.Dispose();
-            form.ShowDialog();
-           
+            formPayer.ShowDialog();
+
         }
 
         private void button4_Click(object sender, EventArgs e)//Payer debit
         {
-            FormulairePayer form = new FormulairePayer(montantDue, "debit", personne);
-            form.Owner = this.Owner;
+            FormulairePayer formPayer = new FormulairePayer(montantDue, "debit", personneDTO);
+            formPayer.Owner = this.Owner;
             this.Dispose();
-            form.ShowDialog();
-           
+            formPayer.ShowDialog();
+
         }
 
         private void button1_Click(object sender, EventArgs e)//Payer Credit
         {
-            FormulairePayer form = new FormulairePayer(montantDue, "Credit", personne);
-            form.Owner = this.Owner;
+            FormulairePayer formPayer = new FormulairePayer(montantDue, "Credit", personneDTO);
+            formPayer.Owner = this.Owner;
             this.Dispose();
-            form.ShowDialog();
-            
+            formPayer.ShowDialog();
+
         }
 
         private void button3_Click(object sender, EventArgs e) //Annuler
@@ -57,22 +57,20 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             decimal solde = 0;
             try
             {
-                List<AbonnementDTO> listAbo = CentreView.DbCreateur.ServicePersonne.getAllAbonnements(personne);
-                if (listAbo.Count > 0)
+                List<AbonnementDTO> listAbonnementDTO = CentreView.DbCreateur.ServicePersonne.getAllAbonnements(personneDTO);
+                if (listAbonnementDTO.Count > 0)
                 {
-                    listAbo.ForEach(delegate(AbonnementDTO abonnement)
+                    listAbonnementDTO.ForEach(delegate(AbonnementDTO abonnementDTO)
                     {
-                        solde += abonnement.Prix;
-
+                        solde += abonnementDTO.Prix;
                     });
                 }
-                List<PaiementDTO> listPaiements = CentreView.DbCreateur.ServicePersonne.getAllPaiements(personne);
+                List<PaiementDTO> listPaiements = CentreView.DbCreateur.ServicePersonne.getAllPaiements(personneDTO.IdPersonne);
                 if (listPaiements.Count > 0)
                 {
                     listPaiements.ForEach(delegate(PaiementDTO paiement)
                     {
                         solde -= paiement.Montant;
-
                     });
                 }
             }
@@ -81,8 +79,6 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                 Console.WriteLine("Erreur dans la requete calculer solde");
                 Console.Write(e.Message);
             }
-
-
             return solde;
         }
 
@@ -92,10 +88,10 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
         }
 
         private void FormulaireFacturation_Load(object sender, EventArgs e)
-        { 
+        {
             CentreView = (CentreSportifGUI)this.Owner;
-            montantDue = CalculerSolde();
-            this.textBox1.Text = ""+montantDue;
+            this.montantDue = CalculerSolde();
+            this.textBox1.Text = "" + montantDue;
         }
     }
 }

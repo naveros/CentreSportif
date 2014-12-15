@@ -87,7 +87,7 @@ namespace CentreSportifLib.dto
         public PersonneDTO()
         { }
         public override string ToString()
-        {         
+        {
             return Prenom + " " + Nom; ;
         }
         #endregion

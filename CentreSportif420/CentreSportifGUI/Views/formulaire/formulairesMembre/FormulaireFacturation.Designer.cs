@@ -39,18 +39,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 37);
+            this.label1.Location = new System.Drawing.Point(33, 57);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 13);
+            this.label1.Size = new System.Drawing.Size(95, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Montant dût";
             // 
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(25, 77);
+            this.button6.Location = new System.Drawing.Point(38, 118);
+            this.button6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(125, 51);
+            this.button6.Size = new System.Drawing.Size(188, 78);
             this.button6.TabIndex = 13;
             this.button6.Text = "Payer comptant";
             this.button6.UseVisualStyleBackColor = true;
@@ -59,9 +61,10 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(25, 192);
+            this.button1.Location = new System.Drawing.Point(38, 295);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 51);
+            this.button1.Size = new System.Drawing.Size(188, 78);
             this.button1.TabIndex = 14;
             this.button1.Text = "Payer credit";
             this.button1.UseVisualStyleBackColor = true;
@@ -70,9 +73,10 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(108, 270);
+            this.button3.Location = new System.Drawing.Point(162, 415);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(125, 52);
+            this.button3.Size = new System.Drawing.Size(188, 80);
             this.button3.TabIndex = 16;
             this.button3.Text = "Annuler";
             this.button3.UseVisualStyleBackColor = true;
@@ -81,9 +85,10 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(25, 134);
+            this.button4.Location = new System.Drawing.Point(38, 206);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(125, 51);
+            this.button4.Size = new System.Drawing.Size(188, 78);
             this.button4.TabIndex = 17;
             this.button4.Text = "Payer débit";
             this.button4.UseVisualStyleBackColor = true;
@@ -92,22 +97,25 @@
             // textBox1
             // 
             this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(108, 29);
+            this.textBox1.Location = new System.Drawing.Point(162, 45);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(217, 20);
+            this.textBox1.Size = new System.Drawing.Size(324, 26);
             this.textBox1.TabIndex = 18;
             // 
             // FormulaireFacturation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 334);
+            this.ClientSize = new System.Drawing.Size(536, 514);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormulaireFacturation";
             this.Text = "FormulaireFacturation";
             this.Load += new System.EventHandler(this.FormulaireFacturation_Load);

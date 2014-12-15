@@ -13,32 +13,23 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
     public partial class FormulaireRole : Form
     {
         public CentreSportifGUI CentreView;
-        PersonneDTO p = new PersonneDTO();
-        public FormulaireRole(PersonneDTO p)
+        PersonneDTO personneDTO = new PersonneDTO();
+        public FormulaireRole(PersonneDTO personneDTO)
         {
             InitializeComponent();
-            this.p = p;
+            this.personneDTO = personneDTO;
         }
 
         private void FormulaireRole_Load(object sender, EventArgs e)
         {
             CentreView = (CentreSportifGUI)this.Owner;
-            String role;
-            if (p.Role == "prof")
-            {
-                role = "professeur";
-            }
-            else
-            {
-                role = p.Role;
-            }
-            label1.Text = p.Prenom + " " + p.Nom + " est présentement " + CentreView.formatRole(role);            
+            label1.Text = personneDTO.Prenom + " " + personneDTO.Nom + " est présentement " + CentreView.formatRole(personneDTO.Role);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             label3.Text = "Message : ";
-            String newRole="membre";
+            String newRole = "membre";
             if (comboBox1.SelectedIndex == 0)
             {
                 newRole = "membre";
@@ -53,10 +44,10 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
             }
             try
             {
-                p.Role = newRole;
-                CentreView.DbCreateur.ServicePersonne.update(p);
-                label3.Text += "Le role de " + p.Prenom + " " + p.Nom + " a bien été modifié.";
-                label1.Text = p.Prenom + " " + p.Nom + " est présentement " + CentreView.formatRole(p.Role);     
+                personneDTO.Role = newRole;
+                CentreView.DbCreateur.ServicePersonne.update(personneDTO);
+                label3.Text += "Le role de " + personneDTO.Prenom + " " + personneDTO.Nom + " a bien été modifié.";
+                label1.Text = personneDTO.Prenom + " " + personneDTO.Nom + " est présentement " + CentreView.formatRole(personneDTO.Role);
             }
             catch (Exception ee)
             {

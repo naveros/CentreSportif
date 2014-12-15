@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 using CentreSportifLib.dto;
@@ -14,24 +14,23 @@ namespace CentreSportifGUI.Views.formulaire
 {
     public partial class FormulaireMembre : Form
     {
-        PersonneDTO p;
-        AdresseDTO adresse;
+        PersonneDTO personneDTO;
+        AdresseDTO adresseDTO;
         string mode;
         public CentreSportifGUI CentreView;
         Image photo;
-        public FormulaireMembre(PersonneDTO p)
+        public FormulaireMembre(PersonneDTO personneDTO)
         {
             InitializeComponent();
-            if (p != null)
+            if (personneDTO != null)
             {
-
                 this.mode = "Modifier";
-                this.p = p;               
+                this.personneDTO = personneDTO;
             }
             else
             {
                 this.mode = "Créer";
-                this.p = new PersonneDTO();
+                this.personneDTO = new PersonneDTO();
             }
             this.Text = mode;
         }
@@ -39,61 +38,57 @@ namespace CentreSportifGUI.Views.formulaire
         private void button1_Click(object sender, EventArgs e) //enregistrer/modifier
         {
             String errorMessage = "";
-            
-
-                //TODO: Gestion des erreurs
             try
             {
-                p.IdPersonne = textBox1.Text;
-                p.Prenom = textBox2.Text;
-                p.Nom = textBox3.Text;
-                p.DateNaissance = dateTimePicker1.Value;
-                p.Email = textBox4.Text;
-                p.CodeBarre = textBox5.Text;
+                personneDTO.IdPersonne = textBox1.Text;
+                personneDTO.Prenom = textBox2.Text;
+                personneDTO.Nom = textBox3.Text;
+                personneDTO.DateNaissance = dateTimePicker1.Value;
+                personneDTO.Email = textBox4.Text;
+                personneDTO.CodeBarre = textBox5.Text;
 
-
-                adresse = new AdresseDTO();
-                adresse.Numero = textBox8.Text;
-                adresse.Rue = textBox9.Text;
-                adresse.CodePostal = textBox10.Text;
-                adresse.Ville = textBox11.Text;
-                adresse.IdPersonne = textBox1.Text;
-                adresse.Pays = textBox12.Text;
-                p.Adresse = adresse;
-                p.Role = "membre";
-
+                adresseDTO = new AdresseDTO();
+                adresseDTO.Numero = textBox8.Text;
+                adresseDTO.Rue = textBox9.Text;
+                adresseDTO.CodePostal = textBox10.Text;
+                adresseDTO.Ville = textBox11.Text;
+                adresseDTO.IdPersonne = textBox1.Text;
+                adresseDTO.Pays = textBox12.Text;
+                personneDTO.Adresse = adresseDTO;
+                personneDTO.Role = "membre";
 
                 if (radioButton2.Checked)
                 {
-                    p.Sexe = 'F';
+                    personneDTO.Sexe = 'F';
                 }
                 else
                 {
-                    p.Sexe = 'M';
+                    personneDTO.Sexe = 'M';
                 }
+
                 if (textBox6.Text.Equals(textBox7.Text))
                 {
-                    p.MotDePasse = textBox6.Text;
+                    personneDTO.MotDePasse = textBox6.Text;
 
                 }
-                else 
+                else
                 {
                     errorMessage = "Mot de passe incorrect";
                     Exception exeptionPWD = new Exception("Mot de passe incorrect");
                     throw exeptionPWD;
                 }
+
                 if (this.mode.Equals("Créer"))
                 {
-
-                  //  photo.Save("../photos/" + p.IdPersonne + ".jpg", ImageFormat.Jpeg); /////////
-                    adresse.IdPersonne = this.CentreView.DbCreateur.ServicePersonne.register(p);
-                    this.CentreView.DbCreateur.ServicePersonne.addAdresse(adresse);
+                    photo.Save("../photos/" + personneDTO.IdPersonne + ".jpg", ImageFormat.Jpeg); /////////
+                    adresseDTO.IdPersonne = this.CentreView.DbCreateur.ServicePersonne.register(personneDTO);
+                    this.CentreView.DbCreateur.ServicePersonne.addAdresse(adresseDTO);
                     errorMessage = "Ajout réussit !";
                 }
                 else if (this.mode.Equals("Modifier"))
                 {
-                    CentreView.DbCreateur.ServicePersonne.update(p);
-                    CentreView.DbCreateur.ServicePersonne.updateAdresse(adresse);
+                    CentreView.DbCreateur.ServicePersonne.update(personneDTO);
+                    CentreView.DbCreateur.ServicePersonne.updateAdresse(adresseDTO);
                     errorMessage = "Modification réussit";
                 }
             }
@@ -107,10 +102,9 @@ namespace CentreSportifGUI.Views.formulaire
             }
             finally
             {
-                label13.Text = "Message : "+errorMessage;
+                label13.Text = "Message : " + errorMessage;
             }
         }
-        
 
         private void button2_Click(object sender, EventArgs e) //annulé
         {
@@ -121,23 +115,21 @@ namespace CentreSportifGUI.Views.formulaire
         {
             try
             {
-                
-                textBox1.Text = p.IdPersonne;
-                textBox2.Text = p.Prenom;
-                textBox3.Text = p.Nom;
-                textBox4.Text = p.Email;
-                dateTimePicker1.Value = p.DateNaissance;
-
-                textBox8.Text = adresse.Numero;
-                textBox9.Text = adresse.Rue;
-                textBox10.Text = adresse.CodePostal;
-                textBox11.Text = adresse.Ville;
-                textBox12.Text = adresse.Pays;
+                textBox1.Text = personneDTO.IdPersonne;
+                textBox2.Text = personneDTO.Prenom;
+                textBox3.Text = personneDTO.Nom;
+                textBox4.Text = personneDTO.Email;
+                dateTimePicker1.Value = personneDTO.DateNaissance;
+                textBox8.Text = adresseDTO.Numero;
+                textBox9.Text = adresseDTO.Rue;
+                textBox10.Text = adresseDTO.CodePostal;
+                textBox11.Text = adresseDTO.Ville;
+                textBox12.Text = adresseDTO.Pays;
                 try
                 {
-                    if (File.Exists("../photos/" + p.IdPersonne + ".jpg"))
+                    if (File.Exists("../photos/" + personneDTO.IdPersonne + ".jpg"))
                     {
-                        pictureBox1.Image = Image.FromFile("../photos/" + p.IdPersonne + ".jpg");
+                        pictureBox1.Image = Image.FromFile("../photos/" + personneDTO.IdPersonne + ".jpg");
                         pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                     }
                 }
@@ -146,8 +138,7 @@ namespace CentreSportifGUI.Views.formulaire
                     throw;
                 }
 
-
-                if (p.Sexe.Equals('f'))
+                if (personneDTO.Sexe.Equals('f'))
                 {
                     radioButton2.Checked = true;
                 }
@@ -157,12 +148,10 @@ namespace CentreSportifGUI.Views.formulaire
                 Console.WriteLine("Erreur dans la requete get adresse");
                 Console.Write(ee.Message);
             }
-
         }
 
         private void button3_Click(object sender, EventArgs e) //Changer 
         {
-
             Stream myStream = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
@@ -179,26 +168,9 @@ namespace CentreSportifGUI.Views.formulaire
                     {
                         using (myStream)
                         {
-
                             photo = System.Drawing.Image.FromStream(myStream);
                             pictureBox1.Image = Image.FromStream(myStream);
                             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-
-
-                            var i2 = new Bitmap(photo);
-                            i2.Save("c:\test.jpg",ImageFormat.Jpeg);
-
-                          /*  using (var m = new MemoryStream())
-                            {
-                                photo.Save(m, ImageFormat.Jpeg);
-
-                                var img = Image.FromStream(m);
-
-                                //TEST
-                                img.Save("C:\\test.jpg", ImageFormat.Jpeg);
-
-                            }*/
-
                         }
                     }
                 }
@@ -209,17 +181,12 @@ namespace CentreSportifGUI.Views.formulaire
             }
         }
 
-        private void button4_Click(object sender, EventArgs e) //Captuer 
-        {
-            //TODO
-        }
-
         private void FormulaireMembre_Load(object sender, EventArgs e)
         {
             this.CentreView = (CentreSportifGUI)this.Owner;
-            if (this.mode.Equals("Modifier")) 
+            if (this.mode.Equals("Modifier"))
             {
-                adresse = CentreView.DbCreateur.ServicePersonne.getAdresse(p);
+                adresseDTO = CentreView.DbCreateur.ServicePersonne.getAdresse(personneDTO.IdPersonne);
                 remplir();
             }
         }

@@ -13,33 +13,31 @@ namespace CentreSportifGUI.Views.menu
 {
     public partial class MenuActivite : Form
     {
-        ActiviteDTO a;
+        ActiviteDTO activiteDTO;
         public CentreSportifGUI CentreView;
-        public MenuActivite(ActiviteDTO a)
+        public MenuActivite(ActiviteDTO activiteDTO)
         {
             InitializeComponent();
-            this.a = a;
-            
+            this.activiteDTO = activiteDTO;
         }
 
         private void remplir()
         {
-            labelID.Text = a.IdActivite;
-            labelDescription.Text = a.Description;
-            labelNom.Text = a.Nom;
-            labelDuree.Text = a.Duree;
+            labelID.Text = activiteDTO.IdActivite;
+            labelDescription.Text = activiteDTO.Description;
+            labelNom.Text = activiteDTO.Nom;
+            labelDuree.Text = activiteDTO.Duree;
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            FormulaireActivite formActivite = new FormulaireActivite(a);
+            FormulaireActivite formActivite = new FormulaireActivite(activiteDTO);
             formActivite.Owner = this.Owner;
             formActivite.ShowDialog();
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
             var confirmResult = MessageBox.Show("Êtes-vous certain de vouloir supprimer cette activité ? ",
                                        "Confirmer la suppression d'un activité",
                                      MessageBoxButtons.YesNo);
@@ -48,7 +46,7 @@ namespace CentreSportifGUI.Views.menu
                 CentreView = (CentreSportifGUI)this.Owner;
                 try
                 {
-                    CentreView.DbCreateur.ServiceActivite.delete(a);
+                    CentreView.DbCreateur.ServiceActivite.delete(activiteDTO);
                     labelMessage.Text = "L'activité à bien été supprimé";
                     CentreView.RefreshTableActivite();
                     button1.Enabled = false;
@@ -59,15 +57,7 @@ namespace CentreSportifGUI.Views.menu
                     Console.WriteLine("Erreur dans la requete delete activite");
                     Console.Write(ee.Message);
                 }
-
-
             }
-            else
-            {
-                // Does nothing
-            }
-
-
         }
 
         private void button3_Click(object sender, EventArgs e)

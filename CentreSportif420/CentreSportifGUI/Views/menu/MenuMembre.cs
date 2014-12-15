@@ -16,10 +16,11 @@ namespace CentreSportifGUI.Views.menu
     {
         PersonneDTO personneDTO;
         public CentreSportifGUI CentreView;
-        public MenuMembre(PersonneDTO p)
+
+        public MenuMembre(PersonneDTO personneDTO)
         {
             InitializeComponent();
-            this.personneDTO = p;
+            this.personneDTO = personneDTO;
             remplir();
         }
 
@@ -31,16 +32,13 @@ namespace CentreSportifGUI.Views.menu
         }
         private void button1_Click(object sender, EventArgs e)//horaire
         {
-            //TODO form view horaire des seances d'apres les groupes, d'apres les abonnements ! understood?
             ViewHoraire form = new ViewHoraire(personneDTO);
             form.Owner = this.Owner;
             form.ShowDialog();
         }
 
-
         private void button7_Click(object sender, EventArgs e)//inscription
         {
-            //TODO form inscription à un abonnement 
             FormulaireAbonnement form = new FormulaireAbonnement(personneDTO);
             form.Owner = this.Owner;
             form.ShowDialog();
@@ -62,8 +60,6 @@ namespace CentreSportifGUI.Views.menu
 
         private void button5_Click(object sender, EventArgs e)//supprimer
         {
-
-
             var confirmResult = MessageBox.Show("Êtes-vous certain de vouloir supprimer ce membre ? ",
                                        "Confirmer la suppression d'un membre",
                                      MessageBoxButtons.YesNo);
@@ -87,16 +83,7 @@ namespace CentreSportifGUI.Views.menu
                     Console.WriteLine("Erreur dans la requete delete personne");
                     Console.Write(ee.Message);
                 }
-
-
             }
-            else
-            {
-                // Does nothing
-            }
-
-
-
         }
 
         private void button6_Click(object sender, EventArgs e)//quitter
@@ -110,8 +97,6 @@ namespace CentreSportifGUI.Views.menu
             formRole.Owner = this.Owner;
             formRole.ShowDialog();
         }
-
-
 
         private void button2_Click(object sender, EventArgs e)  //Ajouter message
         {

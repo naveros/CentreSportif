@@ -13,7 +13,7 @@ namespace CentreSportifLib.dto
         private String contenu;
         private DateTime datecreation;
         #endregion
-        #region Propriete;
+        #region Propriete
 
         public String IdMessage
         {
@@ -36,7 +36,8 @@ namespace CentreSportifLib.dto
             set { this.datecreation = value; }
             get { return this.datecreation; }
         }
-        public override String ToString(){
+        public override String ToString()
+        {
 
             return this.datecreation.ToShortDateString() + "  " + this.contenu;
         }
