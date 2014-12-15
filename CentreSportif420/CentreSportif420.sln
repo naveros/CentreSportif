@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2010
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentreSportifGUI", "CentreSportifGUI\CentreSportifGUI.csproj", "{F9307E61-5B19-4DF8-B6DB-4B66BF62CA92}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentreSportifLib", "CentreSportifLib\CentreSportifLib\CentreSportifLib.csproj", "{F5F84E07-34EE-406E-8E0E-42F982D242F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentreSportifWeb", "..\CentreSportifWeb\CentreSportif\CentreSportifWeb.csproj", "{531D29F6-F2AF-4D3B-AA1A-3380578229FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +23,10 @@ Global
 		{F5F84E07-34EE-406E-8E0E-42F982D242F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5F84E07-34EE-406E-8E0E-42F982D242F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5F84E07-34EE-406E-8E0E-42F982D242F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{531D29F6-F2AF-4D3B-AA1A-3380578229FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{531D29F6-F2AF-4D3B-AA1A-3380578229FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{531D29F6-F2AF-4D3B-AA1A-3380578229FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{531D29F6-F2AF-4D3B-AA1A-3380578229FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
