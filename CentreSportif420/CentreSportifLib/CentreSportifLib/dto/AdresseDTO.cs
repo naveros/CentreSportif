@@ -25,5 +25,9 @@ namespace CentreSportifLib.dto
         public String Ville { set { this.ville = value; } get { return this.ville; } }
         public String Pays { set { this.pays = value; } get { return this.pays; } }
         #endregion
+        public override string ToString()
+        {
+            return idadresse +" : "+ idpersonne;
+        }
     }
 }

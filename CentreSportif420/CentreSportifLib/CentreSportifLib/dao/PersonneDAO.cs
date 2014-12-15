@@ -304,7 +304,7 @@ namespace CentreSportifLib.dao
                 cmd.Parameters.AddWithValue("@idpersonne", p.IdPersonne);
                 reader = cmd.ExecuteReader();
                 reader.Read();
-               // result.IdAdresse = reader.GetString("idaddresse");
+                result.IdAdresse = reader.GetString("idaddresse");
                 result.IdPersonne = reader.GetString("idpersonne");
                 result.Numero = reader.GetString("numero");
                 result.Rue = reader.GetString("idpersonne");
@@ -320,6 +320,7 @@ namespace CentreSportifLib.dao
             {
                 con.Close();
             }
+            Console.WriteLine(result.ToString());
             return result;
         }
         public void updateAdresse(AdresseDTO adresseDTO)

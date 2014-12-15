@@ -13,6 +13,7 @@ namespace CentreSportifGUI.Views.formulaire
     public partial class FormulaireMembre : Form
     {
         PersonneDTO p;
+        AdresseDTO adresse;
         string mode;
         public CentreSportifGUI CentreView;
         public FormulaireMembre(PersonneDTO p)
@@ -22,8 +23,8 @@ namespace CentreSportifGUI.Views.formulaire
             {
 
                 this.mode = "Modifier";
-                this.p = p;
-                remplir();
+                this.p = p;               
+                
             }
             else
             {
@@ -36,7 +37,7 @@ namespace CentreSportifGUI.Views.formulaire
         private void button1_Click(object sender, EventArgs e) //enregistrer/modifier
         {
             String errorMessage = "";
-            AdresseDTO adresse;
+            
 
                 //TODO: Gestion des erreurs
             try
@@ -44,6 +45,7 @@ namespace CentreSportifGUI.Views.formulaire
                 p.IdPersonne = textBox1.Text;
                 p.Prenom = textBox2.Text;
                 p.Nom = textBox3.Text;
+                p.DateNaissance = dateTimePicker1.Value;
                 p.Email = textBox4.Text;
                 p.CodeBarre = textBox5.Text;
 
@@ -116,17 +118,18 @@ namespace CentreSportifGUI.Views.formulaire
         {
             try
             {
+                
                 textBox1.Text = p.IdPersonne;
                 textBox2.Text = p.Prenom;
                 textBox3.Text = p.Nom;
                 textBox4.Text = p.Email;
                 dateTimePicker1.Value = p.DateNaissance;
 
-                AdresseDTO adresseDTO = CentreView.DbCreateur.ServicePersonne.getAdresse(p);
-                textBox8.Text = adresseDTO.Numero;
-                textBox9.Text = adresseDTO.Rue;
-                textBox10.Text = adresseDTO.CodePostal;
-                textBox11.Text = adresseDTO.Ville;
+                textBox8.Text = adresse.Numero;
+                textBox9.Text = adresse.Rue;
+                textBox10.Text = adresse.CodePostal;
+                textBox11.Text = adresse.Ville;
+                textBox12.Text = adresse.Pays;
                 try
                 {
                     pictureBox1.Image = Image.FromFile("../photos/" + p.IdPersonne + ".jpg");
@@ -164,6 +167,11 @@ namespace CentreSportifGUI.Views.formulaire
         private void FormulaireMembre_Load(object sender, EventArgs e)
         {
             this.CentreView = (CentreSportifGUI)this.Owner;
+            if (this.mode.Equals("Modifier")) 
+            {
+                adresse = CentreView.DbCreateur.ServicePersonne.getAdresse(p);
+                remplir();
+            }
         }
 
     }

@@ -55,16 +55,6 @@ namespace CentreSportifGUI.Views.menu
 
         private void button4_Click(object sender, EventArgs e)//modifier
         {
-            AdresseDTO adresseDTO;
-            try
-            {
-                 adresseDTO = CentreView.DbCreateur.ServicePersonne.getAdresse(personneDTO);
-            }
-            catch (Exception)
-            {
-                
-                throw;
-            }
             FormulaireMembre form = new FormulaireMembre(personneDTO);
             form.Owner = this.Owner;
             form.ShowDialog();
