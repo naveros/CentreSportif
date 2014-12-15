@@ -5,7 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
 using CentreSportifLib.dto;
 
 namespace CentreSportifGUI.Views.formulaire
@@ -16,6 +18,7 @@ namespace CentreSportifGUI.Views.formulaire
         AdresseDTO adresse;
         string mode;
         public CentreSportifGUI CentreView;
+        Image photo;
         public FormulaireMembre(PersonneDTO p)
         {
             InitializeComponent();
@@ -24,7 +27,6 @@ namespace CentreSportifGUI.Views.formulaire
 
                 this.mode = "Modifier";
                 this.p = p;               
-                
             }
             else
             {
@@ -83,6 +85,7 @@ namespace CentreSportifGUI.Views.formulaire
                 if (this.mode.Equals("Créer"))
                 {
 
+                  //  photo.Save("../photos/" + p.IdPersonne + ".jpg", ImageFormat.Jpeg); /////////
                     adresse.IdPersonne = this.CentreView.DbCreateur.ServicePersonne.register(p);
                     this.CentreView.DbCreateur.ServicePersonne.addAdresse(adresse);
                     errorMessage = "Ajout réussit !";
@@ -132,8 +135,11 @@ namespace CentreSportifGUI.Views.formulaire
                 textBox12.Text = adresse.Pays;
                 try
                 {
-                    pictureBox1.Image = Image.FromFile("../photos/" + p.IdPersonne + ".jpg");
-                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    if (File.Exists("../photos/" + p.IdPersonne + ".jpg"))
+                    {
+                        pictureBox1.Image = Image.FromFile("../photos/" + p.IdPersonne + ".jpg");
+                        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
                 }
                 catch
                 {
@@ -156,7 +162,51 @@ namespace CentreSportifGUI.Views.formulaire
 
         private void button3_Click(object sender, EventArgs e) //Changer 
         {
-            //TODO
+
+            Stream myStream = null;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = "%USERPROFILE%";
+            openFileDialog1.Filter = "Jpeg files (*.jpg)|*.jpg";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((myStream = openFileDialog1.OpenFile()) != null)
+                    {
+                        using (myStream)
+                        {
+
+                            photo = System.Drawing.Image.FromStream(myStream);
+                            pictureBox1.Image = Image.FromStream(myStream);
+                            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+
+
+                            var i2 = new Bitmap(photo);
+                            i2.Save("c:\test.jpg",ImageFormat.Jpeg);
+
+                          /*  using (var m = new MemoryStream())
+                            {
+                                photo.Save(m, ImageFormat.Jpeg);
+
+                                var img = Image.FromStream(m);
+
+                                //TEST
+                                img.Save("C:\\test.jpg", ImageFormat.Jpeg);
+
+                            }*/
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
         }
 
         private void button4_Click(object sender, EventArgs e) //Captuer 
@@ -173,6 +223,5 @@ namespace CentreSportifGUI.Views.formulaire
                 remplir();
             }
         }
-
     }
 }

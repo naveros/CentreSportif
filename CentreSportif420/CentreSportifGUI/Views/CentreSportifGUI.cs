@@ -5,11 +5,12 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Windows.Forms;
-using CentreSportifGUI.Views.menu;
-using CentreSportifGUI.Views.formulaire;
 using CentreSportifLib;
 using CentreSportifLib.dto;
+using CentreSportifGUI.Views.menu;
+using CentreSportifGUI.Views.formulaire;
 using CentreSportifGUI.Views.formulaire.formulairesMembre;
 
 namespace CentreSportifGUI
@@ -234,13 +235,20 @@ namespace CentreSportifGUI
             textBoxCodeBarre.Text = personneDTO.CodeBarre;
             try
             {
-                pictureBox1.Image = Image.FromFile("../photos/" + personneDTO.IdPersonne + ".jpg");
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                if (File.Exists("../photos/" + personneDTO.IdPersonne + ".jpg"))
+                {
+                    pictureBox1.Image = Image.FromFile("../photos/" + p.IdPersonne + ".jpg");
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+                else
+                {
+                    pictureBox1.Image = Image.FromFile("../photos/0.jpg");
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
             }
             catch
             {
-                pictureBox1.Image = Image.FromFile("../photos/0.jpg");
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                throw;
             }
 
             connectedPersonneDTO = personneDTO;
