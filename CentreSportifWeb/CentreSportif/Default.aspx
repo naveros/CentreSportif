@@ -2,7 +2,7 @@
     CodeBehind="Default.aspx.cs" Inherits="CentreSportif._Default" %>
 
     <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
-        <section class="featured">
+    <section class="featured">
         <div class="content-wrapper">
              <p>
                 <h1 class="auto-style1">Bienvenue au Centre Sportif!</h1>
