@@ -21,7 +21,7 @@ namespace CentreSportif
             using (MySqlConnection cn = new MySqlConnection(connectionString))
             {
                 MySqlDataAdapter adp = new MySqlDataAdapter(
-                "SELECT g.numerogroupe, a.nom, s.datedebut, s.datefin, p.nom as name from groupe g, activite a, seance s, personne p, enseigne e " +
+                "SELECT DISTINCT g.numerogroupe, a.nom, s.datedebut, s.datefin, p.nom as name from groupe g, activite a, seance s, personne p, enseigne e " +
                 "WHERE (p.role = 'prof') AND (p.idpersonne = e.idpersonne) AND (e.idgroupe = s.idgroupe) AND (s.idgroupe = g.idgroupe) AND (g.idactivite = a.idactivite) " +
                 "limit 0,200", cn);
                 DataTable dt = new DataTable();
