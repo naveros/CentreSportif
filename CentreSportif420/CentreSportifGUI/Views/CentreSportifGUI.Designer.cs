@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CentreSportifGUI));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
@@ -98,6 +100,7 @@
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
@@ -133,6 +136,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.ImageList = this.imageList1;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(5);
             this.tabControl1.Name = "tabControl1";
@@ -143,6 +147,7 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.splitContainer3);
+            this.tabPage1.ImageIndex = 0;
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage1.Name = "tabPage1";
@@ -458,6 +463,7 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.splitContainer1);
+            this.tabPage2.ImageIndex = 1;
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage2.Name = "tabPage2";
@@ -542,6 +548,7 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.splitContainer2);
+            this.tabPage3.ImageIndex = 2;
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage3.Name = "tabPage3";
@@ -640,6 +647,7 @@
             this.tabPage4.Controls.Add(this.label5);
             this.tabPage4.Controls.Add(this.dataGridView3);
             this.tabPage4.Controls.Add(this.button4);
+            this.tabPage4.ImageIndex = 3;
             this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage4.Name = "tabPage4";
@@ -878,6 +886,15 @@
             this.Column16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Column16.Text = "Option";
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "byCoverageNavigation.png");
+            this.imageList1.Images.SetKeyName(1, "user.png");
+            this.imageList1.Images.SetKeyName(2, "subscribe.png");
+            this.imageList1.Images.SetKeyName(3, "group.png");
+            // 
             // CentreSportifGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -885,6 +902,7 @@
             this.ClientSize = new System.Drawing.Size(1653, 838);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "CentreSportifGUI";
             this.Text = "Centre Sportif 420";
@@ -994,6 +1012,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewButtonColumn Column16;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 
