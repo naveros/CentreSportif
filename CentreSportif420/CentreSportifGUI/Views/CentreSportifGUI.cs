@@ -44,7 +44,7 @@ namespace CentreSportifGUI
                 dataGridView1.Rows[i].Cells[4].Value = formatRole(personneDTO.Role);
                 dataGridView1.Rows[i].Cells[5].Value = personneDTO.Sexe;
                 dataGridView1.Rows[i].Cells[6].Value = personneDTO.CodeBarre;
-                dataGridView1.Rows[i].Cells[7].Value = "Modifier";
+                dataGridView1.Rows[i].Cells[7].Value = "Option";
                 dataGridView1.Rows[i].Cells[7].Tag = personneDTO;
             });
         }
@@ -59,7 +59,7 @@ namespace CentreSportifGUI
                 dataGridView2.Rows[i].Cells[1].Value = activiteDTO.Nom;
                 dataGridView2.Rows[i].Cells[2].Value = activiteDTO.Duree;
                 dataGridView2.Rows[i].Cells[3].Value = activiteDTO.Description;
-                dataGridView2.Rows[i].Cells[4].Value = "Modifier";
+                dataGridView2.Rows[i].Cells[4].Value = "Option";
                 dataGridView2.Rows[i].Cells[4].Tag = activiteDTO;
             });
         }
@@ -74,7 +74,7 @@ namespace CentreSportifGUI
                 dataGridView3.Rows[i].Cells[1].Value = groupeDTO.IdActivite;
                 dataGridView3.Rows[i].Cells[2].Value = DbCreateur.ServiceActivite.findById(groupeDTO.IdActivite).Nom;
                 dataGridView3.Rows[i].Cells[3].Value = groupeDTO.NumeroGroupe;
-                dataGridView3.Rows[i].Cells[4].Value = "Modifier";
+                dataGridView3.Rows[i].Cells[4].Value = "Option";
                 dataGridView3.Rows[i].Cells[4].Tag = groupeDTO;
             });
         }

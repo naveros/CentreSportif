@@ -135,7 +135,7 @@ namespace CentreSportifGUI.Views.formulaire
                 CentreView = (CentreSportifGUI)this.Owner;
                 comboBox3.DataSource = Enum.GetNames(typeof(DayOfWeek));
                 dateTimePicker1.ShowUpDown = true;
-                dateTimePicker1.CustomFormat = "hh";
+                dateTimePicker1.CustomFormat = "HH";
                 dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             }
         }
