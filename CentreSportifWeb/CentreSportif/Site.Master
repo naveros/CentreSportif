@@ -34,7 +34,7 @@
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Accueil"/>
-                        <asp:MenuItem NavigateUrl="~/Horaires.aspx" Text="Voir Horaires" Value="Voir Horaires"></asp:MenuItem>
+                        <asp:MenuItem Text="L'horaire des activités" Value="L'horaire des activités" NavigateUrl="~/Horaire.aspx"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Contact.aspx" Text="Contactez-Nous"/>
                     </Items>
                 </asp:Menu>

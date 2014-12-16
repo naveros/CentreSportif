@@ -10,24 +10,33 @@
 namespace CentreSportif.Account {
     
     
-    public partial class Login {
+    public partial class Membre {
         
         /// <summary>
-        /// Login1 control.
+        /// vosActivite control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Login Login1;
+        protected global::System.Web.UI.WebControls.GridView vosActivite;
         
         /// <summary>
-        /// RegisterHyperLink control.
+        /// monProfile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink RegisterHyperLink;
+        protected global::System.Web.UI.WebControls.GridView monProfile;
+        
+        /// <summary>
+        /// activiteDisponible control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView activiteDisponible;
     }
 }

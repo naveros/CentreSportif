@@ -13,7 +13,7 @@ namespace CentreSportif
     {
        protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+           if (!IsPostBack)
             {
                 if ((String)Session["uname"] != "" && (String)Session["urole"] == "membre" || (String)Session["urole"] == "administrateur")
                 {

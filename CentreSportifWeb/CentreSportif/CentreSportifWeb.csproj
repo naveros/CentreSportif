@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{531D29F6-F2AF-4D3B-AA1A-3380578229FD}</ProjectGuid>
+    <ProjectGuid>{50DAC04B-A39D-4E67-99A7-2793ED56CFBA}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -65,12 +65,13 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Account\Membre.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Horaires.aspx" />
+    <Content Include="Horaire.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -86,6 +87,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\Membre.aspx.cs">
+      <DependentUpon>Membre.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Membre.aspx.designer.cs">
+      <DependentUpon>Membre.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -131,12 +139,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Horaires.aspx.cs">
-      <DependentUpon>Horaires.aspx</DependentUpon>
+    <Compile Include="Horaire.aspx.cs">
+      <DependentUpon>Horaire.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Horaires.aspx.designer.cs">
-      <DependentUpon>Horaires.aspx</DependentUpon>
+    <Compile Include="Horaire.aspx.designer.cs">
+      <DependentUpon>Horaire.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -151,14 +159,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Account\Web.config" />
+    <Content Include="Account\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Site.Master" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\CentreSportif420\CentreSportifLib\CentreSportifLib\CentreSportifLib.csproj">
-      <Project>{f5f84e07-34ee-406e-8e0e-42f982d242f3}</Project>
-      <Name>CentreSportifLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
