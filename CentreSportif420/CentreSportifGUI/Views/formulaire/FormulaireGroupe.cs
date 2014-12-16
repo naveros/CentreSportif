@@ -90,6 +90,8 @@ namespace CentreSportifGUI.Views.formulaire
                                 seanceDTO.DateDebut = nextSeanceDebut.AddDays(j);
                                 seanceDTO.DateFin = nextSeanceFin.AddDays(j);
                                 CentreView.DbCreateur.ServiceGroupe.addSeance(seanceDTO);
+                                nextSeanceDebut = nextSeanceDebut.AddDays(1);
+                                nextSeanceFin = nextSeanceFin.AddDays(1);
                             }
                         }
                         else
