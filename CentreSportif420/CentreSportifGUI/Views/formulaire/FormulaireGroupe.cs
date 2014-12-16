@@ -10,7 +10,7 @@ using CentreSportifLib.dto;
 
 namespace CentreSportifGUI.Views.formulaire
 {
-    public enum Jour
+  /*  public enum Jour
     {
         Dimanche = 0,
         Lundi = 1,
@@ -19,7 +19,7 @@ namespace CentreSportifGUI.Views.formulaire
         Jeudi = 4,
         Vendredi = 5,
         Samedi = 6
-    }
+    }*/
     public partial class FormulaireGroupe : Form
     {
         GroupeDTO groupeDTO;
@@ -51,15 +51,9 @@ namespace CentreSportifGUI.Views.formulaire
             {
                 ActiviteDTO activiteDTO = (ActiviteDTO)comboBox1.SelectedItem;
                 PersonneDTO professeur = (PersonneDTO)comboBox2.SelectedItem;
-                //g.IdGroupe = textBox1.Text;
                 groupeDTO.IdActivite = activiteDTO.IdActivite;
                 groupeDTO.NumeroGroupe = textBox3.Text;
                 groupeDTO.Prix = decimal.Parse(textBox4.Text);
-
-                // add prof
-                //Créee les seances
-                DateTime tomorrow = DateTime.Today.AddDays(1);
-                // The (... + 7) % 7 ensures we end up with a value in the range [0, 6]
 
                 if (this.mode.Equals("Créer"))
                 {
@@ -70,17 +64,14 @@ namespace CentreSportifGUI.Views.formulaire
                     enseigneDTO.IdPersonne = professeur.IdPersonne;
                     CentreView.DbCreateur.ServicePersonne.addEnseigne(enseigneDTO);
                     //Crée les seance
-                    int daysUntilNextSeance = ((int)dateTimePicker1.Value.DayOfWeek - (int)tomorrow.DayOfWeek + 7) % 7;
-                    DateTime nextDay = tomorrow.AddDays(daysUntilNextSeance);
-                    DateTime nextSeanceDebut = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, dateTimePicker1.Value.Hour, 0, 0);
-                    DateTime nextSeanceFin = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, dateTimePicker1.Value.Hour, 0, 0);
-                    nextSeanceFin = nextSeanceFin.AddHours(int.Parse(activiteDTO.Duree));
-                    //nextSeanceDebut.AddHours(int.Parse(activite.Duree));
                     int nbSeance = int.Parse(textBox2.Text);
+                    DateTime nextSeanceDebut = dateTimePicker2.Value;
+                    int seanceHour = (int)numericUpDown1.Value;
+                    nextSeanceDebut = ChangeTime(nextSeanceDebut, seanceHour, 0, 0, 0);
+                    DateTime nextSeanceFin = nextSeanceDebut.AddHours(int.Parse(activiteDTO.Duree));
 
                     for (int i = 0; i < nbSeance; i++)
                     {
-
                         if (checkBox1.Checked)
                         {
                             for (int j = 0; j < 7; j++)
@@ -108,6 +99,7 @@ namespace CentreSportifGUI.Views.formulaire
                 }
                 else if (this.mode.Equals("Modifier"))
                 {
+                    groupeDTO.IdGroupe = textBox1.Text;
                     CentreView.DbCreateur.ServiceGroupe.update(groupeDTO);
                     label4.Text += "Le groupe " + groupeDTO.NumeroGroupe + " a bien été modifié";
                     CentreView.RefreshTableGroupe();
@@ -147,12 +139,11 @@ namespace CentreSportifGUI.Views.formulaire
                 var bindingList2 = new BindingList<PersonneDTO>(listProfesseurDTO);
                 var source2 = new BindingSource(bindingList2, null);
                 comboBox2.DataSource = source2;
-                //Remplir le comboBox des jours
-                CentreView = (CentreSportifGUI)this.Owner;
-                comboBox3.DataSource = Enum.GetNames(typeof(DayOfWeek));
-                dateTimePicker1.ShowUpDown = true;
-                dateTimePicker1.CustomFormat = "HH";
-                dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+                //Set up le numericUpDown
+                numericUpDown1.Value = 1;
+                numericUpDown1.Maximum = 24;
+                numericUpDown1.Minimum = 1;
+
             }
         }
 
@@ -160,14 +151,25 @@ namespace CentreSportifGUI.Views.formulaire
         {
             if (checkBox1.Checked)
             {
-                comboBox3.Enabled = false;
+                dateTimePicker2.Enabled = false;
                 label8.Text = "Nombre de semaines";
             }
             else
             {
-                comboBox3.Enabled = true;
+                dateTimePicker2.Enabled = true;
                 label8.Text = "Nombre de séances";
             }
+        }
+        public  DateTime ChangeTime(DateTime dateTime, int hours, int minutes, int seconds, int milliseconds)
+        {
+            return new DateTime(
+                dateTime.Year,
+                dateTime.Month,
+                dateTime.Day,
+                hours,
+                minutes,
+                seconds,
+                milliseconds);
         }
     }
 }

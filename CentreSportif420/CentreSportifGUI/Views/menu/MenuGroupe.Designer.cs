@@ -101,12 +101,12 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(152, 423);
+            this.button3.Location = new System.Drawing.Point(154, 439);
             this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(188, 57);
             this.button3.TabIndex = 6;
-            this.button3.Text = "Quitter";
+            this.button3.Text = "Retour";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -195,7 +195,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 546);
+            this.ClientSize = new System.Drawing.Size(519, 529);
             this.Controls.Add(this.labelPrix);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button4);

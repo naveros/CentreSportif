@@ -164,7 +164,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(188, 57);
             this.button3.TabIndex = 26;
-            this.button3.Text = "Quitter";
+            this.button3.Text = "Retour";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
