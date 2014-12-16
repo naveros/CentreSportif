@@ -25,6 +25,7 @@ namespace CentreSportif
         private void BindData()
         {
             string connectionString = @"Data Source=db4free.net; Database=centresportif420; user=centresportif420; password=stephane420;";
+            //string connectionString = @"host=rainrunner.net; Database=centresportif420; user=centresportif420; password=Gx9vS8UFY8xUE7p4;";
             using (MySqlConnection cn = new MySqlConnection(connectionString))
             {
                 MySqlDataAdapter adp = new MySqlDataAdapter("select nom,duree,description from activite", cn);

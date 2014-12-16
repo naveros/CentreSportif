@@ -73,6 +73,7 @@
             <SortedDescendingCellStyle BackColor="#E9EBEF" />
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
+        <asp:Label ID="lblResultat" ViewStateMode=Disabled runat="server"  Text="Prix total: "></asp:Label>
     </p>
     <h3>Votre profile:</h3>
     <p>
