@@ -56,32 +56,17 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.labelMessageMembre = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.labelMessageActivite = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.labelMessageGroupe = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,17 +75,33 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.labelMessageActivite = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.labelMessageGroupe = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.button4 = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
@@ -111,6 +112,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -126,7 +128,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -437,6 +442,15 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Photo";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(42, 38);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(300, 252);
+            this.pictureBox1.TabIndex = 32;
+            this.pictureBox1.TabStop = false;
+            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
@@ -507,6 +521,19 @@
             this.labelMessageMembre.TabIndex = 3;
             this.labelMessageMembre.Text = "l";
             // 
+            // button1
+            // 
+            this.button1.Image = global::CentreSportifGUI.Properties.Resources.add;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(1015, 47);
+            this.button1.Margin = new System.Windows.Forms.Padding(5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(321, 79);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Nouveau membre";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -516,6 +543,19 @@
             this.label1.Size = new System.Drawing.Size(114, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "ID du membre:";
+            // 
+            // button2
+            // 
+            this.button2.Image = global::CentreSportifGUI.Properties.Resources.facetedSearch;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(435, 47);
+            this.button2.Margin = new System.Windows.Forms.Padding(5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(237, 26);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Chercher";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox1
             // 
@@ -544,6 +584,56 @@
             this.dataGridView1.Size = new System.Drawing.Size(1635, 603);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Prenom";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Nom";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.HeaderText = "Email";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Role";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Sexe";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Code-barres";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Option";
+            this.Column12.Name = "Column12";
+            this.Column12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column12.Text = "Option";
             // 
             // tabPage3
             // 
@@ -604,6 +694,19 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // button3
+            // 
+            this.button3.Image = global::CentreSportifGUI.Properties.Resources.facetedSearch;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(454, 52);
+            this.button3.Margin = new System.Windows.Forms.Padding(5);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(225, 25);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Chercher";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(174, 52);
@@ -639,191 +742,6 @@
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.labelMessageGroupe);
-            this.tabPage4.Controls.Add(this.button7);
-            this.tabPage4.Controls.Add(this.textBox4);
-            this.tabPage4.Controls.Add(this.label5);
-            this.tabPage4.Controls.Add(this.dataGridView3);
-            this.tabPage4.Controls.Add(this.button4);
-            this.tabPage4.ImageIndex = 3;
-            this.tabPage4.Location = new System.Drawing.Point(4, 29);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(5);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1645, 805);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Groupe";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // labelMessageGroupe
-            // 
-            this.labelMessageGroupe.AutoSize = true;
-            this.labelMessageGroupe.Location = new System.Drawing.Point(65, 115);
-            this.labelMessageGroupe.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.labelMessageGroupe.Name = "labelMessageGroupe";
-            this.labelMessageGroupe.Size = new System.Drawing.Size(12, 20);
-            this.labelMessageGroupe.TabIndex = 9;
-            this.labelMessageGroupe.Text = "l";
-            // 
-            // button7
-            // 
-            this.button7.Image = global::CentreSportifGUI.Properties.Resources.add;
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(1032, 65);
-            this.button7.Margin = new System.Windows.Forms.Padding(5);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(321, 70);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "Nouveau groupe";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(177, 54);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(5);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(253, 26);
-            this.textBox4.TabIndex = 3;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(65, 58);
-            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 20);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "ID du groupe";
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column13,
-            this.Column14,
-            this.Column17,
-            this.Column15,
-            this.Column16});
-            this.dataGridView3.Location = new System.Drawing.Point(0, 215);
-            this.dataGridView3.Margin = new System.Windows.Forms.Padding(5);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(1647, 583);
-            this.dataGridView3.TabIndex = 0;
-            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(42, 38);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(300, 252);
-            this.pictureBox1.TabIndex = 32;
-            this.pictureBox1.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Image = global::CentreSportifGUI.Properties.Resources.add;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(1015, 47);
-            this.button1.Margin = new System.Windows.Forms.Padding(5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(321, 79);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Nouveau membre";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Image = global::CentreSportifGUI.Properties.Resources.facetedSearch;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(435, 47);
-            this.button2.Margin = new System.Windows.Forms.Padding(5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(237, 26);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Chercher";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Image = global::CentreSportifGUI.Properties.Resources.facetedSearch;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(454, 52);
-            this.button3.Margin = new System.Windows.Forms.Padding(5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(225, 25);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Chercher";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Image = global::CentreSportifGUI.Properties.Resources.facetedSearch;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(441, 50);
-            this.button4.Margin = new System.Windows.Forms.Padding(5);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(192, 28);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Chercher";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Prenom";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Nom";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.HeaderText = "Email";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Role";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Sexe";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Code-barres";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Option";
-            this.Column12.Name = "Column12";
-            this.Column12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column12.Text = "Option";
-            // 
             // Column7
             // 
             this.Column7.HeaderText = "ID";
@@ -857,6 +775,77 @@
             this.Column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Column10.Text = "Option";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.splitContainer4);
+            this.tabPage4.Controls.Add(this.labelMessageGroupe);
+            this.tabPage4.ImageIndex = 3;
+            this.tabPage4.Location = new System.Drawing.Point(4, 29);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(5);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1645, 805);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Groupe";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // labelMessageGroupe
+            // 
+            this.labelMessageGroupe.AutoSize = true;
+            this.labelMessageGroupe.Location = new System.Drawing.Point(65, 115);
+            this.labelMessageGroupe.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.labelMessageGroupe.Name = "labelMessageGroupe";
+            this.labelMessageGroupe.Size = new System.Drawing.Size(12, 20);
+            this.labelMessageGroupe.TabIndex = 9;
+            this.labelMessageGroupe.Text = "l";
+            // 
+            // button7
+            // 
+            this.button7.Image = global::CentreSportifGUI.Properties.Resources.add;
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.Location = new System.Drawing.Point(935, 90);
+            this.button7.Margin = new System.Windows.Forms.Padding(5);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(321, 70);
+            this.button7.TabIndex = 8;
+            this.button7.Text = "Nouveau groupe";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(194, 67);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(5);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(253, 26);
+            this.textBox4.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(82, 71);
+            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(102, 20);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "ID du groupe";
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column13,
+            this.Column14,
+            this.Column17,
+            this.Column15,
+            this.Column16});
+            this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView3.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView3.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(1645, 533);
+            this.dataGridView3.TabIndex = 0;
+            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
+            // 
             // Column13
             // 
             this.Column13.HeaderText = "ID Groupe";
@@ -886,6 +875,19 @@
             this.Column16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Column16.Text = "Option";
             // 
+            // button4
+            // 
+            this.button4.Image = global::CentreSportifGUI.Properties.Resources.facetedSearch;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(457, 63);
+            this.button4.Margin = new System.Windows.Forms.Padding(5);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(192, 28);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "Chercher";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -894,6 +896,27 @@
             this.imageList1.Images.SetKeyName(1, "user.png");
             this.imageList1.Images.SetKeyName(2, "subscribe.png");
             this.imageList1.Images.SetKeyName(3, "group.png");
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.button4);
+            this.splitContainer4.Panel1.Controls.Add(this.textBox4);
+            this.splitContainer4.Panel1.Controls.Add(this.button7);
+            this.splitContainer4.Panel1.Controls.Add(this.label5);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.dataGridView3);
+            this.splitContainer4.Size = new System.Drawing.Size(1645, 805);
+            this.splitContainer4.SplitterDistance = 268;
+            this.splitContainer4.TabIndex = 10;
             // 
             // CentreSportifGUI
             // 
@@ -917,6 +940,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -935,7 +959,11 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel1.PerformLayout();
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1013,6 +1041,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewButtonColumn Column16;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.SplitContainer splitContainer4;
     }
 }
 
