@@ -80,15 +80,18 @@ namespace CentreSportifGUI.Views.formulaire
 
                 if (this.mode.Equals("Créer"))
                 {
-                    photo.Save("../photos/" + personneDTO.IdPersonne + ".jpg", ImageFormat.Jpeg); /////////
+                   
                     adresseDTO.IdPersonne = this.CentreView.DbCreateur.ServicePersonne.register(personneDTO);
                     this.CentreView.DbCreateur.ServicePersonne.addAdresse(adresseDTO);
+                    //photo.Save("../photos/" + personneDTO.IdPersonne + ".jpg", ImageFormat.Jpeg);
+                    this.CentreView.RefreshTableMembre();
                     errorMessage = "Ajout réussit !";
                 }
                 else if (this.mode.Equals("Modifier"))
                 {
                     CentreView.DbCreateur.ServicePersonne.update(personneDTO);
                     CentreView.DbCreateur.ServicePersonne.updateAdresse(adresseDTO);
+                    this.CentreView.RefreshTableMembre();
                     errorMessage = "Modification réussit";
                 }
             }
@@ -119,6 +122,7 @@ namespace CentreSportifGUI.Views.formulaire
                 textBox2.Text = personneDTO.Prenom;
                 textBox3.Text = personneDTO.Nom;
                 textBox4.Text = personneDTO.Email;
+                textBox5.Text = personneDTO.CodeBarre;
                 dateTimePicker1.Value = personneDTO.DateNaissance;
                 textBox8.Text = adresseDTO.Numero;
                 textBox9.Text = adresseDTO.Rue;
@@ -138,7 +142,7 @@ namespace CentreSportifGUI.Views.formulaire
                     throw;
                 }
 
-                if (personneDTO.Sexe.Equals('f'))
+                if (personneDTO.Sexe.Equals('F'))
                 {
                     radioButton2.Checked = true;
                 }

@@ -48,6 +48,7 @@ namespace CentreSportifGUI.Views.formulaire.formulairesMembre
                 CentreView.DbCreateur.ServicePersonne.update(personneDTO);
                 label3.Text += "Le role de " + personneDTO.Prenom + " " + personneDTO.Nom + " a bien été modifié.";
                 label1.Text = personneDTO.Prenom + " " + personneDTO.Nom + " est présentement " + CentreView.formatRole(personneDTO.Role);
+                this.CentreView.RefreshTableMembre();
             }
             catch (Exception ee)
             {
