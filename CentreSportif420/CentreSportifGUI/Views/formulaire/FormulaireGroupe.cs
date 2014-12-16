@@ -76,14 +76,30 @@ namespace CentreSportifGUI.Views.formulaire
                     DateTime nextSeanceFin = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, dateTimePicker1.Value.Hour, 0, 0);
                     nextSeanceFin = nextSeanceFin.AddHours(int.Parse(activiteDTO.Duree));
                     //nextSeanceDebut.AddHours(int.Parse(activite.Duree));
-                    int nb = int.Parse(textBox2.Text);
-                    for (int i = 0; i < nb; i++)
+                    int nbSeance = int.Parse(textBox2.Text);
+
+                    for (int i = 0; i < nbSeance; i++)
                     {
-                        SeanceDTO seanceDTO = new SeanceDTO();
-                        seanceDTO.IdGroupe = idgroupe;
-                        seanceDTO.DateDebut = nextSeanceDebut;
-                        seanceDTO.DateFin = nextSeanceFin;
-                        CentreView.DbCreateur.ServiceGroupe.addSeance(seanceDTO);
+
+                        if (checkBox1.Checked)
+                        {
+                            for (int j = 0; j < 7; j++)
+                            {
+                                SeanceDTO seanceDTO = new SeanceDTO();
+                                seanceDTO.IdGroupe = idgroupe;
+                                seanceDTO.DateDebut = nextSeanceDebut.AddDays(j);
+                                seanceDTO.DateFin = nextSeanceFin.AddDays(j);
+                                CentreView.DbCreateur.ServiceGroupe.addSeance(seanceDTO);
+                            }
+                        }
+                        else
+                        {
+                            SeanceDTO seanceDTO = new SeanceDTO();
+                            seanceDTO.IdGroupe = idgroupe;
+                            seanceDTO.DateDebut = nextSeanceDebut;
+                            seanceDTO.DateFin = nextSeanceFin;
+                            CentreView.DbCreateur.ServiceGroupe.addSeance(seanceDTO);
+                        }
                         nextSeanceDebut = nextSeanceDebut.AddDays(7);
                         nextSeanceFin = nextSeanceFin.AddDays(7);
                     }
@@ -137,6 +153,20 @@ namespace CentreSportifGUI.Views.formulaire
                 dateTimePicker1.ShowUpDown = true;
                 dateTimePicker1.CustomFormat = "HH";
                 dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                comboBox3.Enabled = false;
+                label8.Text = "Nombre de semaines";
+            }
+            else
+            {
+                comboBox3.Enabled = true;
+                label8.Text = "Nombre de séances";
             }
         }
     }
