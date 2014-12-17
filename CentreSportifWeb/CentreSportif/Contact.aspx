@@ -7,17 +7,17 @@
       <h1>Contactez-nous!</h1>
     <section class="contact">
         <header>
-            <h3>Courriel:</h3>
+            
         </header>
-        <p>
+         <p>
             <span class="label">Support:</span>
-            Support@cspsylvestre.com</span></p>
+            <span>courriel:Support@cspTeam.com </br> telephone: (514)212-8564</span></p>
         <p>
             <span class="label">Marketing:</span>
-            Marketing@cspsylvestre.com</span></p>
+            <span>Marketing@cspTeam.com </br> telephone: (514)212-8565</span></p>
         <p>
             <strong>Général:</strong>
-            General@spsylvestre.com</span>
+            <span>General@spTeam.com </br> telephone: (514)212-8566</span>
         </p>
     </section>
 

@@ -30,52 +30,51 @@
                                 <asp:Label ID="Label1" runat="server" AssociatedControlID="Nom">Nom</asp:Label>
                                 <asp:TextBox runat="server" ID="Nom" />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Nom"
-                                    CssClass="field-validation-error" ErrorMessage="Le champ de nom est nécessaire." />
+                                    CssClass="field-validation-error" style="color:Red;" ErrorMessage="Le champ de nom est nécessaire." />
                             </li>
                             <li>
                                 <asp:Label ID="Label2" runat="server" AssociatedControlID="Prenom">Prénom</asp:Label>
                                 <asp:TextBox runat="server" ID="Prenom" />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Prenom"
-                                    CssClass="field-validation-error" ErrorMessage="Le champ de prénom est nécessaire." />
+                                    CssClass="field-validation-error" style="color:Red;" ErrorMessage="Le champ de prénom est nécessaire." />
                             </li>
                             <li>
                                 <asp:Label ID="Label3" runat="server" AssociatedControlID="Sexe">Sexe</asp:Label>
                                 <asp:TextBox runat="server" ID="Sexe" />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="Sexe"
-                                    CssClass="field-validation-error" ErrorMessage="Le champ d'adresse sexe est nécessaire." />
+                                    CssClass="field-validation-error" style="color:Red;" ErrorMessage="Le champ d'adresse sexe est nécessaire." />
                             </li>
                             <li>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="Sexe" CssClass="field-validation-error" ErrorMessage="Le champ de sexe est nécessaire." />
                                 <asp:Label ID="Label4" runat="server" AssociatedControlID="Naissance">Date de naissance</asp:Label>
                                 <asp:TextBox runat="server" ID="Naissance" />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="UserName"
-                                    CssClass="field-validation-error" ErrorMessage="Le champ de naissance est nécessaire." />
+                                    CssClass="field-validation-error" style="color:Red;" ErrorMessage="Le champ de naissance est nécessaire." />
                             </li>
                             <li>
                                 <asp:Label ID="Label5" runat="server" AssociatedControlID="UserName">Nom d'utilisateur</asp:Label>
                                 <asp:TextBox runat="server" ID="UserName" />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="UserName"
-                                    CssClass="field-validation-error" ErrorMessage="Le champ de nom d'utilisateur est nécessaire." />
+                                    CssClass="field-validation-error" style="color:Red;" ErrorMessage="Le champ de nom d'utilisateur est nécessaire." />
                             </li>
                             <li>
                                 <asp:Label ID="Label6" runat="server" AssociatedControlID="Email">Adresse e-mail</asp:Label>
-                                <asp:TextBox runat="server" ID="Email" TextMode="Email" />
+                                <asp:TextBox runat="server" ID="Email"/>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="Email"
-                                    CssClass="field-validation-error" ErrorMessage="Le champ d'adresse e-mail est nécessaire." />
+                                    CssClass="field-validation-error" style="color:Red;" ErrorMessage="Le champ d'adresse e-mail est nécessaire." />
                             </li>
                             <li>
                                 <asp:Label ID="Label7" runat="server" AssociatedControlID="Password">Mot de passe</asp:Label>
                                 <asp:TextBox runat="server" ID="Password" TextMode="Password" />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="Password"
-                                    CssClass="field-validation-error" ErrorMessage="Le mot de passe est nécessaire." />
+                                    CssClass="field-validation-error" style="color:Red;" ErrorMessage="Le mot de passe est nécessaire." />
                             </li>
                             <li>
                                 <asp:Label ID="Label8" runat="server" AssociatedControlID="ConfirmPassword">Confirmez le mot de passe</asp:Label>
                                 <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="ConfirmPassword"
-                                     CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Le champ de mot de passe de confirmation est nécessaire. " />
+                                     CssClass="field-validation-error" Display="Dynamic" style="color:Red;" ErrorMessage="Le champ de mot de passe de confirmation est nécessaire. " />
                                 <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
-                                     CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Le mot de passe et la confirmation de passe ne correspondent pas." />
+                                     CssClass="field-validation-error" Display="Dynamic" style="color:Red;" ErrorMessage="Le mot de passe et la confirmation de passe ne correspondent pas." />
                             </li>
                         </ol>
                         <asp:Button ID="Button1" runat="server" Text="S'enregistrer" OnClick="registerUser" />

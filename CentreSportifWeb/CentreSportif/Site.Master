@@ -35,7 +35,7 @@
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Accueil"/>
                         <asp:MenuItem Text="L'horaire des activités" Value="L'horaire des activités" NavigateUrl="~/Horaire.aspx"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/Contact.aspx" Text="Contactez-Nous"/>
+                        <asp:MenuItem NavigateUrl="~/Contact.aspx" Text="Aide"/>
                     </Items>
                 </asp:Menu>
             </div>

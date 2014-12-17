@@ -11,6 +11,7 @@ namespace CentreSportif.Account
 {
     public partial class Membre : System.Web.UI.Page
     {
+        int total;
         protected void Page_Load(object sender, EventArgs e)
         {
             if ((String)(Session["uname"]) == "")
@@ -32,9 +33,11 @@ namespace CentreSportif.Account
                     {
                         vosActivite.DataSource = dt;
                         vosActivite.DataBind();
+                        total = dt.Rows.Count * 50;
                     }
                     cn.Close();
                 }
+                lblResultat.Text = ("Prix total: " + total + "$");
                 using (MySqlConnection cn = new MySqlConnection(connectionString))
                 {
                     MySqlDataAdapter adp = new MySqlDataAdapter("select prenom,nom,sexe,datenaissance,email,role from personne WHERE idpersonne='" + (String)(Session["idpersonne"]) + "'", cn);
