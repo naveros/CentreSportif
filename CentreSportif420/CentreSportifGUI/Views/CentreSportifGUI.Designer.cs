@@ -89,9 +89,10 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.labelMessageGroupe = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.button4 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,9 +100,8 @@
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.button4 = new System.Windows.Forms.Button();
+            this.labelMessageGroupe = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
@@ -127,11 +127,11 @@
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -788,28 +788,39 @@
             this.tabPage4.Text = "Groupe";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // labelMessageGroupe
+            // splitContainer4
             // 
-            this.labelMessageGroupe.AutoSize = true;
-            this.labelMessageGroupe.Location = new System.Drawing.Point(65, 115);
-            this.labelMessageGroupe.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.labelMessageGroupe.Name = "labelMessageGroupe";
-            this.labelMessageGroupe.Size = new System.Drawing.Size(12, 20);
-            this.labelMessageGroupe.TabIndex = 9;
-            this.labelMessageGroupe.Text = "l";
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // button7
+            // splitContainer4.Panel1
             // 
-            this.button7.Image = global::CentreSportifGUI.Properties.Resources.add;
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(935, 90);
-            this.button7.Margin = new System.Windows.Forms.Padding(5);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(321, 70);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "Nouveau groupe";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.splitContainer4.Panel1.Controls.Add(this.button4);
+            this.splitContainer4.Panel1.Controls.Add(this.textBox4);
+            this.splitContainer4.Panel1.Controls.Add(this.button7);
+            this.splitContainer4.Panel1.Controls.Add(this.label5);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.dataGridView3);
+            this.splitContainer4.Size = new System.Drawing.Size(1645, 805);
+            this.splitContainer4.SplitterDistance = 209;
+            this.splitContainer4.TabIndex = 10;
+            // 
+            // button4
+            // 
+            this.button4.Image = global::CentreSportifGUI.Properties.Resources.facetedSearch;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(457, 63);
+            this.button4.Margin = new System.Windows.Forms.Padding(5);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(192, 28);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "Chercher";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // textBox4
             // 
@@ -818,6 +829,19 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(253, 26);
             this.textBox4.TabIndex = 3;
+            // 
+            // button7
+            // 
+            this.button7.Image = global::CentreSportifGUI.Properties.Resources.add;
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.Location = new System.Drawing.Point(1026, 65);
+            this.button7.Margin = new System.Windows.Forms.Padding(5);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(321, 70);
+            this.button7.TabIndex = 8;
+            this.button7.Text = "Nouveau groupe";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label5
             // 
@@ -842,7 +866,7 @@
             this.dataGridView3.Location = new System.Drawing.Point(0, 0);
             this.dataGridView3.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(1645, 533);
+            this.dataGridView3.Size = new System.Drawing.Size(1645, 592);
             this.dataGridView3.TabIndex = 0;
             this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
@@ -875,18 +899,15 @@
             this.Column16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Column16.Text = "Option";
             // 
-            // button4
+            // labelMessageGroupe
             // 
-            this.button4.Image = global::CentreSportifGUI.Properties.Resources.facetedSearch;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(457, 63);
-            this.button4.Margin = new System.Windows.Forms.Padding(5);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(192, 28);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Chercher";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.labelMessageGroupe.AutoSize = true;
+            this.labelMessageGroupe.Location = new System.Drawing.Point(65, 115);
+            this.labelMessageGroupe.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.labelMessageGroupe.Name = "labelMessageGroupe";
+            this.labelMessageGroupe.Size = new System.Drawing.Size(12, 20);
+            this.labelMessageGroupe.TabIndex = 9;
+            this.labelMessageGroupe.Text = "l";
             // 
             // imageList1
             // 
@@ -896,27 +917,6 @@
             this.imageList1.Images.SetKeyName(1, "user.png");
             this.imageList1.Images.SetKeyName(2, "subscribe.png");
             this.imageList1.Images.SetKeyName(3, "group.png");
-            // 
-            // splitContainer4
-            // 
-            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer4.Name = "splitContainer4";
-            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer4.Panel1
-            // 
-            this.splitContainer4.Panel1.Controls.Add(this.button4);
-            this.splitContainer4.Panel1.Controls.Add(this.textBox4);
-            this.splitContainer4.Panel1.Controls.Add(this.button7);
-            this.splitContainer4.Panel1.Controls.Add(this.label5);
-            // 
-            // splitContainer4.Panel2
-            // 
-            this.splitContainer4.Panel2.Controls.Add(this.dataGridView3);
-            this.splitContainer4.Size = new System.Drawing.Size(1645, 805);
-            this.splitContainer4.SplitterDistance = 268;
-            this.splitContainer4.TabIndex = 10;
             // 
             // CentreSportifGUI
             // 
@@ -958,12 +958,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel1.PerformLayout();
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
 
         }
